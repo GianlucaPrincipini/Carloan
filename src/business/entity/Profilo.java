@@ -19,9 +19,9 @@ public class Profilo extends Persona {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String toStringAsPersona() {
-		return super.toString();
+
+	public String toString() {
+		return id + "'" + nome + "', '" + cognome + "', '" + dataNascita + "', '" + numTelefono + "', '" + eMail + "'";
 	}
 
 }

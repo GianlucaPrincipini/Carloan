@@ -11,10 +11,6 @@ public class Operatore extends Profilo {
 		this.agenzia = agenzia;
 	}
 	
-	public String toStringAsPersona() {
-		return super.toStringAsPersona();
-	}
-	
 	
 	public String toString() {
 		return "'" + Integer.toString(agenzia.getIdAgenzia()) + "'";

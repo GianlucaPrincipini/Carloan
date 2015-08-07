@@ -56,7 +56,5 @@ public abstract class Persona implements Entity {
 		this.eMail = eMail;
 	}
 	
-	public String toString() {
-		return "'" + nome + "', '" + cognome + "', '" + dataNascita + "', '" + numTelefono + "', '" + eMail + "'";
-	}
+
 }

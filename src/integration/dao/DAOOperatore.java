@@ -15,7 +15,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 	
 	public  void create(Operatore entity){
 		try {
-			connection.executeUpdateQuery("insert into persona  values("+ entity.toStringAsPersona() + ");");
+			connection.executeUpdateQuery("insert into persona  values(" + entity + ");");
 			connection.executeUpdateQuery("insert into profilo(id, username, password) values( " + entity.getId() + ", '" + entity.getUsername() + "', '" + Encrypt.getEncryptedString(entity.getPassword()) + "');");
 			if (entity instanceof Amministratore)
 				connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getIdAgenzia() + ", true);");
