@@ -60,6 +60,10 @@ public class DAOModello extends DAOCarloan<Modello> {
 	}
 	
 	public static void main(String [] args) {
-		
+		Modello a = new Modello();
+		a.setMarca("Fiat");
+		a.setNome("Punto");
+		//new DAOModello().create(a);
+		System.out.println(new DAOModello().read(Integer.toString(1)));
 	}
 }

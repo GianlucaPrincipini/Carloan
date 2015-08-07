@@ -2,6 +2,7 @@ package integration.dao;
 
 import java.sql.ResultSet;
 
+import business.entity.Modello;
 import business.entity.StatoVettura;
 import business.entity.Vettura;
 
@@ -43,6 +44,14 @@ public class DAOVettura extends DAOCarloan<Vettura> {
 	public void delete(String pk) {
 		connection.executeUpdateQuery("delete from vettura where id = '" + pk + "';");
 	}
-
+	
+	public static void main(String [] args) {
+		Vettura a = new Vettura();
+		a.setModello(new DAOModello().read(Integer.toString(1)));
+		a.setTarga("AB178BR");
+		DAOVettura dao = new DAOVettura();
+		dao.create(a);
+		System.out.println(dao.read("AB178BR"));
+	}
 
 }
