@@ -13,6 +13,6 @@ public class Cliente extends Persona {
 	
 	public String toString(){
 		return "'" + nome + "', '" + cognome + "', '" + dataNascita + 
-				 "', '" + numTelefono + "', '" + eMail + "', '" + codicePatente + "'";
+				 "', '" + numTelefono + "', '" + eMail + "'";
 	}
 }

@@ -9,7 +9,8 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 
 	
 	public  void create(Cliente entity){
-		connection.executeUpdateQuery("INSERT INTO cliente values(" + entity + ");");
+		connection.executeUpdateQuery("insert into persona values(" + entity + ";");
+		connection.executeUpdateQuery("INSERT INTO cliente values(" + entity.getId() + ", '" + entity.getCodicePatente() + "');");
 	}
 	
 	public void update(Cliente entity){
@@ -46,6 +47,19 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 	
 	
 	public void delete(String pk){
-		connection.executeUpdateQuery("DELETE FROM cliente WHERE codicepatente = '" + pk + "';");
+		ResultSet rs = connection.executeReadQuery("select id from cliente where codicepatente = '" + pk + "';");
+		try {
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				connection.executeUpdateQuery("delete from persona where id = " + id + ";");
+			}
+		} catch (SQLException e) {
+
+		}
 	}
+	
+	public static void main(String[] args) {
+		
+	}
+	
 }
