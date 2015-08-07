@@ -39,6 +39,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 			connection.executeUpdateQuery("update profilo set " +
 										  "username = '" + entity.getUsername() + "', " +
 										  "password = '" + Encrypt.getEncryptedString(entity.getPassword())+ "', "  + "where id = "+ entity.getId() + ";");
+
 			if (entity instanceof Amministratore)
 				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getIdAgenzia() + ", amministratore = 1 where username = '" + entity.getUsername() + "';");
 			else 
