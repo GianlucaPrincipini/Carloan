@@ -11,8 +11,4 @@ public class Cliente extends Persona {
 		this.codicePatente = codicePatente;
 	}
 	
-	public String toString(){
-		return "'" + nome + "', '" + cognome + "', '" + dataNascita + 
-				 "', '" + numTelefono + "', '" + eMail + "'";
-	}
 }

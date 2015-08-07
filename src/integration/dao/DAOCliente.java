@@ -9,7 +9,7 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 
 	
 	public  void create(Cliente entity){
-		connection.executeUpdateQuery("insert into persona values(" + entity + ";");
+		connection.executeUpdateQuery("insert into persona values(" + entity.toString() + ");");
 		connection.executeUpdateQuery("INSERT INTO cliente values(" + entity.getId() + ", '" + entity.getCodicePatente() + "');");
 	}
 	
@@ -59,6 +59,21 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 	}
 	
 	public static void main(String[] args) {
+		Cliente a = new Cliente();
+		DAOCliente dao = new DAOCliente();
+		a.setId(1);
+		a.setCodicePatente("1234567890");
+		a.setNome("Mario");
+		a.setCognome("Rossi");
+		a.setNumTelefono("123456789");
+		a.setDataNascita("20/07/1994");
+		a.setEMail("mariorossi@gmail.com");
+		dao.create(a);
+		System.out.println(dao.read(a.getCodicePatente()));
+		a.setEMail("uidofaidsj@najcksod.com");
+		dao.update(a);
+		System.out.println(dao.read(a.getCodicePatente()));
+		dao.delete(a.getCodicePatente());
 		
 	}
 	
