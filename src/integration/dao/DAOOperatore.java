@@ -39,7 +39,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 			connection.executeUpdateQuery("update profilo set " +
 										  "username = '" + entity.getUsername() + "', " +
 										  "password = '" + Encrypt.getEncryptedString(entity.getPassword())+ "', " + "' where id = "+ entity.getId() + ";");
-			connection.executeUpdateQuery("update cliente set agenzia = " + entity.getAgenzia().getIdAgenzia() + " where id = " + entity.getId());
+			connection.executeUpdateQuery("update operatore set idAgenzia = " + entity.getAgenzia().getIdAgenzia() + " where id = " + entity.getId());
 		} catch (Exception e) {
 			System.err.println("Error in encrypting...");
 		}
@@ -109,6 +109,10 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 		daoag.create(ag);
 		dao.create(a);
 		System.out.println(dao.read(a.getUsername()));
+		a.setEMail("mib777@gmail.com");
+		dao.update(a);
+		System.out.println(dao.read(a.getUsername()));
+
 	}
 	
 }
