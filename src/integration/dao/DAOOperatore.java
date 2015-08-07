@@ -37,8 +37,8 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 										  "email = '" + entity.getEMail() + "' where id = "+ entity.getId() + ";");
 
 			connection.executeUpdateQuery("update profilo set " +
-										  "agenzia = " + entity.getId()+ ", " +
-										  "password = '" + Encrypt.getEncryptedString(entity.getPassword()) + "' " + "where username = '"+ entity.getUsername() + "';");
+										  "id = " + entity.getId()+ ", " +
+										  "password = '" + Encrypt.getEncryptedString(entity.getPassword()) + "' where username = '"+ entity.getUsername() + "';");
 			if (entity instanceof Amministratore)
 				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getIdAgenzia() + ", amministratore = 1 where username = '" + entity.getUsername() + "';");
 			else 
@@ -116,7 +116,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 		a.setEMail("mib777@gmail.com");
 		dao.update(a);
 		System.out.println(dao.read(a.getUsername()));
-
+		dao.delete(a.getUsername());
 	}
 	
 }

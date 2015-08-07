@@ -9,7 +9,7 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 
 	@Override
 	public void create(Agenzia entity) {
-		connection.executeUpdateQuery("INSERT INTO agenzia values(" + entity + ");");
+		connection.executeUpdateQuery("INSERT INTO agenzia values(" + entity +  ");");
 	}
 
 	@Override
