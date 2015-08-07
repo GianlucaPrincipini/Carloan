@@ -20,8 +20,6 @@ public class Profilo extends Persona {
 		this.password = password;
 	}
 
-	public String toString() {
-		return id + "'" + nome + "', '" + cognome + "', '" + dataNascita + "', '" + numTelefono + "', '" + eMail + "'";
-	}
+
 
 }
