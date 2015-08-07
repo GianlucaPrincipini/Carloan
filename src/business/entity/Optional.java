@@ -1,16 +1,16 @@
 package business.entity;
 
 public class Optional implements Entity {
-	private String codice;
+	private int id;
 	private String tipo;
-	private float costo;
+	private double costo;
 
-	public String getCodice() {
-		return codice;
+	public int getId() {
+		return id;
 	}
 
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTipo() {
@@ -21,15 +21,15 @@ public class Optional implements Entity {
 		this.tipo = tipo;
 	}
 
-	public float getCosto() {
+	public double getCosto() {
 		return costo;
 	}
 
-	public void setCosto(float costo) {
+	public void setCosto(double costo) {
 		this.costo = costo;
 	}
 	
 	public String toString() {
-		return "'" + codice + "', '" + tipo + "', " + costo;
+		return "'" + id + "', '" + tipo + "', " + costo;
 	}
 }

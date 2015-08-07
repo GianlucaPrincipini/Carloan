@@ -61,9 +61,13 @@ public class DAOModello extends DAOCarloan<Modello> {
 	
 	public static void main(String [] args) {
 		Modello a = new Modello();
+		DAOModello dao = new DAOModello();
+		a.setId(1);
 		a.setMarca("Fiat");
 		a.setNome("Punto");
-		//new DAOModello().create(a);
+		dao.create(a);
 		System.out.println(new DAOModello().read(Integer.toString(1)));
+		//dao.delete(Integer.toString(1));
+		
 	}
 }

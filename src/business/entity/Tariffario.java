@@ -1,76 +1,76 @@
 package business.entity;
 
 public class Tariffario implements Entity {
-	private float costoGiornaliero;
-	private float costoSettimanale;
-	private float moraChilometraggio;
-	private float moraDurata;
-	private float moraCarburante;
-	private float costoChilometrico;
-	private float assicurazioneBase;
-	private float assicurazioneAvanzata;
+	private double costoGiornaliero;
+	private double costoSettimanale;
+	private double moraChilometraggio;
+	private double moraDurata;
+	private double moraCarburante;
+	private double costoChilometrico;
+	private double assicurazioneBase;
+	private double assicurazioneAvanzata;
 
-	public float getCostoGiornaliero() {
+	public double getCostoGiornaliero() {
 		return costoGiornaliero;
 	}
 
-	public void setCostoGiornaliero(float costoGiornaliero) {
+	public void setCostoGiornaliero(double costoGiornaliero) {
 		this.costoGiornaliero = costoGiornaliero;
 	}
 
-	public float getCostoSettimanale() {
+	public double getCostoSettimanale() {
 		return costoSettimanale;
 	}
 
-	public void setCostoSettimanale(float costoSettimanale) {
+	public void setCostoSettimanale(double costoSettimanale) {
 		this.costoSettimanale = costoSettimanale;
 	}
 
-	public float getMoraChilometraggio() {
+	public double getMoraChilometraggio() {
 		return moraChilometraggio;
 	}
 
-	public void setMoraChilometraggio(float moraChilometraggio) {
+	public void setMoraChilometraggio(double moraChilometraggio) {
 		this.moraChilometraggio = moraChilometraggio;
 	}
 
-	public float getMoraDurata() {
+	public double getMoraDurata() {
 		return moraDurata;
 	}
 
-	public void setMoraDurata(float moraDurata) {
+	public void setMoraDurata(double moraDurata) {
 		this.moraDurata = moraDurata;
 	}
 
-	public float getMoraCarburante() {
+	public double getMoraCarburante() {
 		return moraCarburante;
 	}
 
-	public void setMoraCarburante(float moraCarburante) {
+	public void setMoraCarburante(double moraCarburante) {
 		this.moraCarburante = moraCarburante;
 	}
 
-	public float getCostoChilometrico() {
+	public double getCostoChilometrico() {
 		return costoChilometrico;
 	}
 
-	public void setCostoChilometrico(float costoChilometrico) {
+	public void setCostoChilometrico(double costoChilometrico) {
 		this.costoChilometrico = costoChilometrico;
 	}
 
-	public float getAssicurazioneBase() {
+	public double getAssicurazioneBase() {
 		return assicurazioneBase;
 	}
 	
-	public void setAssicurazioneBase(float assicurazioneBase) {
+	public void setAssicurazioneBase(double assicurazioneBase) {
 		this.assicurazioneBase = assicurazioneBase;
 	}
 
-	public float getAssicurazioneAvanzata() {
+	public double getAssicurazioneAvanzata() {
 		return assicurazioneAvanzata;
 	}
 
-	public void setAssicurazioneAvanzata(float assicurazioneAvanzata) {
+	public void setAssicurazioneAvanzata(double assicurazioneAvanzata) {
 		this.assicurazioneAvanzata = assicurazioneAvanzata;
 	}
 }

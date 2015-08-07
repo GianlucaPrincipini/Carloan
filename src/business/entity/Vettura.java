@@ -57,6 +57,6 @@ public class Vettura implements Entity {
 	}
 	
 	public String toString() {
-		return "'" + targa + "', '" + modello + "', " + agenziaLocalizzazione.getIdAgenzia() + ", " + chilometraggio + ", " + stato.getIndex();
+		return "'" + targa + "', " + modello.getId() + ", " + agenziaLocalizzazione.getIdAgenzia() + ", " + chilometraggio + ", " + stato.getIndex();
 	}
 }

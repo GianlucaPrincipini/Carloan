@@ -10,7 +10,7 @@ public class Modello implements Entity {
 	private int numeroPorte;
 	private int potenza;
 	private boolean trasmissioneAutomatica;
-	private float emissioniCO2;
+	private double emissioniCO2;
 	private int peso;
 
 	public int getId() {
@@ -78,11 +78,11 @@ public class Modello implements Entity {
 		this.trasmissioneAutomatica = trasmissioneAutomatica;
 	}
 
-	public float getEmissioniCO2() {
+	public double getEmissioniCO2() {
 		return emissioniCO2;
 	}
 
-	public void setEmissioniCO2(float emissioniCO2) {
+	public void setEmissioniCO2(double emissioniCO2) {
 		this.emissioniCO2 = emissioniCO2;
 	}
 
