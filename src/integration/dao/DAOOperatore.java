@@ -37,8 +37,8 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 										  "email = '" + entity.getEMail() + "' where id = "+ entity.getId() + ";");
 
 			connection.executeUpdateQuery("update profilo set " +
-										  "username = '" + entity.getUsername() + "', " +
-										  "password = '" + Encrypt.getEncryptedString(entity.getPassword()) + "', " + "where id = "+ entity.getId() + ";");
+										  "agenzia = " + entity.getId()+ ", " +
+										  "password = '" + Encrypt.getEncryptedString(entity.getPassword()) + "' " + "where username = '"+ entity.getUsername() + "';");
 			if (entity instanceof Amministratore)
 				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getIdAgenzia() + ", amministratore = 1 where username = '" + entity.getUsername() + "';");
 			else 
