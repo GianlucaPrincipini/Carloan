@@ -15,7 +15,6 @@ public class Encrypt {
 	
 	public static String getEncryptedString(String string) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
-		System.out.println(string);
 		byte[] encryptedData = md.digest(string.getBytes("UTF-8"));
 		return convertByteArrayToHexString(encryptedData);
 	}
