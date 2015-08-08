@@ -53,7 +53,7 @@ public class DAOOptional extends DAOCarloan<Optional>{
 		a.setCosto(20.90);
 		dao.update(a);
 		System.out.println(dao.read(Integer.toString(a.getId())));
-		dao.delete(Integer.toString(a.getId()));
+		//dao.delete(Integer.toString(a.getId()));
 	}
 
 }

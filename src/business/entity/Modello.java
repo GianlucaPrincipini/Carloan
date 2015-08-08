@@ -103,7 +103,7 @@ public class Modello implements Entity {
 	}
 	
 	public String toString() {
-		return id + ", '" + marca + "', '" + nome + "', " + tipoCarburante + ", " + capacit‡Bagagliaio + ", " 
+		return id + ", '" + marca + "', '" + nome + "', " + tipoCarburante.getIndex() + ", " + capacit‡Bagagliaio + ", " 
 				+ numeroPosti + ", " + numeroPorte + ", " + potenza + 
 				", " + trasmissioneAutomatica + ", " + emissioniCO2 + ", " + peso;
 	}

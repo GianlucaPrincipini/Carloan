@@ -18,9 +18,9 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 			connection.executeUpdateQuery("insert into persona  values(" + entity + ");");
 			connection.executeUpdateQuery("insert into profilo(id, username, password) values( " + entity.getId() + ", '" + entity.getUsername() + "', '" + Encrypt.getEncryptedString(entity.getPassword()) + "');");
 			if (entity instanceof Amministratore)
-				connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getIdAgenzia() + ", true);");
+				connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getId() + ", true);");
 			else 
-				connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getIdAgenzia() + ", false);");
+				connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getId() + ", false);");
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -40,9 +40,9 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 										  "id = " + entity.getId()+ ", " +
 										  "password = '" + Encrypt.getEncryptedString(entity.getPassword()) + "' where username = '"+ entity.getUsername() + "';");
 			if (entity instanceof Amministratore)
-				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getIdAgenzia() + ", amministratore = 1 where username = '" + entity.getUsername() + "';");
+				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getId() + ", amministratore = 1 where username = '" + entity.getUsername() + "';");
 			else 
-				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getIdAgenzia() + ", amministratore = 0 where username = '" + entity.getUsername() + "';");
+				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getId() + ", amministratore = 0 where username = '" + entity.getUsername() + "';");
 
 		} catch (Exception e) {
 			System.err.println("Error in encrypting...");
@@ -91,32 +91,21 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 	public static void main(String[] args) {
 		DAOOperatore dao = new DAOOperatore();
 		Operatore a = new Operatore(); 
-		a.setId(1);
+		a.setAgenzia(new DAOAgenzia().read(Integer.toString(1)));
+		a.setId(2);
 		a.setUsername("MarioRossi21");
 		a.setPassword("carloan");
-		a.setNome("Mario");
-		a.setCognome("Rossi");
+		a.setNome("Francesco");
+		a.setCognome("Bianchi");
 		a.setDataNascita("20/07/1994");
 		a.setEMail("mariorossi@gmail.com");
 		
-
-
-		DAOAgenzia daoag = new DAOAgenzia();
-		Agenzia ag = new Agenzia();
-		ag.setIdAgenzia(1);
-		ag.setIndirizzo("via razzi");
-		ag.setCittà("bari");
-		ag.setNumTelefono("0881686333");
-		a.setAgenzia(ag);
-		dao.delete(a.getUsername());
-		daoag.delete(Integer.toString(ag.getIdAgenzia()));
-		daoag.create(ag);
 		dao.create(a);
 		System.out.println(dao.read(a.getUsername()));
 		a.setEMail("mib777@gmail.com");
 		dao.update(a);
 		System.out.println(dao.read(a.getUsername()));
-		dao.delete(a.getUsername());
+		//dao.delete(a.getUsername());
 	}
 	
 }

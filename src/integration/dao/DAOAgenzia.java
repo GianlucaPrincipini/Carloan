@@ -14,21 +14,21 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 
 	@Override
 	public void update(Agenzia entity) {
-		connection.executeUpdateQuery("UPDATE agenzia SET idAgenzia = " + entity.getIdAgenzia() + ", " +
+		connection.executeUpdateQuery("UPDATE agenzia SET idAgenzia = " + entity.getId() + ", " +
 									  "indirizzo = '" + entity.getIndirizzo() + "', " +
 									  "citta = '" + entity.getCittà() + "', " + 
 									  "numTelefono = '" + entity.getNumTelefono() + "' " 
-									  + "WHERE idAgenzia = '" + entity.getIdAgenzia() + "'; ");
+									  + "WHERE id = '" + entity.getId() + "'; ");
 	}
 
 	@Override
 	public Agenzia read(String pk) {
 		Agenzia agenzia = null;
-		ResultSet rs = connection.executeReadQuery("SELECT idAgenzia, indirizzo, citta, numTelefono FROM agenzia WHERE idAgenzia = '" + pk + "';");
+		ResultSet rs = connection.executeReadQuery("SELECT * FROM agenzia WHERE id = " + pk + ";");
 		try {
 			agenzia = new Agenzia();
 			while (rs.next()) {
-				agenzia.setIdAgenzia(rs.getInt("idagenzia"));
+				agenzia.setId(rs.getInt("id"));
 				agenzia.setIndirizzo(rs.getString("indirizzo"));
 				agenzia.setCittà(rs.getString("citta"));
 				agenzia.setNumTelefono(rs.getString("numtelefono"));
@@ -41,8 +41,17 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 
 	@Override
 	public void delete(String pk) {
-		connection.executeUpdateQuery("DELETE FROM agenzia WHERE idAgenzia = " + pk + ";");
+		connection.executeUpdateQuery("DELETE FROM agenzia WHERE id"
+				+ " = " + pk + ";");
 	}
 	
-
+	public static void main(String[] args) {
+		DAOAgenzia daoag = new DAOAgenzia();
+		Agenzia ag = new Agenzia();
+		ag.setId(1);
+		ag.setIndirizzo("via razzi");
+		ag.setCittà("bari");
+		ag.setNumTelefono("0881686333");
+		daoag.create(ag);
+	}
 }

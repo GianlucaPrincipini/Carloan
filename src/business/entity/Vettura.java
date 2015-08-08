@@ -1,21 +1,12 @@
 package business.entity;
 
 public class Vettura implements Entity {
-	private int id;
 	private String targa;
 	private Modello modello;
 	private Agenzia agenziaLocalizzazione;
 	private int chilometraggio;
 	private StatoVettura stato;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	public String getTarga() {
 		return targa;
 	}
@@ -57,6 +48,6 @@ public class Vettura implements Entity {
 	}
 	
 	public String toString() {
-		return "'" + targa + "', " + modello.getId() + ", " + agenziaLocalizzazione.getIdAgenzia() + ", " + chilometraggio + ", " + stato.getIndex();
+		return "'" + targa + "', " + modello.getId() + ", " + agenziaLocalizzazione.getId() + ", " + chilometraggio + ", " + stato.getIndex();
 	}
 }

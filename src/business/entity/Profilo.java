@@ -20,6 +20,4 @@ public class Profilo extends Persona {
 		this.password = password;
 	}
 
-
-
 }

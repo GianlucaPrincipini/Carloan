@@ -25,8 +25,8 @@ public class DAOModello extends DAOCarloan<Modello> {
 									  "NumeroPorte = " + entity.getNumeroPorte() + ", " +
 									  "Potenza = " + entity.getPotenza() + ", " +
 									  "TrasmissioneAutomatica = " + entity.isTrasmissioneAutomatica() + ", " +
-									  "Peso = " + entity.getPeso() + ", " +
-									  "WHERE id = " + entity.getId() + "; ");
+									  "Peso = " + entity.getPeso() + 
+									  " WHERE id = " + entity.getId() + "; ");
 	}
 
 	@Override
@@ -65,7 +65,11 @@ public class DAOModello extends DAOCarloan<Modello> {
 		a.setId(1);
 		a.setMarca("Fiat");
 		a.setNome("Punto");
+		a.setTipoCarburante(TipoCarburante.BENZINA);
 		dao.create(a);
+		System.out.println(new DAOModello().read(Integer.toString(1)));
+		a.setCapacit‡Bagagliaio(25);
+		dao.update(a);
 		System.out.println(new DAOModello().read(Integer.toString(1)));
 		//dao.delete(Integer.toString(1));
 		

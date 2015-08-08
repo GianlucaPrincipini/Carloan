@@ -30,6 +30,6 @@ public class Optional implements Entity {
 	}
 	
 	public String toString() {
-		return "'" + id + "', '" + tipo + "', " + costo;
+		return id + ", '" + tipo + "', " + costo;
 	}
 }

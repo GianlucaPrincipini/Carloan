@@ -73,7 +73,7 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 		a.setEMail("uidofaidsj@najcksod.com");
 		dao.update(a);
 		System.out.println(dao.read(a.getCodicePatente()));
-		dao.delete(a.getCodicePatente());
+		//dao.delete(a.getCodicePatente());
 		
 	}
 	

@@ -17,7 +17,7 @@ public class DAOVettura extends DAOCarloan<Vettura> {
 	@Override
 	public void update(Vettura entity) {
 		connection.executeUpdateQuery("update vettura set " + 
-									  "agenzialocalizzazione = " + entity.getAgenziaLocalizzazione().getIdAgenzia() + ", " +
+									  "agenzialocalizzazione = " + entity.getAgenziaLocalizzazione().getId() + ", " +
 									  "chilometraggio = " + entity.getChilometraggio() + ", " +
 									  "stato = " + entity.getStato().getIndex() + " where targa = '" + entity.getTarga() + "';");	
 	}
@@ -59,7 +59,7 @@ public class DAOVettura extends DAOCarloan<Vettura> {
 		a.setChilometraggio(152);
 		dao.update(a);
 		System.out.println(dao.read(a.getTarga()));
-		dao.delete(a.getTarga());
+		//dao.delete(a.getTarga());
 	}
 
 }

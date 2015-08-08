@@ -11,6 +11,4 @@ public class Operatore extends Profilo {
 		this.agenzia = agenzia;
 	}
 	
-	
-
 }

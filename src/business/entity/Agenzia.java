@@ -1,17 +1,17 @@
 package business.entity;
 
 public class Agenzia implements Entity {
-	private int idAgenzia;
+	private int id;
 	private String indirizzo;
 	private String città;
 	private String numTelefono;
 
-	public int getIdAgenzia() {
-		return idAgenzia;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdAgenzia(int idAgenzia) {
-		this.idAgenzia = idAgenzia;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getIndirizzo() {
@@ -39,7 +39,7 @@ public class Agenzia implements Entity {
 	}
 	
 	public String toString() {
-		return idAgenzia + ", '" + indirizzo + "', '" + città + "', '" + numTelefono + "'";
+		return id + ", '" + indirizzo + "', '" + città + "', '" + numTelefono + "'";
 	}
 
 }

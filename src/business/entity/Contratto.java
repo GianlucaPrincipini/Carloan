@@ -1,32 +1,43 @@
 package business.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import business.entity.Agenzia;
 import business.entity.Optional;
 
 public class Contratto implements Entity {
-	private int idContratto;
+	private int id;
 	private Operatore operatore;
 	private Cliente cliente;
 	private Agenzia agenziaNoleggio;
 	private Agenzia agenziaConsegna;
 	private String dataStipula;
 	private String dataChiusura;
+	private Vettura vettura;
 	private boolean chilometraggioLimitato;
 	private int chilometraggio;
 	private Rifornimento rifornimento;
-	private float acconto;
+	private double acconto;
 	private boolean chiuso;
-	private List<Optional> optionals;
-	private float costo;
+	private List<Optional> optionals = new ArrayList<Optional>();
+	private double costo;
 	private boolean assicurazioneAvanzata;
 
-	public int getIdContratto() {
-		return idContratto;
+	public void setVettura(Vettura vettura) {
+		this.vettura = vettura;
+	}
+	
+	public Vettura getVettura() {
+		return vettura;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setIdContratto(int idContratto) {
-		this.idContratto = idContratto;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Operatore getOperatore() {
@@ -77,11 +88,11 @@ public class Contratto implements Entity {
 		this.dataChiusura = dataChiusura;
 	}
 
-	public float getAcconto() {
+	public double getAcconto() {
 		return acconto;
 	}
 
-	public void setAcconto(float acconto) {
+	public void setAcconto(double acconto) {
 		this.acconto = acconto;
 	}
 
@@ -109,11 +120,11 @@ public class Contratto implements Entity {
 		this.rifornimento = rifornimento;
 	}
 
-	public float getCosto() {
+	public double getCosto() {
 		return costo;
 	}
 
-	public void setCosto(float costo) {
+	public void setCosto(double costo) {
 		this.costo = costo;
 	}
 
@@ -142,9 +153,9 @@ public class Contratto implements Entity {
 	}
 	
 	public String toString(){
-		return idContratto + ", '" + operatore.getUsername() + "', '" + cliente.getCodicePatente() + "', " + agenziaNoleggio.getIdAgenzia() + ", " 
-				+ agenziaConsegna.getIdAgenzia() + ", '" 
-				+ dataStipula + "'" + "', '" + dataChiusura + "'" + "', " + chilometraggioLimitato + 
-				", " + chilometraggio + ", " + rifornimento + ", " + acconto + ", " + chiuso + ", " + costo + ", " + assicurazioneAvanzata;
+		return id + ", '" + operatore.getUsername() + "', '" + cliente.getCodicePatente() + "', '" + vettura.getTarga() + "', " + agenziaNoleggio.getId() + ", " 
+				+ agenziaConsegna.getId() + ", '" 
+				+ dataStipula + "', '" + dataChiusura + "', " + chilometraggioLimitato + 
+				", " + chilometraggio + ", " + rifornimento.getIndex() + ", " + acconto + ", " + chiuso + ", " + costo + ", " + assicurazioneAvanzata;
 	}
 }
