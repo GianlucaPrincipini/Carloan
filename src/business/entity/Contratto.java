@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.LocalDate;
+
 import business.entity.Agenzia;
 import business.entity.Optional;
 
@@ -13,9 +15,9 @@ public class Contratto implements Entity {
 	private Cliente cliente;
 	private Agenzia agenziaNoleggio;
 	private Agenzia agenziaConsegna;
-	private String dataStipula;
-	private String dataInizioNoleggio;
-	private String dataChiusura;
+	private LocalDate dataStipula;
+	private LocalDate dataInizioNoleggio;
+	private LocalDate dataChiusura;
 	private Vettura vettura;
 	private boolean chilometraggioLimitato;
 	private int chilometraggio;
@@ -74,27 +76,27 @@ public class Contratto implements Entity {
 		this.agenziaConsegna = agenziaConsegna; 
 	}
 
-	public String getDataStipula() {
+	public LocalDate getDataStipula() {
 		return dataStipula;
 	}
 
-	public void setDataStipula(String dataStipula) {
+	public void setDataStipula(LocalDate dataStipula) {
 		this.dataStipula = dataStipula;
 	}
 
-	public String getDataInizioNoleggio(String dataInizioNoleggio) {
+	public LocalDate getDataInizioNoleggio() {
 		return dataInizioNoleggio;
 	}
 	
-	public void setDataInizioNoleggio(String dataInizioNoleggio) {
+	public void setDataInizioNoleggio(LocalDate dataInizioNoleggio) {
 		this.dataInizioNoleggio = dataInizioNoleggio;
 	}
 	
-	public String getDataChiusura() {
+	public LocalDate getDataChiusura() {
 		return dataChiusura;
 	}
 
-	public void setDataChiusura(String dataChiusura) {
+	public void setDataChiusura(LocalDate dataChiusura) {
 		this.dataChiusura = dataChiusura;
 	}
 

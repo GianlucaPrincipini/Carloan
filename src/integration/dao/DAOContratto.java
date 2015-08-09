@@ -1,5 +1,7 @@
 package integration.dao;
 
+import integration.DateHelper;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +61,9 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 				contratto.setCliente(cliente.read(rs.getString("cliente")));
 				contratto.setAgenziaNoleggio(agenziaNoleggio.read(Integer.toString(rs.getInt("agenziaNoleggio"))));
 				contratto.setAgenziaConsegna(agenziaConsegna.read(Integer.toString(rs.getInt("agenziaconsegna"))));
-				contratto.setDataStipula(rs.getString("datastipula"));
-				contratto.setDataChiusura(rs.getString("datachiusura"));
+				contratto.setDataStipula(DateHelper.dateToLocalDate(rs.getDate("datastipula")));
+				contratto.setDataChiusura(DateHelper.dateToLocalDate(rs.getDate("datachiusura")));
+				contratto.setDataInizioNoleggio(DateHelper.dateToLocalDate(rs.getDate("datainizionoleggio")));
 				contratto.setChilometraggioLimitato(rs.getBoolean("chilometraggiolimitato"));
 				contratto.setChilometraggio(rs.getInt("chilometraggio"));
 				contratto.setRifornimento(Rifornimento.getRifornimento(rs.getInt("rifornimento")));
@@ -97,8 +100,8 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		a.setCliente(new DAOCliente().read("1234567890"));
 		a.setVettura(new DAOVettura().read("AB178BR"));
 		a.setCosto(25.25);
-		a.setDataStipula("20/08/2015");
-		a.setDataChiusura("28/08/2015");
+		//a.setDataStipula("20/08/2015");
+		//a.setDataChiusura("28/08/2015");
 		a.setRifornimento(Rifornimento.PAGAMENTO_RICONSEGNA);
 		a.setOperatore(new DAOOperatore().read("MarioRossi21"));
 		dao.create(a);

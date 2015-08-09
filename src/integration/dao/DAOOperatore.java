@@ -1,12 +1,13 @@
 package integration.dao;
 
+import integration.DateHelper;
 import integration.Encrypt;
-import integration.dao.helper.DateHelper;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import business.entity.Amministratore;
 import business.entity.Operatore;
 

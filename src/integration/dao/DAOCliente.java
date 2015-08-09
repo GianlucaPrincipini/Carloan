@@ -1,6 +1,6 @@
 package integration.dao;
 
-import integration.dao.helper.DateHelper;
+import integration.DateHelper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -78,7 +78,7 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 		a.setEMail("uidofaidsj@najcksod.com");
 		dao.update(a);
 		System.out.println(dao.read(a.getCodicePatente()));
-		dao.delete(a.getCodicePatente());
+		//dao.delete(a.getCodicePatente());
 		
 	}
 	
