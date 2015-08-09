@@ -113,5 +113,6 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		dao.update(a);
 		System.out.println(dao.read(Integer.toString(a.getId())));
 		dao.delete(Integer.toString(1));
+		// Da continuare
 	}
 }
