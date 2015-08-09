@@ -1,9 +1,5 @@
 package integration;
 
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
@@ -12,9 +8,6 @@ public class DateHelper {
 	    * Fuso orario di riferimento settato in Europa Centrale (Central European Time)
 	    */
 	   private static final DateTimeZone jodaTzCET = DateTimeZone.forID("CET");
-	   private static final int [] thirtyone = {1, 3, 5, 7, 8, 10, 12};
-	   private static final int [] thirty = {4, 6, 9, 11};
-	   private static final int [] twentyeight = {2};
 	   
 	    /**
 	     * Converte una java.sql.Date in una LocalDate
