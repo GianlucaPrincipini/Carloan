@@ -4,7 +4,6 @@ import integration.dao.helper.DateHelper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 
 import org.joda.time.LocalDate;
 
@@ -72,7 +71,6 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 		a.setNome("Mario");
 		a.setCognome("Rossi");
 		a.setNumTelefono("123456789");
-		System.out.println(new LocalDate(1994, 07, 21));
 		a.setDataNascita(new LocalDate(1994, 07, 21));
 		a.setEMail("mariorossi@gmail.com");
 		dao.create(a);
@@ -80,7 +78,7 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 		a.setEMail("uidofaidsj@najcksod.com");
 		dao.update(a);
 		System.out.println(dao.read(a.getCodicePatente()));
-		//dao.delete(a.getCodicePatente());
+		dao.delete(a.getCodicePatente());
 		
 	}
 	
