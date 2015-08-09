@@ -1,7 +1,12 @@
 package integration.dao;
 
+import integration.dao.helper.DateHelper;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+
+import org.joda.time.LocalDate;
 
 import business.entity.Cliente;
 
@@ -34,7 +39,7 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 				while(anagrafica.next()) {
 					cliente.setNome(anagrafica.getString("nome"));
 					cliente.setCognome(anagrafica.getString("cognome"));
-					cliente.setDataNascita(anagrafica.getString("datanascita"));
+					cliente.setDataNascita(DateHelper.dateToLocalDate(anagrafica.getDate("datanascita")));
 					cliente.setNumTelefono(anagrafica.getString("numtelefono"));
 					cliente.setEMail(anagrafica.getString("email"));
 				}
@@ -59,14 +64,16 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 	}
 	
 	public static void main(String[] args) {
+		// Bada roba sulla data
 		Cliente a = new Cliente();
 		DAOCliente dao = new DAOCliente();
-		a.setId(1);
-		a.setCodicePatente("1234567890");
+		a.setId(2);
+		a.setCodicePatente("1234533890");
 		a.setNome("Mario");
 		a.setCognome("Rossi");
 		a.setNumTelefono("123456789");
-		a.setDataNascita("20/07/1994");
+		System.out.println(new LocalDate(1994, 07, 21));
+		a.setDataNascita(new LocalDate(1994, 07, 21));
 		a.setEMail("mariorossi@gmail.com");
 		dao.create(a);
 		System.out.println(dao.read(a.getCodicePatente()));

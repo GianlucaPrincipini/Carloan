@@ -1,13 +1,12 @@
 package integration.dao;
 
 import integration.Encrypt;
+import integration.dao.helper.DateHelper;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import business.entity.Agenzia;
 import business.entity.Amministratore;
 import business.entity.Operatore;
 
@@ -65,7 +64,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 				while(anagrafica.next()) {
 					operatore.setNome(anagrafica.getString("nome"));
 					operatore.setCognome(anagrafica.getString("cognome"));
-					operatore.setDataNascita(anagrafica.getString("datanascita"));
+					operatore.setDataNascita(DateHelper.dateToLocalDate(anagrafica.getDate("datanascita")));
 					operatore.setNumTelefono(anagrafica.getString("numtelefono"));
 					operatore.setEMail(anagrafica.getString("email"));
 				}
@@ -97,7 +96,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 		a.setPassword("carloan");
 		a.setNome("Francesco");
 		a.setCognome("Bianchi");
-		a.setDataNascita("20/07/1994");
+		//a.setDataNascita(LocalDate.of(1994, 20, 07));
 		a.setEMail("mariorossi@gmail.com");
 		
 		dao.create(a);

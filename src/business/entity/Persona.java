@@ -1,10 +1,14 @@
 package business.entity;
 
+import org.joda.time.LocalDate;
+
+
+
 public abstract class Persona implements Entity {
 	protected int id;
 	protected String nome;
 	protected String cognome;
-	protected String dataNascita;
+	protected LocalDate dataNascita;
 	protected String numTelefono;
 	protected String eMail;
 
@@ -32,11 +36,11 @@ public abstract class Persona implements Entity {
 		this.cognome = cognome;
 	}
 
-	public String getDataNascita() {
+	public LocalDate getDataNascita() {
 		return dataNascita;
 	}
 
-	public void setDataNascita(String dataNascita) {
+	public void setDataNascita(LocalDate dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 

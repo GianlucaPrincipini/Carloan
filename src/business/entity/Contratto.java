@@ -1,6 +1,7 @@
 package business.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import business.entity.Agenzia;
@@ -13,6 +14,7 @@ public class Contratto implements Entity {
 	private Agenzia agenziaNoleggio;
 	private Agenzia agenziaConsegna;
 	private String dataStipula;
+	private String dataInizioNoleggio;
 	private String dataChiusura;
 	private Vettura vettura;
 	private boolean chilometraggioLimitato;
@@ -80,6 +82,14 @@ public class Contratto implements Entity {
 		this.dataStipula = dataStipula;
 	}
 
+	public String getDataInizioNoleggio(String dataInizioNoleggio) {
+		return dataInizioNoleggio;
+	}
+	
+	public void setDataInizioNoleggio(String dataInizioNoleggio) {
+		this.dataInizioNoleggio = dataInizioNoleggio;
+	}
+	
 	public String getDataChiusura() {
 		return dataChiusura;
 	}
@@ -155,7 +165,15 @@ public class Contratto implements Entity {
 	public String toString(){
 		return id + ", '" + operatore.getUsername() + "', '" + cliente.getCodicePatente() + "', '" + vettura.getTarga() + "', " + agenziaNoleggio.getId() + ", " 
 				+ agenziaConsegna.getId() + ", '" 
-				+ dataStipula + "', '" + dataChiusura + "', " + chilometraggioLimitato + 
+				+ dataStipula + "', '" + dataInizioNoleggio + "', '" +  dataChiusura + "', " + chilometraggioLimitato + 
 				", " + chilometraggio + ", " + rifornimento.getIndex() + ", " + acconto + ", " + chiuso + ", " + costo + ", " + assicurazioneAvanzata;
+	}
+	
+	public static void main(String[] args) {
+	       // Instantiate a Date object
+	       
+	        
+	       // display time and date using toString()
+	       //System.out.println(date.toString());
 	}
 }
