@@ -14,9 +14,13 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 	
 	@Override
 	public void create(Contratto entity){
-		connection.executeUpdateQuery("INSERT INTO contratto values(" + entity + ");");
+		connection.executeUpdateQuery("INSERT INTO contratto(id, operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, "
+									+ "datainizionoleggio, chilometraggiolimitato, chilometraggio, rifornimento, acconto, chiuso, costo, assicurazioneavanzata) values(" + entity + ");");
 		for (Optional o : entity.getOptionals()) {
 			connection.executeUpdateQuery("insert into optional_contratto values (" + entity.getId() + ", " + o.getId() + ");");
+		}
+		if (entity.getDataChiusura() != null) {
+			update(entity);
 		}
 	}
 	
@@ -30,7 +34,6 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 				  "AgenziaConsegna = " + entity.getAgenziaConsegna().getId() + ", " +
 				  "DataStipula = '" + entity.getDataStipula() + "', " +
 				  "DataInizioNoleggio = '" + entity.getDataInizioNoleggio() + "', " +
-				  "DataChiusura = '" + entity.getDataChiusura() + "', " +
 				  "ChilometraggioLimitato = " + entity.isChilometraggioLimitato() + ", " +
 				  "Chilometraggio = " + entity.getChilometraggio() + ", " +
 				  "Rifornimento = " + entity.getRifornimento().getIndex() + ", " +
@@ -39,6 +42,13 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 				  "Costo = " + entity.getCosto() + ", " +
 				  "AssicurazioneAvanzata = " + entity.isAssicurazioneAvanzata() + " " +
 				  "WHERE id = " + entity.getId() + "; ");
+		connection.executeUpdateQuery("delete from optional_contratto where idcontratto = " + entity.getId() + ";");
+		for (Optional o : entity.getOptionals()) {
+			connection.executeUpdateQuery("insert into optional_contratto values (" + entity.getId() + ", " + o.getId() + ");");
+		}
+		if (entity.getDataChiusura() != null) {
+			connection.executeUpdateQuery("update contratto set datachiusura = '" + entity.getDataChiusura() + "' where id = " + entity.getId() + ";");
+		}
 	}
 	
 	@Override
@@ -103,16 +113,16 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		a.setCosto(25.25);
 		a.setDataStipula(DateHelper.dateParse("20/08/2015"));
 		a.setDataInizioNoleggio(DateHelper.dateParse("25/08/2015"));
-		a.setDataChiusura(DateHelper.dateParse("28/08/2015"));
+		//a.setDataChiusura();
 		a.setRifornimento(Rifornimento.PAGAMENTO_RICONSEGNA);
 		a.setOperatore(new DAOOperatore().read("Admin"));
 		System.out.println(a);
 		dao.create(a);
 		System.out.println(dao.read(Integer.toString(a.getId())));
-		a.setCosto(28.50);
+		a.setDataChiusura(DateHelper.dateParse("28/08/2015"));
 		dao.update(a);
 		System.out.println(dao.read(Integer.toString(a.getId())));
-		dao.delete(Integer.toString(1));
+		dao.delete(Integer.toString(2));
 		// Da continuare
 	}
 }
