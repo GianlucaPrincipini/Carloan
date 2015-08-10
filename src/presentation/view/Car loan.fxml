@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="143.0" fitWidth="571.0" preserveRatio="true">
+         <image>
+            <Image url="@contents/Car%20loan.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutY="142.0" prefHeight="219.0" prefWidth="85.0">
+         <children>
+            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
+               </effect>
+            </Separator>
+            <ImageView fitHeight="51.0" fitWidth="180.0">
+               <image>
+                  <Image url="@contents/clienti.jpg" />
+               </image>
+            </ImageView>
+            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
+               </effect>
+            </Separator>
+            <ImageView fitHeight="51.0" fitWidth="180.0">
+               <image>
+                  <Image url="@contents/Noleggio.jpg" />
+               </image>
+            </ImageView>
+            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
+               </effect>
+            </Separator>
+            <ImageView fitHeight="51.0" fitWidth="180.0">
+               <image>
+                  <Image url="@contents/Vettura.jpg" />
+               </image>
+            </ImageView>
+            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
+               </effect>
+            </Separator>
+            <ImageView fitHeight="51.0" fitWidth="180.0">
+               <image>
+                  <Image url="@contents/Chiusura.jpg" />
+               </image>
+            </ImageView>
+            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
+               </effect>
+            </Separator>
+         </children>
+      </VBox>
+   </children>
+</Pane>

@@ -1,10 +1,6 @@
 package business.entity;
 
-import integration.DateHelper;
-
 import org.joda.time.LocalDate;
-
-
 
 public abstract class Persona implements Entity {
 	protected int id;
