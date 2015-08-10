@@ -3,6 +3,9 @@ package integration.dao;
 
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import business.entity.Modello;
 import business.entity.TipoCarburante;
@@ -73,5 +76,17 @@ public class DAOModello extends DAOCarloan<Modello> {
 		System.out.println(new DAOModello().read(Integer.toString(1)));
 		//dao.delete(Integer.toString(1));
 		
+	}
+
+	@Override
+	public List<Modello> readAll() {
+		List<Modello> modelli = new ArrayList<Modello>();
+		ResultSet rs = connection.executeReadQuery("select id from modello;");
+		try {
+			while(rs.next()) modelli.add(read(Integer.toString(rs.getInt("id"))));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return modelli;
 	}
 }

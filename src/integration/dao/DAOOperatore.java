@@ -7,6 +7,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import business.entity.Amministratore;
 import business.entity.Operatore;
@@ -106,6 +108,19 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 		dao.update(a);
 		System.out.println(dao.read(a.getUsername()));
 		//dao.delete(a.getUsername());
+	}
+
+
+	@Override
+	public List<Operatore> readAll() {
+		List<Operatore> operatori = new ArrayList<Operatore>();
+		ResultSet rs = connection.executeReadQuery("select username from operatore;");
+		try {
+			while(rs.next()) operatori.add(read(rs.getString("username")));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return operatori;
 	}
 	
 }

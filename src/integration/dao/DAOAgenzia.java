@@ -2,6 +2,8 @@ package integration.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import business.entity.Agenzia;
 
@@ -52,6 +54,20 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 		ag.setIndirizzo("via razzi");
 		ag.setCittà("bari");
 		ag.setNumTelefono("0881686333");
+		
 		daoag.create(ag);
+	}
+
+	@Override
+	public List<Agenzia> readAll() {
+		List<Agenzia> agenzie = new ArrayList<Agenzia>();
+		ResultSet rs = connection.executeReadQuery("select id from agenzia;");
+		try {
+			while(rs.next()) 
+				agenzie.add(read(Integer.toString(rs.getInt("id"))));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return agenzie;
 	}
 }

@@ -1,6 +1,9 @@
 package integration.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import business.entity.Agenzia;
 import business.entity.Modello;
@@ -60,6 +63,18 @@ public class DAOVettura extends DAOCarloan<Vettura> {
 		dao.update(a);
 		System.out.println(dao.read(a.getTarga()));
 		//dao.delete(a.getTarga());
+	}
+
+	@Override
+	public List<Vettura> readAll() {
+		List<Vettura> vetture = new ArrayList<Vettura>();
+		ResultSet rs = connection.executeReadQuery("select targa from vettura;");
+		try {
+			while(rs.next()) vetture.add(read(rs.getString("targa")));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vetture;
 	}
 
 }

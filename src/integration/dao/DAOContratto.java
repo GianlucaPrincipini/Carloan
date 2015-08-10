@@ -3,6 +3,7 @@ package integration.dao;
 import integration.DateHelper;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,5 +125,17 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		System.out.println(dao.read(Integer.toString(a.getId())));
 		dao.delete(Integer.toString(2));
 		// Da continuare
+	}
+
+	@Override
+	public List<Contratto> readAll() {
+		List<Contratto> contratti = new ArrayList<Contratto>();
+		ResultSet rs = connection.executeReadQuery("select id from contratto;");
+		try {
+			while(rs.next()) contratti.add(read(Integer.toString(rs.getInt("id"))));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return contratti;
 	}
 }

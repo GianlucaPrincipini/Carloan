@@ -1,6 +1,8 @@
 package integration.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import business.entity.Optional;
 
@@ -54,6 +56,18 @@ public class DAOOptional extends DAOCarloan<Optional>{
 		dao.update(a);
 		System.out.println(dao.read(Integer.toString(a.getId())));
 		//dao.delete(Integer.toString(a.getId()));
+	}
+
+	@Override
+	public List<Optional> readAll() {
+		List<Optional> optional = new ArrayList<Optional>();
+		ResultSet rs = connection.executeReadQuery("select id from optional;");
+		try {
+			while(rs.next()) optional.add(read(Integer.toString(rs.getInt("id"))));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return optional;
 	}
 
 }

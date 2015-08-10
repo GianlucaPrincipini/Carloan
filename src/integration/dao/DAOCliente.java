@@ -4,6 +4,8 @@ import integration.DateHelper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.joda.time.LocalDate;
 
@@ -80,6 +82,18 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 		System.out.println(dao.read(a.getCodicePatente()));
 		//dao.delete(a.getCodicePatente());
 		
+	}
+
+	@Override
+	public List<Cliente> readAll() {
+		List<Cliente> clienti = new ArrayList<Cliente>();
+		ResultSet rs = connection.executeReadQuery("select codicepatente from cliente;");
+		try {
+			while(rs.next()) clienti.add(read(rs.getString("codicepatente")));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return clienti;
 	}
 	
 }
