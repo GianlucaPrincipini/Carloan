@@ -65,5 +65,6 @@
             </Separator>
          </children>
       </VBox>
+      <AnchorPane fx:id="viewPane" layoutX="186.0" layoutY="146.0" prefHeight="210.0" prefWidth="377.0" />
    </children>
 </Pane>
