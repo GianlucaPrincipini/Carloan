@@ -26,6 +26,12 @@ public class Contratto implements Entity {
 	private List<Optional> optionals = new ArrayList<Optional>();
 	private double costo;
 	private boolean assicurazioneAvanzata;
+	private Tariffario tariffario;
+	
+	public Contratto() {
+		tariffario = Tariffario.getInstance();
+	}
+	
 
 	public void setVettura(Vettura vettura) {
 		this.vettura = vettura;
@@ -171,10 +177,6 @@ public class Contratto implements Entity {
 	}
 	
 	public static void main(String[] args) {
-	       // Instantiate a Date object
-	       
-	        
-	       // display time and date using toString()
-	       //System.out.println(date.toString());
+		Contratto c = new Contratto();
 	}
 }

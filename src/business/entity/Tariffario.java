@@ -1,6 +1,17 @@
 package business.entity;
 
-public class Tariffario implements Entity {
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.*;
+
+@SuppressWarnings({ "serial", "unused" })
+public class Tariffario implements Entity, Serializable {
 	private double costoGiornaliero;
 	private double costoSettimanale;
 	private double moraChilometraggio;
@@ -9,6 +20,47 @@ public class Tariffario implements Entity {
 	private double costoChilometrico;
 	private double assicurazioneBase;
 	private double assicurazioneAvanzata;
+	private Map<Integer, Double> tariffaBaseFascia = new HashMap<Integer, Double>();
+	private static Tariffario tariffario;
+
+	// Rimuovere amministratore da agenzia?
+	
+	static {
+		if (tariffario == null) {
+			tariffario = new Tariffario();
+			File file = new File("./tariffario/");
+			if (!file.canRead()) {
+				file.mkdirs();
+				try {
+					ObjectOutputStream output = new ObjectOutputStream(
+							new FileOutputStream("./tariffario/tariffario.dat"));
+					output.writeObject(tariffario);
+					System.out.println("Salvato");
+					output.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} 
+			}
+			
+		}
+	}
+	
+	private Tariffario() {
+
+	}
+	
+	public static Tariffario getInstance() {
+
+		try {
+			ObjectInputStream input = new ObjectInputStream(
+					new FileInputStream("./tariffario/tariffario.dat"));
+			tariffario = (Tariffario) input.readObject();
+			input.close();
+		} catch (IOException |ClassNotFoundException e) {
+			e.printStackTrace();
+		} 
+		return tariffario;
+	}
 
 	public double getCostoGiornaliero() {
 		return costoGiornaliero;
@@ -72,5 +124,17 @@ public class Tariffario implements Entity {
 
 	public void setAssicurazioneAvanzata(double assicurazioneAvanzata) {
 		this.assicurazioneAvanzata = assicurazioneAvanzata;
+	}
+	
+	public static void main(String [] args) throws ClassNotFoundException {
+		Tariffario a = Tariffario.getInstance();
+	}
+	
+	public void settariffaBaseFascia(int fascia, double tariffa) {
+		tariffaBaseFascia.put(fascia, tariffa);
+	}
+	
+	public double gettariffaBaseFascia(int fascia) {
+		return tariffaBaseFascia.get(fascia);
 	}
 }

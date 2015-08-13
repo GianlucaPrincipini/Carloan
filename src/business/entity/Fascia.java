@@ -1,25 +1,26 @@
 package business.entity;
 
 public class Fascia implements Entity {
+	private int id;
 	private String nome;
-	private float tariffaBase;
 	private double min;
 	private double max;
 
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public float getTariffaBase() {
-		return tariffaBase;
-	}
-
-	public void setTariffaBase(float tariffaBase) {
-		this.tariffaBase = tariffaBase;
 	}
 
 	public double getMin() {

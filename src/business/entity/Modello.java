@@ -12,6 +12,15 @@ public class Modello implements Entity {
 	private boolean trasmissioneAutomatica;
 	private double emissioniCO2;
 	private int peso;
+	private Fascia fascia;
+	
+	public void setFascia(Fascia fascia) {
+		this.fascia = fascia;
+	}
+	
+	public Fascia getFascia() {
+		return fascia;
+	}
 
 	public int getId() {
 		return id;

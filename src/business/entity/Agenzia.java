@@ -5,6 +5,15 @@ public class Agenzia implements Entity {
 	private String indirizzo;
 	private String città;
 	private String numTelefono;
+	private Amministratore amministratore;
+	
+	public void setAmministratore(Amministratore amministratore) {
+		this.amministratore = amministratore;
+	}
+	
+	public Amministratore getAmministratore() {
+		return amministratore;
+	}
 
 	public int getId() {
 		return id;
