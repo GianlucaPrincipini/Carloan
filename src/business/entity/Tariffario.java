@@ -20,7 +20,6 @@ public class Tariffario implements Entity, Serializable {
 	private double costoChilometrico;
 	private double assicurazioneBase;
 	private double assicurazioneAvanzata;
-	private Map<Integer, Double> tariffaBaseFascia = new HashMap<Integer, Double>();
 	private static Tariffario tariffario;
 
 	// Rimuovere amministratore da agenzia?
@@ -130,11 +129,4 @@ public class Tariffario implements Entity, Serializable {
 		Tariffario a = Tariffario.getInstance();
 	}
 	
-	public void settariffaBaseFascia(int fascia, double tariffa) {
-		tariffaBaseFascia.put(fascia, tariffa);
-	}
-	
-	public double gettariffaBaseFascia(int fascia) {
-		return tariffaBaseFascia.get(fascia);
-	}
 }

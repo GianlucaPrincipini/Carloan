@@ -30,6 +30,10 @@ public class DAOModello extends DAOCarloan<Modello> {
 									  "TrasmissioneAutomatica = " + entity.isTrasmissioneAutomatica() + ", " +
 									  "Peso = " + entity.getPeso() + 
 									  " WHERE id = " + entity.getId() + "; ");
+		if (entity.getFascia() != null) {
+			connection.executeUpdateQuery("update modello set fascia = " + entity.getFascia().getId() + " where id = " + entity.getId() +";");
+		}
+		
 	}
 
 	@Override
@@ -61,22 +65,7 @@ public class DAOModello extends DAOCarloan<Modello> {
 	public void delete(String pk) {
 		connection.executeUpdateQuery("DELETE FROM modello WHERE id = " + pk + ";");
 	}
-	
-	public static void main(String [] args) {
-		Modello a = new Modello();
-		DAOModello dao = new DAOModello();
-		a.setId(1);
-		a.setMarca("Fiat");
-		a.setNome("Punto");
-		a.setTipoCarburante(TipoCarburante.BENZINA);
-		dao.create(a);
-		System.out.println(new DAOModello().read(Integer.toString(1)));
-		a.setCapacit‡Bagagliaio(25);
-		dao.update(a);
-		System.out.println(new DAOModello().read(Integer.toString(1)));
-		//dao.delete(Integer.toString(1));
-		
-	}
+
 
 	@Override
 	public List<Modello> readAll() {
@@ -89,4 +78,10 @@ public class DAOModello extends DAOCarloan<Modello> {
 		}
 		return modelli;
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(new DAOVettura().readAll());
+	}
+	
+	
 }

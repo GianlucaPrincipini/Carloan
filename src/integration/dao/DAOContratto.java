@@ -16,12 +16,9 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 	@Override
 	public void create(Contratto entity){
 		connection.executeUpdateQuery("INSERT INTO contratto(id, operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, "
-									+ "datainizionoleggio, chilometraggiolimitato, chilometraggio, rifornimento, acconto, chiuso, costo, assicurazioneavanzata) values(" + entity + ");");
+									+ "datainizionoleggio, datafinenoleggio, chilometraggiolimitato, chilometraggio, rifornimento, acconto, chiuso, costo, assicurazioneavanzata) values(" + entity + ");");
 		for (Optional o : entity.getOptionals()) {
 			connection.executeUpdateQuery("insert into optional_contratto values (" + entity.getId() + ", " + o.getId() + ");");
-		}
-		if (entity.getDataChiusura() != null) {
-			update(entity);
 		}
 	}
 	
@@ -76,6 +73,7 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 				contratto.setDataStipula(DateHelper.dateToLocalDate(rs.getDate("datastipula")));
 				contratto.setDataChiusura(DateHelper.dateToLocalDate(rs.getDate("datachiusura")));
 				contratto.setDataInizioNoleggio(DateHelper.dateToLocalDate(rs.getDate("datainizionoleggio")));
+				contratto.setDataFineNoleggio(DateHelper.dateToLocalDate(rs.getDate("dataFineNoleggio")));
 				contratto.setChilometraggioLimitato(rs.getBoolean("chilometraggiolimitato"));
 				contratto.setChilometraggio(rs.getInt("chilometraggio"));
 				contratto.setRifornimento(Rifornimento.getRifornimento(rs.getInt("rifornimento")));
@@ -103,27 +101,7 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 	}
 	
 	public static void main(String[] args) {
-		Contratto a = new Contratto();
-		DAOContratto dao = new DAOContratto();
-		a.setId(2);
-		a.setAgenziaConsegna(new DAOAgenzia().read(Integer.toString(1)));
-		a.setAgenziaNoleggio(new DAOAgenzia().read(Integer.toString(1)));
-		a.getOptionals().add(new DAOOptional().read(Integer.toString(1)));
-		a.setCliente(new DAOCliente().read("1234567890"));
-		a.setVettura(new DAOVettura().read("ED000BA"));
-		a.setCosto(25.25);
-		a.setDataStipula(DateHelper.dateParse("20/08/2015"));
-		a.setDataInizioNoleggio(DateHelper.dateParse("25/08/2015"));
-		//a.setDataChiusura();
-		a.setRifornimento(Rifornimento.PAGAMENTO_RICONSEGNA);
-		a.setOperatore(new DAOOperatore().read("Admin"));
-		System.out.println(a);
-		dao.create(a);
-		System.out.println(dao.read(Integer.toString(a.getId())));
-		a.setDataChiusura(DateHelper.dateParse("28/08/2015"));
-		dao.update(a);
-		System.out.println(dao.read(Integer.toString(a.getId())));
-		dao.delete(Integer.toString(2));
+		System.out.println(new DAOContratto().readAll());
 		// Da continuare
 	}
 

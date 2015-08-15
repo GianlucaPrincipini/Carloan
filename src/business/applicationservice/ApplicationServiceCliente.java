@@ -15,4 +15,5 @@ public class ApplicationServiceCliente extends ApplicationServiceEntity<Cliente>
 	public List<Cliente> readAll() {
 		return dao.readAll();
 	}
+
 }

@@ -16,6 +16,7 @@ public class Contratto implements Entity {
 	private Agenzia agenziaConsegna;
 	private LocalDate dataStipula;
 	private LocalDate dataInizioNoleggio;
+	private LocalDate dataFineNoleggio;
 	private LocalDate dataChiusura;
 	private Vettura vettura;
 	private boolean chilometraggioLimitato;
@@ -32,6 +33,13 @@ public class Contratto implements Entity {
 		tariffario = Tariffario.getInstance();
 	}
 	
+	public void setDataFineNoleggio(LocalDate dataFineNoleggio) {
+		this.dataFineNoleggio = dataFineNoleggio;
+	}
+	
+	public LocalDate getDataFineNoleggio() {
+		return dataFineNoleggio;
+	}
 
 	public void setVettura(Vettura vettura) {
 		this.vettura = vettura;
@@ -172,7 +180,7 @@ public class Contratto implements Entity {
 	public String toString(){
 		return id + ", '" + operatore.getUsername() + "', '" + cliente.getCodicePatente() + "', '" + vettura.getTarga() + "', " + agenziaNoleggio.getId() + ", " 
 				+ agenziaConsegna.getId() + ", '" 
-				+ dataStipula + "', '" + dataInizioNoleggio + "', " + chilometraggioLimitato + 
+				+ dataStipula + "', '" + dataInizioNoleggio + "', '" + dataFineNoleggio + "', " + chilometraggioLimitato + 
 				", " + chilometraggio + ", " + rifornimento.getIndex() + ", " + acconto + ", " + chiuso + ", " + costo + ", " + assicurazioneAvanzata;
 	}
 	

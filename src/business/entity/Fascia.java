@@ -3,9 +3,17 @@ package business.entity;
 public class Fascia implements Entity {
 	private int id;
 	private String nome;
+	private double tariffaBase;
 	private double min;
 	private double max;
 
+	public double getTariffaBase() {
+		return tariffaBase;
+	}
+	
+	public void setTariffaBase(double tariffaBase) {
+		this.tariffaBase = tariffaBase;
+	}
 	
 	public int getId() {
 		return id;
@@ -37,5 +45,9 @@ public class Fascia implements Entity {
 
 	public void setMax(double max) {
 		this.max = max;
+	}
+	
+	public String toString() {
+		return id + ", '" + nome + "', " + tariffaBase + ", " + min + ", " + max;
 	}
 }

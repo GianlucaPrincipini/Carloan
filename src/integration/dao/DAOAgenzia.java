@@ -43,7 +43,8 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 
 	@Override
 	public void delete(String pk) {
-		connection.executeUpdateQuery("DELETE FROM agenzia WHERE id"
+		if (!pk.equals("1"))
+			connection.executeUpdateQuery("DELETE FROM agenzia WHERE id"
 				+ " = " + pk + ";");
 	}
 	
