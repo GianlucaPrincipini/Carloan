@@ -11,7 +11,7 @@ create table fascia(
     indiceMax double
 );
 
-insert into fascia values ("Utilitaria", 15.50, 0.00, 100);
+insert into fascia(nome, tariffabase, indicemin, indicemax) values ("Utilitaria", 15.50, 0.00, 100);
 
 create table modello(
     id integer primary key auto_increment,
@@ -29,7 +29,8 @@ create table modello(
     foreign key (fascia) references fascia(id) on delete cascade on update cascade
 );
 
-insert into modello values ("Fiat", "Punto Evo", 1, 20, 5, 5, 56, 0, null, 1220, 1);
+insert into modello(marca, nome, tipocarburante, capacitabagagliaio, numeroposti, numeroporte, potenza, trasmissioneautomatica, emissionico2, peso, fascia)
+values ("Fiat", "Punto Evo", 1, 20, 5, 5, 56, 0, null, 1220, 1);
 	
 create table agenzia(
 	id integer primary key auto_increment,
@@ -38,7 +39,7 @@ create table agenzia(
 	numTelefono varchar(15)
 );
 
-insert into agenzia values("Via Orabona 4" , "Bari", "3384289855");
+insert into agenzia (indirizzo, citta, numtelefono) values("Via Orabona 4" , "Bari", "3384289855");
 
 create table vettura(
 	targa char(7) primary key,
@@ -58,7 +59,7 @@ create table optional(
 	costo float
 );
 
-insert into optional values("Aria condizionata", 3.0);
+insert into optional(tipo, costo) values("Aria condizionata", 3.0);
 
 create table persona(
 	id integer primary key auto_increment,
@@ -69,8 +70,8 @@ create table persona(
 	email varchar(100)
 );
 
-insert into persona(id, nome, cognome) values("General", "Admin");
-insert into persona values("Mario", "Rossi", "1990-02-25", "3384289855", "mariorossi@gmail.com");
+insert into persona(nome, cognome) values("General", "Admin");
+insert into persona(nome, cognome, datanascita, numtelefono, email) values("Mario", "Rossi", "1990-02-25", "3384289855", "mariorossi@gmail.com");
 
 create table cliente(
 	id integer,
@@ -124,7 +125,9 @@ create table contratto(
 	foreign key (agenziaconsegna) references agenzia(id) on delete cascade on update cascade
 );
 
-insert into contratto values ("Admin", "1234567890", "ED000BA", 1, 1, "2015-08-09", "2015-08-15", "2015-08-25", "2015-08-25", 1, 25, 1, 0, 0, 50, 0);
+insert into contratto(operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, datainizionoleggio, datafinenoleggio,
+datachiusura, chilometraggiolimitato, chilometraggio, rifornimento, acconto, chiuso, costo, assicurazioneavanzata)
+values ("Admin", "1234567890", "ED000BA", 1, 1, "2015-08-09", "2015-08-15", "2015-08-25", "2015-08-25", 1, 25, 1, 0, 0, 50, 0);
 
 create table optional_contratto(
 	idContratto integer,
