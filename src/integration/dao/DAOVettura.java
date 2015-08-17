@@ -14,7 +14,13 @@ public class DAOVettura extends DAOCarloan<Vettura> {
 
 	@Override
 	public void create(Vettura entity) {
-		connection.executeUpdateQuery("insert into vettura values("+ entity +");");
+		connection.executeUpdateQuery("insert into vettura values("
+									+ "'" + entity.getTarga() + "', "
+									+ entity.getModello().getId() + ", "
+									+ entity.getAgenziaLocalizzazione().getId() + ", "
+									+ entity.getChilometraggio() + ", "
+									+ entity.getStato().getIndex()
+									+ ");");
 	}
 
 	@Override

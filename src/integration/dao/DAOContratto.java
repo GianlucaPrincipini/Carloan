@@ -15,8 +15,21 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 	
 	@Override
 	public void create(Contratto entity){
-		connection.executeUpdateQuery("INSERT INTO contratto(id, operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, "
-									+ "datainizionoleggio, datafinenoleggio, chilometraggiolimitato, chilometraggio, rifornimento, acconto, chiuso, costo, assicurazioneavanzata) values(" + entity + ");");
+		connection.executeUpdateQuery("INSERT INTO contratto(operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, "
+									+ "datainizionoleggio, datafinenoleggio, chilometraggiolimitato, chilometraggio, rifornimento, acconto, "
+									+ "chiuso, costo, assicurazioneavanzata) values(" 
+									+ "'" + entity.getOperatore().getUsername() + "', "
+									+ "'" + entity.getCliente().getCodicePatente() + "', "
+									+ entity.getAgenziaNoleggio().getId() + ", "
+									+ entity.getAgenziaConsegna().getId() + ", "
+									+ "'" + entity.getDataStipula() + "', "
+									+ "'" + entity.getDataInizioNoleggio() + "', "
+									+ "'" + entity.getDataFineNoleggio() + "', "
+									+ entity.isChilometraggioLimitato() + ", "
+									+ entity.getChilometraggio() + ", "
+									+ entity.getRifornimento().getIndex() + ", "
+									+ entity.getAcconto()
+									+ ");");
 		for (Optional o : entity.getOptionals()) {
 			connection.executeUpdateQuery("insert into optional_contratto values (" + entity.getId() + ", " + o.getId() + ");");
 		}
@@ -24,7 +37,7 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 	
 	@Override
 	public void update(Contratto entity){
-		connection.executeUpdateQuery("UPDATE contratto SET id = " + entity.getId() + ", " +
+		connection.executeUpdateQuery("UPDATE contratto SET " +
 				  "Operatore = '" + entity.getOperatore().getUsername() + "', " +
 				  "Cliente = '" + entity.getCliente().getCodicePatente() + "', " + 
 				  "Vettura = '" + entity.getVettura().getTarga() + "', " +

@@ -15,8 +15,18 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 
 	
 	public  void create(Cliente entity){
-		connection.executeUpdateQuery("insert into persona values(" + entity.toString() + ");");
-		connection.executeUpdateQuery("INSERT INTO cliente values(" + entity.getId() + ", '" + entity.getCodicePatente() + "');");
+		connection.executeUpdateQuery("insert into persona(nome, cognome, datanascita, numtelefono, email)"
+									+ " values(" 
+									+ "'" + entity.getNome() + "', "
+									+ "'" + entity.getCognome() + "', "
+									+ "'" + entity.getDataNascita() + "', "
+									+ "'" + entity.getNumTelefono() + "', "
+									+ "'" + entity.getEMail() + "'"
+									+ ");");
+		connection.executeUpdateQuery("INSERT INTO cliente(id, codicePatente) values("
+									+ entity.getId() + ", "
+									+ "'" + entity.getCodicePatente()
+									+ "');");
 	}
 	
 	public void update(Cliente entity){

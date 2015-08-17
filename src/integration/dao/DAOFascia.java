@@ -11,7 +11,13 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 
 	@Override
 	public void create(Fascia entity) {
-		connection.executeUpdateQuery("insert into fascia values ( "+ entity +");");
+		connection.executeUpdateQuery("insert into fascia(nome, tariffabase, indicemin, indicemax)"
+									+ " values ( "
+									+ "'" + entity.getNome() + "', "
+									+ entity.getTariffaBase() + ", "
+									+ entity.getMin() + ", "
+									+ entity.getMax()
+									+");");
 	}
 
 	@Override
@@ -19,7 +25,8 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 		connection.executeUpdateQuery("update fascia set nome = '" + entity.getNome() + "', " +
 									  "tariffaBase = " + entity.getTariffaBase() + ", " +
 									  "indiceMin = " + entity.getMin() + ", " + 
-									  "indiceMax = " + entity.getMax() + " where id = " + entity.getId() + ";");
+									  "indiceMax = " + entity.getMax() + 
+									  " where id = " + entity.getId() + ";");
 		
 	}
 
@@ -66,7 +73,7 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 	public static void main(String[] args) {
 		new DAOFascia().create(new Fascia());
 		System.out.println(new DAOFascia().readAll());
-		new DAOFascia().delete("0");
+		new DAOFascia().delete("2");
 	}
 	
 }

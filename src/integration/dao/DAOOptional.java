@@ -31,16 +31,17 @@ public class DAOOptional extends DAOCarloan<Optional>{
 
 	@Override
 	public void create(Optional entity) {
-		connection.executeUpdateQuery("INSERT INTO optional values(" + entity.toString() + ");");
+		connection.executeUpdateQuery("INSERT INTO optional(tipo, costo) values(" 
+									+ "'" + entity.getTipo() + "', "
+									+ entity.getCosto()
+									+ ");");
 	}
 
 	@Override
 	public void update(Optional entity) {
 		connection.executeUpdateQuery("update optional set " +
-									  "id = '" + entity.getId() + "', " +
 									  "tipo = '" + entity.getTipo() + "', " +
 									  "costo = " + entity.getCosto() + "where id = '" + entity.getId() + "';");
-
 	}
 	
 	public static void main(String[] args) {
