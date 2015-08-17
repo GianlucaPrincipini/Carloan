@@ -142,7 +142,6 @@ csx
 AppPackages/
 
 # Others
-sql/
 *.Cache
 ClientBin/
 [Ss]tyle[Cc]op.*
@@ -217,4 +216,8 @@ pip-log.txt
 .mr.developer.cfg
 *.class
 *.class
+<<<<<<< HEAD
 mysql-connector-java-5.0.8-bin.jar
+=======
+SQL/script2 - Copia.sql
+>>>>>>> origin/master
