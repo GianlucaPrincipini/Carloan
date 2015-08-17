@@ -217,3 +217,4 @@ pip-log.txt
 .mr.developer.cfg
 *.class
 *.class
+mysql-connector-java-5.0.8-bin.jar
