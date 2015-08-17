@@ -1,22 +1,20 @@
 drop database if exists carloan;
 create database carloan;
 
-
-
 use carloan;
 
 create table fascia(
-    id integer primary key,
+    id integer primary key auto_increment,
     nome varchar(50),
     tariffaBase double,
     indiceMin double,
     indiceMax double
 );
 
-insert into fascia values (1, "Utilitaria", 15.50, 0.00, 100);
+insert into fascia values ("Utilitaria", 15.50, 0.00, 100);
 
 create table modello(
-    id integer primary key,
+    id integer primary key auto_increment,
     marca varchar(50),
     nome varchar(50),
     tipoCarburante integer,
@@ -31,16 +29,16 @@ create table modello(
     foreign key (fascia) references fascia(id) on delete cascade on update cascade
 );
 
-insert into modello values (1, "Fiat", "Punto Evo", 1, 20, 5, 5, 56, 0, null, 1220, 1);
+insert into modello values ("Fiat", "Punto Evo", 1, 20, 5, 5, 56, 0, null, 1220, 1);
 	
 create table agenzia(
-	id integer primary key,
+	id integer primary key auto_increment,
 	indirizzo varchar(50),
 	citta varchar(50),
 	numTelefono varchar(15)
 );
 
-insert into agenzia values(1, "Via Orabona 4" , "Bari", "3384289855");
+insert into agenzia values("Via Orabona 4" , "Bari", "3384289855");
 
 create table vettura(
 	targa char(7) primary key,
@@ -55,15 +53,15 @@ create table vettura(
 insert into vettura values("ED000BA", 1, 1, 20000, 1);
 
 create table optional(
-	id integer primary key,
+	id integer primary key auto_increment,
 	tipo varchar(50),
 	costo float
 );
 
-insert into optional values(1, "Aria condizionata", 3.0);
+insert into optional values("Aria condizionata", 3.0);
 
 create table persona(
-	id integer primary key,
+	id integer primary key auto_increment,
 	nome varchar(50),
 	cognome varchar(50),
 	datanascita date,
@@ -71,8 +69,8 @@ create table persona(
 	email varchar(100)
 );
 
-insert into persona(id, nome, cognome) values(1, "General", "Admin");
-insert into persona values(2, "Mario", "Rossi", "1990-02-25", "3384289855", "mariorossi@gmail.com");
+insert into persona(id, nome, cognome) values("General", "Admin");
+insert into persona values("Mario", "Rossi", "1990-02-25", "3384289855", "mariorossi@gmail.com");
 
 create table cliente(
 	id integer,
@@ -102,7 +100,7 @@ create table operatore(
 insert into operatore values("Admin", 1, 1);
 
 create table contratto(
-	id integer primary key,
+	id integer primary key auto_increment,
 	operatore varchar(50), 
 	cliente char(10),
 	vettura char(7),
@@ -126,7 +124,7 @@ create table contratto(
 	foreign key (agenziaconsegna) references agenzia(id) on delete cascade on update cascade
 );
 
-insert into contratto values (1,"Admin", "1234567890", "ED000BA", 1, 1, "2015-08-09", "2015-08-15", "2015-08-25", "2015-08-25", 1, 25, 1, 0, 0, 50, 0);
+insert into contratto values ("Admin", "1234567890", "ED000BA", 1, 1, "2015-08-09", "2015-08-15", "2015-08-25", "2015-08-25", 1, 25, 1, 0, 0, 50, 0);
 
 create table optional_contratto(
 	idContratto integer,
@@ -137,9 +135,5 @@ create table optional_contratto(
 );
 
 insert into optional_contratto values(1, 1);
-
-
-
-
 
 GRANT ALL PRIVILEGES ON carloan.* TO CarloanUser@localhost identified by "carloan15";
