@@ -29,6 +29,10 @@ public class Contratto implements Entity {
 	private boolean assicurazioneAvanzata;
 	private Tariffario tariffario;
 	
+	public Tariffario getTariffario() {
+		return tariffario;
+	}
+	
 	public Contratto() {
 		tariffario = Tariffario.getInstance();
 	}

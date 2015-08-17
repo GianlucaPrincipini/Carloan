@@ -27,37 +27,36 @@ public class Tariffario implements Entity, Serializable {
 	static {
 		if (tariffario == null) {
 			tariffario = new Tariffario();
-			File file = new File("./tariffario/");
-			if (!file.canRead()) {
-				file.mkdirs();
-				try {
-					ObjectOutputStream output = new ObjectOutputStream(
-							new FileOutputStream("./tariffario/tariffario.dat"));
-					output.writeObject(tariffario);
-					System.out.println("Salvato");
-					output.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} 
-			}
-			
+
 		}
 	}
 	
 	private Tariffario() {
-
-	}
-	
-	public static Tariffario getInstance() {
-
+		File file = new File("./tariffario/");
+		if (!file.canRead()) {
+			file.mkdirs();
+		}
 		try {
 			ObjectInputStream input = new ObjectInputStream(
 					new FileInputStream("./tariffario/tariffario.dat"));
 			tariffario = (Tariffario) input.readObject();
 			input.close();
-		} catch (IOException |ClassNotFoundException e) {
+		} catch (IOException e) {
+			try {
+				ObjectOutputStream output = new ObjectOutputStream(
+						new FileOutputStream("./tariffario/tariffario.dat"));
+				output.writeObject(tariffario);
+				System.out.println("Salvato");
+				output.close();
+			} catch (IOException e1) {
+				e.printStackTrace();
+			} 
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		} 
+		}
+	}
+	
+	public static Tariffario getInstance() {
 		return tariffario;
 	}
 
