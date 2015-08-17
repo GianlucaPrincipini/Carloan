@@ -142,7 +142,6 @@ csx
 AppPackages/
 
 # Others
-sql/
 *.Cache
 ClientBin/
 [Ss]tyle[Cc]op.*
@@ -217,3 +216,4 @@ pip-log.txt
 .mr.developer.cfg
 *.class
 *.class
+SQL/script2 - Copia.sql
