@@ -62,4 +62,13 @@ public abstract class Persona implements Entity {
 		return id + ", '" + nome + "', '" + cognome + "', '" + dataNascita + "', '" + numTelefono + "', '" + eMail + "'";
 	}
 
+	public int compareTo(Entity arg0) {
+		Persona p = (Persona) arg0;
+		if (id == p.id && dataNascita.equals(p.dataNascita) && nome.equals(p.nome) && cognome.equals(p.cognome) &&
+			numTelefono.equals(p.numTelefono) && eMail.equals(p.eMail))
+			return 0;
+		else 
+			return 1;
+	}
+	
 }

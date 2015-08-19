@@ -50,4 +50,11 @@ public class Vettura implements Entity {
 	public String toString() {
 		return "'" + targa + "', " + modello.getId() + ", " + agenziaLocalizzazione.getId() + ", " + chilometraggio + ", " + stato.getIndex();
 	}
+
+	@Override
+	public int compareTo(Entity o) {
+		if (targa.equals(((Vettura)o).targa))
+			return 0;
+		return 1;
+	}
 }

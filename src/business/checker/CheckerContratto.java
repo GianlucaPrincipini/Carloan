@@ -7,7 +7,7 @@ import org.joda.time.LocalDate;
 
 import business.entity.Contratto;
 
-public class ContrattoChecker implements Checker<Contratto>{
+public class CheckerContratto implements Checker<Contratto>{
 
 	@Override
 	public boolean check(Contratto entity) {
@@ -16,6 +16,7 @@ public class ContrattoChecker implements Checker<Contratto>{
 		if (entity.getDataStipula() == null) return false;
 		if (entity.getDataInizioNoleggio() == null) return false;
 		if (entity.getDataFineNoleggio() == null) return false;
+		if (entity.getDataFineNoleggio().isBefore(entity.getDataInizioNoleggio())) return false;
 		return true;
 	}
 	
@@ -27,6 +28,6 @@ public class ContrattoChecker implements Checker<Contratto>{
 	public static void main(String[] args) {
 		Contratto a = new Contratto();
 		a.setDataInizioNoleggio(DateHelper.dateParse("21/08/2015"));
-		System.out.println(new ContrattoChecker().isModifiable(a));
+		System.out.println(new CheckerContratto().isModifiable(a));
 	}
 }

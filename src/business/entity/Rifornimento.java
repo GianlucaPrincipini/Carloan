@@ -1,6 +1,6 @@
 package business.entity;
 
-public enum Rifornimento implements Entity {
+public enum Rifornimento {
 	
 	STANDARD(0), PIENO_ANTICIPO(1), RESTITUZIONE_PIENO(2), PAGAMENTO_RICONSEGNA(3);
 	

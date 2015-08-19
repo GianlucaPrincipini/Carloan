@@ -1,6 +1,6 @@
 package business.entity;
 
-public enum TipoCarburante implements Entity {
+public enum TipoCarburante {
 	BENZINA(0),
 	DIESEL(1),
 	GPL(2),

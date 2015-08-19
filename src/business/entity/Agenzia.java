@@ -43,4 +43,13 @@ public class Agenzia implements Entity {
 		return id + ", '" + indirizzo + "', '" + città + "', '" + numTelefono + "'";
 	}
 
+	@Override
+	public int compareTo(Entity arg0) {
+		Agenzia oAgenzia = (Agenzia) arg0;
+		if (id == oAgenzia.id && indirizzo.equals(oAgenzia.indirizzo) && città.equals(oAgenzia.città) && numTelefono.equals(oAgenzia.numTelefono))
+			return 0;
+		else 
+			return 1;
+	}
+
 }

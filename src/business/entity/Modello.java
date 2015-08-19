@@ -116,5 +116,13 @@ public class Modello implements Entity {
 				+ numeroPosti + ", " + numeroPorte + ", " + potenza + 
 				", " + trasmissioneAutomatica + ", " + emissioniCO2 + ", " + peso;
 	}
+
+	@Override
+	public int compareTo(Entity o) {
+		Modello m = (Modello) o;
+		if (id == m.id)
+			return 0;
+		return 1;
+	}
 	
 }

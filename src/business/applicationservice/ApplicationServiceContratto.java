@@ -7,7 +7,8 @@ import java.util.List;
 import org.joda.time.Days;
 
 import business.checker.CheckerFactory;
-import business.checker.ContrattoChecker;
+import business.checker.CheckerContratto;
+import business.entity.Agenzia;
 import business.entity.Contratto;
 
 public class ApplicationServiceContratto extends ApplicationServiceEntity<Contratto> implements Gestione<Contratto>{
@@ -32,10 +33,9 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 
 	@Override
 	public void update(Contratto entity) {
-		if (((ContrattoChecker)checker).isModifiable(entity))
+		if (((CheckerContratto)checker).isModifiable(dao.read(Integer.toString(entity.getId()))));
 			dao.update(entity);
 	}
-
 
 	@Override
 	public List<Contratto> readAll() {
@@ -44,7 +44,7 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 
 	@Override
 	public void delete(Contratto entity) {
-		if (((ContrattoChecker)checker).isModifiable(entity))
+		if (((CheckerContratto)checker).isModifiable(entity))
 			dao.delete(Integer.toString(entity.getId()));
 	}
 	
@@ -80,5 +80,15 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<Contratto> filtra(List<Contratto> contratti, Agenzia agenzia) {
+		List<Contratto> contrattiFiltrati = contratti;
+		for (Contratto c:contrattiFiltrati) {
+			if (c.getAgenziaConsegna().getId() != agenzia.getId() && c.getAgenziaNoleggio().getId() != agenzia.getId()) {
+				contrattiFiltrati.remove(c);
+			}
+		}
+		return contrattiFiltrati;
 	}
 }

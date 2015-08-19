@@ -32,4 +32,12 @@ public class Optional implements Entity {
 	public String toString() {
 		return id + ", '" + tipo + "', " + costo;
 	}
+
+	@Override
+	public int compareTo(Entity o) {
+		Optional op = (Optional) o;
+		if (id == op.id)
+			return 0;
+		return 1;
+	}
 }

@@ -29,6 +29,14 @@ public class Contratto implements Entity {
 	private boolean assicurazioneAvanzata;
 	private Tariffario tariffario;
 	
+	@Override
+	public int compareTo(Entity o) {
+		Contratto c = (Contratto) o;
+		if (id == c.id)
+			return 0;
+		return 1;
+	}
+	
 	public Tariffario getTariffario() {
 		return tariffario;
 	}
@@ -188,7 +196,6 @@ public class Contratto implements Entity {
 				", " + chilometraggio + ", " + rifornimento.getIndex() + ", " + acconto + ", " + chiuso + ", " + costo + ", " + assicurazioneAvanzata;
 	}
 	
-	public static void main(String[] args) {
-		Contratto c = new Contratto();
-	}
+
+
 }

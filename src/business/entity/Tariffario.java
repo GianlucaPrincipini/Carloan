@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.*;
 
 @SuppressWarnings({ "serial", "unused" })
-public class Tariffario implements Entity, Serializable {
+public class Tariffario implements Serializable {
 	private double costoGiornaliero;
 	private double costoSettimanale;
 	private double moraChilometraggio;
@@ -127,5 +127,7 @@ public class Tariffario implements Entity, Serializable {
 	public static void main(String [] args) throws ClassNotFoundException {
 		Tariffario a = Tariffario.getInstance();
 	}
+
+	
 	
 }

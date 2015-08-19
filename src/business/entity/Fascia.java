@@ -50,4 +50,12 @@ public class Fascia implements Entity {
 	public String toString() {
 		return id + ", '" + nome + "', " + tariffaBase + ", " + min + ", " + max;
 	}
+
+	@Override
+	public int compareTo(Entity o) {
+		Fascia f = (Fascia) o;
+		if (id == f.getId() && nome.equals(f.nome))
+			return 0;
+		else return 1;
+	}
 }
