@@ -13,7 +13,11 @@ import business.entity.Contratto;
 
 public class ApplicationServiceContratto extends ApplicationServiceEntity<Contratto> implements Gestione<Contratto>{
 
-	
+	public void chiudi(Contratto contratto) {
+		
+		calcolaCosto(contratto);
+		contratto.setChiuso(true);
+	}
 	
 	@SuppressWarnings("unchecked")
 	protected ApplicationServiceContratto() throws InstantiationException, IllegalAccessException {
