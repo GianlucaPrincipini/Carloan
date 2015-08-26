@@ -22,6 +22,7 @@ public class CheckerContratto implements Checker<Contratto>{
 		return true;
 	}
 	
+	@Override
 	public boolean isModifiable(Contratto entity) {
 		if (LocalDate.now().equals(entity.getDataFineNoleggio()) || 
 			LocalDate.now().isAfter(entity.getDataFineNoleggio()) && 
@@ -30,6 +31,7 @@ public class CheckerContratto implements Checker<Contratto>{
 		if (!entity.isChiuso()) return true;
 		return false;
 	}
+	
 	public static void main(String[] args) {
 		Contratto a = new Contratto();
 		a.setDataInizioNoleggio(DateHelper.dateParse("21/08/2015"));
