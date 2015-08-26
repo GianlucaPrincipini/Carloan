@@ -9,62 +9,269 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="143.0" fitWidth="571.0" preserveRatio="true">
-         <image>
-            <Image url="@contents/Car%20loan.jpg" />
-         </image>
-      </ImageView>
-      <VBox layoutY="142.0" prefHeight="219.0" prefWidth="85.0">
+      <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="733.0" prefWidth="1284.0">
          <children>
-            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
-               <effect>
-                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
-               </effect>
-            </Separator>
-            <ImageView fitHeight="51.0" fitWidth="180.0">
+            <MenuBar layoutX="45.0" layoutY="18.0" prefHeight="25.0" prefWidth="389.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Sessione">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Disconnetti" />
+                        <MenuItem mnemonicParsing="false" text="Chiudi" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Modifica">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Tariffario" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="?">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ImageView fitHeight="145.0" fitWidth="1344.0" layoutX="24.0" layoutY="48.0" preserveRatio="true">
                <image>
-                  <Image url="@contents/clienti.jpg" />
+                  <Image url="@contents/Car%20loan.jpg" />
                </image>
             </ImageView>
-            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
-               <effect>
-                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
-               </effect>
-            </Separator>
-            <ImageView fitHeight="51.0" fitWidth="180.0">
-               <image>
-                  <Image url="@contents/Noleggio.jpg" />
-               </image>
-            </ImageView>
-            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
-               <effect>
-                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
-               </effect>
-            </Separator>
-            <ImageView fitHeight="51.0" fitWidth="180.0">
-               <image>
-                  <Image url="@contents/Vettura.jpg" />
-               </image>
-            </ImageView>
-            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
-               <effect>
-                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
-               </effect>
-            </Separator>
-            <ImageView fitHeight="51.0" fitWidth="180.0">
-               <image>
-                  <Image url="@contents/Chiusura.jpg" />
-               </image>
-            </ImageView>
-            <Separator blendMode="DIFFERENCE" prefHeight="0.0" prefWidth="200.0">
-               <effect>
-                  <InnerShadow blurType="GAUSSIAN" color="WHITE" height="0.0" radius="0.0" width="0.0" />
-               </effect>
-            </Separator>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+              <items>
+                <Button mnemonicParsing="false" text="Aggiungi" />
+                  <Button layoutX="79.0" layoutY="10.0" mnemonicParsing="false" text="Modifica" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Rimuovi" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Chiudi" />
+              </items>
+            </ToolBar>
+            <TabPane layoutX="2.0" layoutY="177.0" prefHeight="515.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Contratti">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="2150.0">
+                                       <children>
+                                          <TableView prefHeight="500.0" prefWidth="2360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-212.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Id" />
+                                              <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Operatore" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Cliente" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Targa vettura" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Agenzia noleggio" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Agenzia consegna" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Data stipula" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Data inizio noleggio" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Data fine noleggio" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Data chiusura" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="200.0" text="Limitazione chilometraggio" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Chilometraggio" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Rifornimento" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="200.0" text="Assicurazione avanzata" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Acconto" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Costo" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Chiuso" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Clienti">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
+                                       <children>
+                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="100.0" text="Id" />
+                                                <TableColumn prefWidth="100.0" text="Nome" />
+                                                <TableColumn prefWidth="100.0" text="Cognome" />
+                                                <TableColumn prefWidth="100.0" text="Data di nascita" />
+                                                <TableColumn prefWidth="100.0" text="Codice patente" />
+                                                <TableColumn prefWidth="150.0" text="Numero di telefono" />
+                                                <TableColumn prefWidth="100.0" text="e-mail" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Vetture">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
+                                       <children>
+                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="100.0" text="Targa" />
+                                                <TableColumn prefWidth="100.0" text="Modello" />
+                                                <TableColumn prefWidth="150.0" text="Agenzia localizzazione" />
+                                                <TableColumn prefWidth="100.0" text="Chilometraggio" />
+                                                <TableColumn prefWidth="100.0" text="Stato" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Modelli">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="477.0" prefWidth="1325.0">
+                                       <children>
+                                          <TableView prefHeight="500.0" prefWidth="2000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="75.0" text="Id" />
+                                                <TableColumn prefWidth="100.0" text="Marca" />
+                                                <TableColumn prefWidth="100.0" text="Nome" />
+                                                <TableColumn prefWidth="125.0" text="Tipo carburante" />
+                                                <TableColumn prefWidth="150.0" text="Capacità bagagliaio (l)" />
+                                                <TableColumn prefWidth="125.0" text="Numero posti" />
+                                                <TableColumn prefWidth="125.0" text="Numero porte" />
+                                                <TableColumn prefWidth="75.0" text="Potenza" />
+                                                <TableColumn prefWidth="75.0" text="Peso" />
+                                                <TableColumn prefWidth="150.0" text="Trasmissione automatica" />
+                                                <TableColumn prefWidth="150.0" text="Emissioni CO2 (kg/m³)" />
+                                                <TableColumn prefWidth="75.0" text="Fascia" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Fasce">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
+                                       <children>
+                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="100.0" text="Id" />
+                                                <TableColumn prefWidth="100.0" text="Nome" />
+                                                <TableColumn prefWidth="100.0" text="Tariffa base" />
+                                                <TableColumn prefWidth="100.0" text="Indice minimo" />
+                                                <TableColumn prefWidth="100.0" text="Indice massimo" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Optional">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
+                                       <children>
+                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="100.0" text="Id" />
+                                                <TableColumn prefWidth="100.0" text="Tipo" />
+                                                <TableColumn prefWidth="100.0" text="Costo" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Agenzie">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
+                                       <children>
+                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="100.0" text="Id" />
+                                                <TableColumn prefWidth="100.0" text="Città" />
+                                                <TableColumn prefWidth="100.0" text="Indirizzo" />
+                                                <TableColumn prefWidth="150.0" text="Numero di telefono" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Operatori">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
+                                       <children>
+                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="100.0" text="Id" />
+                                                <TableColumn prefWidth="100.0" text="Username" />
+                                                <TableColumn prefWidth="100.0" text="Agenzia" />
+                                                <TableColumn prefWidth="100.0" text="Amministratore" />
+                                                <TableColumn prefWidth="100.0" text="Nome" />
+                                                <TableColumn prefWidth="100.0" text="Cognome" />
+                                                <TableColumn prefWidth="100.0" text="Data di nascita" />
+                                                <TableColumn prefWidth="150.0" text="Numero di telefono" />
+                                                <TableColumn prefWidth="100.0" text="E-mail" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
          </children>
       </VBox>
-      <AnchorPane fx:id="viewPane" layoutX="186.0" layoutY="146.0" prefHeight="210.0" prefWidth="377.0" />
    </children>
 </Pane>
