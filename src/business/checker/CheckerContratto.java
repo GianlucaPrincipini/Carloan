@@ -17,14 +17,19 @@ public class CheckerContratto implements Checker<Contratto>{
 		if (entity.getDataInizioNoleggio() == null) return false;
 		if (entity.getDataFineNoleggio() == null) return false;
 		if (entity.getDataFineNoleggio().isBefore(entity.getDataInizioNoleggio())) return false;
+		if (!new CheckerCliente().isAvailable(entity.getCliente(), entity.getDataInizioNoleggio(), entity.getDataFineNoleggio())) return false;
+		if (!new CheckerVettura().isAvailable(entity.getVettura(), entity.getDataInizioNoleggio(), entity.getDataFineNoleggio())) return false;
 		return true;
 	}
 	
 	public boolean isModifiable(Contratto entity) {
-		return Days.daysBetween(LocalDate.now(), entity.getDataInizioNoleggio()).getDays() > 2 &&
-				!entity.isChiuso();
+		if (LocalDate.now().equals(entity.getDataFineNoleggio()) || 
+			LocalDate.now().isAfter(entity.getDataFineNoleggio()) && 
+			!entity.isChiuso()) return true;
+		if (Days.daysBetween(LocalDate.now(), entity.getDataInizioNoleggio()).getDays() > 2) return true;
+		if (!entity.isChiuso()) return true;
+		return false;
 	}
-
 	public static void main(String[] args) {
 		Contratto a = new Contratto();
 		a.setDataInizioNoleggio(DateHelper.dateParse("21/08/2015"));

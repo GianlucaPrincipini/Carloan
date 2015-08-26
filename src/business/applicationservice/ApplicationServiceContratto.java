@@ -5,18 +5,23 @@ import integration.dao.DAOFactory;
 import java.util.List;
 
 import org.joda.time.Days;
+import org.joda.time.LocalDate;
 
 import business.checker.CheckerFactory;
 import business.checker.CheckerContratto;
 import business.entity.Agenzia;
 import business.entity.Contratto;
 
-public class ApplicationServiceContratto extends ApplicationServiceEntity<Contratto> implements Gestione<Contratto>{
+public class ApplicationServiceContratto extends ApplicationServiceEntity<Contratto> {
 
 	public void chiudi(Contratto contratto) {
-		
-		calcolaCosto(contratto);
-		contratto.setChiuso(true);
+		if (!contratto.isChiuso()) {
+			calcolaCosto(contratto);
+			contratto.setDataChiusura(LocalDate.now());
+			contratto.setChiuso(true);
+			update(contratto);
+			// da rivedere
+		} 
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -37,8 +42,9 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 
 	@Override
 	public void update(Contratto entity) {
-		if (((CheckerContratto)checker).isModifiable(dao.read(Integer.toString(entity.getId()))));
-			dao.update(entity);
+		if (checker.isModifiable(dao.read(Integer.toString(entity.getId()))));
+			if (checker.check(entity))
+				dao.update(entity);
 	}
 
 	@Override
@@ -48,7 +54,7 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 
 	@Override
 	public void delete(Contratto entity) {
-		if (((CheckerContratto)checker).isModifiable(entity))
+		if (checker.isModifiable(read(Integer.toString(entity.getId()))))
 			dao.delete(Integer.toString(entity.getId()));
 	}
 	
@@ -86,8 +92,8 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 		}
 	}
 
-	public List<Contratto> filtra(List<Contratto> contratti, Agenzia agenzia) {
-		List<Contratto> contrattiFiltrati = contratti;
+	public List<Contratto> filtra(Agenzia agenzia) {
+		List<Contratto> contrattiFiltrati = readAll();
 		for (Contratto c:contrattiFiltrati) {
 			if (c.getAgenziaConsegna().getId() != agenzia.getId() && c.getAgenziaNoleggio().getId() != agenzia.getId()) {
 				contrattiFiltrati.remove(c);

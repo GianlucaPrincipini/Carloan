@@ -3,7 +3,7 @@ package business.applicationservice;
 import business.checker.Checker;
 import integration.dao.DAO;
 
-public abstract class ApplicationServiceEntity<Data> implements ApplicationService {
+public abstract class ApplicationServiceEntity<Data> implements ApplicationService, Gestione<Data> {
 	protected DAO<Data> dao;
 	protected Checker<Data> checker;
 	

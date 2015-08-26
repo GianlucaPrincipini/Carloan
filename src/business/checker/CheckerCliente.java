@@ -28,7 +28,7 @@ public class CheckerCliente implements Checker<Cliente>{
 	}
 	
 	/**
-	 * Funzione che verifica se un cliente è disponibile in un lasso di tempo
+	 * Funzione che verifica se un cliente è disponibile nell'intervallo di tempo
 	 * @param entity cliente
 	 * @param inizio data inizio periodo di verifica
 	 * @param fine data fine periodo di verifica
@@ -39,6 +39,12 @@ public class CheckerCliente implements Checker<Cliente>{
 		for (Contratto c:contratti) {
 			if (c.getCliente().equals(entity)) {
 				if (inizio.isBefore(c.getDataFineNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
+					return false;
+				}
+				if (inizio.isBefore(c.getDataInizioNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
+					return false;
+				}
+				if (inizio.isAfter(c.getDataInizioNoleggio()) && inizio.isBefore(c.getDataFineNoleggio())) {
 					return false;
 				}
 			}

@@ -1,5 +1,5 @@
 package business.applicationservice;
 
-public class ApplicationServiceTariffario implements ApplicationService{
-
+public class ApplicationServiceTariffario implements ApplicationService {
+	
 }
