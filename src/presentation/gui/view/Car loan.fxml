@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.media.*?>
@@ -33,6 +34,9 @@
                   </items>
                 </Menu>
               </menus>
+               <effect>
+                  <Blend mode="EXCLUSION" opacity="0.15" />
+               </effect>
             </MenuBar>
             <ImageView fitHeight="145.0" fitWidth="1344.0" layoutX="24.0" layoutY="48.0" preserveRatio="true">
                <image>
@@ -65,6 +69,9 @@
                      </image>
                   </ImageView>
               </items>
+               <effect>
+                  <Blend mode="EXCLUSION" opacity="0.15" />
+               </effect>
             </ToolBar>
             <TabPane layoutX="2.0" layoutY="177.0" prefHeight="515.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
@@ -76,7 +83,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="2150.0">
                                        <children>
-                                          <TableView prefHeight="500.0" prefWidth="2360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-212.0" AnchorPane.topAnchor="0.0">
+                                          <TableView layoutY="6.0" prefHeight="500.0" prefWidth="2150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
                                               <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Id" />
                                               <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Operatore" />
@@ -104,7 +111,7 @@
                            </children></AnchorPane>
                   </content>
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="90.0" preserveRatio="true">
+                        <ImageView fitHeight="20.0" fitWidth="100.0" preserveRatio="true">
                            <image>
                               <Image url="@contents/contratti.bmp" />
                            </image>
@@ -138,7 +145,7 @@
                         </AnchorPane>
                      </content>
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="70.0">
+                        <ImageView fitHeight="20.0" fitWidth="60.0">
                            <image>
                               <Image url="@contents/clienti.bmp" />
                            </image>
@@ -170,7 +177,7 @@
                         </AnchorPane>
                      </content>
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="70.0">
+                        <ImageView fitHeight="20.0" fitWidth="60.0" preserveRatio="true">
                            <image>
                               <Image url="@contents/vetture.bmp" />
                            </image>
@@ -209,7 +216,7 @@
                         </AnchorPane>
                      </content>
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="70.0">
+                        <ImageView fitHeight="20.0" fitWidth="60.0">
                            <image>
                               <Image url="@contents/modelli.bmp" />
                            </image>
@@ -241,7 +248,7 @@
                         </AnchorPane>
                      </content>
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="50.0">
+                        <ImageView fitHeight="20.0" fitWidth="42.0">
                            <image>
                               <Image url="@contents/fasce.bmp" />
                            </image>
@@ -271,7 +278,7 @@
                         </AnchorPane>
                      </content>
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="90.0">
+                        <ImageView fitHeight="20.0" fitWidth="78.0">
                            <image>
                               <Image url="@contents/optional.bmp" />
                            </image>
@@ -302,7 +309,7 @@
                         </AnchorPane>
                      </content>
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="70.0">
+                        <ImageView fitHeight="20.0" fitWidth="60.0">
                            <image>
                               <Image url="@contents/agenzie.bmp" />
                            </image>
@@ -338,7 +345,7 @@
                         </AnchorPane>
                      </content>
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="90.0">
+                        <ImageView fitHeight="20.0" fitWidth="78.0">
                            <image>
                               <Image url="@contents/operatori.bmp" />
                            </image>
@@ -346,6 +353,9 @@
                      </graphic>
                   </Tab>
               </tabs>
+               <effect>
+                  <Blend mode="DIFFERENCE" opacity="0.1" />
+               </effect>
             </TabPane>
          </children>
       </VBox>
