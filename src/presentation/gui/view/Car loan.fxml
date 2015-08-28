@@ -45,29 +45,45 @@
             </ImageView>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
               <items>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
-                     <image>
-                        <Image url="@contents/add.ico" />
-                     </image>
-                  </ImageView>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                           <image>
+                              <Image url="@contents/add.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Separator orientation="VERTICAL" prefHeight="20.0" />
-                  <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
-                     <image>
-                        <Image url="@contents/edit.ico" />
-                     </image>
-                  </ImageView>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                           <image>
+                              <Image url="@contents/edit.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Separator orientation="VERTICAL" prefHeight="20.0" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
-                     <image>
-                        <Image url="@contents/remove.ico" />
-                     </image>
-                  </ImageView>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                           <image>
+                              <Image url="@contents/remove.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Separator orientation="VERTICAL" prefHeight="20.0" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
-                     <image>
-                        <Image url="@contents/archive.ico" />
-                     </image>
-                  </ImageView>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                           <image>
+                              <Image url="@contents/archive.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
               </items>
                <effect>
                   <Blend mode="EXCLUSION" opacity="0.15" />
@@ -83,7 +99,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="2150.0">
                                        <children>
-                                          <TableView layoutY="6.0" prefHeight="500.0" prefWidth="2150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView layoutX="-131.0" prefHeight="500.0" prefWidth="2150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
                                               <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Id" />
                                               <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Operatore" />
