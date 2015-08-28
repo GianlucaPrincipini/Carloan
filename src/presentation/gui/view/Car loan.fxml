@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.media.*?>
 <?import javafx.scene.paint.*?>
@@ -11,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="733.0" prefWidth="1284.0">
+      <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
             <MenuBar layoutX="45.0" layoutY="18.0" prefHeight="25.0" prefWidth="389.0">
               <menus>
@@ -40,15 +41,34 @@
             </ImageView>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
               <items>
-                <Button mnemonicParsing="false" text="Aggiungi" />
-                  <Button layoutX="79.0" layoutY="10.0" mnemonicParsing="false" text="Modifica" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Rimuovi" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Chiudi" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                     <image>
+                        <Image url="@contents/add.ico" />
+                     </image>
+                  </ImageView>
+                  <Separator orientation="VERTICAL" prefHeight="20.0" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
+                     <image>
+                        <Image url="@contents/edit.ico" />
+                     </image>
+                  </ImageView>
+                  <Separator orientation="VERTICAL" prefHeight="20.0" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                     <image>
+                        <Image url="@contents/remove.ico" />
+                     </image>
+                  </ImageView>
+                  <Separator orientation="VERTICAL" prefHeight="20.0" />
+                  <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
+                     <image>
+                        <Image url="@contents/archive.ico" />
+                     </image>
+                  </ImageView>
               </items>
             </ToolBar>
             <TabPane layoutX="2.0" layoutY="177.0" prefHeight="515.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Contratti">
+                <Tab closable="false">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -83,8 +103,15 @@
                               </ScrollPane>
                            </children></AnchorPane>
                   </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="90.0" preserveRatio="true">
+                           <image>
+                              <Image url="@contents/contratti.bmp" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                 </Tab>
-                  <Tab text="Clienti">
+                  <Tab>
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -110,8 +137,15 @@
                            </children>
                         </AnchorPane>
                      </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="70.0">
+                           <image>
+                              <Image url="@contents/clienti.bmp" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Tab>
-                  <Tab text="Vetture">
+                  <Tab>
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -135,8 +169,15 @@
                            </children>
                         </AnchorPane>
                      </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="70.0">
+                           <image>
+                              <Image url="@contents/vetture.bmp" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Tab>
-                  <Tab text="Modelli">
+                  <Tab>
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -167,8 +208,15 @@
                            </children>
                         </AnchorPane>
                      </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="70.0">
+                           <image>
+                              <Image url="@contents/modelli.bmp" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Tab>
-                  <Tab text="Fasce">
+                  <Tab>
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -192,8 +240,15 @@
                            </children>
                         </AnchorPane>
                      </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="50.0">
+                           <image>
+                              <Image url="@contents/fasce.bmp" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Tab>
-                  <Tab text="Optional">
+                  <Tab>
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -215,8 +270,15 @@
                            </children>
                         </AnchorPane>
                      </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="90.0">
+                           <image>
+                              <Image url="@contents/optional.bmp" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Tab>
-                  <Tab text="Agenzie">
+                  <Tab>
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -239,8 +301,15 @@
                            </children>
                         </AnchorPane>
                      </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="70.0">
+                           <image>
+                              <Image url="@contents/agenzie.bmp" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Tab>
-                  <Tab text="Operatori">
+                  <Tab>
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -268,6 +337,13 @@
                            </children>
                         </AnchorPane>
                      </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="90.0">
+                           <image>
+                              <Image url="@contents/operatori.bmp" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Tab>
               </tabs>
             </TabPane>
