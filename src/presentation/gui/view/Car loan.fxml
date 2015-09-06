@@ -38,7 +38,7 @@
                   <Blend mode="EXCLUSION" opacity="0.15" />
                </effect>
             </MenuBar>
-            <ImageView fitHeight="145.0" fitWidth="1344.0" layoutX="24.0" layoutY="48.0" preserveRatio="true">
+            <ImageView fitHeight="145.0" fitWidth="1344.0" preserveRatio="true">
                <image>
                   <Image url="@contents/Car%20loan.jpg" />
                </image>
@@ -112,7 +112,8 @@
                                                 <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Data fine noleggio" />
                                                 <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Data chiusura" />
                                                 <TableColumn minWidth="-Infinity" prefWidth="200.0" text="Limitazione chilometraggio" />
-                                                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Chilometraggio" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Chilometri previsti" />
+                                                <TableColumn minWidth="-Infinity" prefWidth="150.0" text="Chilometri percorsi" />
                                                 <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Rifornimento" />
                                                 <TableColumn minWidth="-Infinity" prefWidth="200.0" text="Assicurazione avanzata" />
                                                 <TableColumn minWidth="-Infinity" prefWidth="100.0" text="Acconto" />
