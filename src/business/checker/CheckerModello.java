@@ -1,24 +1,24 @@
 package business.checker;
 
 import business.entity.Modello;
+import business.exception.IntegrityException;
 
 public class CheckerModello implements Checker<Modello>{
 
 	@Override
-	public boolean check(Modello entity) {
-		if (entity.getId() == 0) return false;
-		if (entity.getMarca() == null) return false;
-		if (entity.getNome() == null) return false;
-		if (entity.getTipoCarburante() == null) return false;
-		if (entity.getFascia() != null) return false;
-		if (entity.getPeso() == 0 ) return false;
-		if (entity.getPotenza() == 0) return false;
-		return true;
+	public void check(Modello entity) throws IntegrityException {
+		if (entity.getId() == 0) throw new IntegrityException();;
+		if (entity.getMarca() == null) throw new IntegrityException();;
+		if (entity.getNome() == null) throw new IntegrityException();
+		if (entity.getTipoCarburante() == null) throw new IntegrityException();
+		if (entity.getFascia() != null) throw new IntegrityException();
+		if (entity.getPeso() == 0 ) throw new IntegrityException();
+		if (entity.getPotenza() == 0) throw new IntegrityException();
 	}
 
 	@Override
-	public boolean isModifiable(Modello entity) {
-		return true;
+	public void isModifiable(Modello entity) {
+		
 	}
 
 }

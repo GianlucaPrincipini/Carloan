@@ -1,26 +1,26 @@
 package business.checker;
 
 import java.util.List;
+
 import integration.dao.DAOFascia;
 import business.entity.Fascia;
+import business.exception.IntegrityException;
 
 public class CheckerFascia implements Checker<Fascia>{
-	public boolean check(Fascia entity) {
+	public void check(Fascia entity) throws IntegrityException {
 		List<Fascia> fasce = new DAOFascia().readAll();
 		for (Fascia f:fasce) {
 			if (entity.getMin() >= f.getMin() && entity.getMin() <= f.getMax())
-				return false;
+				throw new IntegrityException();
 			if (entity.getMax() <= f.getMax() && entity.getMin() <= f.getMin())
-				return false;
+				throw new IntegrityException();
 			if (entity.getMin() >= f.getMin() && entity.getMax() <= f.getMax())
-				return false;
+				throw new IntegrityException();
 		}
-		return true;
 	}
 
 	@Override
-	public boolean isModifiable(Fascia entity) {
-		// Quando si modifica la fascia ricordati di ricalcolarla in tutti i modelli
-		return true;
+	public void isModifiable(Fascia entity) {
+		
 	}
 }

@@ -20,7 +20,8 @@ public class Contratto implements Entity {
 	private LocalDate dataChiusura;
 	private Vettura vettura;
 	private boolean chilometraggioLimitato;
-	private int chilometraggio;
+	private int chilometriPrevisti;
+	private int chilometriPercorsi;
 	private Rifornimento rifornimento;
 	private double acconto;
 	private boolean chiuso;
@@ -173,12 +174,20 @@ public class Contratto implements Entity {
 		this.chilometraggioLimitato = chilometraggioLimitato;
 	}
 
-	public int getChilometraggio() {
-		return chilometraggio;
+	public int getChilometriPrevisti() {
+		return chilometriPrevisti;
 	}
 	
-	public void setChilometraggio(int chilometraggio) {
-		this.chilometraggio = chilometraggio;
+	public void setChilometriPrevisti(int chilometriPrevisti) {
+		this.chilometriPrevisti = chilometriPrevisti;
+	}
+	
+	public int getChilometriPercorsi() {
+		return chilometriPercorsi;
+	}
+	
+	public void setChilometriPercorsi(int chilometriPercorsi) {
+		this.chilometriPercorsi = chilometriPercorsi;
 	}
 
 	public boolean isAssicurazioneAvanzata() {

@@ -7,6 +7,7 @@ import integration.dao.DAOFactory;
 import business.checker.Checker;
 import business.checker.CheckerFactory;
 import business.entity.Vettura;
+import business.exception.IntegrityException;
 
 public class ApplicationServiceVettura extends ApplicationServiceEntity<Vettura> implements Gestione<Vettura>{
 
@@ -17,27 +18,34 @@ public class ApplicationServiceVettura extends ApplicationServiceEntity<Vettura>
 
 	@Override
 	public void create(Vettura entity) {
-		if (checker.check(entity)) {
-			dao.create(entity);
+		try {
+			checker.check(entity);
+		} catch (IntegrityException e) {
+			e.printStackTrace();
 		}
+		dao.create(entity);
 	}
 
 	@Override
 	public void update(Vettura entity) {
-		if (checker.isModifiable(read(entity.getTarga()))) {
-			if (checker.check(entity)) {
-				dao.update(entity);
-			}
+		try {
+			checker.isModifiable(read(entity.getTarga()));
+			checker.check(entity);
+		} catch (IntegrityException e) {
+			e.printStackTrace();
 		}
+		dao.update(entity);
 	}
 
 	@Override
 	public void delete(Vettura entity) {
-		if (checker.isModifiable(read(entity.getTarga()))) {
-			if (checker.check(entity)) {
-				dao.delete(entity.getTarga());
-			}
+		try {
+			checker.isModifiable(read(entity.getTarga()));
+			checker.check(entity);
+		} catch (IntegrityException e) {
+			e.printStackTrace();
 		}
+		dao.delete(entity.getTarga());
 	}
 
 	@Override

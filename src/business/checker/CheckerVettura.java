@@ -9,23 +9,23 @@ import org.joda.time.LocalDate;
 import business.entity.Contratto;
 import business.entity.StatoVettura;
 import business.entity.Vettura;
+import business.exception.IntegrityException;
 
 public class CheckerVettura implements Checker<Vettura>{
 
 	@Override
-	public boolean check(Vettura entity) {
-		if (entity.getTarga() == null) return false;
-		if (entity.getModello() == null) return false;
-		if (entity.getAgenziaLocalizzazione() == null) return false;
-		return true;
+	public void check(Vettura entity) throws IntegrityException {
+		if (entity.getTarga() == null) throw new IntegrityException();
+		if (entity.getModello() == null) throw new IntegrityException();
+		if (entity.getAgenziaLocalizzazione() == null) throw new IntegrityException();
 	}
 
 	@Override
-	public boolean isModifiable(Vettura entity) {
+	public void isModifiable(Vettura entity) throws IntegrityException {
 		if (entity.getStato() == StatoVettura.DISPONIBILE) {
-			return true;
+			return;
 		}
-		return false;
+		throw new IntegrityException();
 	}
 	
 	public boolean isAvailable(Vettura entity, LocalDate inizio, LocalDate fine) {

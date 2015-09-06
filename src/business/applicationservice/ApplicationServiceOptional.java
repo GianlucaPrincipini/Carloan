@@ -1,9 +1,12 @@
 package business.applicationservice;
 
 import integration.dao.DAOFactory;
+
 import java.util.List;
+
 import business.checker.CheckerFactory;
 import business.entity.Optional;
+import business.exception.IntegrityException;
 
 public class ApplicationServiceOptional extends ApplicationServiceEntity<Optional> implements Gestione<Optional>{
 
@@ -14,23 +17,33 @@ public class ApplicationServiceOptional extends ApplicationServiceEntity<Optiona
 	
 	@Override
 	public void create(Optional entity) {
-		if (checker.check(entity))
-			dao.create(entity);
+		try {
+			checker.check(entity);
+		} catch (IntegrityException e) {
+			e.printStackTrace();
+		}
+		dao.create(entity);
 	}
 
 	@Override
 	public void update(Optional entity) {
-		if (checker.isModifiable(dao.read(Integer.toString(entity.getId()))))
-			if (checker.check(entity)) {
-				dao.update(entity);
-				return;
-			}
+		try {
+			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
+			checker.check(entity);
+		} catch (IntegrityException e) {
+			e.printStackTrace();
+		}
+		dao.update(entity);	
 	}
 
 	@Override
 	public void delete(Optional entity) {
-		if (checker.isModifiable(dao.read(Integer.toString(entity.getId()))))
-			dao.delete(Integer.toString(entity.getId()));
+		try {
+			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
+		} catch (IntegrityException e) {
+			e.printStackTrace();
+		}
+		dao.delete(Integer.toString(entity.getId()));
 		
 	}
 

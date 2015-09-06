@@ -10,15 +10,20 @@ import business.checker.Checker;
 import business.checker.CheckerFactory;
 import business.entity.Fascia;
 import business.entity.Modello;
+import business.exception.FasciaIndexException;
+import business.exception.IntegrityException;
 
 public class ApplicationServiceModello extends ApplicationServiceEntity<Modello> {
 
+	
+	private IncidenzaFascia incidenza = IncidenzaFascia.getInstance();
+	
 	@SuppressWarnings("unchecked")
 	protected ApplicationServiceModello() throws InstantiationException, IllegalAccessException {
 		super(DAOFactory.buildDao(Modello.class), CheckerFactory.buildChecker(Modello.class));
 	}
 
-	public Fascia calcolaFascia(Modello modello) {
+	public Fascia calcolaFascia(Modello modello) throws FasciaIndexException {
 		List<Fascia> fasce = new DAOFascia().readAll();
 		double indiceFascia = calcolaIndiceFascia(modello);
 		for (Fascia f:fasce) {
@@ -27,35 +32,49 @@ public class ApplicationServiceModello extends ApplicationServiceEntity<Modello>
 				return f;
 			}
 		}
-		return null;
+		if (modello.getFascia() == null) {
+			throw new FasciaIndexException();
+		}
+		return modello.getFascia();
 	}
 	
 	private double calcolaIndiceFascia(Modello modello) {
-		return 0;
+		return modello.getCapacit‡Bagagliaio() * incidenza.getCapacit‡Bagagliaio() +
+				  incidenza.getEmissioniCO2() * modello.getEmissioniCO2() + 
+				  incidenza.getNumeroPorte() * modello.getNumeroPorte() +
+				  incidenza.getNumeroPosti() * modello.getNumeroPosti() + 
+				  incidenza.getPotenzaSuPeso() * ((double) modello.getPotenza() / (double) modello.getPeso());
 	}
 
 	@Override
 	public void create(Modello entity) {
-		if (checker.check(entity)) {
+		try {
+			checker.check(entity);
 			dao.create(entity);
+		} catch (IntegrityException e) {
+			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void update(Modello entity) {
-		if (checker.isModifiable(read(Integer.toString(entity.getId())))) {
-			if (checker.check(entity)) {
-				dao.update(entity);
-			}
+		try {
+			checker.isModifiable(read(Integer.toString(entity.getId())));
+			checker.check(entity);
+			dao.update(entity);
+		} catch (IntegrityException e) {
+			e.showError();
 		}
 	}
 
 	@Override
 	public void delete(Modello entity) {
-		if (checker.isModifiable(read(Integer.toString(entity.getId())))) {
-			if (checker.check(entity)) {
-				dao.delete(Integer.toString(entity.getId()));
-			}
+		try {
+			checker.isModifiable(read(Integer.toString(entity.getId())));
+			checker.check(entity); 
+			dao.delete(Integer.toString(entity.getId()));	
+		} catch (IntegrityException e) {
+			e.showError();
 		}
 	}
 

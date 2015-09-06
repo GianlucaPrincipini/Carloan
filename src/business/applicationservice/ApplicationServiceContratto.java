@@ -11,14 +11,18 @@ import business.checker.CheckerFactory;
 import business.checker.CheckerContratto;
 import business.entity.Agenzia;
 import business.entity.Contratto;
+import business.entity.Optional;
+import business.entity.Rifornimento;
+import business.entity.Tariffario;
+import business.exception.IntegrityException;
 
 public class ApplicationServiceContratto extends ApplicationServiceEntity<Contratto> {
 
 	public void chiudi(Contratto contratto) {
 		if (!contratto.isChiuso()) {
-			calcolaCosto(contratto);
 			contratto.setDataChiusura(LocalDate.now());
 			contratto.setChiuso(true);
+			calcolaCosto(contratto);
 			update(contratto);
 			// da rivedere
 		} 
@@ -31,8 +35,12 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 
 	@Override
 	public void create(Contratto entity) {
-		if(checker.check(entity)) 
+		try {
+			checker.check(entity);
 			dao.create(entity);
+		} catch (IntegrityException e) {
+			e.showError();
+		} 
 	}
 
 	@Override
@@ -42,9 +50,13 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 
 	@Override
 	public void update(Contratto entity) {
-		if (checker.isModifiable(dao.read(Integer.toString(entity.getId()))));
-			if (checker.check(entity))
-				dao.update(entity);
+		try {
+			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
+			checker.check(entity);
+			dao.update(entity);
+		} catch (IntegrityException e){
+			e.showError();
+		}
 	}
 
 	@Override
@@ -54,27 +66,53 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 
 	@Override
 	public void delete(Contratto entity) {
-		if (checker.isModifiable(read(Integer.toString(entity.getId()))))
+		try {
+			checker.isModifiable(read(Integer.toString(entity.getId())));
 			dao.delete(Integer.toString(entity.getId()));
+		} catch (IntegrityException e) {
+			e.showError();
+		}
 	}
+	
 	
 	public double calcolaCosto(Contratto contratto) {
 		double costo = 0;
+		Tariffario tariffario = contratto.getTariffario();
 		// il tariffario è vuoto all'inizio!
-		//costo += contratto.getVettura().getModello().getFascia().getTariffaBase();
-		if (contratto.isAssicurazioneAvanzata())
-			costo += contratto.getTariffario().getAssicurazioneAvanzata();
+		costo += contratto.getVettura().getModello().getFascia().getTariffaBase();
+		for (Optional o:contratto.getOptionals()) {
+			costo += o.getCosto();
+		}
+		int durataNoleggio = Days.daysBetween(contratto.getDataInizioNoleggio(), contratto.getDataFineNoleggio()).getDays();
+		if (durataNoleggio % 7 == 0) 
+			costo += durataNoleggio/7 * tariffario.getCostoSettimanale();
 		else 
-			costo += contratto.getTariffario().getAssicurazioneBase();
-		if (contratto.isChilometraggioLimitato()) 
-			costo += contratto.getTariffario().getCostoChilometrico() * contratto.getChilometraggio();
-		else
-			costo += 50;
+			costo += durataNoleggio * tariffario.getCostoGiornaliero();
 		
-		costo += contratto.getTariffario().getCostoGiornaliero() * 
-				Days.daysBetween(contratto.getDataInizioNoleggio(), contratto.getDataFineNoleggio()).getDays();
+		if (contratto.isAssicurazioneAvanzata())
+			costo += tariffario.getAssicurazioneAvanzata();
+		else 
+			costo += tariffario.getAssicurazioneBase();
+
+		if (contratto.isChiuso()) {
+			int chilometriConsiderati;
+			if (contratto.isChilometraggioLimitato() && contratto.getChilometriPercorsi() <= contratto.getChilometriPrevisti())
+				chilometriConsiderati = contratto.getChilometriPrevisti();
+			else chilometriConsiderati = contratto.getChilometriPercorsi();
+			
+			if (contratto.isChilometraggioLimitato()) 
+				costo += tariffario.getCostoChilometrico() * chilometriConsiderati();
+			else
+				costo += tariffario.getCostoChilometraggioIllimitato();
+			
+			if (contratto.getRifornimento() == Rifornimento.STANDARD) {
+				costo += tariffario.getCostoLitro(contratto.getVettura().getModello().getTipoCarburante()) * 
+						chilometriConsiderati;
+			} else {
+				
+			}
+		}
 		
-		// eccetera eccetera
 		costo -= contratto.getAcconto();
 		contratto.setCosto(costo);
 		update(contratto);

@@ -18,16 +18,17 @@ public class Tariffario implements Serializable {
 	private double moraDurata;
 	private double moraCarburante;
 	private double costoChilometrico;
+	private double costoChilometraggioIllimitato;
 	private double assicurazioneBase;
 	private double assicurazioneAvanzata;
+	private Map<TipoCarburante, Double> costoLitro = new HashMap<TipoCarburante, Double>();
+	private Map<Rifornimento, Double> rifornimento = new HashMap<Rifornimento, Double>();
 	private static Tariffario tariffario;
 
-	// Rimuovere amministratore da agenzia?
 	
 	static {
 		if (tariffario == null) {
 			tariffario = new Tariffario();
-
 		}
 	}
 	
@@ -46,7 +47,6 @@ public class Tariffario implements Serializable {
 				ObjectOutputStream output = new ObjectOutputStream(
 						new FileOutputStream("./tariffario/tariffario.dat"));
 				output.writeObject(tariffario);
-				System.out.println("Salvato");
 				output.close();
 			} catch (IOException e1) {
 				e.printStackTrace();
@@ -54,6 +54,30 @@ public class Tariffario implements Serializable {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void setCostoLitro(TipoCarburante carburante, Double costo) {
+		this.costoLitro.put(carburante, costo);
+	}
+	
+	public double getCostoLitro(TipoCarburante carburante) {
+		return this.costoLitro.get(carburante);
+	}
+	
+	public void setRifornimento(Rifornimento rifornimento, Double costo) {
+		this.rifornimento.put(rifornimento, costo);
+	}
+	
+	public double getRifornimento(Rifornimento rifornimento) {
+		return this.rifornimento.get(rifornimento);
+	}
+	
+	public void setCostoChilometraggioIllimitato(double costoChilometraggioIllimitato) {
+		this.costoChilometraggioIllimitato = costoChilometraggioIllimitato;
+	}
+	
+	public double getCostoChilometraggioIllimitato() {
+		return costoChilometraggioIllimitato;
 	}
 	
 	public static Tariffario getInstance() {

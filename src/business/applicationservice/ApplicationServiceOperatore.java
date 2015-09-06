@@ -5,6 +5,7 @@ import java.util.List;
 import integration.dao.DAOFactory;
 import business.checker.CheckerFactory;
 import business.entity.Operatore;
+import business.exception.IntegrityException;
 
 public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operatore> implements Gestione<Operatore>{
 
@@ -15,23 +16,33 @@ public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operat
 
 	@Override
 	public void create(Operatore entity) {
-		if (checker.check(entity)) {
+		try {
+			checker.check(entity);
 			dao.create(entity);
+		} catch (IntegrityException e) {
+			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
 	public void update(Operatore entity) {
-		if (checker.isModifiable(read(entity.getUsername()))) {
-			dao.update(entity);
+		try {
+			checker.isModifiable(read(entity.getUsername()));
+		} catch (IntegrityException e) {
+			e.printStackTrace();
 		}
+		dao.update(entity);
 	}
 
 	@Override
 	public void delete(Operatore entity) {
-		if (checker.isModifiable(read(entity.getUsername()))) {
-			dao.delete(entity.getUsername());
+		try {
+			checker.isModifiable(read(entity.getUsername()));
+		} catch (IntegrityException e) {
+			e.printStackTrace();
 		}
+		dao.delete(entity.getUsername());
 	}
 
 	@Override

@@ -9,22 +9,24 @@ import org.joda.time.Years;
 
 import business.entity.Cliente;
 import business.entity.Contratto;
+import business.exception.IntegrityException;
+import business.exception.UnmodifiableEntityException;
 
 public class CheckerCliente implements Checker<Cliente>{
 
 	@Override
-	public boolean check(Cliente entity) {
-		if (entity.getCodicePatente() == null) return false;
-		if (entity.getNome() == null) return false;
-		if (entity.getCognome() == null) return false;
-		if (Years.yearsBetween(entity.getDataNascita(), LocalDate.now()).getYears() < 18) return false;
-		return true;
+	public void check(Cliente entity) throws IntegrityException {
+		if (entity.getCodicePatente() == null) throw new IntegrityException();
+		if (entity.getNome() == null) throw new IntegrityException();
+		if (entity.getCognome() == null) throw new IntegrityException();
+		if (Years.yearsBetween(entity.getDataNascita(), LocalDate.now()).getYears() < 18) throw new IntegrityException();
 	}
 
 	@Override
-	public boolean isModifiable(Cliente entity) {
+	public void isModifiable(Cliente entity) throws UnmodifiableEntityException {
 		// Un cliente può essere modificato se non ha un noleggio attivo
-		return isAvailable(entity, LocalDate.now(), LocalDate.now());
+		if (!isAvailable(entity, LocalDate.now(), LocalDate.now()))
+			throw new UnmodifiableEntityException();
 	}
 	
 	/**

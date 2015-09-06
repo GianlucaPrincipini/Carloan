@@ -1,10 +1,13 @@
 package business.entity;
 
+import java.io.Serializable;
+
 public enum Rifornimento {
 	
-	STANDARD(0), PIENO_ANTICIPO(1), RESTITUZIONE_PIENO(2), PAGAMENTO_RICONSEGNA(3);
+	STANDARD(0), PIENO_ANTICIPO(1), RESTITUZIONE_PIENO(2);
 	
 	private int index;
+	
 	
 	
 	private Rifornimento(int index) {

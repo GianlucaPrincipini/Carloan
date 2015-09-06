@@ -16,7 +16,7 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 	@Override
 	public void create(Contratto entity){
 		connection.executeUpdateQuery("INSERT INTO contratto(operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, "
-									+ "datainizionoleggio, datafinenoleggio, chilometraggiolimitato, chilometraggio, rifornimento, acconto, "
+									+ "datainizionoleggio, datafinenoleggio, chilometraggiolimitato, chilometriprevisti, rifornimento, acconto, "
 									+ "chiuso, costo, assicurazioneavanzata) values(" 
 									+ "'" + entity.getOperatore().getUsername() + "', "
 									+ "'" + entity.getCliente().getCodicePatente() + "', "
@@ -26,7 +26,7 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 									+ "'" + entity.getDataInizioNoleggio() + "', "
 									+ "'" + entity.getDataFineNoleggio() + "', "
 									+ entity.isChilometraggioLimitato() + ", "
-									+ entity.getChilometraggio() + ", "
+									+ entity.getChilometriPrevisti() + ", " 
 									+ entity.getRifornimento().getIndex() + ", "
 									+ entity.getAcconto()
 									+ ");");
@@ -46,7 +46,7 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 				  "DataStipula = '" + entity.getDataStipula() + "', " +
 				  "DataInizioNoleggio = '" + entity.getDataInizioNoleggio() + "', " +
 				  "ChilometraggioLimitato = " + entity.isChilometraggioLimitato() + ", " +
-				  "Chilometraggio = " + entity.getChilometraggio() + ", " +
+				  "ChilometriPrevisti = " + entity.getChilometriPrevisti() + ", " +
 				  "Rifornimento = " + entity.getRifornimento().getIndex() + ", " +
 				  "Acconto = " + entity.getAcconto() + ", " +
 				  "Chiuso = " + entity.isChiuso() + ", " +
@@ -58,7 +58,8 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 			connection.executeUpdateQuery("insert into optional_contratto values (" + entity.getId() + ", " + o.getId() + ");");
 		}
 		if (entity.getDataChiusura() != null) {
-			connection.executeUpdateQuery("update contratto set datachiusura = '" + entity.getDataChiusura() + "' where id = " + entity.getId() + ";");
+			connection.executeUpdateQuery("update contratto set datachiusura = '" + entity.getDataChiusura() + "', chilometriPercorsi = "
+					+ entity.getChilometriPercorsi() + " where id = " + entity.getId() + ";");
 		}
 	}
 	
@@ -88,7 +89,8 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 				contratto.setDataInizioNoleggio(DateHelper.dateToLocalDate(rs.getDate("datainizionoleggio")));
 				contratto.setDataFineNoleggio(DateHelper.dateToLocalDate(rs.getDate("dataFineNoleggio")));
 				contratto.setChilometraggioLimitato(rs.getBoolean("chilometraggiolimitato"));
-				contratto.setChilometraggio(rs.getInt("chilometraggio"));
+				contratto.setChilometriPrevisti(rs.getInt("chilometriprevisti"));
+				contratto.setChilometriPercorsi(rs.getInt("chilometripercorsi"));
 				contratto.setRifornimento(Rifornimento.getRifornimento(rs.getInt("rifornimento")));
 				contratto.setAcconto(rs.getFloat("acconto"));
 				contratto.setChiuso(rs.getBoolean("chiuso"));

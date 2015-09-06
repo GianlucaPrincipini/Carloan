@@ -21,9 +21,8 @@ public class ApplicationServiceCliente extends ApplicationServiceEntity<Cliente>
 	@Override
 	public void create(Cliente entity) {
 		try {
-			if (checker.check(entity))
-				dao.create(entity);
-			else throw new IntegrityException();
+			checker.check(entity);
+			dao.create(entity);
 		} catch(CarloanException e) {
 			e.showError();
 		}
@@ -32,11 +31,9 @@ public class ApplicationServiceCliente extends ApplicationServiceEntity<Cliente>
 	@Override
 	public void update(Cliente entity) {
 		try {
-			if (checker.isModifiable(dao.read(entity.getCodicePatente())))
-				if (checker.check(entity)) {
-					dao.update(entity);
-				} else throw new IntegrityException();
-			else throw new UnmodifiableEntityException();
+			checker.isModifiable(dao.read(entity.getCodicePatente()));
+			checker.check(entity);
+			dao.update(entity);
 		} catch (CarloanException e) {
 			e.showError();
 		}
@@ -45,9 +42,8 @@ public class ApplicationServiceCliente extends ApplicationServiceEntity<Cliente>
 	@Override
 	public void delete(Cliente entity) {
 		try {
-			if (checker.isModifiable(entity))
-				dao.delete(entity.getCodicePatente());
-			else throw new UnmodifiableEntityException();
+			checker.isModifiable(entity);
+			dao.delete(entity.getCodicePatente());
 		} catch (CarloanException e) {
 			e.showError();
 		}
