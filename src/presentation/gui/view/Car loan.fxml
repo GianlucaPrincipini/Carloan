@@ -26,6 +26,8 @@
                 <Menu mnemonicParsing="false" text="Modifica">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Tariffario" />
+                        <MenuItem mnemonicParsing="false" text="Incidenza Fasce" />
+                        <MenuItem mnemonicParsing="false" text="Costi carburante" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="?">
