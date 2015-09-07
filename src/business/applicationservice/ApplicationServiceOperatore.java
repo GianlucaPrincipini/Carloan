@@ -1,7 +1,10 @@
 package business.applicationservice;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import integration.Encrypt;
 import integration.dao.DAOFactory;
 import business.checker.CheckerFactory;
 import business.entity.Operatore;
@@ -53,6 +56,23 @@ public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operat
 	@Override
 	public Operatore read(String pk) {
 		return dao.read(pk);
+	}
+	
+	public boolean login(Operatore operatore) {
+		Operatore toLog = dao.read(operatore.getUsername());
+		if (toLog != null) {
+			try {
+				if (toLog.getPassword() == Encrypt.getEncryptedString(operatore.getPassword()))
+					return true;
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
 }

@@ -202,7 +202,7 @@ public class Contratto implements Entity {
 		return id + ", '" + operatore.getUsername() + "', '" + cliente.getCodicePatente() + "', '" + vettura.getTarga() + "', " + agenziaNoleggio.getId() + ", " 
 				+ agenziaConsegna.getId() + ", '" 
 				+ dataStipula + "', '" + dataInizioNoleggio + "', '" + dataFineNoleggio + "', " + chilometraggioLimitato + 
-				", " + chilometraggio + ", " + rifornimento.getIndex() + ", " + acconto + ", " + chiuso + ", " + costo + ", " + assicurazioneAvanzata;
+				", " + chilometriPrevisti + ", " + rifornimento.getIndex() + ", " + acconto + ", " + chiuso + ", " + costo + ", " + assicurazioneAvanzata;
 	}
 	
 

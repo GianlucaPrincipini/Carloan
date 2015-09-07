@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public enum Rifornimento {
 	
-	STANDARD(0), PIENO_ANTICIPO(1), RESTITUZIONE_PIENO(2);
+	STANDARD(0), PIENO_ANTICIPO(1);
 	
 	private int index;
 	
