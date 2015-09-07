@@ -111,7 +111,7 @@ create table contratto(
 	datainizionoleggio date,
 	dataFineNoleggio date,
 	datachiusura date,
-	chilometriPercorsi 
+	chilometriPercorsi integer,
 	chilometraggiolimitato boolean,
 	chilometriPrevisti integer,
 	rifornimento integer,
@@ -127,7 +127,7 @@ create table contratto(
 );
 
 insert into contratto(operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, datainizionoleggio, datafinenoleggio,
-datachiusura, chilometraggiolimitato, chilometraggio, rifornimento, acconto, chiuso, costo, assicurazioneavanzata)
+datachiusura, chilometraggiolimitato, chilometriprevisti, rifornimento, acconto, chiuso, costo, assicurazioneavanzata)
 values ("Admin", "1234567890", "ED000BA", 1, 1, "2015-08-09", "2015-08-15", "2015-08-25", "2015-08-25", 1, 25, 1, 0, 1, 50, 0);
 
 create table optional_contratto(

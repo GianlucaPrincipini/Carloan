@@ -16,7 +16,7 @@ public class Main extends Application {
 			
 			Class<?> mainClass = getClass();
 			
-			Parent root = fxmlLoader.load(mainClass.getResource("Login.fxml"));
+			Parent root = fxmlLoader.load(mainClass.getResource("/presentation/gui/view/Login.fxml"));
 			stage.setTitle("Carloan Login");
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
