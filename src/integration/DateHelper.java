@@ -43,6 +43,10 @@ public class DateHelper {
 	    	year = Integer.parseInt(dateString[2]);
 	    	return new LocalDate(year, month, day);
 	    }
+	    
+	    public static String dateAsString(LocalDate date){
+	    	return date.getYear() + "/" + date.getMonthOfYear() + "/" + date.getDayOfMonth();
+	    }
 
 	    
 	    public static void main(String[] args) {

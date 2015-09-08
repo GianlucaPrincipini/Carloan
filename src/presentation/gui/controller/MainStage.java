@@ -6,7 +6,9 @@ import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
+import presentation.gui.controller.table.TableContratto;
 import business.entity.Cliente;
+import business.entity.Contratto;
 import business.entity.Entity;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -48,29 +50,7 @@ public class MainStage implements Initializable {
 	@FXML 
 	private TabPane tabPane;
 
-	@FXML
-	private TableView tabContratti;
 	
-	@FXML
-	private TableView<Cliente> tabClienti;
-	
-	@FXML
-	private TableView tabAgenzie;
-	
-	@FXML
-	private TableView tabModelli;
-	
-	@FXML
-	private TableView tabVetture;
-	
-	@FXML
-	private TableView tabFasce;
-	
-	@FXML
-	private TableView tabOptional;
-	
-	@FXML
-	private TableView tabOperatori;
 	
 	@FXML
 	public void onAggiungi() {
@@ -92,7 +72,11 @@ public class MainStage implements Initializable {
 		@Override
 		public void changed(ObservableValue observable, Number oldValue,
 				Number newValue) {
-			if ((Integer) newValue == 1) {
+			if ((Integer) newValue == 0){
+				ObservableList<Contratto> contratti = FXCollections.observableList((List<Contratto>) controller.processRequest("ReadAllContratti"));
+				new TableContratto(contratti);
+			}
+			else if ((Integer) newValue == 1) {
 				List<Cliente> clienti = (List<Cliente>) controller.processRequest("ReadAllClienti");
 				System.out.println(clienti);
 				ObservableList<Cliente> obsClienti = FXCollections.observableList(clienti);
