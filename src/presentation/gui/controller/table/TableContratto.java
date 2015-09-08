@@ -19,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
+
 public class TableContratto {
 
 	@FXML
@@ -101,8 +102,16 @@ public class TableContratto {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public TableContratto(ObservableList<Contratto> entities){
+		System.out.println(id);
+		System.out.println(entities);
 		
-        id.setCellValueFactory(new PropertyValueFactory<Contratto,String>("id"));
+		/*
+        id.setCellValueFactory(new Callback<CellDataFeatures<Contratto, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<Contratto, String> c) {
+            	return new ReadOnlyObjectWrapper(c.getValue().getId());
+     		}
+        });
+        */
         operatore.setCellValueFactory(new Callback<CellDataFeatures<Contratto, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Contratto, String> c) {
             	return new ReadOnlyObjectWrapper(c.getValue().getOperatore().getUsername());
