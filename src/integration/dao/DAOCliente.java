@@ -15,6 +15,14 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 
 	
 	public  void create(Cliente entity){
+		ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
+				+ "'carloan' AND   TABLE_NAME = 'persona'");
+		try {
+			rs.next();
+			entity.setId(rs.getInt(1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		connection.executeUpdateQuery("insert into persona(nome, cognome, datanascita, numtelefono, email)"
 									+ " values(" 
 									+ "'" + entity.getNome() + "', "
@@ -23,6 +31,7 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 									+ "'" + entity.getNumTelefono() + "', "
 									+ "'" + entity.getEMail() + "'"
 									+ ");");
+		
 		connection.executeUpdateQuery("INSERT INTO cliente(id, codicePatente) values("
 									+ entity.getId() + ", "
 									+ "'" + entity.getCodicePatente()
@@ -48,6 +57,7 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 				cliente.setCodicePatente(pk);
 				ResultSet anagrafica = connection.executeReadQuery("select * from persona where id = " + rs.getInt(1) + ";");
 				while(anagrafica.next()) {
+					cliente.setId(anagrafica.getInt("id"));
 					cliente.setNome(anagrafica.getString("nome"));
 					cliente.setCognome(anagrafica.getString("cognome"));
 					cliente.setDataNascita(DateHelper.dateToLocalDate(anagrafica.getDate("datanascita")));

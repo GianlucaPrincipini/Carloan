@@ -8,8 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.SchermataCliente">
    <children>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="130.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +19,7 @@
             </ImageView>
          </children>
       </HBox>
-      <GridPane alignment="CENTER" layoutY="137.0" prefHeight="434.0" prefWidth="900.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="120.0">
+      <GridPane alignment="CENTER" layoutX="50.0" layoutY="236.0" prefHeight="296.0" prefWidth="864.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="105.0">
          <children>
             <Label text="Nome " />
             <TextField fx:id="nome" GridPane.columnIndex="1" />
@@ -49,7 +48,7 @@
       </GridPane>
       <BorderPane layoutY="545.0" prefHeight="192.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <center>
-            <Button mnemonicParsing="false" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
+            <Button fx:id="conferma" mnemonicParsing="false" onMouseClicked="#onConferma" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="200.0" smooth="false">
                      <image>

@@ -13,7 +13,7 @@ import integration.dao.DAOFactory;
 
 public class ApplicationServiceCliente extends ApplicationServiceEntity<Cliente> {
 	@SuppressWarnings("unchecked")
-	protected ApplicationServiceCliente() throws InstantiationException, IllegalAccessException {
+	public ApplicationServiceCliente() throws InstantiationException, IllegalAccessException {
 		super((DAO<Cliente>) DAOFactory.buildDao(Cliente.class), (Checker<Cliente>) CheckerFactory.buildChecker(Cliente.class));
 	}
 

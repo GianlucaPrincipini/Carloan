@@ -11,7 +11,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.MainStage">
    <children>
       <VBox layoutX="-3.0" layoutY="-5.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -47,7 +47,7 @@
             </ImageView>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
               <items>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="aggiungi" mnemonicParsing="false" onMouseClicked="#onAggiungi">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                            <image>
@@ -91,9 +91,9 @@
                   <Blend mode="EXCLUSION" opacity="0.15" />
                </effect>
             </ToolBar>
-            <TabPane layoutX="2.0" layoutY="177.0" prefHeight="515.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" layoutX="2.0" layoutY="177.0" prefHeight="515.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab closable="false">
+                <Tab closable="false" text="Contratti">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -129,15 +129,8 @@
                               </ScrollPane>
                            </children></AnchorPane>
                   </content>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="100.0" preserveRatio="true">
-                           <image>
-                              <Image url="@contents/contratti.bmp" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                 </Tab>
-                  <Tab>
+                  <Tab text="Clienti">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -163,15 +156,8 @@
                            </children>
                         </AnchorPane>
                      </content>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="60.0">
-                           <image>
-                              <Image url="@contents/clienti.bmp" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Tab>
-                  <Tab>
+                  <Tab text="Vetture">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -195,15 +181,8 @@
                            </children>
                         </AnchorPane>
                      </content>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="60.0" preserveRatio="true">
-                           <image>
-                              <Image url="@contents/vetture.bmp" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Tab>
-                  <Tab>
+                  <Tab text="Modelli">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -234,15 +213,8 @@
                            </children>
                         </AnchorPane>
                      </content>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="60.0">
-                           <image>
-                              <Image url="@contents/modelli.bmp" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Tab>
-                  <Tab>
+                  <Tab text="Fasce">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -266,15 +238,8 @@
                            </children>
                         </AnchorPane>
                      </content>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="42.0">
-                           <image>
-                              <Image url="@contents/fasce.bmp" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Tab>
-                  <Tab>
+                  <Tab text="Optionals">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -296,15 +261,8 @@
                            </children>
                         </AnchorPane>
                      </content>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="78.0">
-                           <image>
-                              <Image url="@contents/optional.bmp" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Tab>
-                  <Tab>
+                  <Tab text="Agenzie">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -327,15 +285,8 @@
                            </children>
                         </AnchorPane>
                      </content>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="60.0">
-                           <image>
-                              <Image url="@contents/agenzie.bmp" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Tab>
-                  <Tab>
+                  <Tab text="Operatori">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -363,13 +314,6 @@
                            </children>
                         </AnchorPane>
                      </content>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="78.0">
-                           <image>
-                              <Image url="@contents/operatori.bmp" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Tab>
               </tabs>
                <effect>

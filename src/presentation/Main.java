@@ -3,6 +3,10 @@ package presentation;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
+import business.applicationservice.ApplicationServiceCliente;
+import business.entity.Cliente;
+import presentation.frontcontroller.CarloanFrontController;
+import presentation.frontcontroller.FrontController;
 import integration.Encrypt;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,16 +20,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			
-			Class<?> mainClass = getClass();
-			
-			Parent root = fxmlLoader.load(mainClass.getResource("/presentation/gui/view/Login.fxml"));
-			stage.setTitle("Carloan Login");
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-			
+			Cliente cli = new ApplicationServiceCliente().read("1234567890");
+			System.out.println(cli);
+			CarloanFrontController.getInstance().processRequest("MostraMainStage");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

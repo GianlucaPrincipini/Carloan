@@ -5,6 +5,8 @@ import integration.Encrypt;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import presentation.frontcontroller.CarloanFrontController;
+import presentation.frontcontroller.FrontController;
 import presentation.gui.CarloanStage;
 import business.applicationservice.ApplicationServiceOperatore;
 import business.entity.Operatore;
@@ -31,25 +33,23 @@ public class Login implements Initializable {
 	@SuppressWarnings("unused")
 	@FXML
 	public void onLogin() {
+		FrontController fController = CarloanFrontController.getInstance();
 		Operatore operatore = new Operatore();
 		operatore.setUsername(username.getText());
 		operatore.setPassword(password.getText());
-		try {
-			if (new ApplicationServiceOperatore().login(operatore)) {
-				System.out.println("loggato");
-			} else {
-				((Stage) root.getScene().getWindow()).close();
-			}
-		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		if (fController.processRequest("Login", operatore) != null) {
+			System.out.println("loggato");
+			((Stage) root.getScene().getWindow()).close();
+			fController.processRequest("MostraMainStage");
+		} else {
+			((Stage) root.getScene().getWindow()).close();
 		}
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+
 	}
 	
 	
