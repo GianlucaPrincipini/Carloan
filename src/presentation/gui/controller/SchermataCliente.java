@@ -59,9 +59,11 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 		cliente.setDataNascita(new LocalDate(datanascita.getYear(), datanascita.getMonthValue(), datanascita.getDayOfMonth()));
 		if (!edit)
 			controller.processRequest("AggiungiCliente", cliente);
-		else
+		else {
 			controller.processRequest("ModificaCliente", cliente);
-		((CarloanStage)root.getScene().getWindow()).close();
+			edit = false;
+		}
+		close();
 	}
 	
 	
@@ -79,8 +81,4 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 	}
 
 
-	@Override
-	public void onCancel() {
-		((Stage)root.getScene().getWindow()).close();
-	}
 }

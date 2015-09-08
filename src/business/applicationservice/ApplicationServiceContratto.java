@@ -29,7 +29,7 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected ApplicationServiceContratto() throws InstantiationException, IllegalAccessException {
+	public ApplicationServiceContratto() throws InstantiationException, IllegalAccessException {
 		super(DAOFactory.buildDao(Contratto.class), CheckerFactory.buildChecker(Contratto.class));
 	}
 

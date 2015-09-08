@@ -72,11 +72,16 @@ public class MainStage implements Initializable {
 		@Override
 		public void changed(ObservableValue observable, Number oldValue,
 				Number newValue) {
+<<<<<<< HEAD
 			if ((Integer) newValue == 0){
 				ObservableList<Contratto> contratti = FXCollections.observableList((List<Contratto>) controller.processRequest("ReadAllContratti"));
 				new TableContratto(contratti);
 			}
 			else if ((Integer) newValue == 1) {
+=======
+			
+			if ((Integer) newValue == 1) {
+>>>>>>> origin/master
 				List<Cliente> clienti = (List<Cliente>) controller.processRequest("ReadAllClienti");
 				System.out.println(clienti);
 				ObservableList<Cliente> obsClienti = FXCollections.observableList(clienti);

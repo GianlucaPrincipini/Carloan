@@ -12,7 +12,7 @@ import business.exception.IntegrityException;
 public class ApplicationServiceVettura extends ApplicationServiceEntity<Vettura> implements Gestione<Vettura>{
 
 	@SuppressWarnings("unchecked")
-	protected ApplicationServiceVettura() throws InstantiationException, IllegalAccessException {
+	public ApplicationServiceVettura() throws InstantiationException, IllegalAccessException {
 		super(DAOFactory.buildDao(Vettura.class), CheckerFactory.buildChecker(Vettura.class));
 	}
 
