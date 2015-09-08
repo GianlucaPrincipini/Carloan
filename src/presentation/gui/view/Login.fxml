@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="325.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation/gui/controller/Login.fxml">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="325.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.Login">
    <children>
       <AnchorPane prefHeight="350.0" prefWidth="485.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -41,7 +41,7 @@
                   <Image url="@contents/carloanLogo.bmp" />
                </image>
             </ImageView>
-            <Button layoutX="167.0" layoutY="228.0" mnemonicParsing="false">
+            <Button fx:id="login" layoutX="167.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#onLogin">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="127.0">
                      <image>

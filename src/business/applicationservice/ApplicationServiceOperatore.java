@@ -13,7 +13,7 @@ import business.exception.IntegrityException;
 public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operatore> implements Gestione<Operatore>{
 
 	@SuppressWarnings("unchecked")
-	protected ApplicationServiceOperatore() throws InstantiationException, IllegalAccessException {
+	public ApplicationServiceOperatore() throws InstantiationException, IllegalAccessException {
 		super(DAOFactory.buildDao(Operatore.class), CheckerFactory.buildChecker(Operatore.class));
 	}
 
@@ -62,7 +62,7 @@ public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operat
 		Operatore toLog = dao.read(operatore.getUsername());
 		if (toLog != null) {
 			try {
-				if (toLog.getPassword() == Encrypt.getEncryptedString(operatore.getPassword()))
+				if (toLog.getPassword().equals(Encrypt.getEncryptedString(operatore.getPassword())))
 					return true;
 			} catch (NoSuchAlgorithmException e) {
 				// TODO Auto-generated catch block

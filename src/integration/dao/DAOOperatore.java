@@ -74,6 +74,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 					operatore = new Operatore();
 				
 				operatore.setUsername(rs.getString("username"));
+				operatore.setPassword(rs.getString("password"));
 				operatore.setAgenzia(new DAOAgenzia().read(rs.getString("agenzia")));
 				ResultSet anagrafica = connection.executeReadQuery("select * from persona where id = " + rs.getInt("id") + ";");
 				while(anagrafica.next()) {

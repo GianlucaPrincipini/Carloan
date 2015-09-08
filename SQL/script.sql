@@ -88,7 +88,7 @@ create table profilo(
 	foreign key(id) references persona(id) on delete cascade on update cascade
 );
 
-insert into profilo values(1, "Admin", "4a7d1ed414474e4033ac29ccb8653d9b");
+insert into profilo values(1, "Admin", "5f4dcc3b5aa765d61d8327deb882cf99");
 
 create table operatore(
 	username varchar(50) primary key,

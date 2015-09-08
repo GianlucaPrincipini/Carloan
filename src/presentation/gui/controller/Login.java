@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import presentation.gui.CarloanStage;
+import business.applicationservice.ApplicationServiceOperatore;
 import business.entity.Operatore;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +24,7 @@ public class Login implements Initializable {
 	
 	@FXML
 	private TextField password;
-	
+
 	@FXML
 	private Button login;
 
@@ -33,10 +34,15 @@ public class Login implements Initializable {
 		Operatore operatore = new Operatore();
 		operatore.setUsername(username.getText());
 		operatore.setPassword(password.getText());
-		if (true) {
-			// Fa il login e apre 
-		} else {
-			((CarloanStage) root.getScene().getWindow()).close();
+		try {
+			if (new ApplicationServiceOperatore().login(operatore)) {
+				System.out.println("loggato");
+			} else {
+				((Stage) root.getScene().getWindow()).close();
+			}
+		} catch (InstantiationException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
