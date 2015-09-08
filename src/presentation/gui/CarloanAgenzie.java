@@ -1,13 +1,13 @@
 package presentation.gui;
 
-public class CarloanClienti extends CarloanStage{
+public class CarloanAgenzie extends CarloanStage{
 	
-	public CarloanClienti(){
+	public CarloanAgenzie(){
 		super("SchermataCliente.fxml", null);
 		setTitle("Immissione cliente");
 	}
 	
-	public CarloanClienti(Object entity) {
+	public CarloanAgenzie(Object entity) {
 		super("SchermataCliente.fxml", entity);
 		setTitle("Immissione cliente");
 	}

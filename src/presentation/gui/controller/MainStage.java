@@ -92,6 +92,7 @@ public class MainStage implements Initializable {
 		@Override
 		public void changed(ObservableValue observable, Number oldValue,
 				Number newValue) {
+			
 			if ((Integer) newValue == 1) {
 				List<Cliente> clienti = (List<Cliente>) controller.processRequest("ReadAllClienti");
 				System.out.println(clienti);

@@ -19,7 +19,7 @@ public class ApplicationServiceModello extends ApplicationServiceEntity<Modello>
 	private IncidenzaFascia incidenza = IncidenzaFascia.getInstance();
 	
 	@SuppressWarnings("unchecked")
-	protected ApplicationServiceModello() throws InstantiationException, IllegalAccessException {
+	public ApplicationServiceModello() throws InstantiationException, IllegalAccessException {
 		super(DAOFactory.buildDao(Modello.class), CheckerFactory.buildChecker(Modello.class));
 	}
 
