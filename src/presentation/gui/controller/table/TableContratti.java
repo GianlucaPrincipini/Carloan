@@ -97,7 +97,7 @@ public class TableContratti implements TableController{
 		
         id.setCellValueFactory(new Callback<CellDataFeatures<Contratto, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Contratto, String> c) {
-            	return new ReadOnlyObjectWrapper(c.getValue().getId());
+            	return new ReadOnlyObjectWrapper(Integer.toString(c.getValue().getId()));
      		}
         });
       
@@ -192,7 +192,6 @@ public class TableContratti implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
-		// TODO Auto-generated method stub
-		return null;
+		return id.getCellObservableValue(tabContratti.getSelectionModel().getSelectedIndex()).getValue().toString();
 	}
 }

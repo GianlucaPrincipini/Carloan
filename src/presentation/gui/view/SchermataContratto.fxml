@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -19,46 +20,6 @@
             </ImageView>
          </children>
       </HBox>
-      <GridPane alignment="CENTER" layoutX="68.0" layoutY="236.0" prefHeight="296.0" prefWidth="864.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="92.0">
-         <children>
-            <Label text="Cliente" GridPane.columnIndex="2" />
-            <Label text="Agenzia Noleggio" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label text="Agenzia Consegna" GridPane.rowIndex="2" />
-            <Label text="Data Stipula" GridPane.rowIndex="3" />
-            <Label text="Data Inizio Noleggio" GridPane.rowIndex="4" />
-            <Label text="Data Chiusura" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label text="Data  Fine Noleggio" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label text="Operatore" />
-            <Label text="Label" GridPane.columnIndex="1" />
-            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
-            <Label text="Vettura" GridPane.rowIndex="1" />
-            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Label text="Acconto" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Chlometraggio Limitato" GridPane.rowIndex="5" />
-            <TextField promptText="Numero chilometri" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-         </children>
-         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
       <BorderPane layoutY="545.0" prefHeight="192.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <center>
             <Button fx:id="conferma" mnemonicParsing="false" onMouseClicked="#onConferma" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
@@ -80,6 +41,63 @@
             </Button>
          </center>
       </BorderPane>
+      <GridPane alignment="CENTER" layoutX="68.0" layoutY="236.0" prefHeight="348.0" prefWidth="864.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="92.0">
+         <children>
+            <Label text="Cliente" GridPane.columnIndex="2" />
+            <Label text="Agenzia Noleggio" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="Agenzia Consegna" GridPane.rowIndex="2" />
+            <Label text="Data Stipula" GridPane.rowIndex="3" />
+            <Label text="Data Inizio Noleggio" GridPane.rowIndex="4" />
+            <Label text="Data Chiusura" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="Data  Fine Noleggio" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="Operatore" />
+            <Label text="Label" GridPane.columnIndex="1" />
+            <Label text="Vettura" GridPane.rowIndex="1" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label text="Acconto" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <CheckBox mnemonicParsing="false" text="Chlometraggio Limitato" GridPane.rowIndex="5" />
+            <TextField promptText="Numero chilometri previsti" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Numero chilometri percorsi" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label text="Rifornimento" GridPane.rowIndex="6" />
+            <CheckBox mnemonicParsing="false" text="Assicurazione Avanzata" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" text="Costo" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ComboBox prefWidth="150.0" GridPane.columnIndex="3" />
+            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
       <Label layoutX="10.0" layoutY="10.0" text="Telefono" />
    </children>
 </AnchorPane>

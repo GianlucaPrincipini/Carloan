@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
 import presentation.gui.controller.table.TableContratti;
+import presentation.gui.controller.table.TableController;
 import business.entity.Cliente;
 import business.entity.Contratto;
 import business.entity.Entity;
@@ -21,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 public class MainStage implements Initializable {
 	
@@ -65,6 +67,7 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void onModifica() {
+		System.out.println(tableController.getPrimaryKey());
 		controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText());
 	}
 	
@@ -75,25 +78,28 @@ public class MainStage implements Initializable {
 
 	private class TabChangeListener implements ChangeListener<Number> {
 
+		TabChangeListener() {
+			changed(null, 0, 0);
+		}
+		
 		@Override
 		public void changed(ObservableValue observable, Number oldValue,
 				Number newValue) {
-			FXMLLoader loadedTable = new FXMLLoader();
+			FXMLLoader loadedTable = null;
+			Pane tabella = null;
 			if ((Integer) newValue == 0){
 				try {
-					paneContratti.getChildren().setAll(loadedTable.load(Class.class.getResource("/presentation/gui/view/tabelle/TableContratti.fxml")));
-					
+					paneContratti.getChildren().clear();
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableContratti.fxml"));
+					tabella = loadedTable.load();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			} else if ((Integer) newValue == 1) {
+
 			}
-			else if ((Integer) newValue == 1) {
-				List<Cliente> clienti = (List<Cliente>) controller.processRequest("ReadAllClienti");
-				System.out.println(clienti);
-				ObservableList<Cliente> obsClienti = FXCollections.observableList(clienti);
-				//tabClienti.setItems(obsClienti);
-			}
-			tableController = (TableController) loadedTable.getController();
+			paneContratti.getChildren().setAll(tabella);
+			tableController = loadedTable.<TableController>getController();
 		}
 
 	}

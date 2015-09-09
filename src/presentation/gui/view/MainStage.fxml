@@ -57,7 +57,7 @@
                      </graphic>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="20.0" />
-                  <Button mnemonicParsing="false">
+                  <Button mnemonicParsing="false" onMouseClicked="#onModifica">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                            <image>
