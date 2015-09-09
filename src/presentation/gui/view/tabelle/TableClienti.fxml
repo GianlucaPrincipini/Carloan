@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane layoutX="11.0" layoutY="15.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
+               <children>
+                  <TableView layoutX="-14.0" prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn prefWidth="100.0" text="Id" />
+                        <TableColumn prefWidth="100.0" text="Nome" />
+                        <TableColumn prefWidth="100.0" text="Cognome" />
+                        <TableColumn prefWidth="100.0" text="Data di nascita" />
+                        <TableColumn prefWidth="100.0" text="Codice patente" />
+                        <TableColumn prefWidth="150.0" text="Numero di telefono" />
+                        <TableColumn prefWidth="100.0" text="e-mail" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -12,7 +12,7 @@ public class CarloanFrontController implements FrontController{
 	private static CarloanFrontController frontController;
 	
 
-	private CarloanFrontController(){};
+	public CarloanFrontController(){};
 	
 	public boolean isAdmin() {
 		return userAuthenticated instanceof Amministratore;

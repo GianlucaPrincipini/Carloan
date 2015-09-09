@@ -95,224 +95,42 @@
               <tabs>
                 <Tab closable="false" text="Contratti">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="2150.0">
-                                       <children>
-                                          <TableView layoutX="-131.0" prefHeight="500.0" prefWidth="2150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columns>
-                                              <TableColumn fx:id="id" minWidth="-Infinity" prefWidth="100.0" text="Id" />
-                                              <TableColumn fx:id="operatore" minWidth="-Infinity" prefWidth="100.0" text="Operatore" />
-                                                <TableColumn fx:id="cliente" minWidth="-Infinity" prefWidth="100.0" text="Cliente" />
-                                                <TableColumn fx:id="targaVettura" minWidth="-Infinity" prefWidth="100.0" text="Targa vettura" />
-                                                <TableColumn fx:id="agenziaNoleggio" minWidth="-Infinity" prefWidth="150.0" text="Agenzia noleggio" />
-                                                <TableColumn fx:id="agenziaConsegna" minWidth="-Infinity" prefWidth="150.0" text="Agenzia consegna" />
-                                                <TableColumn fx:id="dataStipula" minWidth="-Infinity" prefWidth="100.0" text="Data stipula" />
-                                                <TableColumn fx:id="dataInizioNoleggio" minWidth="-Infinity" prefWidth="150.0" text="Data inizio noleggio" />
-                                                <TableColumn fx:id="dataFineNoleggio" minWidth="-Infinity" prefWidth="150.0" text="Data fine noleggio" />
-                                                <TableColumn fx:id="dataChiusura" minWidth="-Infinity" prefWidth="100.0" text="Data chiusura" />
-                                                <TableColumn fx:id="limitazioneChilometraggio" minWidth="-Infinity" prefWidth="200.0" text="Limitazione chilometraggio" />
-                                                <TableColumn fx:id="chilometriPrevisti" minWidth="-Infinity" prefWidth="150.0" text="Chilometri previsti" />
-                                                <TableColumn fx:id="chilometriPercorsi" minWidth="-Infinity" prefWidth="150.0" text="Chilometri percorsi" />
-                                                <TableColumn fx:id="rifornimento" minWidth="-Infinity" prefWidth="100.0" text="Rifornimento" />
-                                                <TableColumn fx:id="assicurazioneAvanzata" minWidth="-Infinity" prefWidth="200.0" text="Assicurazione avanzata" />
-                                                <TableColumn fx:id="acconto" minWidth="-Infinity" prefWidth="100.0" text="Acconto" />
-                                                <TableColumn fx:id="costo" minWidth="-Infinity" prefWidth="100.0" text="Costo" />
-                                                <TableColumn fx:id="chiuso" minWidth="-Infinity" prefWidth="100.0" text="Chiuso" />
-                                            </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                              </ScrollPane>
-                           </children></AnchorPane>
+                    <AnchorPane fx:id="paneContratti" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
                   <Tab text="Clienti">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
-                                       <children>
-                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn prefWidth="100.0" text="Id" />
-                                                <TableColumn prefWidth="100.0" text="Nome" />
-                                                <TableColumn prefWidth="100.0" text="Cognome" />
-                                                <TableColumn prefWidth="100.0" text="Data di nascita" />
-                                                <TableColumn prefWidth="100.0" text="Codice patente" />
-                                                <TableColumn prefWidth="150.0" text="Numero di telefono" />
-                                                <TableColumn prefWidth="100.0" text="e-mail" />
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="paneClienti" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                   <Tab text="Vetture">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
-                                       <children>
-                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn prefWidth="100.0" text="Targa" />
-                                                <TableColumn prefWidth="100.0" text="Modello" />
-                                                <TableColumn prefWidth="150.0" text="Agenzia localizzazione" />
-                                                <TableColumn prefWidth="100.0" text="Chilometraggio" />
-                                                <TableColumn prefWidth="100.0" text="Stato" />
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="paneVetture" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                   <Tab text="Modelli">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="477.0" prefWidth="1325.0">
-                                       <children>
-                                          <TableView prefHeight="500.0" prefWidth="2000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="Id" />
-                                                <TableColumn prefWidth="100.0" text="Marca" />
-                                                <TableColumn prefWidth="100.0" text="Nome" />
-                                                <TableColumn prefWidth="125.0" text="Tipo carburante" />
-                                                <TableColumn prefWidth="150.0" text="Capacità bagagliaio (l)" />
-                                                <TableColumn prefWidth="125.0" text="Numero posti" />
-                                                <TableColumn prefWidth="125.0" text="Numero porte" />
-                                                <TableColumn prefWidth="75.0" text="Potenza" />
-                                                <TableColumn prefWidth="75.0" text="Peso" />
-                                                <TableColumn prefWidth="150.0" text="Trasmissione automatica" />
-                                                <TableColumn prefWidth="150.0" text="Emissioni CO2 (kg/m³)" />
-                                                <TableColumn prefWidth="75.0" text="Fascia" />
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="paneModelli" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                   <Tab text="Fasce">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
-                                       <children>
-                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn prefWidth="100.0" text="Id" />
-                                                <TableColumn prefWidth="100.0" text="Nome" />
-                                                <TableColumn prefWidth="100.0" text="Tariffa base" />
-                                                <TableColumn prefWidth="100.0" text="Indice minimo" />
-                                                <TableColumn prefWidth="100.0" text="Indice massimo" />
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="paneFasce" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                   <Tab text="Optionals">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
-                                       <children>
-                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn prefWidth="100.0" text="Id" />
-                                                <TableColumn prefWidth="100.0" text="Tipo" />
-                                                <TableColumn prefWidth="100.0" text="Costo" />
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="paneOptionals" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                   <Tab text="Agenzie">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
-                                       <children>
-                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn prefWidth="100.0" text="Id" />
-                                                <TableColumn prefWidth="100.0" text="Città" />
-                                                <TableColumn prefWidth="100.0" text="Indirizzo" />
-                                                <TableColumn prefWidth="150.0" text="Numero di telefono" />
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="paneAgenzie" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
                   <Tab text="Operatori">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="1.0" layoutY="5.0" prefHeight="511.0" prefWidth="1284.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1292.0">
-                                       <children>
-                                          <TableView prefHeight="506.0" prefWidth="1292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn prefWidth="100.0" text="Id" />
-                                                <TableColumn prefWidth="100.0" text="Username" />
-                                                <TableColumn prefWidth="100.0" text="Agenzia" />
-                                                <TableColumn prefWidth="100.0" text="Amministratore" />
-                                                <TableColumn prefWidth="100.0" text="Nome" />
-                                                <TableColumn prefWidth="100.0" text="Cognome" />
-                                                <TableColumn prefWidth="100.0" text="Data di nascita" />
-                                                <TableColumn prefWidth="150.0" text="Numero di telefono" />
-                                                <TableColumn prefWidth="100.0" text="E-mail" />
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="paneOperatori" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
               </tabs>

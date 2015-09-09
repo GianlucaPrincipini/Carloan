@@ -1,12 +1,13 @@
 package presentation.gui.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
-import presentation.gui.controller.table.TableContratto;
+import presentation.gui.controller.table.TableContratti;
 import business.entity.Cliente;
 import business.entity.Contratto;
 import business.entity.Entity;
@@ -15,9 +16,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
 public class MainStage implements Initializable {
 	
@@ -50,6 +53,8 @@ public class MainStage implements Initializable {
 	@FXML 
 	private TabPane tabPane;
 
+	@FXML
+	private AnchorPane paneContratti;
 	
 	
 	
@@ -74,8 +79,11 @@ public class MainStage implements Initializable {
 		public void changed(ObservableValue observable, Number oldValue,
 				Number newValue) {
 			if ((Integer) newValue == 0){
-				ObservableList<Contratto> contratti = FXCollections.observableList((List<Contratto>) controller.processRequest("ReadAllContratti"));
-				new TableContratto(contratti);
+				try {
+					paneContratti.getChildren().setAll(FXMLLoader.load(Class.class.getResource("/presentation/gui/view/tabelle/TableContratti.fxml")));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			else if ((Integer) newValue == 1) {
 				List<Cliente> clienti = (List<Cliente>) controller.processRequest("ReadAllClienti");

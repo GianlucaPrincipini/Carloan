@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<ScrollPane prefHeight="406.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <AnchorPane>
+         <children>
+            <TableView>
+               <columns>
+                  <TableColumn prefWidth="100.0" text="Id" />
+                  <TableColumn prefWidth="100.0" text="Username" />
+                  <TableColumn prefWidth="100.0" text="Agenzia" />
+                  <TableColumn prefWidth="100.0" text="Amministratore" />
+                  <TableColumn prefWidth="100.0" text="Nome" />
+                  <TableColumn prefWidth="100.0" text="Cognome" />
+                  <TableColumn prefWidth="100.0" text="Data di nascita" />
+                  <TableColumn prefWidth="150.0" text="Numero di telefono" />
+                  <TableColumn prefWidth="100.0" text="E-mail" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

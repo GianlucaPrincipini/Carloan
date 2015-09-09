@@ -19,20 +19,30 @@
             </ImageView>
          </children>
       </HBox>
-      <GridPane alignment="CENTER" layoutX="50.0" layoutY="236.0" prefHeight="296.0" prefWidth="864.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="105.0">
+      <GridPane alignment="CENTER" layoutX="68.0" layoutY="236.0" prefHeight="296.0" prefWidth="864.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="92.0">
          <children>
-            <Label text="Nome " />
-            <TextField fx:id="nome" GridPane.columnIndex="1" />
-            <Label text="Cognome" GridPane.columnIndex="2" />
-            <TextField fx:id="cognome" GridPane.columnIndex="3" />
-            <Label text="Data di nascita" GridPane.rowIndex="1" />
-            <DatePicker fx:id="dataDiNascita" prefHeight="39.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Codice patente" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextField fx:id="codicePatente" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Label text="Telefono" GridPane.rowIndex="2" />
-            <TextField fx:id="telefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Email" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="email" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label text="Cliente" GridPane.columnIndex="2" />
+            <Label text="Agenzia Noleggio" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="Agenzia Consegna" GridPane.rowIndex="2" />
+            <Label text="Data Stipula" GridPane.rowIndex="3" />
+            <Label text="Data Inizio Noleggio" GridPane.rowIndex="4" />
+            <Label text="Data Chiusura" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="Data  Fine Noleggio" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="Operatore" />
+            <Label text="Label" GridPane.columnIndex="1" />
+            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
+            <Label text="Vettura" GridPane.rowIndex="1" />
+            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label text="Acconto" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <CheckBox mnemonicParsing="false" text="Chlometraggio Limitato" GridPane.rowIndex="5" />
+            <TextField promptText="Numero chilometri" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -42,6 +52,9 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
@@ -67,5 +80,6 @@
             </Button>
          </center>
       </BorderPane>
+      <Label layoutX="10.0" layoutY="10.0" text="Telefono" />
    </children>
 </AnchorPane>

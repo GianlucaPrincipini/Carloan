@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<ScrollPane prefHeight="402.0" prefWidth="456.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <AnchorPane>
+         <children>
+            <TableView prefHeight="400.0" prefWidth="452.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <columns>
+                  <TableColumn prefWidth="100.0" text="Id" />
+                  <TableColumn prefWidth="100.0" text="Città" />
+                  <TableColumn prefWidth="100.0" text="Indirizzo" />
+                  <TableColumn prefWidth="150.0" text="Numero di telefono" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

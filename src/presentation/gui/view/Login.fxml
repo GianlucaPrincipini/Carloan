@@ -32,8 +32,8 @@
                         <Font name="Consolas" size="19.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="username" promptText="Address" GridPane.columnIndex="1" />
-                  <TextField fx:id="password" layoutX="196.0" layoutY="26.0" promptText="Port" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="username" promptText="Username" GridPane.columnIndex="1" />
+                  <PasswordField fx:id="password" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <ImageView fitHeight="52.0" fitWidth="485.0" layoutX="101.0" layoutY="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

@@ -20,6 +20,7 @@ public abstract class CarloanStage extends Stage implements Target{
 	public CarloanStage(String file, Object entity) {
         Class<?> mainClass = getClass();
         
+
         FXMLLoader fxmlLoader = new FXMLLoader(mainClass.getResource(VIEW_LOCATION + file));
 
         

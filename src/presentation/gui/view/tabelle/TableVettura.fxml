@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane layoutX="11.0" layoutY="15.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane>
+               <children>
+                  <TableView prefHeight="400.0" prefWidth="600.0">
+                     <columns>
+                        <TableColumn prefWidth="100.0" text="Targa" />
+                        <TableColumn prefWidth="100.0" text="Modello" />
+                        <TableColumn prefWidth="190.0" text="Agenzia localizzazione" />
+                        <TableColumn prefWidth="102.0" text="Chilometraggio" />
+                        <TableColumn prefWidth="93.0" text="Stato" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
