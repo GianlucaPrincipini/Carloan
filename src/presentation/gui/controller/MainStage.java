@@ -56,7 +56,7 @@ public class MainStage implements Initializable {
 	@FXML
 	private AnchorPane paneContratti;
 	
-	
+	private TableController tableController;
 	
 	@FXML
 	public void onAggiungi() {
@@ -78,9 +78,11 @@ public class MainStage implements Initializable {
 		@Override
 		public void changed(ObservableValue observable, Number oldValue,
 				Number newValue) {
+			FXMLLoader loadedTable = new FXMLLoader();
 			if ((Integer) newValue == 0){
 				try {
-					paneContratti.getChildren().setAll(FXMLLoader.load(Class.class.getResource("/presentation/gui/view/tabelle/TableContratti.fxml")));
+					paneContratti.getChildren().setAll(loadedTable.load(Class.class.getResource("/presentation/gui/view/tabelle/TableContratti.fxml")));
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -91,6 +93,7 @@ public class MainStage implements Initializable {
 				ObservableList<Cliente> obsClienti = FXCollections.observableList(clienti);
 				//tabClienti.setItems(obsClienti);
 			}
+			tableController = (TableController) loadedTable.getController();
 		}
 
 	}
