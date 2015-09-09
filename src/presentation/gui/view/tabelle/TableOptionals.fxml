@@ -4,16 +4,15 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<ScrollPane prefHeight="403.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="root" prefHeight="403.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.table.TableOptionals">
    <content>
       <AnchorPane>
          <children>
             <TableView>
                <columns>
-                  <TableColumn prefWidth="100.0" text="Id" />
-                  <TableColumn prefWidth="100.0" text="Tipo" />
-                  <TableColumn prefWidth="100.0" text="Costo" />
+                  <TableColumn fx:id="id" prefWidth="100.0" text="Id" />
+                  <TableColumn fx:id="tipo" prefWidth="100.0" text="Tipo" />
+                  <TableColumn fx:id="costo" prefWidth="100.0" text="Costo" />
                </columns>
             </TableView>
          </children>

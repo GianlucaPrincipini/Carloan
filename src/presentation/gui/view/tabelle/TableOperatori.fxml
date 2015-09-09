@@ -4,22 +4,21 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<ScrollPane prefHeight="406.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="root" prefHeight="406.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.table.TableContratti">
    <content>
       <AnchorPane>
          <children>
-            <TableView>
+            <TableView fx:id="tabOperatori">
                <columns>
-                  <TableColumn prefWidth="100.0" text="Id" />
-                  <TableColumn prefWidth="100.0" text="Username" />
-                  <TableColumn prefWidth="100.0" text="Agenzia" />
-                  <TableColumn prefWidth="100.0" text="Amministratore" />
-                  <TableColumn prefWidth="100.0" text="Nome" />
-                  <TableColumn prefWidth="100.0" text="Cognome" />
-                  <TableColumn prefWidth="100.0" text="Data di nascita" />
-                  <TableColumn prefWidth="150.0" text="Numero di telefono" />
-                  <TableColumn prefWidth="100.0" text="E-mail" />
+                  <TableColumn fx:id="id" prefWidth="100.0" text="Id" />
+                  <TableColumn fx:id="username" prefWidth="100.0" text="Username" />
+                  <TableColumn fx:id="agenzia" prefWidth="100.0" text="Agenzia" />
+                  <TableColumn fx:id="amministratore" prefWidth="100.0" text="Amministratore" />
+                  <TableColumn fx:id="nome" prefWidth="100.0" text="Nome" />
+                  <TableColumn fx:id="cognome" prefWidth="100.0" text="Cognome" />
+                  <TableColumn fx:id="dataDiNascita" prefWidth="100.0" text="Data di nascita" />
+                  <TableColumn fx:id="telefono" prefWidth="150.0" text="Numero di telefono" />
+                  <TableColumn fx:id="email" prefWidth="100.0" text="E-mail" />
                </columns>
             </TableView>
          </children>

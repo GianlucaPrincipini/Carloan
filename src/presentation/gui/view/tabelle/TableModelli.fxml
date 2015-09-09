@@ -4,27 +4,26 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.table.TableModelli">
    <children>
       <ScrollPane layoutX="11.0" layoutY="15.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
             <AnchorPane>
                <children>
-                  <TableView>
+                  <TableView fx:id="tabModelli">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Id" />
-                        <TableColumn prefWidth="100.0" text="Marca" />
-                        <TableColumn prefWidth="100.0" text="Nome" />
-                        <TableColumn prefWidth="125.0" text="Tipo carburante" />
-                        <TableColumn prefWidth="150.0" text="Capacità bagagliaio (l)" />
-                        <TableColumn prefWidth="125.0" text="Numero posti" />
-                        <TableColumn prefWidth="125.0" text="Numero porte" />
-                        <TableColumn prefWidth="75.0" text="Potenza" />
-                        <TableColumn prefWidth="75.0" text="Peso" />
-                        <TableColumn prefWidth="150.0" text="Trasmissione automatica" />
-                        <TableColumn prefWidth="150.0" text="Emissioni CO2 (kg/m³)" />
-                        <TableColumn prefWidth="75.0" text="Fascia" />
+                        <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+                        <TableColumn fx:id="marca" prefWidth="100.0" text="Marca" />
+                        <TableColumn fx:id="nome" prefWidth="100.0" text="Nome" />
+                        <TableColumn fx:id="tipoCarburante" prefWidth="125.0" text="Tipo carburante" />
+                        <TableColumn fx:id="capacita" prefWidth="150.0" text="Capacità bagagliaio (l)" />
+                        <TableColumn fx:id="numeroPosti" prefWidth="125.0" text="Numero posti" />
+                        <TableColumn fx:id="numeroPorte" prefWidth="125.0" text="Numero porte" />
+                        <TableColumn fx:id="potenza" prefWidth="75.0" text="Potenza" />
+                        <TableColumn fx:id="peso" prefWidth="75.0" text="Peso" />
+                        <TableColumn fx:id="trasmissioneAutomatica" prefWidth="150.0" text="Trasmissione automatica" />
+                        <TableColumn fx:id="emissioni" prefWidth="150.0" text="Emissioni CO2 (kg/m³)" />
+                        <TableColumn fx:id="fascia" prefWidth="75.0" text="Fascia" />
                      </columns>
                   </TableView>
                </children>
