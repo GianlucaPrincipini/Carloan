@@ -70,7 +70,7 @@ create table persona(
 	email varchar(100)
 );
 
-insert into persona(nome, cognome) values("General", "Admin");
+insert into persona(nome, cognome, datanascita, numtelefono, email) values("General", "Admin", "1988-05-28", "356892112", "general@admin.org");
 insert into persona(nome, cognome, datanascita, numtelefono, email) values("Mario", "Rossi", "1990-02-25", "3384289855", "mariorossi@gmail.com");
 
 create table cliente(

@@ -15,7 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 public class TableModelli implements TableController{
@@ -23,7 +23,7 @@ public class TableModelli implements TableController{
 	private FrontController controller;
 	
 	@FXML
-	private AnchorPane root;
+	private Pane root;
 	
 	@FXML
 	private TableColumn<Modello,String> id;
@@ -67,13 +67,12 @@ public class TableModelli implements TableController{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = new CarloanFrontController();
+		controller = CarloanFrontController.getInstance();
 		
 		ObservableList<Modello> modelli = FXCollections.observableList((List<Modello>) controller.processRequest("ReadAllModelli"));
-		
         id.setCellValueFactory(new Callback<CellDataFeatures<Modello, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Modello, String> m) {
-            	return new ReadOnlyObjectWrapper(m.getValue().getId());
+            	return new ReadOnlyObjectWrapper(Integer.toString(m.getValue().getId()));
      		}
         });	
         
@@ -139,6 +138,7 @@ public class TableModelli implements TableController{
         
         fascia.setCellValueFactory(new Callback<CellDataFeatures<Modello, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Modello, String> m) {
+
             	return new ReadOnlyObjectWrapper(m.getValue().getFascia().getId());
      		}
         });
@@ -148,8 +148,7 @@ public class TableModelli implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
-		// TODO Auto-generated method stub
-		return null;
+		return id.getCellObservableValue(tabModelli.getSelectionModel().getSelectedIndex()).getValue().toString();
 	}
 	
 }

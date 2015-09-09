@@ -12,7 +12,6 @@ public class CommandReadAllClienti implements Command<List<Cliente>>{
 		try {
 			return new ApplicationServiceCliente().readAll();
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

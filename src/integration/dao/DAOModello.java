@@ -68,6 +68,7 @@ public class DAOModello extends DAOCarloan<Modello> {
 				modello.setTrasmissioneAutomatica(rs.getBoolean(9));
 				modello.setEmissioniCO2(rs.getFloat(10));
 				modello.setPeso(rs.getInt(11));
+				modello.setFascia(new DAOFascia().read(Integer.toString(rs.getInt("fascia"))));
 			}
 		} catch (Exception e) {
 			

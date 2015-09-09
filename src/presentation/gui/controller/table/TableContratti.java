@@ -85,13 +85,12 @@ public class TableContratti implements TableController{
 	private TableView<Contratto> tabContratti;
 	
 	
-	public TableContratti() {}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		controller = new CarloanFrontController();
+		controller = CarloanFrontController.getInstance();
 		
 		ObservableList<Contratto> contratti = FXCollections.observableList((List<Contratto>) controller.processRequest("ReadAllContratti"));
 		

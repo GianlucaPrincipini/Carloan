@@ -17,15 +17,14 @@ public abstract class CarloanStage extends Stage implements Target{
 	
 	private final static String VIEW_LOCATION = "/presentation/gui/view/";
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public CarloanStage(String file, Object entity) {
         Class<?> mainClass = getClass();
         
 
         FXMLLoader fxmlLoader = new FXMLLoader(mainClass.getResource(VIEW_LOCATION + file));
 
-        
         try {
-        	System.out.println(VIEW_LOCATION+file);
             root = (Pane) fxmlLoader.load();
             if (entity != null) {
             	((SchermataDati)fxmlLoader.getController()).initModifica(entity);

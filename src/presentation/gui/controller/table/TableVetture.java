@@ -15,7 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 public class TableVetture implements TableController{
@@ -23,7 +23,7 @@ public class TableVetture implements TableController{
 	private FrontController controller;
 	
 	@FXML
-	private AnchorPane root;
+	private Pane root;
 	
 	@FXML
 	private TableColumn<Vettura,String> targa;
@@ -46,7 +46,7 @@ public class TableVetture implements TableController{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = new CarloanFrontController();
+		controller = CarloanFrontController.getInstance();
 		
 		ObservableList<Vettura> vetture = FXCollections.observableList((List<Vettura>) controller.processRequest("ReadAllVetture"));
 		
@@ -85,8 +85,8 @@ public class TableVetture implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
-		// TODO Auto-generated method stub
-		return null;
+		return targa.getCellObservableValue(tabVetture.getSelectionModel().getSelectedIndex()).getValue().toString();
+
 	}
 	
 }

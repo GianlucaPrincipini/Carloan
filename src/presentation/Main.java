@@ -20,8 +20,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			Cliente cli = new ApplicationServiceCliente().read("1234567890");
-			System.out.println(cli);
 			CarloanFrontController.getInstance().processRequest("MostraMainStage");
 		} catch(Exception e) {
 			e.printStackTrace();

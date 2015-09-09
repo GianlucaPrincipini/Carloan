@@ -15,7 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 public class TableOptionals implements TableController{
@@ -23,7 +23,7 @@ public class TableOptionals implements TableController{
 	private FrontController controller;
 	
 	@FXML
-	private AnchorPane root;
+	private Pane root;
 	
 	@FXML
 	private TableColumn<Optional,String> id;
@@ -35,12 +35,12 @@ public class TableOptionals implements TableController{
 	private TableColumn<Optional,String> costo;
 	
 	@FXML
-	private TableView<Optional> tabOptional;
+	private TableView<Optional> tabOptionals;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = new CarloanFrontController();
+		controller = CarloanFrontController.getInstance();
 		
 		ObservableList<Optional> optionals = FXCollections.observableList((List<Optional>) controller.processRequest("ReadAllOptionals"));
 		
@@ -62,13 +62,13 @@ public class TableOptionals implements TableController{
      		}
         });
         
-        tabOptional.setItems(optionals);
+        tabOptionals.setItems(optionals);
 	}
 
 	@Override
 	public String getPrimaryKey() {
-		// TODO Auto-generated method stub
-		return null;
+		return id.getCellObservableValue(tabOptionals.getSelectionModel().getSelectedIndex()).getValue().toString();
+
 	}
 	
 }

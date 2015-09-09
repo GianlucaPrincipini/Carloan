@@ -58,7 +58,29 @@ public class MainStage implements Initializable {
 	@FXML
 	private AnchorPane paneContratti;
 	
+	@FXML
+	private AnchorPane paneClienti;
+	
+	@FXML
+	private AnchorPane paneModelli;
+	
+	@FXML
+	private AnchorPane paneVetture;
+	
+	@FXML
+	private AnchorPane paneFasce;
+	
+	@FXML
+	private AnchorPane paneAgenzie;
+	
+	@FXML
+	private AnchorPane paneOptionals;
+	
+	@FXML
+	private AnchorPane paneOperatori;
+	
 	private TableController tableController;
+	
 	
 	@FXML
 	public void onAggiungi() {
@@ -86,19 +108,43 @@ public class MainStage implements Initializable {
 		public void changed(ObservableValue observable, Number oldValue,
 				Number newValue) {
 			FXMLLoader loadedTable = null;
-			Pane tabella = null;
-			if ((Integer) newValue == 0){
-				try {
+			try {
+				if ((Integer) newValue == 0){
 					paneContratti.getChildren().clear();
 					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableContratti.fxml"));
-					tabella = loadedTable.load();
-				} catch (IOException e) {
-					e.printStackTrace();
+					paneContratti.getChildren().setAll(loadedTable.load());
+				} else if ((Integer) newValue == 1) {
+					paneClienti.getChildren().clear();
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableClienti.fxml"));
+					paneClienti.getChildren().setAll(loadedTable.load());
+				} else if ((Integer) newValue == 2) {
+					paneVetture.getChildren().clear();
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableVetture.fxml"));
+					paneVetture.getChildren().setAll(loadedTable.load());
+				} else if ((Integer) newValue == 3) {
+					paneModelli.getChildren().clear();
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableModelli.fxml"));
+					paneModelli.getChildren().setAll(loadedTable.load());
+				} else if ((Integer) newValue == 4) {
+					paneFasce.getChildren().clear();
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableFasce.fxml"));
+					paneFasce.getChildren().setAll(loadedTable.load());
+				} else if ((Integer) newValue == 5) {
+					paneOptionals.getChildren().clear();
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableOptionals.fxml"));
+					paneOptionals.getChildren().setAll(loadedTable.load());
+				} else if ((Integer) newValue == 6) {
+					paneAgenzie.getChildren().clear();
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableAgenzie.fxml"));
+					paneAgenzie.getChildren().setAll(loadedTable.load());
+				} else if ((Integer) newValue == 7) {
+					paneOperatori.getChildren().clear();
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableOperatori.fxml"));
+					paneOperatori.getChildren().setAll(loadedTable.load());
 				}
-			} else if ((Integer) newValue == 1) {
-
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			paneContratti.getChildren().setAll(tabella);
 			tableController = loadedTable.<TableController>getController();
 		}
 

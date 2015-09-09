@@ -18,7 +18,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 public class TableOperatori implements TableController{
@@ -26,7 +26,7 @@ public class TableOperatori implements TableController{
 	private FrontController controller;
 	
 	@FXML
-	private AnchorPane root;
+	private Pane root;
 	
 	@FXML
 	private TableColumn<Operatore,String> id;
@@ -61,12 +61,12 @@ public class TableOperatori implements TableController{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = new CarloanFrontController();
+		controller = CarloanFrontController.getInstance();
 		
 		ObservableList<Operatore> operatori = FXCollections.observableList((List<Operatore>) controller.processRequest("ReadAllOperatori"));
-		
-        id.setCellValueFactory(new Callback<CellDataFeatures<Operatore, String>, ObservableValue<String>>() {
+		id.setCellValueFactory(new Callback<CellDataFeatures<Operatore, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Operatore, String> o) {
+				System.out.println(o.getValue().getId());
             	return new ReadOnlyObjectWrapper(Integer.toString(o.getValue().getId()));
      		}
         });		
@@ -124,7 +124,8 @@ public class TableOperatori implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
-		return null;
+		return username.getCellObservableValue(tabOperatori.getSelectionModel().getSelectedIndex()).getValue().toString();
+
 	}
 	
 }

@@ -15,7 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 public class TableAgenzie implements TableController{
@@ -26,7 +26,7 @@ public class TableAgenzie implements TableController{
 	private TableView<Agenzia> tabAgenzie;
 	
 	@FXML
-	private AnchorPane root;
+	private Pane root;
 	
 	@FXML
 	private TableColumn<Agenzia,String> id;
@@ -43,13 +43,13 @@ public class TableAgenzie implements TableController{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = new CarloanFrontController();
+		controller = CarloanFrontController.getInstance();
 		
 		ObservableList<Agenzia> agenzie = FXCollections.observableList((List<Agenzia>) controller.processRequest("ReadAllAgenzie"));
 		
         id.setCellValueFactory(new Callback<CellDataFeatures<Agenzia, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Agenzia, String> a) {
-            	return new ReadOnlyObjectWrapper(a.getValue().getId());
+            	return new ReadOnlyObjectWrapper(Integer.toString(a.getValue().getId()));
      		}
         });		
         
@@ -72,11 +72,11 @@ public class TableAgenzie implements TableController{
         });
         
         tabAgenzie.setItems(agenzie);
+        tabAgenzie.getSelectionModel().select(0);
 	}
 
 	@Override
 	public String getPrimaryKey() {
-		// TODO Auto-generated method stub
-		return null;
+		return id.getCellObservableValue(tabAgenzie.getSelectionModel().getSelectedIndex()).getValue().toString();
 	}
 }

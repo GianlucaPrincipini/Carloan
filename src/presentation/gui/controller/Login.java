@@ -30,7 +30,6 @@ public class Login implements Initializable {
 	@FXML
 	private Button login;
 
-	@SuppressWarnings("unused")
 	@FXML
 	public void onLogin() {
 		FrontController fController = CarloanFrontController.getInstance();
@@ -39,7 +38,6 @@ public class Login implements Initializable {
 		operatore.setPassword(password.getText());
 
 		if (fController.processRequest("Login", operatore) != null) {
-			System.out.println("loggato");
 			((Stage) root.getScene().getWindow()).close();
 			fController.processRequest("MostraMainStage");
 		} else {

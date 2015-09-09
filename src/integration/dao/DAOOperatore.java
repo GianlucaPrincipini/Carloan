@@ -83,6 +83,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 					operatore.setDataNascita(DateHelper.dateToLocalDate(anagrafica.getDate("datanascita")));
 					operatore.setNumTelefono(anagrafica.getString("numtelefono"));
 					operatore.setEMail(anagrafica.getString("email"));
+					operatore.setId(anagrafica.getInt("id"));
 				}
 			}
 		} catch (SQLException e) {

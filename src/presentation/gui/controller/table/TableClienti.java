@@ -17,7 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 
@@ -27,7 +27,7 @@ public class TableClienti implements TableController{
 	private FrontController controller;
 	
 	@FXML
-	private AnchorPane root;
+	private Pane root;
 	
 	@FXML
 	private TableColumn<Cliente,String> id;
@@ -56,10 +56,9 @@ public class TableClienti implements TableController{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = new CarloanFrontController();
+		controller = CarloanFrontController.getInstance();
 		
 		ObservableList<Cliente> clienti = FXCollections.observableList((List<Cliente>) controller.processRequest("ReadAllClienti"));
-		
         id.setCellValueFactory(new Callback<CellDataFeatures<Cliente, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Cliente, String> c) {
             	return new ReadOnlyObjectWrapper(c.getValue().getId());
@@ -103,12 +102,12 @@ public class TableClienti implements TableController{
         });
         
         tabClienti.setItems(clienti);
+
 	}
 
 	@Override
 	public String getPrimaryKey() {
-		// TODO Auto-generated method stub
-		return null;
+		return codicePatente.getCellObservableValue(tabClienti.getSelectionModel().getSelectedIndex()).getValue().toString();
 	}
 	
 	

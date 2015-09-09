@@ -12,7 +12,7 @@ public class CarloanFrontController implements FrontController{
 	private static CarloanFrontController frontController;
 	
 
-	public CarloanFrontController(){};
+	private CarloanFrontController(){};
 	
 	public boolean isAdmin() {
 		return userAuthenticated instanceof Amministratore;
@@ -38,12 +38,13 @@ public class CarloanFrontController implements FrontController{
 		return frontController;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Object processRequest(String request, Object entity) {
 		ApplicationController ac =  new CarloanApplicationController();
 		Target targetRequest = ac.handleRequest(request, entity);
 		if (targetRequest instanceof Command) {
-			return ((Command)targetRequest).execute(entity);
+			return ((Command) targetRequest).execute(entity);
 		} else if (targetRequest instanceof CarloanStage){
 			return ((CarloanStage)targetRequest).showStage();
 		}
