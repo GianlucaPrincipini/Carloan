@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 public class SchermataCliente extends SchermataDati<Cliente>{
 
-	private FrontController controller;
+
 	
 	@FXML
 	private Node root;
@@ -50,6 +50,7 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 	@FXML
 	public void onConferma() {
 		Cliente cliente = new Cliente();
+		cliente.setId(id);
 		cliente.setNome(nome.getText());
 		cliente.setCognome(cognome.getText());
 		cliente.setEMail(email.getText());
@@ -60,8 +61,8 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 		if (!edit)
 			controller.processRequest("AggiungiCliente", cliente);
 		else {
-			controller.processRequest("ModificaCliente", cliente);
 			edit = false;
+			controller.processRequest("ModificaCliente", cliente);
 		}
 		close();
 	}
@@ -69,15 +70,18 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 	
 	public void initModifica(Cliente cliente) {
 		edit = true;
+		id = cliente.getId();
 		nome.setText(cliente.getNome());
 		cognome.setText(cliente.getCognome());
 		email.setText(cliente.getEMail());
 		telefono.setText(cliente.getNumTelefono());
+		codicePatente.setText(cliente.getCodicePatente());
+		dataDiNascita.setValue(java.time.LocalDate.of(cliente.getDataNascita().getYear(), cliente.getDataNascita().getMonthOfYear(), cliente.getDataNascita().getDayOfMonth()));
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = CarloanFrontController.getInstance();
+		
 	}
 
 

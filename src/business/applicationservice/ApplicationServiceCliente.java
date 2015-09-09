@@ -33,6 +33,7 @@ public class ApplicationServiceCliente extends ApplicationServiceEntity<Cliente>
 		try {
 			checker.isModifiable(dao.read(entity.getCodicePatente()));
 			checker.check(entity);
+			System.out.println(entity);
 			dao.update(entity);
 		} catch (CarloanException e) {
 			e.showError();

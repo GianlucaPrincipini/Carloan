@@ -10,12 +10,14 @@ public class CheckerFascia implements Checker<Fascia>{
 	public void check(Fascia entity) throws IntegrityException {
 		List<Fascia> fasce = new DAOFascia().readAll();
 		for (Fascia f:fasce) {
-			if (entity.getMin() >= f.getMin() && entity.getMin() <= f.getMax())
-				throw new IntegrityException();
-			if (entity.getMax() <= f.getMax() && entity.getMin() <= f.getMin())
-				throw new IntegrityException();
-			if (entity.getMin() >= f.getMin() && entity.getMax() <= f.getMax())
-				throw new IntegrityException();
+			if (entity.getId() != f.getId()) {
+				if (entity.getMin() >= f.getMin() && entity.getMin() <= f.getMax())
+					throw new IntegrityException();
+				if (entity.getMax() <= f.getMax() && entity.getMin() <= f.getMin())
+					throw new IntegrityException();
+				if (entity.getMin() >= f.getMin() && entity.getMax() <= f.getMax())
+					throw new IntegrityException();
+			}
 		}
 	}
 

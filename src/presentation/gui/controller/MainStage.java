@@ -89,8 +89,9 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void onModifica() {
-		System.out.println(tableController.getPrimaryKey());
-		controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText());
+		System.out.println("we");
+		controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText(), 
+				controller.processRequest("Read"+tabPane.getSelectionModel().getSelectedItem().getText(), tableController.getPrimaryKey()));
 	}
 	
 	@FXML

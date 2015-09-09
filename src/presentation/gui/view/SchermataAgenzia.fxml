@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.SchermataAgenzia">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.SchermataAgenzia">
    <children>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="130.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,14 +19,14 @@
             </ImageView>
          </children>
       </HBox>
-      <GridPane alignment="CENTER" layoutX="50.0" layoutY="236.0" prefHeight="296.0" prefWidth="864.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="105.0">
+      <GridPane alignment="CENTER" layoutX="208.0" layoutY="162.0" prefHeight="119.0" prefWidth="608.0" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="208.0">
          <children>
             <Label text="Indirizzo" />
             <TextField fx:id="indirizzo" GridPane.columnIndex="1" />
             <Label text="Città" GridPane.rowIndex="1" />
             <TextField fx:id="città" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Telefono" GridPane.rowIndex="2" />
-            <TextField fx:id="numtelefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="numTelefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,7 +38,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <BorderPane layoutY="545.0" prefHeight="192.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <BorderPane layoutY="545.0" prefHeight="81.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <center>
             <Button fx:id="conferma" mnemonicParsing="false" onMouseClicked="#onConferma" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
                <graphic>

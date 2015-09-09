@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.SchermataCliente">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.SchermataContratto">
    <children>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="130.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +20,7 @@
             </ImageView>
          </children>
       </HBox>
-      <BorderPane layoutY="545.0" prefHeight="192.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <BorderPane layoutY="545.0" prefHeight="120.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <center>
             <Button fx:id="conferma" mnemonicParsing="false" onMouseClicked="#onConferma" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
                <graphic>
@@ -41,51 +41,100 @@
             </Button>
          </center>
       </BorderPane>
-      <GridPane alignment="CENTER" layoutX="68.0" layoutY="236.0" prefHeight="348.0" prefWidth="864.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="92.0">
+      <GridPane alignment="CENTER" layoutX="64.0" layoutY="300.0" prefHeight="348.0" prefWidth="897.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="63.0">
          <children>
-            <Label text="Cliente" GridPane.columnIndex="2" />
-            <Label text="Agenzia Noleggio" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="Cliente" GridPane.columnIndex="3" />
+            <Label text="Agenzia Noleggio" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label text="Agenzia Consegna" GridPane.rowIndex="2" />
             <Label text="Data Stipula" GridPane.rowIndex="3" />
             <Label text="Data Inizio Noleggio" GridPane.rowIndex="4" />
-            <Label text="Data Chiusura" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label text="Data  Fine Noleggio" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="Data Chiusura" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label text="Data  Fine Noleggio" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Label text="Operatore" />
-            <Label text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="operatoreLabel" GridPane.columnIndex="1" />
             <Label text="Vettura" GridPane.rowIndex="1" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Label text="Acconto" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Chlometraggio Limitato" GridPane.rowIndex="5" />
-            <TextField promptText="Numero chilometri previsti" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Numero chilometri percorsi" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <DatePicker fx:id="dataInizioNoleggio" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dataStipula" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="dataChiusura" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <DatePicker fx:id="dataFinenoleggio" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Label text="Acconto" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <CheckBox mnemonicParsing="false" text="Chilometraggio Limitato" GridPane.rowIndex="5" />
+            <TextField fx:id="chilometriPrevisti" promptText="Numero chilometri previsti" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Numero chilometri percorsi" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField fx:id="chilometriPercorsi" GridPane.columnIndex="4" GridPane.rowIndex="5" />
             <Label text="Rifornimento" GridPane.rowIndex="6" />
-            <CheckBox mnemonicParsing="false" text="Assicurazione Avanzata" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <CheckBox fx:id="assicurazioneAvanzata" mnemonicParsing="false" text="Assicurazione Avanzata" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Label alignment="CENTER" text="Costo" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="7">
+            <Label fx:id="labelCosto" GridPane.columnIndex="3" GridPane.rowIndex="7">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="3" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="rifornimento" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Seleziona" />
+                  <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="4">
+               <children>
+                  <Label text="Seleziona" />
+                  <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label text="Seleziona" />
+                  <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <children>
+                  <Label text="Seleziona" />
+                  <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
          </children>
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="210.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="183.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="109.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="237.0" minWidth="10.0" prefWidth="209.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="180.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />

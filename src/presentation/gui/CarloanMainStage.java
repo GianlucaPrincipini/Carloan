@@ -7,7 +7,6 @@ public class CarloanMainStage extends CarloanStage{
 		setTitle("Carloan");
 		setHeight(720);
 		setWidth(1280);
-		setResizable(false);
 	}
 
 }

@@ -31,11 +31,13 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 	@Override
 	public void onConferma() {
 		Agenzia agenzia = new Agenzia();
+		if (id != 0) {
+			agenzia.setId(id);
+		}
 		agenzia.setCittà(città.getText());
 		agenzia.setIndirizzo(indirizzo.getText());
 		agenzia.setNumTelefono(numTelefono.getText());
 		if (edit) {
-			edit = false;
 			controller.processRequest("ModificaAgenzia", agenzia);
 		} else {
 			controller.processRequest("AggiungiAgenzia", agenzia);
@@ -46,6 +48,7 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 	@Override
 	public void initModifica(Agenzia entity) {
 		edit = true;
+		id = entity.getId();
 		città.setText(entity.getCittà());
 		indirizzo.setText(entity.getIndirizzo());
 		numTelefono.setText(entity.getNumTelefono());

@@ -7,7 +7,7 @@ public class CheckerAgenzia implements Checker<Agenzia>{
 
 	@Override
 	public void check(Agenzia entity) throws IntegrityException {
-		if (entity.getId() == 1 || entity.getCittà() == null || entity.getIndirizzo() == null || entity.getNumTelefono() == null) throw new IntegrityException();
+		if (entity.getCittà() == null || entity.getIndirizzo() == null || entity.getNumTelefono() == null) throw new IntegrityException();
 	}
 
 	@Override

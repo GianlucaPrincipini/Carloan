@@ -61,7 +61,7 @@ public class TableAgenzie implements TableController{
         
         indirizzo.setCellValueFactory(new Callback<CellDataFeatures<Agenzia, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Agenzia, String> a) {
-            	return new ReadOnlyObjectWrapper(a.getValue().getCittà());
+            	return new ReadOnlyObjectWrapper(a.getValue().getIndirizzo());
      		}
         });
         

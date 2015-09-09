@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import presentation.Target;
 import presentation.gui.controller.SchermataDati;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public abstract class CarloanStage extends Stage implements Target{
 	
@@ -27,13 +29,21 @@ public abstract class CarloanStage extends Stage implements Target{
         try {
             root = (Pane) fxmlLoader.load();
             if (entity != null) {
-            	((SchermataDati)fxmlLoader.getController()).initModifica(entity);
+                setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    public void handle(WindowEvent we) {
+                    	fxmlLoader.<SchermataDati>getController().setEdit(false);
+                    	fxmlLoader.<SchermataDati>getController().setId(0);
+                    }
+                });
+            	System.out.println(fxmlLoader.<SchermataDati>getController());
+            	fxmlLoader.<SchermataDati>getController().initModifica(entity);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         scene = new Scene(root);
         setScene(scene);
+        setResizable(false);
   
 	}
 	
