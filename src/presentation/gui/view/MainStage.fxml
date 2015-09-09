@@ -93,42 +93,42 @@
             </ToolBar>
             <TabPane fx:id="tabPane" layoutX="2.0" layoutY="177.0" prefHeight="515.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab closable="false" text="Contratti">
+                <Tab closable="false" text="Contratto">
                   <content>
                     <AnchorPane fx:id="paneContratti" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
-                  <Tab text="Clienti">
+                  <Tab text="Cliente">
                      <content>
                         <AnchorPane fx:id="paneClienti" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
-                  <Tab text="Vetture">
+                  <Tab text="Vettura">
                      <content>
                         <AnchorPane fx:id="paneVetture" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
-                  <Tab text="Modelli">
+                  <Tab text="Modello">
                      <content>
                         <AnchorPane fx:id="paneModelli" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
-                  <Tab text="Fasce">
+                  <Tab text="Fascia">
                      <content>
                         <AnchorPane fx:id="paneFasce" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
-                  <Tab text="Optionals">
+                  <Tab text="Optional">
                      <content>
                         <AnchorPane fx:id="paneOptionals" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
-                  <Tab text="Agenzie">
+                  <Tab text="Agenzia">
                      <content>
                         <AnchorPane fx:id="paneAgenzie" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
-                  <Tab text="Operatori">
+                  <Tab text="Operatore">
                      <content>
                         <AnchorPane fx:id="paneOperatori" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>

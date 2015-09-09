@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
-import presentation.gui.controller.table.TableContratti;
+import presentation.gui.controller.table.TableContratto;
 import presentation.gui.controller.table.TableController;
 import business.entity.Cliente;
 import business.entity.Contratto;
@@ -112,35 +112,35 @@ public class MainStage implements Initializable {
 			try {
 				if ((Integer) newValue == 0){
 					paneContratti.getChildren().clear();
-					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableContratti.fxml"));
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableContratto.fxml"));
 					paneContratti.getChildren().setAll(loadedTable.load());
 				} else if ((Integer) newValue == 1) {
 					paneClienti.getChildren().clear();
-					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableClienti.fxml"));
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableCliente.fxml"));
 					paneClienti.getChildren().setAll(loadedTable.load());
 				} else if ((Integer) newValue == 2) {
 					paneVetture.getChildren().clear();
-					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableVetture.fxml"));
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableVettura.fxml"));
 					paneVetture.getChildren().setAll(loadedTable.load());
 				} else if ((Integer) newValue == 3) {
 					paneModelli.getChildren().clear();
-					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableModelli.fxml"));
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableModello.fxml"));
 					paneModelli.getChildren().setAll(loadedTable.load());
 				} else if ((Integer) newValue == 4) {
 					paneFasce.getChildren().clear();
-					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableFasce.fxml"));
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableFascia.fxml"));
 					paneFasce.getChildren().setAll(loadedTable.load());
 				} else if ((Integer) newValue == 5) {
 					paneOptionals.getChildren().clear();
-					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableOptionals.fxml"));
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableOptional.fxml"));
 					paneOptionals.getChildren().setAll(loadedTable.load());
 				} else if ((Integer) newValue == 6) {
 					paneAgenzie.getChildren().clear();
-					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableAgenzie.fxml"));
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableAgenzia.fxml"));
 					paneAgenzie.getChildren().setAll(loadedTable.load());
 				} else if ((Integer) newValue == 7) {
 					paneOperatori.getChildren().clear();
-					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tabelle/TableOperatori.fxml"));
+					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableOperatore.fxml"));
 					paneOperatori.getChildren().setAll(loadedTable.load());
 				}
 			} catch (IOException e) {
