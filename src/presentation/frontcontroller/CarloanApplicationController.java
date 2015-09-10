@@ -1,13 +1,8 @@
 package presentation.frontcontroller;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
-
 import presentation.Target;
 import presentation.TargetFactory;
-import presentation.frontcontroller.command.*;
-import presentation.gui.*;
 
 public class CarloanApplicationController implements ApplicationController{
 

@@ -1,7 +1,5 @@
 package business.entity;
 
-import java.io.Serializable;
-
 public enum Rifornimento {
 	
 	STANDARD(0), PIENO_ANTICIPO(1);

@@ -14,5 +14,4 @@ public class CommandModificaTariffario implements Command<Tariffario> {
 		}
 		return entity;
 	}
-	
 }

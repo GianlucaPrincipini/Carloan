@@ -2,18 +2,9 @@ package presentation;
 	
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-
-import business.applicationservice.ApplicationServiceCliente;
-import business.entity.Cliente;
 import presentation.frontcontroller.CarloanFrontController;
-import presentation.frontcontroller.FrontController;
-import integration.Encrypt;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
 	

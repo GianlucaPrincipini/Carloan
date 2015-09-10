@@ -50,5 +50,4 @@ public class CarloanFrontController implements FrontController{
 		}
 		return null;
 	}
-
 }

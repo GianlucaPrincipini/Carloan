@@ -19,15 +19,15 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Sessione">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Disconnetti" />
-                        <MenuItem mnemonicParsing="false" text="Chiudi" />
+                    <MenuItem fx:id="disconnetti" mnemonicParsing="false" onAction="#disconnessione" text="Disconnetti" />
+                        <MenuItem fx:id="chiudiFinestra" mnemonicParsing="false" onAction="#chiudiFinestra" text="Chiudi" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Modifica">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Tariffario" />
-                        <MenuItem mnemonicParsing="false" text="Incidenza Fasce" />
-                        <MenuItem mnemonicParsing="false" text="Costi carburante" />
+                    <MenuItem fx:id="modTariffario" mnemonicParsing="false" onAction="#modificaTariffario" text="Tariffario" />
+                        <MenuItem fx:id="modIncidenza" mnemonicParsing="false" onAction="#modificaIncidenza" text="Incidenza Fasce" />
+                        <MenuItem fx:id="modCarburante" mnemonicParsing="false" text="Costi carburante" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="?">
@@ -40,12 +40,12 @@
                   <Blend mode="EXCLUSION" opacity="0.15" />
                </effect>
             </MenuBar>
-            <ImageView fitHeight="145.0" fitWidth="1344.0" preserveRatio="true">
+            <ImageView fitHeight="145.0" fitWidth="1290.0" preserveRatio="true">
                <image>
                   <Image url="@contents/Car%20loan.jpg" />
                </image>
             </ImageView>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <ToolBar prefHeight="58.0" prefWidth="1279.0">
               <items>
                   <Button fx:id="aggiungi" mnemonicParsing="false" onMouseClicked="#onAggiungi">
                      <graphic>
@@ -82,6 +82,16 @@
                         <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                            <image>
                               <Image url="@contents/archive.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ImageView fitHeight="40.0" fitWidth="925.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#onRefresh">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="45.0" preserveRatio="true">
+                           <image>
+                              <Image url="@contents/refresh.png" />
                            </image>
                         </ImageView>
                      </graphic>

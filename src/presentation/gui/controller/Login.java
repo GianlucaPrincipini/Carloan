@@ -1,14 +1,9 @@
 package presentation.gui.controller;
 
-import integration.Encrypt;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
-import presentation.gui.CarloanStage;
-import business.applicationservice.ApplicationServiceOperatore;
 import business.entity.Operatore;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Login implements Initializable {
+	
 	@FXML
 	private Node root;
 	
@@ -49,6 +45,4 @@ public class Login implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
-	
-	
 }

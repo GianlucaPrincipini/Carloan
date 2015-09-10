@@ -1,14 +1,11 @@
 package business.applicationservice;
 
-import integration.dao.DAO;
 import integration.dao.DAOFactory;
 import integration.dao.DAOFascia;
-
 import java.util.List;
-
-import business.checker.Checker;
 import business.checker.CheckerFactory;
 import business.entity.Fascia;
+import business.entity.IncidenzaFascia;
 import business.entity.Modello;
 import business.exception.FasciaIndexException;
 import business.exception.IntegrityException;
@@ -16,7 +13,7 @@ import business.exception.IntegrityException;
 public class ApplicationServiceModello extends ApplicationServiceEntity<Modello> {
 
 	
-	private IncidenzaFascia incidenza = IncidenzaFascia.getInstance();
+	private IncidenzaFascia incidenza;
 	
 	@SuppressWarnings("unchecked")
 	public ApplicationServiceModello() throws InstantiationException, IllegalAccessException {
@@ -39,6 +36,7 @@ public class ApplicationServiceModello extends ApplicationServiceEntity<Modello>
 	}
 	
 	private double calcolaIndiceFascia(Modello modello) {
+		incidenza = IncidenzaFascia.getInstance();
 		return modello.getCapacit‡Bagagliaio() * incidenza.getCapacit‡Bagagliaio() +
 				  incidenza.getEmissioniCO2() * modello.getEmissioniCO2() + 
 				  incidenza.getNumeroPorte() * modello.getNumeroPorte() +

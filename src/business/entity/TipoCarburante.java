@@ -7,7 +7,6 @@ public enum TipoCarburante {
 	METANO(3),
 	ELETTRICA(4);
 	private int index;
-	private double costoLitro;
 	
 	private TipoCarburante(int index) {
 		this.index = index;

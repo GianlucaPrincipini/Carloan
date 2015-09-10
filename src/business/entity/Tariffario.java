@@ -151,7 +151,4 @@ public class Tariffario implements Serializable {
 	public static void main(String [] args) throws ClassNotFoundException {
 		Tariffario a = Tariffario.getInstance();
 	}
-
-	
-	
 }

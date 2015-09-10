@@ -1,4 +1,4 @@
-package business.applicationservice;
+package business.entity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-
-import business.entity.TipoCarburante;
 import business.exception.IncidenceOutOfBoundException;
 
+
+@SuppressWarnings("serial")
 public class IncidenzaFascia implements Serializable {
 	private double capacitàBagagliaio;
-	private double numeroPosti;
-	private double numeroPorte;
+	private int numeroPosti;
+	private int numeroPorte;
 	private double potenzaSuPeso;
 	private double emissioniCO2;
 	private static IncidenzaFascia incidenzaFascia;
@@ -63,23 +63,23 @@ public class IncidenzaFascia implements Serializable {
 		return capacitàBagagliaio;
 	}
 	
-	public void setNumeroPosti(double x) throws IncidenceOutOfBoundException {
+	public void setNumeroPosti(int x) throws IncidenceOutOfBoundException {
 		if( x >= 1 && x <= 2)
 			numeroPosti = x;
 		else throw new IncidenceOutOfBoundException();
 	}
 	
-	public double getNumeroPosti() {
+	public int getNumeroPosti() {
 		return numeroPosti;
 	}
 	
-	public void setNumeroPorte(double x) throws IncidenceOutOfBoundException {
+	public void setNumeroPorte(int x) throws IncidenceOutOfBoundException {
 		if (x >= 1 && x <= 1.5)
 		numeroPorte = x;
 		else throw new IncidenceOutOfBoundException();
 	}
 	
-	public double getNumeroPorte() {
+	public int getNumeroPorte() {
 		return numeroPorte;
 	}
 	

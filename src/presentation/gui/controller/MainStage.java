@@ -2,27 +2,19 @@ package presentation.gui.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
-import presentation.gui.controller.table.TableContratto;
 import presentation.gui.controller.table.TableController;
-import business.entity.Cliente;
-import business.entity.Contratto;
-import business.entity.Entity;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class MainStage implements Initializable {
 	
@@ -41,6 +33,12 @@ public class MainStage implements Initializable {
 	private MenuItem modCarburante;
 	
 	@FXML
+	private MenuItem disconnetti;
+	
+	@FXML 
+	private MenuItem chiudiFinestra;
+	
+	@FXML
 	private Button aggiungi;
 	
 	@FXML
@@ -51,6 +49,9 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	private Button chiudi;
+	
+	@FXML
+	private Button refresh;
 	
 	@FXML 
 	private TabPane tabPane;
@@ -89,25 +90,50 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void onModifica() {
-		System.out.println("we");
 		controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText(), 
 				controller.processRequest("Read"+tabPane.getSelectionModel().getSelectedItem().getText(), tableController.getPrimaryKey()));
 	}
 	
 	@FXML
 	public void onRimuovi() {
-		controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText());
+		//sbagliato, bisogna eliminare la riga selezionata dall'entità
+		//controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText());
 	}	
-
+	
+	@FXML
+	public void onRefresh(){
+		tabPane.setSelectionModel(tabPane.getSelectionModel());
+	}
+	
+	@FXML
+	public void chiudiFinestra(){
+		((Stage)root.getScene().getWindow()).close();
+	}
+	
+	@FXML
+	public void disconnessione(){
+		controller.processRequest("MostraLogin");
+	}
+	
+	@FXML 
+	public void modificaTariffario(){
+		controller.processRequest("MostraTariffario");
+	}
+	
+	@FXML
+	public void modificaIncidenza(){
+		controller.processRequest("MostraIncidenza");
+	}
+	
 	private class TabChangeListener implements ChangeListener<Number> {
 
 		TabChangeListener() {
 			changed(null, 0, 0);
 		}
 		
+		@SuppressWarnings("rawtypes")
 		@Override
-		public void changed(ObservableValue observable, Number oldValue,
-				Number newValue) {
+		public void changed(ObservableValue observable, Number oldValue, Number newValue) {
 			FXMLLoader loadedTable = null;
 			try {
 				if ((Integer) newValue == 0){
@@ -148,9 +174,7 @@ public class MainStage implements Initializable {
 			}
 			tableController = loadedTable.<TableController>getController();
 		}
-
 	}
-	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

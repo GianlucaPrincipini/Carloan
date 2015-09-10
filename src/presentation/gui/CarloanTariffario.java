@@ -6,6 +6,6 @@ public class CarloanTariffario extends CarloanStage{
 	
 	public CarloanTariffario(){
 		super("SchermataTariffario.fxml", Tariffario.getInstance());
-		setTitle("Immissione Tariffario");
+		setTitle("Modifica Tariffario");
 	}
 }

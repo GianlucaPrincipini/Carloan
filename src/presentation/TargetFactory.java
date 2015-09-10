@@ -11,6 +11,7 @@ public class TargetFactory {
 		return buildTarget(request,null);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public static Target buildTarget(String request, Object entity) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		if (request.matches("MostraModifica[a-zA-Z]+")) {			
 			String[] splitted = request.split("MostraModifica");
