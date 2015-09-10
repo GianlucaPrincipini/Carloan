@@ -22,10 +22,8 @@ public class CheckerVettura implements Checker<Vettura>{
 
 	@Override
 	public void isModifiable(Vettura entity) throws IntegrityException {
-		if (entity.getStato() == StatoVettura.DISPONIBILE) {
-			return;
-		}
-		throw new IntegrityException();
+		if (!isAvailable(entity, LocalDate.now(), LocalDate.now()))
+			throw new IntegrityException();
 	}
 	
 	public boolean isAvailable(Vettura entity, LocalDate inizio, LocalDate fine) {

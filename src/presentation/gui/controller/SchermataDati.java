@@ -18,6 +18,8 @@ public abstract class SchermataDati<T> implements Initializable{
 	
 	public abstract void onConferma();
 	public abstract void initModifica(T entity);
+	
+	protected abstract T buildEntity();
 
 	protected void close() {
 		edit = false;

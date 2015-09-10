@@ -5,7 +5,9 @@ import java.util.ResourceBundle;
 
 import business.entity.Agenzia;
 import business.entity.Modello;
+import business.entity.StatoVettura;
 import business.entity.Vettura;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -19,9 +21,8 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 	@FXML
 	private TextField chilometraggio;
 	
-	@SuppressWarnings("rawtypes")
 	@FXML
-	private ComboBox stato;
+	private ComboBox<StatoVettura> stato;
 	
 	@FXML
 	private Label agenziaLocalizzazione;
@@ -33,7 +34,7 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		stato.setItems(FXCollections.observableArrayList(StatoVettura.values()));
 	}
 
 	@FXML
@@ -44,6 +45,7 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 		vettura.setAgenziaLocalizzazione((Agenzia) controller.processRequest("ReadAgenzia", agenziaLocalizzazione.getText()));
 		vettura.setModello((Modello) controller.processRequest("ReadModello", modello.getText()));
 		vettura.setTarga(targa.getText());
+		vettura.setStato(stato.getSelectionModel().getSelectedItem());
 		if (edit) {
 			controller.processRequest("ModificaVettura", vettura);
 		} else {
@@ -60,6 +62,13 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 		modello.setText(Integer.toString(entity.getModello().getId()));
 		agenziaLocalizzazione.setText(Integer.toString(entity.getAgenziaLocalizzazione().getId()));
 		chilometraggio.setText(Integer.toString(entity.getChilometraggio()));
+		stato.getSelectionModel().select(entity.getStato());
+	}
+
+	@Override
+	protected Vettura buildEntity() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

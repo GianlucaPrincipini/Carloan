@@ -51,15 +51,15 @@
             <Label text="Data Chiusura" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Label text="Data  Fine Noleggio" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Label text="Operatore" />
-            <Label fx:id="operatoreLabel" GridPane.columnIndex="1" />
+            <Label fx:id="operatore" GridPane.columnIndex="1" />
             <Label text="Vettura" GridPane.rowIndex="1" />
             <DatePicker fx:id="dataInizioNoleggio" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="dataStipula" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <DatePicker fx:id="dataChiusura" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <DatePicker fx:id="dataFinenoleggio" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dataFineNoleggio" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             <Label text="Acconto" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" text="Chilometraggio Limitato" GridPane.rowIndex="5" />
+            <TextField fx:id="acconto" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <CheckBox fx:id="chilometraggioLimitato" mnemonicParsing="false" text="Chilometraggio Limitato" GridPane.rowIndex="5" />
             <TextField fx:id="chilometriPrevisti" promptText="Numero chilometri previsti" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Numero chilometri percorsi" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <TextField fx:id="chilometriPercorsi" GridPane.columnIndex="4" GridPane.rowIndex="5" />
@@ -70,7 +70,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="labelCosto" GridPane.columnIndex="3" GridPane.rowIndex="7">
+            <Label fx:id="costo" GridPane.columnIndex="3" GridPane.rowIndex="7">
                <font>
                   <Font size="20.0" />
                </font>
@@ -85,13 +85,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Seleziona" />
+                  <Label fx:id="vettura" text="Seleziona" />
                   <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="4">
                <children>
-                  <Label text="Seleziona" />
+                  <Label fx:id="cliente" text="Seleziona" />
                   <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
                </children>
                <columnConstraints>
@@ -104,7 +104,7 @@
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Label text="Seleziona" />
+                  <Label fx:id="agenziaConsegna" text="Seleziona" />
                   <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
                </children>
                <columnConstraints>
@@ -117,7 +117,7 @@
             </GridPane>
             <GridPane GridPane.columnIndex="4" GridPane.rowIndex="2">
                <children>
-                  <Label text="Seleziona" />
+                  <Label fx:id="agenziaNoleggio" text="Seleziona" />
                   <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
                </children>
                <columnConstraints>

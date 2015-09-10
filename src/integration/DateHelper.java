@@ -52,5 +52,9 @@ public class DateHelper {
 	    public static void main(String[] args) {
 	    	
 	    }
+
+		public static LocalDate dateParse(java.time.LocalDate value) {
+			return new LocalDate(value.getYear(), value.getMonthValue(), value.getDayOfMonth());
+		}
 	    
 }
