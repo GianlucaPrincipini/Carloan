@@ -54,4 +54,10 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 		numTelefono.setText(entity.getNumTelefono());
 	}
 
+	@Override
+	protected Agenzia buildEntity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

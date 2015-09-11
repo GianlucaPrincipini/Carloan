@@ -15,7 +15,6 @@ import javafx.scene.control.TextField;
 
 public class SchermataTariffario extends SchermataDati<Tariffario>{
 
-	FrontController controller;
 	
 	@FXML
 	private TextField costoGiornaliero;
@@ -96,5 +95,11 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		moraCarburante.setText(Double.toString(entity.getMoraCarburante()));
 		moraDurata.setText(Double.toString(entity.getMoraDurata()));
 		moraChilometraggio.setText(Double.toString(entity.getMoraChilometraggio()));
+	}
+
+	@Override
+	protected Tariffario buildEntity() {
+		// TODO Auto-generated method stub
+		return null;
 	}		
 }

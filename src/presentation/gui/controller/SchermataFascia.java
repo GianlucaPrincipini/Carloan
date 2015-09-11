@@ -51,4 +51,10 @@ public class SchermataFascia extends SchermataDati<Fascia>{
 		indiceMassimo.setText(Double.toString(entity.getMax()));
 	}
 
+	@Override
+	protected Fascia buildEntity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

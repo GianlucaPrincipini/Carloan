@@ -4,8 +4,8 @@ import business.entity.IncidenzaFascia;
 
 public class CarloanIncidenza extends CarloanStage{
 
-	public CarloanIncidenza(){
-		super("SchermataIncidenza.fxml", IncidenzaFascia.getInstance());
+	public CarloanIncidenza(IncidenzaFascia entity){
+		super("SchermataIncidenza.fxml", entity);
 		setTitle("Modifica Incidenze di fascia");
 	}
 }

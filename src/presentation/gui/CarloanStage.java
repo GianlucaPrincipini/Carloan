@@ -35,7 +35,6 @@ public abstract class CarloanStage extends Stage implements Target{
                     	fxmlLoader.<SchermataDati>getController().setId(0);
                     }
                 });
-            	System.out.println(fxmlLoader.<SchermataDati>getController());
             	fxmlLoader.<SchermataDati>getController().initModifica(entity);
             }
         } catch (IOException e) {

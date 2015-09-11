@@ -3,6 +3,9 @@ package presentation.gui.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import business.entity.IncidenzaFascia;
+import business.entity.Tariffario;
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
 import presentation.gui.controller.table.TableController;
@@ -117,12 +120,12 @@ public class MainStage implements Initializable {
 	
 	@FXML 
 	public void modificaTariffario(){
-		controller.processRequest("MostraTariffario");
+		controller.processRequest("MostraModificaTariffario", Tariffario.getInstance());
 	}
 	
 	@FXML
 	public void modificaIncidenza(){
-		controller.processRequest("MostraIncidenza");
+		controller.processRequest("MostraModificaIncidenza", IncidenzaFascia.getInstance());
 	}
 	
 	private class TabChangeListener implements ChangeListener<Number> {

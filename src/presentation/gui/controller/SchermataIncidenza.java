@@ -12,11 +12,10 @@ import business.exception.IncidenceOutOfBoundException;
 
 public class SchermataIncidenza extends SchermataDati<IncidenzaFascia> {
 
-	FrontController controller;
 	
 	@FXML
 	private TextField capacit‡Bagagliaio;
-	
+
 	@FXML
 	private TextField numeroPorte;
 	
@@ -31,7 +30,6 @@ public class SchermataIncidenza extends SchermataDati<IncidenzaFascia> {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		controller = CarloanFrontController.getInstance();
 	}
 
 	@Override
@@ -57,5 +55,11 @@ public class SchermataIncidenza extends SchermataDati<IncidenzaFascia> {
 		potenzaSuPeso.setText(Double.toString(entity.getPotenzaSuPeso()));
 		
 		controller.processRequest("ModificaIncidenza", entity);
+	}
+
+	@Override
+	protected IncidenzaFascia buildEntity() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

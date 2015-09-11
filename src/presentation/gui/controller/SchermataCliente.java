@@ -85,4 +85,11 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 	}
 
 
+	@Override
+	protected Cliente buildEntity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }
