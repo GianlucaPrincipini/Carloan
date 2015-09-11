@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import business.entity.IncidenzaFascia;
 import business.exception.IncidenceOutOfBoundException;
 
-public class SchermataIncidenza extends SchermataDati<IncidenzaFascia> {
+public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 
 	
 	@FXML
@@ -48,12 +48,14 @@ public class SchermataIncidenza extends SchermataDati<IncidenzaFascia> {
 
 	@Override
 	public void initModifica(IncidenzaFascia entity) {
+		edit = true;
+		System.out.println("inizio");
 		capacit‡Bagagliaio.setText(Double.toString(entity.getCapacit‡Bagagliaio()));
 		emissioniCO2.setText(Double.toString(entity.getEmissioniCO2()));
 		numeroPorte.setText(Integer.toString(entity.getNumeroPorte()));
 		numeroPosti.setText(Integer.toString(entity.getNumeroPosti()));
 		potenzaSuPeso.setText(Double.toString(entity.getPotenzaSuPeso()));
-		
+		System.out.println("Fine");
 		controller.processRequest("ModificaIncidenza", entity);
 	}
 

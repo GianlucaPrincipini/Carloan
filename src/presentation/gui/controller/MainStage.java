@@ -125,7 +125,7 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void modificaIncidenza(){
-		controller.processRequest("MostraModificaIncidenza", IncidenzaFascia.getInstance());
+		controller.processRequest("MostraModificaIncidenzaFascia", IncidenzaFascia.getInstance());
 	}
 	
 	private class TabChangeListener implements ChangeListener<Number> {

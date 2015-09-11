@@ -21,14 +21,15 @@ public abstract class CarloanStage extends Stage implements Target{
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public CarloanStage(String file, Object entity) {
-        Class<?> mainClass = getClass();
-        
+        System.out.println(VIEW_LOCATION + file);
+		Class<?> mainClass = getClass();
 
         FXMLLoader fxmlLoader = new FXMLLoader(mainClass.getResource(VIEW_LOCATION + file));
 
         try {
             root = (Pane) fxmlLoader.load();
             if (entity != null) {
+            	System.out.println(fxmlLoader.<SchermataDati>getController());
                 setOnCloseRequest(new EventHandler<WindowEvent>() {
                     public void handle(WindowEvent we) {
                     	fxmlLoader.<SchermataDati>getController().setEdit(false);
