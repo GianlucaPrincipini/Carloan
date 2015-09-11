@@ -2,9 +2,6 @@ package presentation.gui.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import presentation.frontcontroller.CarloanFrontController;
-import presentation.frontcontroller.FrontController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import business.entity.IncidenzaFascia;
@@ -12,7 +9,6 @@ import business.exception.IncidenceOutOfBoundException;
 
 public class SchermataIncidenza extends SchermataDati<IncidenzaFascia> {
 
-	
 	@FXML
 	private TextField capacit‡Bagagliaio;
 
@@ -30,6 +26,7 @@ public class SchermataIncidenza extends SchermataDati<IncidenzaFascia> {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 	}
 
 	@Override
@@ -53,13 +50,11 @@ public class SchermataIncidenza extends SchermataDati<IncidenzaFascia> {
 		numeroPorte.setText(Integer.toString(entity.getNumeroPorte()));
 		numeroPosti.setText(Integer.toString(entity.getNumeroPosti()));
 		potenzaSuPeso.setText(Double.toString(entity.getPotenzaSuPeso()));
-		
 		controller.processRequest("ModificaIncidenza", entity);
 	}
 
 	@Override
 	protected IncidenzaFascia buildEntity() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

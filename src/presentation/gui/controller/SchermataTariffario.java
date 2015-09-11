@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
-import presentation.frontcontroller.FrontController;
 import business.entity.Rifornimento;
 import business.entity.Tariffario;
 import business.entity.TipoCarburante;
@@ -14,7 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class SchermataTariffario extends SchermataDati<Tariffario>{
-
 	
 	@FXML
 	private TextField costoGiornaliero;
@@ -99,7 +97,6 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 
 	@Override
 	protected Tariffario buildEntity() {
-		// TODO Auto-generated method stub
 		return null;
 	}		
 }

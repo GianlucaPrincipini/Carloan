@@ -1,26 +1,15 @@
 package presentation.gui.controller;
 
-import integration.DateHelper;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import org.joda.time.LocalDate;
-
 import business.entity.Cliente;
-import presentation.frontcontroller.CarloanFrontController;
-import presentation.frontcontroller.FrontController;
-import presentation.gui.CarloanStage;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 public class SchermataCliente extends SchermataDati<Cliente>{
 
-
-	
 	@FXML
 	private Node root;
 	
@@ -46,7 +35,6 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 	private DatePicker dataDiNascita;
 	
 	
-	
 	@FXML
 	public void onConferma() {
 		Cliente cliente = new Cliente();
@@ -67,7 +55,6 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 		close();
 	}
 	
-	
 	public void initModifica(Cliente cliente) {
 		edit = true;
 		id = cliente.getId();
@@ -84,12 +71,10 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 		
 	}
 
-
 	@Override
 	protected Cliente buildEntity() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
+	
 }
