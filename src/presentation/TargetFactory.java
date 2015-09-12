@@ -16,8 +16,9 @@ public class TargetFactory {
 		if (request.matches("MostraModifica[a-zA-Z]+")) {			
 			String[] splitted = request.split("MostraModifica");
 			return (CarloanStage) Class.forName("presentation.gui.Carloan"+splitted[1]).getDeclaredConstructor(Object.class).newInstance(entity);
-		}
-		if (request.matches("Mostra[a-zA-Z]+")) {
+		} else if (request.equals("MostraSelezione")) {
+			return (CarloanStage) new presentation.gui.CarloanSelezione(entity);
+		} else if (request.matches("Mostra[a-zA-Z]+")) {
 			String[] splitted = request.split("Mostra");
 			return (CarloanStage) Class.forName("presentation.gui.Carloan"+splitted[1]).newInstance();
 		} else {

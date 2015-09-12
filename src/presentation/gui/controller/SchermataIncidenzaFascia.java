@@ -41,6 +41,7 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 			incidenza.setNumeroPorte(Integer.parseInt(numeroPorte.getText()));
 			incidenza.setNumeroPosti(Integer.parseInt(numeroPosti.getText()));
 			incidenza.setPotenzaSuPeso(Double.parseDouble(potenzaSuPeso.getText()));
+			close();
 		} catch (NumberFormatException | IncidenceOutOfBoundException e) {
 			e.printStackTrace();
 		}
@@ -49,13 +50,11 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 	@Override
 	public void initModifica(IncidenzaFascia entity) {
 		edit = true;
-		System.out.println("inizio");
 		capacit‡Bagagliaio.setText(Double.toString(entity.getCapacit‡Bagagliaio()));
 		emissioniCO2.setText(Double.toString(entity.getEmissioniCO2()));
 		numeroPorte.setText(Integer.toString(entity.getNumeroPorte()));
 		numeroPosti.setText(Integer.toString(entity.getNumeroPosti()));
 		potenzaSuPeso.setText(Double.toString(entity.getPotenzaSuPeso()));
-		System.out.println("Fine");
 		controller.processRequest("ModificaIncidenza", entity);
 	}
 

@@ -43,7 +43,7 @@
             <GridPane GridPane.columnIndex="4">
                <children>
                   <Label fx:id="modello" text="Seleziona" />
-                  <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneModello" text="Button" GridPane.columnIndex="1" />
                </children>
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="134.0" />

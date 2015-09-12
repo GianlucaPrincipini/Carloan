@@ -59,7 +59,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getId() + ", amministratore = 0 where username = '" + entity.getUsername() + "';");
 
 		} catch (Exception e) {
-			System.err.println("Error in encrypting...");
+			e.printStackTrace();
 		}
 	}
 	

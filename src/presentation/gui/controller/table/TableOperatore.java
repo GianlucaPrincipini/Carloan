@@ -66,7 +66,6 @@ public class TableOperatore implements TableController{
 		ObservableList<Operatore> operatori = FXCollections.observableList((List<Operatore>) controller.processRequest("ReadAllOperatore"));
 		id.setCellValueFactory(new Callback<CellDataFeatures<Operatore, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Operatore, String> o) {
-				System.out.println(o.getValue().getId());
             	return new ReadOnlyObjectWrapper(Integer.toString(o.getValue().getId()));
      		}
         });		

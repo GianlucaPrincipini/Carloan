@@ -12,9 +12,9 @@ public class CarloanApplicationController implements ApplicationController{
 	public Target handleRequest(String request, Object entity) {
 		try {
 			Target res = TargetFactory.buildTarget(request, entity);
-			System.out.println(res);
 			return res; 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

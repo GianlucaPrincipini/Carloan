@@ -2,6 +2,7 @@ package presentation.frontcontroller;
 
 import presentation.Target;
 import presentation.frontcontroller.command.Command;
+import presentation.gui.CarloanSelezione;
 import presentation.gui.CarloanStage;
 import business.entity.Amministratore;
 import business.entity.Operatore;
@@ -45,6 +46,10 @@ public class CarloanFrontController implements FrontController{
 		Target targetRequest = ac.handleRequest(request, entity);
 		if (targetRequest instanceof Command) {
 			return ((Command) targetRequest).execute(entity);
+		} else if (targetRequest instanceof CarloanSelezione) {
+			CarloanSelezione target = (CarloanSelezione) targetRequest;
+			target.showAndWait();
+			return target.getValue();
 		} else if (targetRequest instanceof CarloanStage){
 			return ((CarloanStage)targetRequest).showStage();
 		}

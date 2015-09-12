@@ -8,8 +8,11 @@ import presentation.frontcontroller.FrontController;
 import business.entity.Rifornimento;
 import business.entity.Tariffario;
 import business.entity.TipoCarburante;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -60,6 +63,29 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		controller = CarloanFrontController.getInstance();
 		carburante.setItems(FXCollections.observableArrayList(TipoCarburante.values()));
 		rifornimento.setItems(FXCollections.observableArrayList(Rifornimento.values()));
+		carburante.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TipoCarburante>() {
+
+			@Override
+			public void changed(
+					ObservableValue<? extends TipoCarburante> observable,
+					TipoCarburante oldValue, TipoCarburante newValue) {
+				costoCarburante.setText(Double.toString(Tariffario.getInstance().getCostoLitro(newValue)));
+
+			}
+			
+		});
+		rifornimento.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Rifornimento>() {
+
+			@Override
+			public void changed(
+					ObservableValue<? extends Rifornimento> observable,
+					Rifornimento oldValue, Rifornimento newValue) {
+				costoRifornimento.setText(Double.toString(Tariffario.getInstance().getRifornimento(newValue)));
+			}
+			
+		});
+		carburante.getSelectionModel().select(0);
+		rifornimento.getSelectionModel().select(0);
 	}
 
 	@Override
@@ -79,11 +105,13 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		tariffario.setMoraDurata(Double.parseDouble(moraDurata.getText()));
 		
 		controller.processRequest("ModificaTariffario", tariffario);
+		close();
 	}
 
 	@Override
 	public void initModifica(Tariffario entity) {
-		
+		edit = true;
+
 		costoGiornaliero.setText(Double.toString(entity.getCostoGiornaliero()));
 		costoSettimanale.setText(Double.toString(entity.getCostoSettimanale()));
 		costoChilometrico.setText(Double.toString(entity.getCostoChilometrico()));

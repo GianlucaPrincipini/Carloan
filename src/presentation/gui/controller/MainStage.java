@@ -88,7 +88,6 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void onAggiungi() {
-		System.out.println("Aggiungo");
 		controller.processRequest("Mostra"+tabPane.getSelectionModel().getSelectedItem().getText());
 	}
 	
@@ -116,6 +115,7 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void disconnessione(){
+		chiudiFinestra();
 		controller.processRequest("MostraLogin");
 	}
 	

@@ -65,6 +65,11 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 		stato.getSelectionModel().select(entity.getStato());
 	}
 
+	@FXML
+	public void onSelezioneModello() {
+		modello.setText((String)controller.processRequest("MostraSelezione", "Modello"));
+	}
+	
 	@Override
 	protected Vettura buildEntity() {
 		// TODO Auto-generated method stub

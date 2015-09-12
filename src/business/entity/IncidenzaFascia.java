@@ -21,7 +21,7 @@ public class IncidenzaFascia implements Serializable {
 	
 	static {
 		if(incidenzaFascia == null)
-			incidenzaFascia = new IncidenzaFascia();
+			new IncidenzaFascia();
 	}
 	
 	private IncidenzaFascia(){
