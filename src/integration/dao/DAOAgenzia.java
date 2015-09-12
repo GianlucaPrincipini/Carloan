@@ -11,10 +11,11 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 
 	@Override
 	public void create(Agenzia entity) {
-		connection.executeUpdateQuery("INSERT INTO agenzia(indirizzo, citta)"
+		connection.executeUpdateQuery("INSERT INTO agenzia(indirizzo, citta, numTelefono)"
 									+ " values(" 
 									+ "'" + entity.getIndirizzo() + "', " 
 									+ "'" + entity.getCittà() + "', "
+									+ "'" + entity.getNumTelefono() + "'"
 									+ ");");
 	}
 

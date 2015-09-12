@@ -88,7 +88,8 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void onAggiungi() {
-		controller.processRequest("MostraAggiungi"+tabPane.getSelectionModel().getSelectedItem().getText());
+		System.out.println("Aggiungo");
+		controller.processRequest("Mostra"+tabPane.getSelectionModel().getSelectedItem().getText());
 	}
 	
 	@FXML
@@ -99,13 +100,13 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void onRimuovi() {
-		//sbagliato, bisogna eliminare la riga selezionata dall'entità
+		
 		//controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText());
 	}	
 	
 	@FXML
 	public void onRefresh(){
-		tabPane.setSelectionModel(tabPane.getSelectionModel());
+		tabPane.getSelectionModel().select(tabPane.getSelectionModel().getSelectedIndex());
 	}
 	
 	@FXML
