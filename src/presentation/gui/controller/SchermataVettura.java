@@ -2,7 +2,6 @@ package presentation.gui.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import business.entity.Agenzia;
 import business.entity.Modello;
 import business.entity.StatoVettura;
@@ -35,21 +34,17 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		stato.setItems(FXCollections.observableArrayList(StatoVettura.values()));
+		stato.getSelectionModel().select(0);
 	}
 
 	@FXML
 	@Override
 	public void onConferma() {
-		Vettura vettura = new Vettura();
-		vettura.setChilometraggio(Integer.parseInt(chilometraggio.getText()));
-		vettura.setAgenziaLocalizzazione((Agenzia) controller.processRequest("ReadAgenzia", agenziaLocalizzazione.getText()));
-		vettura.setModello((Modello) controller.processRequest("ReadModello", modello.getText()));
-		vettura.setTarga(targa.getText());
-		vettura.setStato(stato.getSelectionModel().getSelectedItem());
+
 		if (edit) {
-			controller.processRequest("ModificaVettura", vettura);
+			controller.processRequest("ModificaVettura", buildEntity());
 		} else {
-			controller.processRequest("AggiungiVettura", vettura);
+			controller.processRequest("AggiungiVettura", buildEntity());
 		}
 		close();
 	}
@@ -77,8 +72,13 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 	
 	@Override
 	protected Vettura buildEntity() {
-		// TODO Auto-generated method stub
-		return null;
+		Vettura vettura = new Vettura();
+		vettura.setChilometraggio(Integer.parseInt(chilometraggio.getText()));
+		vettura.setAgenziaLocalizzazione((Agenzia) controller.processRequest("ReadAgenzia", agenziaLocalizzazione.getText()));
+		vettura.setModello((Modello) controller.processRequest("ReadModello", modello.getText()));
+		vettura.setTarga(targa.getText());
+		vettura.setStato(stato.getSelectionModel().getSelectedItem());
+		return vettura;
 	}
 
 }

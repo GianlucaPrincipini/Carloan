@@ -11,7 +11,6 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.SchermataSelezione">
    <children>
-      <AnchorPane fx:id="paneTabella" layoutX="15.0" layoutY="149.0" prefHeight="531.0" prefWidth="989.0" />
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="130.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="130.0" fitWidth="1024.0">
@@ -21,8 +20,9 @@
             </ImageView>
          </children>
       </HBox>
-      <BorderPane layoutY="545.0" prefHeight="84.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <left>
+      <AnchorPane fx:id="paneTabella" layoutX="15.0" layoutY="149.0" prefHeight="500.0" prefWidth="989.0" />
+      <BorderPane layoutY="545.0" prefHeight="119.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <center>
             <Button fx:id="conferma" mnemonicParsing="false" onMouseClicked="#onConferma" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="200.0" smooth="false">
@@ -40,9 +40,6 @@
                   </LinearGradient>
                </textFill>
             </Button>
-         </left>
-         <center>
-            <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

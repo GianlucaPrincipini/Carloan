@@ -17,6 +17,14 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 	
 	public  void create(Operatore entity){
 		try {
+			ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
+					+ "'carloan' AND   TABLE_NAME = 'persona'");
+			try {
+				rs.next();
+				entity.setId(rs.getInt(1));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			connection.executeUpdateQuery("insert into persona(nome, cognome, datanascita, numtelefono, email)"
 										+ " values(" 
 										+ "'" + entity.getNome() + "', "

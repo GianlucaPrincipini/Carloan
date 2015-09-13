@@ -19,7 +19,7 @@
             </ImageView>
          </children>
       </HBox>
-      <GridPane alignment="CENTER" layoutX="80.0" layoutY="585.0" prefHeight="81.0" prefWidth="864.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+      <GridPane alignment="CENTER" layoutX="80.0" layoutY="585.0" prefHeight="81.0" prefWidth="864.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0">
          <children>
             <Label text="Tipo" />
             <TextField fx:id="tipo" GridPane.columnIndex="1" />

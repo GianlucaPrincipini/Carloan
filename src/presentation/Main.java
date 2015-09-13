@@ -11,7 +11,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			CarloanFrontController.getInstance().processRequest("MostraLogin");
+			CarloanFrontController.getInstance().processRequest("MostraMainStage");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -24,7 +24,7 @@
             <Label text="Nome " GridPane.columnIndex="2" />
             <TextField fx:id="nome" GridPane.columnIndex="3" />
             <Label text="Marca" />
-            <TextField fx:id="cognome" GridPane.columnIndex="1" />
+            <TextField fx:id="marca" GridPane.columnIndex="1" />
             <Label text="Tipo Carburante" GridPane.rowIndex="1" />
             <Label text="Capacità Bagagliaio" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <TextField fx:id="capacitàBagagliaio" GridPane.columnIndex="3" GridPane.rowIndex="1" />
@@ -49,16 +49,16 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Fascia :" />
-                  <TextField fx:id="fascia" GridPane.columnIndex="1" />
+                  <Label fx:id="fascia" text="Fascia" GridPane.columnIndex="1" />
+                  <Button fx:id="T" mnemonicParsing="false" onMouseClicked="#onCalcolaFascia" text="Calcola Fascia" />
                </children>
             </GridPane>
          </children>
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="209.0" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="232.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />

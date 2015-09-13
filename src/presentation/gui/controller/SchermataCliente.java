@@ -1,6 +1,5 @@
 package presentation.gui.controller;
 
-import integration.DateHelper;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -8,14 +7,9 @@ import java.util.ResourceBundle;
 import org.joda.time.LocalDate;
 
 import business.entity.Cliente;
-import presentation.frontcontroller.CarloanFrontController;
-import presentation.frontcontroller.FrontController;
-import presentation.gui.CarloanStage;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 public class SchermataCliente extends SchermataDati<Cliente>{
 

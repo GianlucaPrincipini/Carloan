@@ -45,8 +45,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Seleziona" />
-                  <Button mnemonicParsing="false" text="     " GridPane.columnIndex="1" />
+                  <Label fx:id="agenzia" text="Seleziona" />
+                  <Button fx:id="selezioneAgenzia" mnemonicParsing="false" text="     " GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <CheckBox fx:id="amministratore" mnemonicParsing="false" text="Amministratore" GridPane.columnIndex="3" GridPane.rowIndex="1" />

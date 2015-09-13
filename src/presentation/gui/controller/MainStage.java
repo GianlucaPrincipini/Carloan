@@ -2,11 +2,13 @@ package presentation.gui.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
 
-import com.sun.javafx.scene.accessibility.Action;
+
+
 
 import business.entity.IncidenzaFascia;
 import business.entity.Tariffario;
@@ -20,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -103,12 +106,21 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void onRimuovi() {
-		controller.processRequest("Rimuovi" + tabPane.getSelectionModel().getSelectedItem().getText());
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Conferma");
+		alert.setHeaderText("Conferma Eliminazione");
+		alert.setContentText("Confermi l'eliminazione dell'elemento?");
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			controller.processRequest("Rimuovi"+tabPane.getSelectionModel().getSelectedItem().getText(), 
+					controller.processRequest("Read"+tabPane.getSelectionModel().getSelectedItem().getText(), tableController.getPrimaryKey()));
+			} 
 	}	
 	
 	@FXML
 	public void onRefresh(){
-		tabPane.getSelectionModel().select(tabPane.getSelectionModel().getSelectedIndex());
+		tabPane.getSelectionModel().select(tabPane.getSelectionModel().getSelectedIndex()+1);
+		tabPane.getSelectionModel().select(tabPane.getSelectionModel().getSelectedIndex()-1);
 	}
 	
 	@FXML
