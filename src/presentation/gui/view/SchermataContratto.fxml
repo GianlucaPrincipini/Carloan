@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.SchermataContratto">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.gui.controller.SchermataContratto">
    <children>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="130.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -41,7 +41,7 @@
             </Button>
          </center>
       </BorderPane>
-      <GridPane alignment="CENTER" layoutX="64.0" layoutY="300.0" prefHeight="348.0" prefWidth="897.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="63.0">
+      <GridPane alignment="CENTER" layoutX="64.0" layoutY="300.0" prefHeight="348.0" prefWidth="897.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="140.0">
          <children>
             <Label text="Cliente" GridPane.columnIndex="3" />
             <Label text="Agenzia Noleggio" GridPane.columnIndex="3" GridPane.rowIndex="2" />
@@ -81,7 +81,7 @@
               </rowConstraints>
                <children>
                   <Label fx:id="vettura" text="Seleziona" />
-                  <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneVettura" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
@@ -95,7 +95,7 @@
             <GridPane GridPane.columnIndex="4">
                <children>
                   <Label fx:id="cliente" text="Seleziona" />
-                  <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneCliente" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
@@ -115,7 +115,7 @@
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label fx:id="agenziaConsegna" text="Seleziona" />
-                  <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezoneAgenziaConsegna" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
@@ -135,7 +135,7 @@
             <GridPane GridPane.columnIndex="4" GridPane.rowIndex="2">
                <children>
                   <Label fx:id="agenziaNoleggio" text="Seleziona" />
-                  <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneAgenziaNoleggio" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
@@ -152,7 +152,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Button mnemonicParsing="false" text="Calcola costo" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onMouseClicked="#onCalcolaCosto" text="Calcola costo" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
          <columnConstraints>
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="210.0" />
