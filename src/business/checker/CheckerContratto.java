@@ -25,8 +25,9 @@ public class CheckerContratto implements Checker<Contratto>{
 	
 	@Override
 	public void isModifiable(Contratto entity) throws UnmodifiableEntityException {
-		if (LocalDate.now().equals(entity.getDataFineNoleggio()) || 
-			LocalDate.now().isAfter(entity.getDataFineNoleggio()) && 
+		
+		if ((LocalDate.now().equals(entity.getDataFineNoleggio()) || 
+			LocalDate.now().isAfter(entity.getDataFineNoleggio())) && 
 			!entity.isChiuso()) return;
 		if (Days.daysBetween(LocalDate.now(), entity.getDataInizioNoleggio()).getDays() > 2) return;
 		if (!entity.isChiuso()) return;

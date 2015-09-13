@@ -75,6 +75,30 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 	}
 	
 	
+	public double calcolaCostoChiusura(Contratto contratto) {
+		double costo = calcolaCosto(contratto);
+		Tariffario tariffario = contratto.getTariffario();
+		int chilometriConsiderati;
+		if (contratto.isChilometraggioLimitato() && contratto.getChilometriPercorsi() <= contratto.getChilometriPrevisti())
+			chilometriConsiderati = contratto.getChilometriPrevisti();
+		else chilometriConsiderati = contratto.getChilometriPercorsi();
+		
+		if (contratto.getRifornimento() == Rifornimento.STANDARD) {
+			costo += tariffario.getCostoLitro(contratto.getVettura().getModello().getTipoCarburante()) * chilometriConsiderati;
+		} else if (contratto.getRifornimento() == Rifornimento.PIENO_ANTICIPO) {
+			costo += tariffario.getRifornimento(contratto.getRifornimento());
+		} 
+		
+		if (contratto.getDataChiusura().isAfter(contratto.getDataFineNoleggio())) {
+			costo += tariffario.getMoraDurata() * Days.daysBetween(contratto.getDataFineNoleggio(), contratto.getDataChiusura()).getDays();
+		}
+		
+		if (contratto.isChilometraggioLimitato() && contratto.getChilometriPercorsi() > contratto.getChilometriPrevisti()) {
+			costo += tariffario.getMoraChilometraggio() * (contratto.getChilometriPercorsi() - contratto.getChilometriPrevisti());
+		}
+		return costo;
+	}
+	
 	public double calcolaCosto(Contratto contratto) {
 		double costo = 0;
 		Tariffario tariffario = contratto.getTariffario();
@@ -100,30 +124,9 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 			costo += tariffario.getCostoChilometraggioIllimitato();
 		}
 		
-		if (contratto.isChiuso()) {
-			int chilometriConsiderati;
-			if (contratto.isChilometraggioLimitato() && contratto.getChilometriPercorsi() <= contratto.getChilometriPrevisti())
-				chilometriConsiderati = contratto.getChilometriPrevisti();
-			else chilometriConsiderati = contratto.getChilometriPercorsi();
-			
-			if (contratto.getRifornimento() == Rifornimento.STANDARD) {
-				costo += tariffario.getCostoLitro(contratto.getVettura().getModello().getTipoCarburante()) * chilometriConsiderati;
-			} else if (contratto.getRifornimento() == Rifornimento.PIENO_ANTICIPO) {
-				costo += tariffario.getRifornimento(contratto.getRifornimento());
-			} 
-			
-			if (contratto.getDataChiusura().isAfter(contratto.getDataFineNoleggio())) {
-				costo += tariffario.getMoraDurata() * Days.daysBetween(contratto.getDataFineNoleggio(), contratto.getDataChiusura()).getDays();
-			}
-			
-			if (contratto.isChilometraggioLimitato() && contratto.getChilometriPercorsi() > contratto.getChilometriPrevisti()) {
-				costo += tariffario.getMoraChilometraggio() * (contratto.getChilometriPercorsi() - contratto.getChilometriPrevisti());
-			}
-		}
 		
 		costo -= contratto.getAcconto();
 		contratto.setCosto(costo);
-		update(contratto);
 		return costo;
 	}
 	

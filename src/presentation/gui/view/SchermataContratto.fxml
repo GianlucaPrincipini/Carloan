@@ -48,29 +48,25 @@
             <Label text="Agenzia Consegna" GridPane.rowIndex="2" />
             <Label text="Data Stipula" GridPane.rowIndex="3" />
             <Label text="Data Inizio Noleggio" GridPane.rowIndex="4" />
-            <Label text="Data Chiusura" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Label text="Data  Fine Noleggio" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label text="Data  Fine Noleggio" GridPane.rowIndex="5" />
             <Label text="Operatore" />
             <Label fx:id="operatore" GridPane.columnIndex="1" />
             <Label text="Vettura" GridPane.rowIndex="1" />
             <DatePicker fx:id="dataInizioNoleggio" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="dataStipula" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker fx:id="dataChiusura" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <DatePicker fx:id="dataFineNoleggio" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dataFineNoleggio" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Acconto" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <TextField fx:id="acconto" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <CheckBox fx:id="chilometraggioLimitato" mnemonicParsing="false" text="Chilometraggio Limitato" GridPane.rowIndex="5" />
-            <TextField fx:id="chilometriPrevisti" promptText="Numero chilometri previsti" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Numero chilometri percorsi" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <TextField fx:id="chilometriPercorsi" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <Label text="Rifornimento" GridPane.rowIndex="6" />
-            <CheckBox fx:id="assicurazioneAvanzata" mnemonicParsing="false" text="Assicurazione Avanzata" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Label fx:id="costo" prefHeight="30.0" prefWidth="80.0" text="   " GridPane.columnIndex="2" GridPane.rowIndex="7">
+            <CheckBox fx:id="chilometraggioLimitato" mnemonicParsing="false" text="Chilometraggio Limitato" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="chilometriPrevisti" promptText="Numero chilometri previsti" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Label text="Rifornimento" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <CheckBox fx:id="assicurazioneAvanzata" mnemonicParsing="false" text="Assicurazione Avanzata" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label fx:id="costo" prefHeight="30.0" prefWidth="80.0" text="   " GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="rifornimento" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="rifornimento" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -115,7 +111,7 @@
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label fx:id="agenziaConsegna" text="Seleziona" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSelezoneAgenziaConsegna" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneAgenziaConsegna" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
@@ -152,13 +148,13 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Button mnemonicParsing="false" onMouseClicked="#onCalcolaCosto" text="Calcola costo" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onMouseClicked="#onCalcolaCosto" text="Calcola costo" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
          </children>
          <columnConstraints>
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="210.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="183.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="109.0" />
-            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="237.0" minWidth="10.0" prefWidth="209.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="199.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="78.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="237.0" minWidth="10.0" prefWidth="228.0" />
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="180.0" />
          </columnConstraints>
          <rowConstraints>

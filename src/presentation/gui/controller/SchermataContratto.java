@@ -15,6 +15,7 @@ import business.entity.Agenzia;
 import business.entity.Cliente;
 import business.entity.Contratto;
 import business.entity.Rifornimento;
+import business.entity.Vettura;
 
 public class SchermataContratto extends SchermataDati<Contratto>{
 	
@@ -25,17 +26,11 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	private TextField chilometriPrevisti;
 	
 	@FXML
-	private TextField chilometriPercorsi;
-	
-	@FXML
 	private DatePicker dataInizioNoleggio;
 	
 	@FXML
 	private DatePicker dataFineNoleggio;
-	
-	@FXML
-	private DatePicker dataChiusura;
-	
+
 	@FXML
 	private DatePicker dataStipula;
 	
@@ -85,7 +80,7 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	
 	@FXML
 	public void onSelezioneAgenziaConsegna() {
-		cliente.setText((String) controller.processRequest("MostraSelezione", "Agenzia"));
+		agenziaConsegna.setText((String) controller.processRequest("MostraSelezione", "Agenzia"));
 	}
 	
 	@Override
@@ -97,7 +92,6 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 		    @Override
 		    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				chilometriPrevisti.setDisable(!newValue);
-				chilometriPercorsi.setDisable(!newValue);
 		    }
 		});
 	}
@@ -105,8 +99,12 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	
 	@Override
 	public void onConferma() {
-		if (edit) controller.processRequest("ModificaContratto", buildEntity());
-		else controller.processRequest("AggiungiContratto", buildEntity());
+		Contratto contratto = buildEntity();
+		contratto.setCosto((Double) controller.processRequest("CalcolaCosto", contratto));
+		if (contratto != null) {
+			if (edit) controller.processRequest("ModificaContratto", buildEntity());
+			else controller.processRequest("AggiungiContratto", buildEntity());
+		} 
 		close();
 	}
 
@@ -124,7 +122,6 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 		dataInizioNoleggio.setValue(java.time.LocalDate.of(entity.getDataInizioNoleggio().getYear(), entity.getDataInizioNoleggio().getMonthOfYear(), entity.getDataInizioNoleggio().getDayOfMonth()));
 		dataFineNoleggio.setValue(java.time.LocalDate.of(entity.getDataFineNoleggio().getYear(), entity.getDataFineNoleggio().getMonthOfYear(), entity.getDataFineNoleggio().getDayOfMonth()));
 		dataStipula.setValue(java.time.LocalDate.of(entity.getDataStipula().getYear(), entity.getDataStipula().getMonthOfYear(), entity.getDataStipula().getDayOfMonth()));
-		dataChiusura.setValue(java.time.LocalDate.of(entity.getDataChiusura().getYear(), entity.getDataChiusura().getMonthOfYear(), entity.getDataChiusura().getDayOfMonth()));
 
 		
 		agenziaNoleggio.setText(Integer.toString(entity.getAgenziaNoleggio().getId()));
@@ -132,7 +129,6 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 
 		
 		chilometriPrevisti.setText(Integer.toString(entity.getChilometriPrevisti()));
-		chilometriPercorsi.setText(Integer.toString(entity.getChilometriPercorsi()));
 		
 		rifornimento.getSelectionModel().select(entity.getRifornimento());
 		chilometraggioLimitato.selectedProperty().set(entity.isChilometraggioLimitato());
@@ -148,14 +144,23 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	@Override
 	protected Contratto buildEntity() {
 		Contratto contratto = new Contratto();
-		contratto.setAgenziaConsegna((Agenzia) controller.processRequest("ReadAgenzia", Integer.parseInt(agenziaConsegna.getText())));
-		contratto.setAgenziaNoleggio((Agenzia) controller.processRequest("ReadAgenzia", Integer.parseInt(agenziaNoleggio.getText())));
+		contratto.setAgenziaConsegna((Agenzia) controller.processRequest("ReadAgenzia", agenziaConsegna.getText()));
+		contratto.setAgenziaNoleggio((Agenzia) controller.processRequest("ReadAgenzia", agenziaNoleggio.getText()));
 		contratto.setCliente((Cliente) controller.processRequest("ReadCliente", cliente.getText()));
-		contratto.setDataChiusura(DateHelper.dateParse(dataChiusura.getValue()));
+		contratto.setVettura((Vettura) controller.processRequest("ReadVettura", vettura.getText()));
+		System.out.println(DateHelper.dateParse(dataFineNoleggio.getValue()));
 		contratto.setDataFineNoleggio(DateHelper.dateParse(dataFineNoleggio.getValue()));
 		contratto.setDataStipula(DateHelper.dateParse(dataStipula.getValue()));
 		contratto.setDataInizioNoleggio(DateHelper.dateParse(dataInizioNoleggio.getValue()));
-		return contratto;
+		contratto.setAcconto(Double.parseDouble(acconto.getText()));
+		contratto.setRifornimento(rifornimento.getSelectionModel().getSelectedItem());
+		contratto.setAssicurazioneAvanzata(assicurazioneAvanzata.selectedProperty().get());
+		contratto.setChilometraggioLimitato(chilometraggioLimitato.selectedProperty().get());
+		contratto.setChilometriPrevisti(Integer.parseInt(chilometriPrevisti.getText()));
+		if (!costo.getText().equals("")) {
+			return contratto;	
+		}
+		return null;
 	}
 	
 
