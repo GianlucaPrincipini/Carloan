@@ -67,6 +67,27 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	private ChoiceBox<Rifornimento> rifornimento;
 	
 
+	@FXML
+	public void onSelezioneVettura() {
+		vettura.setText((String) controller.processRequest("MostraSelezione", "Vettura"));
+	}
+	
+	@FXML
+	public void onSelezioneAgenziaNoleggio() {
+		agenziaNoleggio.setText((String) controller.processRequest("MostraSelezione", "Agenzia"));
+	}
+	
+	@FXML
+	public void onSelezioneCliente() {
+		cliente.setText((String) controller.processRequest("MostraSelezione", "Cliente"));
+	}
+	
+	
+	@FXML
+	public void onSelezioneAgenziaConsegna() {
+		cliente.setText((String) controller.processRequest("MostraSelezione", "Agenzia"));
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		operatore.setText(CarloanFrontController.getInstance().getUserAuthenticated().getUsername());
@@ -134,7 +155,6 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 		contratto.setDataFineNoleggio(DateHelper.dateParse(dataFineNoleggio.getValue()));
 		contratto.setDataStipula(DateHelper.dateParse(dataStipula.getValue()));
 		contratto.setDataInizioNoleggio(DateHelper.dateParse(dataInizioNoleggio.getValue()));
-
 		return contratto;
 	}
 	
