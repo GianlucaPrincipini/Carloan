@@ -132,7 +132,6 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 			ApplicationServiceContratto ac = new ApplicationServiceContratto();
 			Contratto contratto = ac.read(Integer.toString(1));
 			ac.calcolaCosto(contratto);
-			System.out.println(contratto.getCosto());
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}

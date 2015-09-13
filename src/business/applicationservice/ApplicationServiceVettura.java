@@ -6,6 +6,7 @@ import integration.dao.DAO;
 import integration.dao.DAOFactory;
 import business.checker.Checker;
 import business.checker.CheckerFactory;
+import business.entity.Agenzia;
 import business.entity.Vettura;
 import business.exception.IntegrityException;
 
@@ -48,6 +49,17 @@ public class ApplicationServiceVettura extends ApplicationServiceEntity<Vettura>
 		dao.delete(entity.getTarga());
 	}
 
+	
+	public List<Vettura> filtra(Agenzia agenzia) {
+		List<Vettura> vetture = readAll();
+		for (Vettura v:vetture) {
+			if (v.getAgenziaLocalizzazione().getId() != agenzia.getId()) {
+				vetture.remove(v);
+			}
+		}
+		return vetture;
+	}
+	
 	@Override
 	public List<Vettura> readAll() {
 		return dao.readAll();

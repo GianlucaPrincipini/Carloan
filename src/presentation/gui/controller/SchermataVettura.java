@@ -70,6 +70,11 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 		modello.setText((String)controller.processRequest("MostraSelezione", "Modello"));
 	}
 	
+	@FXML
+	public void onSelezioneAgenzia() {
+		agenziaLocalizzazione.setText((String)controller.processRequest("MostraSelezione", "Agenzia"));
+	}
+	
 	@Override
 	protected Vettura buildEntity() {
 		// TODO Auto-generated method stub

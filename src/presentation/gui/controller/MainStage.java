@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+
+import com.sun.javafx.scene.accessibility.Action;
+
 import business.entity.IncidenzaFascia;
 import business.entity.Tariffario;
 import presentation.frontcontroller.CarloanFrontController;
@@ -99,8 +103,7 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	public void onRimuovi() {
-		
-		//controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText());
+		controller.processRequest("Rimuovi" + tabPane.getSelectionModel().getSelectedItem().getText());
 	}	
 	
 	@FXML
