@@ -2,12 +2,14 @@ package presentation.gui.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import business.entity.Agenzia;
 import business.entity.Modello;
 import business.entity.StatoVettura;
 import business.entity.Vettura;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,7 +23,7 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 	private TextField chilometraggio;
 	
 	@FXML
-	private ComboBox<StatoVettura> stato;
+	private ChoiceBox<StatoVettura> stato;
 	
 	@FXML
 	private Label agenziaLocalizzazione;

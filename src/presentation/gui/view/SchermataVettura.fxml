@@ -37,13 +37,27 @@
               </rowConstraints>
                <children>
                   <Label fx:id="agenziaLocalizzazione" text="Seleziona" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneAgenzia" text="Button" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneAgenzia" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@contents/add.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="4">
                <children>
                   <Label fx:id="modello" text="Seleziona" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneModello" text="Button" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneModello" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@contents/add.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="134.0" />
@@ -63,7 +77,7 @@
               </rowConstraints>
                <children>
                   <Label text="Stato" />
-                  <ComboBox fx:id="stato" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ChoiceBox fx:id="stato" prefWidth="150.0" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </children>

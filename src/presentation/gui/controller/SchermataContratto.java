@@ -69,13 +69,12 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//operatore.setText(CarloanFrontController.getInstance().getUserAuthenticated().getUsername());
+		operatore.setText(CarloanFrontController.getInstance().getUserAuthenticated().getUsername());
 		rifornimento.setItems(FXCollections.observableArrayList(Rifornimento.values()));
 		chilometraggioLimitato.selectedProperty().set(true);
 		chilometraggioLimitato.selectedProperty().addListener(new ChangeListener<Boolean>(){
 		    @Override
 		    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-		        //chilometraggioLimitato.setSelected(!newValue);
 				chilometriPrevisti.setDisable(!newValue);
 				chilometriPercorsi.setDisable(!newValue);
 		    }
@@ -85,14 +84,14 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	
 	@Override
 	public void onConferma() {
-		Contratto contratto;
-		// TODO Auto-generated method stub
+		if (edit) controller.processRequest("ModificaContratto", buildEntity());
+		else controller.processRequest("AggiungiContratto", buildEntity());
 		close();
 	}
 
 	@FXML
 	public void onCalcolaCosto() {
-		controller.processRequest("CalcolaCosto", buildEntity());
+		costo.setText(Double.toString((Double) controller.processRequest("CalcolaCosto", buildEntity())));
 	}
 	
 	@Override

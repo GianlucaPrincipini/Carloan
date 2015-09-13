@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -43,7 +44,7 @@ public class SchermataModello extends SchermataDati<Modello>{
 	private Label fascia;
 	
 	@FXML
-	private ComboBox<TipoCarburante> tipoCarburante;
+	private ChoiceBox<TipoCarburante> tipoCarburante;
 	
 	@FXML
 	private CheckBox trasmissioneAutomatica;

@@ -32,7 +32,7 @@
             <TextField fx:id="numeroPosti" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Numero Porte" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <TextField fx:id="numeroPorte" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <ComboBox fx:id="tipoCarburante" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="tipoCarburante" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Potenza" GridPane.rowIndex="3" />
             <Label text="Peso" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label text="Emissioni CO2" GridPane.rowIndex="4" />

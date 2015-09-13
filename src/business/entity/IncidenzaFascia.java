@@ -19,25 +19,27 @@ public class IncidenzaFascia implements Serializable {
 	private double emissioniCO2;
 	private static IncidenzaFascia incidenzaFascia;
 	
-	static {
+	private IncidenzaFascia(){}
+	
+	public static IncidenzaFascia getInstance() {
 		if(incidenzaFascia == null)
-			new IncidenzaFascia();
+			incidenzaFascia = new IncidenzaFascia();
+		load();
+		return incidenzaFascia;
 	}
 	
-	private IncidenzaFascia(){
+	private static void load() {
 		File file = new File("./incidenza/");
 		if(!file.canRead()) {
 			file.mkdirs();
 		}
 		try {
-			ObjectInputStream in = new ObjectInputStream(
-					new FileInputStream("./incidenza/incidenza.dat"));
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream("./incidenza/incidenza.dat"));
 			incidenzaFascia = (IncidenzaFascia) in.readObject();
 			in.close();
 		} catch(IOException e){
 			try{
-				ObjectOutputStream out = new ObjectOutputStream(
-						new FileOutputStream("./incidenza/incidenza.dat"));
+				ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./incidenza/incidenza.dat"));
 				out.writeObject(incidenzaFascia);
 				out.close();
 			} catch(IOException ex){
@@ -47,10 +49,6 @@ public class IncidenzaFascia implements Serializable {
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static IncidenzaFascia getInstance() {
-		return incidenzaFascia;
 	}
 	
 	public void setCapacit‡Bagagliaio(double x) throws IncidenceOutOfBoundException {

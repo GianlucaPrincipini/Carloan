@@ -65,12 +65,7 @@
             <TextField fx:id="chilometriPercorsi" GridPane.columnIndex="4" GridPane.rowIndex="5" />
             <Label text="Rifornimento" GridPane.rowIndex="6" />
             <CheckBox fx:id="assicurazioneAvanzata" mnemonicParsing="false" text="Assicurazione Avanzata" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Label alignment="CENTER" text="Costo" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="costo" GridPane.columnIndex="3" GridPane.rowIndex="7">
+            <Label fx:id="costo" prefHeight="30.0" prefWidth="80.0" text="   " GridPane.columnIndex="2" GridPane.rowIndex="7">
                <font>
                   <Font size="20.0" />
                </font>
@@ -86,13 +81,28 @@
               </rowConstraints>
                <children>
                   <Label fx:id="vettura" text="Seleziona" />
-                  <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                           <image>
+                              <Image url="@contents/add.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="4">
                <children>
                   <Label fx:id="cliente" text="Seleziona" />
-                  <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                           <image>
+                              <Image url="@contents/add.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -105,7 +115,14 @@
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label fx:id="agenziaConsegna" text="Seleziona" />
-                  <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                           <image>
+                              <Image url="@contents/add.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -118,7 +135,14 @@
             <GridPane GridPane.columnIndex="4" GridPane.rowIndex="2">
                <children>
                   <Label fx:id="agenziaNoleggio" text="Seleziona" />
-                  <Button mnemonicParsing="false" text="        " GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                           <image>
+                              <Image url="@contents/add.ico" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -128,6 +152,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
+            <Button mnemonicParsing="false" text="Calcola costo" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
          <columnConstraints>
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="210.0" />

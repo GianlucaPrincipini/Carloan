@@ -30,21 +30,13 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 	}
 
 	@Override
 	public void onConferma() {
-		IncidenzaFascia incidenza = IncidenzaFascia.getInstance();
-		try {
-			incidenza.setCapacit‡Bagagliaio(Double.parseDouble(capacit‡Bagagliaio.getText()));
-			incidenza.setEmissioniCO2(Double.parseDouble(emissioniCO2.getText()));
-			incidenza.setNumeroPorte(Integer.parseInt(numeroPorte.getText()));
-			incidenza.setNumeroPosti(Integer.parseInt(numeroPosti.getText()));
-			incidenza.setPotenzaSuPeso(Double.parseDouble(potenzaSuPeso.getText()));
+			controller.processRequest("ModificaIncidenza", buildEntity());
 			close();
-		} catch (NumberFormatException | IncidenceOutOfBoundException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -60,7 +52,16 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 
 	@Override
 	protected IncidenzaFascia buildEntity() {
-		// TODO Auto-generated method stub
-		return null;
+		IncidenzaFascia incidenza = IncidenzaFascia.getInstance();
+		try {
+			incidenza.setCapacit‡Bagagliaio(Double.parseDouble(capacit‡Bagagliaio.getText()));
+			incidenza.setEmissioniCO2(Double.parseDouble(emissioniCO2.getText()));
+			incidenza.setNumeroPorte(Integer.parseInt(numeroPorte.getText()));
+			incidenza.setNumeroPosti(Integer.parseInt(numeroPosti.getText()));
+			incidenza.setPotenzaSuPeso(Double.parseDouble(potenzaSuPeso.getText()));
+		} catch (NumberFormatException | IncidenceOutOfBoundException e) {
+			e.printStackTrace();
+		}
+		return incidenza;
 	}
 }

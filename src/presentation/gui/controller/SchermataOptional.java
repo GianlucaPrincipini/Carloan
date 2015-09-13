@@ -22,7 +22,6 @@ public class SchermataOptional extends SchermataDati<Optional>{
 
 	@Override
 	public void onConferma() {
-
 		if (edit) {
 			controller.processRequest("ModificaOptional", buildEntity());
 		} else {

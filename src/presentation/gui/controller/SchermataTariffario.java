@@ -38,10 +38,22 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 	private TextField assicurazioneAvanzata;
 	
 	@FXML
-	private TextField costoCarburante;
+	private TextField costoBenzina;
 	
 	@FXML
-	private TextField costoRifornimento;
+	private TextField costoDiesel;
+	
+	@FXML
+	private TextField costoElettricità;
+	
+	@FXML
+	private TextField costoMetano;
+	
+	@FXML
+	private TextField costoGpl;
+	
+	@FXML
+	private TextField costoPienoAnticipo;
 	
 	@FXML
 	private TextField moraCarburante;
@@ -51,60 +63,15 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 	
 	@FXML
 	private TextField moraDurata;
-	
-	@FXML
-	private ComboBox<TipoCarburante> carburante;	
-	
-	@FXML
-	private ComboBox<Rifornimento> rifornimento;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		controller = CarloanFrontController.getInstance();
-		carburante.setItems(FXCollections.observableArrayList(TipoCarburante.values()));
-		rifornimento.setItems(FXCollections.observableArrayList(Rifornimento.values()));
-		carburante.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TipoCarburante>() {
-
-			@Override
-			public void changed(
-					ObservableValue<? extends TipoCarburante> observable,
-					TipoCarburante oldValue, TipoCarburante newValue) {
-				costoCarburante.setText(Double.toString(Tariffario.getInstance().getCostoLitro(newValue)));
-
-			}
-			
-		});
-		rifornimento.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Rifornimento>() {
-
-			@Override
-			public void changed(
-					ObservableValue<? extends Rifornimento> observable,
-					Rifornimento oldValue, Rifornimento newValue) {
-				costoRifornimento.setText(Double.toString(Tariffario.getInstance().getRifornimento(newValue)));
-			}
-			
-		});
-		carburante.getSelectionModel().select(0);
-		rifornimento.getSelectionModel().select(0);
 	}
 
 	@Override
 	public void onConferma() {
-		Tariffario tariffario = Tariffario.getInstance();
-		
-		tariffario.setCostoGiornaliero(Double.parseDouble(costoGiornaliero.getText())); 
-		tariffario.setCostoSettimanale(Double.parseDouble(costoSettimanale.getText()));
-		tariffario.setCostoChilometrico(Double.parseDouble(costoChilometrico.getText()));
-		tariffario.setCostoChilometraggioIllimitato(Double.parseDouble(costoChilometraggioIllimitato.getText()));
-		tariffario.setAssicurazioneBase(Double.parseDouble(assicurazioneBase.getText()));
-		tariffario.setAssicurazioneAvanzata(Double.parseDouble(assicurazioneAvanzata.getText()));
-		tariffario.setCostoLitro(carburante.getValue(), Double.parseDouble(costoCarburante.getText()));
-		tariffario.setRifornimento(rifornimento.getValue(), Double.parseDouble(costoRifornimento.getText()));
-		tariffario.setMoraCarburante(Double.parseDouble(costoCarburante.getText()));
-		tariffario.setMoraChilometraggio(Double.parseDouble(moraChilometraggio.getText()));
-		tariffario.setMoraDurata(Double.parseDouble(moraDurata.getText()));
-		
-		controller.processRequest("ModificaTariffario", tariffario);
+		controller.processRequest("ModificaTariffario", buildEntity());
 		close();
 	}
 
@@ -118,8 +85,12 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		costoChilometraggioIllimitato.setText(Double.toString(entity.getCostoChilometraggioIllimitato()));
 		assicurazioneBase.setText(Double.toString(entity.getAssicurazioneBase()));
 		assicurazioneAvanzata.setText(Double.toString(entity.getAssicurazioneAvanzata()));
-		costoCarburante.setText(Double.toString(Tariffario.getInstance().getCostoLitro(carburante.getSelectionModel().getSelectedItem())));
-		costoRifornimento.setText(Double.toString(Tariffario.getInstance().getRifornimento(rifornimento.getSelectionModel().getSelectedItem())));
+		costoBenzina.setText(Double.toString(entity.getCostoLitro(TipoCarburante.BENZINA)));
+		costoDiesel.setText(Double.toString(entity.getCostoLitro(TipoCarburante.DIESEL)));
+		costoMetano.setText(Double.toString(entity.getCostoLitro(TipoCarburante.METANO)));
+		costoElettricità.setText(Double.toString(entity.getCostoLitro(TipoCarburante.ELETTRICA)));
+		costoGpl.setText(Double.toString(entity.getCostoLitro(TipoCarburante.GPL)));
+		costoPienoAnticipo.setText(Double.toString(entity.getRifornimento(Rifornimento.PIENO_ANTICIPO)));
 		moraCarburante.setText(Double.toString(entity.getMoraCarburante()));
 		moraDurata.setText(Double.toString(entity.getMoraDurata()));
 		moraChilometraggio.setText(Double.toString(entity.getMoraChilometraggio()));
@@ -127,7 +98,23 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 
 	@Override
 	protected Tariffario buildEntity() {
-		// TODO Auto-generated method stub
-		return null;
+		Tariffario tariffario = Tariffario.getInstance();
+		
+		tariffario.setCostoGiornaliero(Double.parseDouble(costoGiornaliero.getText())); 
+		tariffario.setCostoSettimanale(Double.parseDouble(costoSettimanale.getText()));
+		tariffario.setCostoChilometrico(Double.parseDouble(costoChilometrico.getText()));
+		tariffario.setCostoChilometraggioIllimitato(Double.parseDouble(costoChilometraggioIllimitato.getText()));
+		tariffario.setAssicurazioneBase(Double.parseDouble(assicurazioneBase.getText()));
+		tariffario.setAssicurazioneAvanzata(Double.parseDouble(assicurazioneAvanzata.getText()));
+		tariffario.setCostoLitro(TipoCarburante.BENZINA, Double.parseDouble(costoBenzina.getText()));
+		tariffario.setCostoLitro(TipoCarburante.METANO, Double.parseDouble(costoMetano.getText()));
+		tariffario.setCostoLitro(TipoCarburante.ELETTRICA, Double.parseDouble(costoElettricità.getText()));
+		tariffario.setCostoLitro(TipoCarburante.GPL, Double.parseDouble(costoGpl.getText()));
+		tariffario.setCostoLitro(TipoCarburante.DIESEL, Double.parseDouble(costoDiesel.getText()));
+		tariffario.setRifornimento(Rifornimento.PIENO_ANTICIPO, Double.parseDouble(costoPienoAnticipo.getText()));
+		tariffario.setMoraCarburante(Double.parseDouble(moraCarburante.getText()));
+		tariffario.setMoraChilometraggio(Double.parseDouble(moraChilometraggio.getText()));
+		tariffario.setMoraDurata(Double.parseDouble(moraDurata.getText()));
+		return tariffario;
 	}		
 }

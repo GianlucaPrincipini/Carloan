@@ -25,11 +25,6 @@ public class Tariffario implements Serializable {
 	private Map<Rifornimento, Double> rifornimento = new HashMap<Rifornimento, Double>();
 	private static Tariffario tariffario;
 
-	static {
-		if (tariffario==null) 
-			new Tariffario();
-	}
-	
 	private Tariffario() {
 		for (TipoCarburante t:TipoCarburante.values()) {
 			costoLitro.put(t, 0.0);
@@ -37,20 +32,21 @@ public class Tariffario implements Serializable {
 		for (Rifornimento r:Rifornimento.values()) {
 			rifornimento.put(r, 0.0);
 		}
-		
+	}
+	
+	private static void load() {
 		File file = new File("./tariffario/");
 		if (!file.canRead()) {
 			file.mkdirs();
 		}
 		try {
-			ObjectInputStream input = new ObjectInputStream(
-					new FileInputStream("./tariffario/tariffario.dat"));
+			ObjectInputStream input = new ObjectInputStream(new FileInputStream("./tariffario/tariffario.dat"));
 			tariffario = (Tariffario) input.readObject();
+			System.out.println(tariffario);
 			input.close();
 		} catch (IOException e) {
 			try {
-				ObjectOutputStream output = new ObjectOutputStream(
-						new FileOutputStream("./tariffario/tariffario.dat"));
+				ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("./tariffario/tariffario.dat"));
 				output.writeObject(tariffario);
 				output.close();
 			} catch (IOException e1) {
@@ -86,9 +82,11 @@ public class Tariffario implements Serializable {
 	}
 	
 	public static Tariffario getInstance() {
-
-
+		if (tariffario==null) 
+			tariffario = new Tariffario();
+		load();
 		return tariffario;
+		
 	}
 
 	public double getCostoGiornaliero() {
@@ -157,6 +155,7 @@ public class Tariffario implements Serializable {
 	
 	public static void main(String [] args) throws ClassNotFoundException {
 		Tariffario a = Tariffario.getInstance();
-		
+
+		System.out.println("Tariffario " +a);
 	}
 }
