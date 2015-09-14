@@ -4,18 +4,17 @@ import java.util.List;
 
 import business.applicationservice.ApplicationServiceOptional;
 import business.entity.Optional;
+import business.exception.CarloanException;
 
 public class CommandReadAllOptional implements Command<List<Optional>>{
 
 	@Override
-	public List<Optional> execute(List<Optional> entity) {
+	public List<Optional> execute(List<Optional> entity) throws CarloanException {
 		try {
 			return new ApplicationServiceOptional().readAll();
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
-		return null;
 	}
 	
 }

@@ -1,8 +1,5 @@
 package integration.dao;
 
-import integration.DateHelper;
-import integration.Encrypt;
-
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
@@ -10,42 +7,40 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.DateHelper;
+import utils.Encrypt;
 import business.entity.Amministratore;
 import business.entity.Operatore;
 
 public class DAOOperatore extends DAOCarloan<Operatore> {
 	
 	public  void create(Operatore entity){
+		ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
+				+ "'carloan' AND   TABLE_NAME = 'persona'");
 		try {
-			ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
-					+ "'carloan' AND   TABLE_NAME = 'persona'");
-			try {
-				rs.next();
+			while(rs.next())
 				entity.setId(rs.getInt(1));
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			connection.executeUpdateQuery("insert into persona(nome, cognome, datanascita, numtelefono, email)"
-										+ " values(" 
-										+ "'" + entity.getNome() + "', "
-										+ "'" + entity.getCognome() + "', "
-										+ "'" + entity.getDataNascita() + "', "
-										+ "'" + entity.getNumTelefono() + "', "
-										+ "'" + entity.getEMail() + "'"
-										+ ");");
-			connection.executeUpdateQuery("insert into profilo(username, password) "
-										+ "values( " 
-										+ entity.getId() + ", " 
-										+ "'" + entity.getUsername() + "', " 
-										+ "'" + Encrypt.getEncryptedString(entity.getPassword()) 
-										+ "');");
-			if (entity instanceof Amministratore)
-				connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getId() + ", true);");
-			else 
-				connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getId() + ", false);");
-		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		connection.executeUpdateQuery("insert into persona(nome, cognome, datanascita, numtelefono, email)"
+									+ " values(" 
+									+ "'" + entity.getNome() + "', "
+									+ "'" + entity.getCognome() + "', "
+									+ "'" + entity.getDataNascita() + "', "
+									+ "'" + entity.getNumTelefono() + "', "
+									+ "'" + entity.getEMail() + "'"
+									+ ");");
+		connection.executeUpdateQuery("insert into profilo(id, username, password) "
+									+ "values( " 
+									+ entity.getId() + ", " 
+									+ "'" + entity.getUsername() + "', " 
+									+ "'" + entity.getPassword() 
+									+ "');");
+		if (entity instanceof Amministratore)
+			connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getId() + ", true);");
+		else 
+			connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getId() + ", false);");
 	}
 	
 
@@ -60,7 +55,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 
 			connection.executeUpdateQuery("update profilo set " +
 										  "id = " + entity.getId()+ ", " +
-										  "password = '" + Encrypt.getEncryptedString(entity.getPassword()) + "' where username = '"+ entity.getUsername() + "';");
+										  "password = '" + entity.getPassword() + "' where username = '"+ entity.getUsername() + "';");
 			if (entity instanceof Amministratore)
 				connection.executeUpdateQuery("update operatore set agenzia = " + entity.getAgenzia().getId() + ", amministratore = 1 where username = '" + entity.getUsername() + "';");
 			else 

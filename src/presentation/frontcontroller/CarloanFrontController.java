@@ -6,6 +6,7 @@ import presentation.gui.CarloanSelezione;
 import presentation.gui.CarloanStage;
 import business.entity.Amministratore;
 import business.entity.Operatore;
+import business.exception.CarloanException;
 
 public class CarloanFrontController implements FrontController{
 
@@ -42,16 +43,20 @@ public class CarloanFrontController implements FrontController{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Object processRequest(String request, Object entity) {
-		ApplicationController ac =  new CarloanApplicationController();
-		Target targetRequest = ac.handleRequest(request, entity);
-		if (targetRequest instanceof Command) {
-			return ((Command) targetRequest).execute(entity);
-		} else if (targetRequest instanceof CarloanSelezione) {
-			CarloanSelezione target = (CarloanSelezione) targetRequest;
-			target.showAndWait();
-			return target.getValue();
-		} else if (targetRequest instanceof CarloanStage){
-			return ((CarloanStage)targetRequest).showStage();
+		try {
+			ApplicationController ac =  new CarloanApplicationController();
+			Target targetRequest = ac.handleRequest(request, entity);
+			if (targetRequest instanceof Command) {
+				return ((Command) targetRequest).execute(entity);
+			} else if (targetRequest instanceof CarloanSelezione) {
+				CarloanSelezione target = (CarloanSelezione) targetRequest;
+				target.showAndWait();
+				return target.getValue();
+			} else if (targetRequest instanceof CarloanStage){
+				return ((CarloanStage)targetRequest).showStage();
+			}
+		} catch (CarloanException e) {
+			e.showError();
 		}
 		return null;
 	}

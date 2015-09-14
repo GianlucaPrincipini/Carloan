@@ -85,7 +85,9 @@ public class TableFascia implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
-		// TODO Auto-generated method stub
+		if (tabFasce.getSelectionModel().getSelectedIndex() == -1) {
+			return null;
+		}
 		return id.getCellObservableValue(tabFasce.getSelectionModel().getSelectedIndex()).getValue().toString();
 	}
 	

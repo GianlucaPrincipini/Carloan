@@ -199,7 +199,7 @@ public class Contratto implements Entity {
 	}
 	
 	public String toString(){
-		return id + ", '" + operatore.getUsername() + "', '" + cliente.getCodicePatente() + "', '" + vettura.getTarga() + "', " + agenziaNoleggio.getId() + ", " 
+		return  operatore.getUsername() + "', '" + cliente.getCodicePatente() + "', '" + vettura.getTarga() + "', " + agenziaNoleggio.getId() + ", " 
 				+ agenziaConsegna.getId() + ", '" 
 				+ dataStipula + "', '" + dataInizioNoleggio + "', '" + dataFineNoleggio + "', " + chilometraggioLimitato + 
 				", " + chilometriPrevisti + ", " + rifornimento.getIndex() + ", " + acconto + ", " + chiuso + ", " + costo + ", " + assicurazioneAvanzata;

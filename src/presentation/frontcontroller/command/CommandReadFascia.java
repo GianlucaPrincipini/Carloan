@@ -2,17 +2,19 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceFascia;
 import business.entity.Fascia;
+import business.exception.CarloanException;
 
 public class CommandReadFascia implements Command {
 	
 	@Override
-	public Fascia execute(Object entity) {
+	public Fascia execute(Object entity) throws CarloanException {
 		try {
-			return new ApplicationServiceFascia().read((String) entity);
+			Fascia fascia = new ApplicationServiceFascia().read((String) entity);
+			if (fascia != null) return fascia;
+			throw new CarloanException("Impossibile leggere la fascia");
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
-		return null;
 	}
 
 }

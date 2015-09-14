@@ -36,7 +36,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="agenziaLocalizzazione" text="Seleziona" />
+                  <Label fx:id="agenziaLocalizzazione" />
                   <Button mnemonicParsing="false" onMouseClicked="#onSelezioneAgenzia" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0">
@@ -49,7 +49,7 @@
             </GridPane>
             <GridPane GridPane.columnIndex="4">
                <children>
-                  <Label fx:id="modello" text="Seleziona" />
+                  <Label fx:id="modello" />
                   <Button mnemonicParsing="false" onMouseClicked="#onSelezioneModello" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0">

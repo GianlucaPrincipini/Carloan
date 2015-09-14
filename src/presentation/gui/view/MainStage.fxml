@@ -27,12 +27,6 @@
                   <items>
                     <MenuItem fx:id="modTariffario" mnemonicParsing="false" onAction="#modificaTariffario" text="Tariffario" />
                         <MenuItem fx:id="modIncidenza" mnemonicParsing="false" onAction="#modificaIncidenza" text="Incidenza Fasce" />
-                        <MenuItem fx:id="modCarburante" mnemonicParsing="false" text="Costi carburante" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="?">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
                   </items>
                 </Menu>
               </menus>
@@ -77,7 +71,7 @@
                      </graphic>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="20.0" />
-                  <Button mnemonicParsing="false">
+                  <Button mnemonicParsing="false" onMouseClicked="#onChiusuraContratto">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                            <image>

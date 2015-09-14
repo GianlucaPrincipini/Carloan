@@ -2,20 +2,24 @@ package presentation.frontcontroller.command;
 
 import java.util.List;
 
+import presentation.frontcontroller.CarloanFrontController;
 import business.applicationservice.ApplicationServiceContratto;
 import business.entity.Contratto;
+import business.exception.CarloanException;
 
 public class CommandReadAllContratto implements Command<List<Contratto>>{
 
 	@Override
-	public List<Contratto> execute(List<Contratto> entity) {
+	public List<Contratto> execute(List<Contratto> entity) throws CarloanException {
 		try {
-			return new ApplicationServiceContratto().readAll();
+			if (CarloanFrontController.getInstance().isAdmin())
+				return new ApplicationServiceContratto().readAll();
+			else 
+				return new ApplicationServiceContratto().filtra(CarloanFrontController.getInstance().getUserAuthenticated().getAgenzia());
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
+
 		}
-		return null;
 	}
 	
 }

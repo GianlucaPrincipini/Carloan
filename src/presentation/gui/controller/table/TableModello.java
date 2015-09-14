@@ -148,6 +148,9 @@ public class TableModello implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
+		if (tabModelli.getSelectionModel().getSelectedIndex() == -1) {
+			return null;
+		}
 		return id.getCellObservableValue(tabModelli.getSelectionModel().getSelectedIndex()).getValue().toString();
 	}
 	

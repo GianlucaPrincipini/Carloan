@@ -7,7 +7,8 @@ public class CarloanSelezione extends CarloanStage{
 	private String value;
 	
 	public String getValue() {
-		return value;
+		if (value != null) return value;
+		return "";
 	}
 	
 	public void setValue(String value) {

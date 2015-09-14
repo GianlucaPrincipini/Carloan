@@ -12,6 +12,7 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		try {
 			CarloanFrontController.getInstance().processRequest("MostraLogin");
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

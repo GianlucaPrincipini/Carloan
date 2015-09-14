@@ -1,12 +1,11 @@
 package integration.dao;
 
-import integration.DateHelper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.DateHelper;
 import business.entity.Contratto;
 import business.entity.Optional;
 import business.entity.Rifornimento;
@@ -15,11 +14,21 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 	
 	@Override
 	public void create(Contratto entity){
+		ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
+				+ "'carloan' AND   TABLE_NAME = 'contratto'");
+		try {
+			while(rs.next())
+				entity.setId(rs.getInt(1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(entity.getId());
 		connection.executeUpdateQuery("INSERT INTO contratto(operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, "
 									+ "datainizionoleggio, datafinenoleggio, chilometraggiolimitato, chilometriprevisti, rifornimento, acconto, "
-									+ "chiuso, costo, assicurazioneavanzata) values(" 
+									+ "costo, assicurazioneavanzata) values(" 
 									+ "'" + entity.getOperatore().getUsername() + "', "
 									+ "'" + entity.getCliente().getCodicePatente() + "', "
+									+ "'" + entity.getVettura().getTarga() + "', "
 									+ entity.getAgenziaNoleggio().getId() + ", "
 									+ entity.getAgenziaConsegna().getId() + ", "
 									+ "'" + entity.getDataStipula() + "', "
@@ -27,8 +36,10 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 									+ "'" + entity.getDataFineNoleggio() + "', "
 									+ entity.isChilometraggioLimitato() + ", "
 									+ entity.getChilometriPrevisti() + ", " 
-									+ entity.getRifornimento().getIndex() + ", "
-									+ entity.getAcconto()
+									+ entity.getRifornimento().getIndex() +", "
+									+ entity.getAcconto() + ", "
+									+ entity.getCosto() + ", "
+									+ entity.isAssicurazioneAvanzata()
 									+ ");");
 		for (Optional o : entity.getOptionals()) {
 			connection.executeUpdateQuery("insert into optional_contratto values (" + entity.getId() + ", " + o.getId() + ");");
@@ -55,6 +66,7 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 				  "WHERE id = " + entity.getId() + "; ");
 		connection.executeUpdateQuery("delete from optional_contratto where idcontratto = " + entity.getId() + ";");
 		for (Optional o : entity.getOptionals()) {
+			System.out.println(entity.getId() + " " + o.getId());
 			connection.executeUpdateQuery("insert into optional_contratto values (" + entity.getId() + ", " + o.getId() + ");");
 		}
 		if (entity.getDataChiusura() != null) {

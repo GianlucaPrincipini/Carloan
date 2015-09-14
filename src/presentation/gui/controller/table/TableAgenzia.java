@@ -77,6 +77,9 @@ public class TableAgenzia implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
+		if (tabAgenzie.getSelectionModel().getSelectedIndex() == -1) {
+			return null;
+		}
 		return id.getCellObservableValue(tabAgenzie.getSelectionModel().getSelectedIndex()).getValue().toString();
 	}
 }

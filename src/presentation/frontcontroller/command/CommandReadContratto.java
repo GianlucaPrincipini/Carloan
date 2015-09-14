@@ -2,15 +2,17 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceContratto;
 import business.entity.Contratto;
+import business.exception.CarloanException;
 
 public class CommandReadContratto implements Command{
 	@Override
-	public Contratto execute(Object entity) {
+	public Contratto execute(Object entity) throws CarloanException {
 		try {
-			return new ApplicationServiceContratto().read((String) entity);
+			Contratto contratto = new ApplicationServiceContratto().read((String) entity);
+			if (contratto != null) return contratto;
+			throw new CarloanException("Impossibile leggere il contratto");
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
-		return null;
 	}
 }

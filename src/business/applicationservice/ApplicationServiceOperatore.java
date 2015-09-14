@@ -4,10 +4,11 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import integration.Encrypt;
+import utils.Encrypt;
 import integration.dao.DAOFactory;
 import business.checker.CheckerFactory;
 import business.entity.Operatore;
+import business.exception.CarloanException;
 import business.exception.IntegrityException;
 
 public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operatore> implements Gestione<Operatore>{
@@ -18,33 +19,21 @@ public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operat
 	}
 
 	@Override
-	public void create(Operatore entity) {
-		try {
+	public void create(Operatore entity) throws IntegrityException {
 			checker.check(entity);
 			dao.create(entity);
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
 		
 	}
 
 	@Override
-	public void update(Operatore entity) {
-		try {
-			checker.isModifiable(read(entity.getUsername()));
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void update(Operatore entity) throws IntegrityException {
+		checker.isModifiable(read(entity.getUsername()));
 		dao.update(entity);
 	}
 
 	@Override
-	public void delete(Operatore entity) {
-		try {
-			checker.isModifiable(read(entity.getUsername()));
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void delete(Operatore entity) throws IntegrityException {
+		checker.isModifiable(read(entity.getUsername()));
 		dao.delete(entity.getUsername());
 	}
 
@@ -58,21 +47,13 @@ public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operat
 		return dao.read(pk);
 	}
 	
-	public boolean login(Operatore operatore) {
+	public boolean login(Operatore operatore) throws NoSuchAlgorithmException, UnsupportedEncodingException, CarloanException {
 		Operatore toLog = dao.read(operatore.getUsername());
 		if (toLog != null) {
-			try {
-				if (toLog.getPassword().equals(Encrypt.getEncryptedString(operatore.getPassword())))
-					return true;
-			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			if (toLog.getPassword().equals(Encrypt.getEncryptedString(operatore.getPassword())))
+				return true;
 		}
-		return false;
+		throw new CarloanException("Impossibile effettuare il login, assicurarsi che username e password siano corretti");
 	}
 
 }

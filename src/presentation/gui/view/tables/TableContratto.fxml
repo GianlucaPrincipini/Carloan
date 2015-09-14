@@ -24,6 +24,7 @@
                   <TableColumn fx:id="chilometriPrevisti" minWidth="-Infinity" prefWidth="150.0" text="Chilometri previsti" />
                   <TableColumn fx:id="chilometriPercorsi" minWidth="-Infinity" prefWidth="150.0" text="Chilometri percorsi" />
                   <TableColumn fx:id="rifornimento" minWidth="-Infinity" prefWidth="100.0" text="Rifornimento" />
+                  <TableColumn fx:id="optionals" minWidth="-Infinity" prefWidth="100.0" text="Optionals" />
                   <TableColumn fx:id="assicurazioneAvanzata" minWidth="-Infinity" prefWidth="200.0" text="Assicurazione avanzata" />
                   <TableColumn fx:id="acconto" minWidth="-Infinity" prefWidth="100.0" text="Acconto" />
                   <TableColumn fx:id="costo" minWidth="-Infinity" prefWidth="100.0" text="Costo" />

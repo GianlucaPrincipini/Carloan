@@ -43,22 +43,16 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 	
 	@FXML
 	public void onConferma() {
-		Cliente cliente = new Cliente();
-		cliente.setId(id);
-		cliente.setNome(nome.getText());
-		cliente.setCognome(cognome.getText());
-		cliente.setEMail(email.getText());
-		cliente.setNumTelefono(telefono.getText());
-		cliente.setCodicePatente(codicePatente.getText());
-		java.time.LocalDate datanascita = dataDiNascita.getValue();
-		cliente.setDataNascita(new LocalDate(datanascita.getYear(), datanascita.getMonthValue(), datanascita.getDayOfMonth()));
-		if (!edit)
-			controller.processRequest("AggiungiCliente", cliente);
-		else {
-			edit = false;
-			controller.processRequest("ModificaCliente", cliente);
+		Cliente cliente = buildEntity(); 
+		if (cliente != null) {
+			if (!edit)
+				controller.processRequest("AggiungiCliente", cliente);
+			else {
+				edit = false;
+				controller.processRequest("ModificaCliente", cliente);
+			}
+			close();
 		}
-		close();
 	}
 	
 	
@@ -81,8 +75,21 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 
 	@Override
 	protected Cliente buildEntity() {
-		// TODO Auto-generated method stub
-		return null;
+		Cliente cliente; 
+		try {
+			cliente = new Cliente();
+			cliente.setId(id);
+			cliente.setNome(nome.getText());
+			cliente.setCognome(cognome.getText());
+			cliente.setEMail(email.getText());
+			cliente.setNumTelefono(telefono.getText());
+			cliente.setCodicePatente(codicePatente.getText());
+			java.time.LocalDate datanascita = dataDiNascita.getValue();
+			cliente.setDataNascita(new LocalDate(datanascita.getYear(), datanascita.getMonthValue(), datanascita.getDayOfMonth()));
+			return cliente;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 

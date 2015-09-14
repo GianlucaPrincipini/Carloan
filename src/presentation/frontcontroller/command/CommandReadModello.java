@@ -2,17 +2,19 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceModello;
 import business.entity.Modello;
+import business.exception.CarloanException;
 
 public class CommandReadModello implements  Command{
 
 	@Override
-	public Modello execute(Object entity) {
+	public Modello execute(Object entity) throws CarloanException {
 		try {
-			return new ApplicationServiceModello().read((String) entity);
+			Modello modello = new ApplicationServiceModello().read((String) entity);
+			if (modello!= null) return modello;
+			throw new CarloanException("Impossibile leggere il modello");
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
-		return null;
 	}
 
 }

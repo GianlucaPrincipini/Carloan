@@ -7,7 +7,9 @@ import integration.dao.DAOFactory;
 import business.checker.Checker;
 import business.checker.CheckerFactory;
 import business.entity.Agenzia;
+import business.exception.CarloanException;
 import business.exception.IntegrityException;
+import business.exception.UnmodifiableEntityException;
 
 public class ApplicationServiceAgenzia extends ApplicationServiceEntity<Agenzia> {
 
@@ -17,7 +19,7 @@ public class ApplicationServiceAgenzia extends ApplicationServiceEntity<Agenzia>
 	}
 
 	@Override
-	public void create(Agenzia entity) {
+	public void create(Agenzia entity) throws IntegrityException{
 		try {
 			checker.check(entity);
 			dao.create(entity);
@@ -27,28 +29,22 @@ public class ApplicationServiceAgenzia extends ApplicationServiceEntity<Agenzia>
 	}
 
 	@Override
-	public void update(Agenzia entity) {
-		try {
-			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
-			checker.check(entity);
-			dao.update(entity);
-		} catch(IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void update(Agenzia entity) throws IntegrityException{
+		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
+		checker.check(entity);
+		dao.update(entity);
+		
 	}
 
 	@Override
-	public void delete(Agenzia entity) {
-		try {
-			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
-			if (entity.getId() != 1) 
-				dao.delete(Integer.toString(entity.getId()));
-			else {
-				throw new IntegrityException("Impossibile eliminare");
-			}
-		} catch (IntegrityException e) {
-			e.printStackTrace();
+	public void delete(Agenzia entity) throws IntegrityException{
+		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
+		if (entity.getId() != 1) 
+			dao.delete(Integer.toString(entity.getId()));
+		else {
+			throw new IntegrityException("Impossibile eliminare");
 		}
+
 	}
 
 	@Override
@@ -57,7 +53,7 @@ public class ApplicationServiceAgenzia extends ApplicationServiceEntity<Agenzia>
 	}
 
 	@Override
-	public Agenzia read(String pk) {
+	public Agenzia read(String pk){
 		return dao.read(pk);
 	}
 

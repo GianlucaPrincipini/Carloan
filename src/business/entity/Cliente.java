@@ -11,4 +11,5 @@ public class Cliente extends Persona {
 		this.codicePatente = codicePatente;
 	}
 	
+	
 }

@@ -13,8 +13,8 @@ import business.exception.IncidenceOutOfBoundException;
 @SuppressWarnings("serial")
 public class IncidenzaFascia implements Serializable {
 	private double capacitàBagagliaio;
-	private int numeroPosti;
-	private int numeroPorte;
+	private double numeroPosti;
+	private double numeroPorte;
 	private double potenzaSuPeso;
 	private double emissioniCO2;
 	private static IncidenzaFascia incidenzaFascia;
@@ -52,39 +52,31 @@ public class IncidenzaFascia implements Serializable {
 	}
 	
 	public void setCapacitàBagagliaio(double x) throws IncidenceOutOfBoundException {
-		if (x >= 1 && x <= 1.5)
-			capacitàBagagliaio = x;
-		else throw new IncidenceOutOfBoundException();
+		capacitàBagagliaio = x;
 	}
 	
 	public double getCapacitàBagagliaio() {
 		return capacitàBagagliaio;
 	}
 	
-	public void setNumeroPosti(int x) throws IncidenceOutOfBoundException {
-		if( x >= 1 && x <= 2)
-			numeroPosti = x;
-		else throw new IncidenceOutOfBoundException();
+	public void setNumeroPosti(double x) throws IncidenceOutOfBoundException {
+		numeroPosti = x;
 	}
 	
-	public int getNumeroPosti() {
+	public double getNumeroPosti() {
 		return numeroPosti;
 	}
 	
-	public void setNumeroPorte(int x) throws IncidenceOutOfBoundException {
-		if (x >= 1 && x <= 1.5)
-		numeroPorte = x;
-		else throw new IncidenceOutOfBoundException();
+	public void setNumeroPorte(double x) throws IncidenceOutOfBoundException {
+	numeroPorte = x;
 	}
 	
-	public int getNumeroPorte() {
+	public double getNumeroPorte() {
 		return numeroPorte;
 	}
 	
 	public void setPotenzaSuPeso(double x) throws IncidenceOutOfBoundException {
-		if (x >= 1 && x <= 5)
-			potenzaSuPeso = x;
-		else throw new IncidenceOutOfBoundException();
+		potenzaSuPeso = x;
 	}
 	
 	public double getPotenzaSuPeso() {
@@ -92,9 +84,7 @@ public class IncidenzaFascia implements Serializable {
 	}
 	
 	public void setEmissioniCO2(double x) throws IncidenceOutOfBoundException {
-		if (x > 0 && x <= 1)
-			emissioniCO2 = x;
-		else throw new IncidenceOutOfBoundException();
+		emissioniCO2 = x;
 	}
 	
 	public double getEmissioniCO2(){

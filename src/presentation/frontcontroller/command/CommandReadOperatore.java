@@ -2,15 +2,17 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceOperatore;
 import business.entity.Operatore;
+import business.exception.CarloanException;
 
 public class CommandReadOperatore implements Command{
 	@Override
-	public Operatore execute(Object entity) {
+	public Operatore execute(Object entity) throws CarloanException {
 		try {
-			return new ApplicationServiceOperatore().read((String) entity);
+			Operatore operatore = new ApplicationServiceOperatore().read((String) entity);
+			if (operatore != null) return operatore;
+			throw new CarloanException("Impossibile leggere l'operatore");
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
-		return null;
 	}
 }

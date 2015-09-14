@@ -10,10 +10,12 @@ import java.util.ResourceBundle;
 
 
 
+
 import business.entity.IncidenzaFascia;
 import business.entity.Tariffario;
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
+import presentation.gui.CarloanMessage;
 import presentation.gui.controller.table.TableController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -38,9 +40,6 @@ public class MainStage implements Initializable {
 	
 	@FXML
 	private MenuItem modIncidenza;
-	
-	@FXML 
-	private MenuItem modCarburante;
 	
 	@FXML
 	private MenuItem disconnetti;
@@ -96,31 +95,44 @@ public class MainStage implements Initializable {
 	@FXML
 	public void onAggiungi() {
 		controller.processRequest("Mostra"+tabPane.getSelectionModel().getSelectedItem().getText());
+
 	}
 	
 	@FXML
 	public void onModifica() {
-		controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText(), 
+		if (tableController.getPrimaryKey() != null) 
+			controller.processRequest("MostraModifica"+tabPane.getSelectionModel().getSelectedItem().getText(), 
 				controller.processRequest("Read"+tabPane.getSelectionModel().getSelectedItem().getText(), tableController.getPrimaryKey()));
+		else {
+			CarloanMessage.showMessage(AlertType.WARNING, "Nessun elemento selezionato nella tabella.");
+		}
 	}
 	
 	@FXML
 	public void onRimuovi() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Conferma");
-		alert.setHeaderText("Conferma Eliminazione");
-		alert.setContentText("Confermi l'eliminazione dell'elemento?");
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			controller.processRequest("Rimuovi"+tabPane.getSelectionModel().getSelectedItem().getText(), 
-					controller.processRequest("Read"+tabPane.getSelectionModel().getSelectedItem().getText(), tableController.getPrimaryKey()));
+		if (tableController.getPrimaryKey() != null) {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Conferma");
+			alert.setHeaderText("Conferma Eliminazione");
+			alert.setContentText("Confermi l'eliminazione dell'elemento?");
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK) {
+				controller.processRequest("Rimuovi"+tabPane.getSelectionModel().getSelectedItem().getText(), 
+						controller.processRequest("Read"+tabPane.getSelectionModel().getSelectedItem().getText(), tableController.getPrimaryKey()));
 			} 
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "Nessun elemento selezionato nella tabella.");
+		}
 	}	
 	
+
+	
 	@FXML
-	public void onRefresh(){
-		tabPane.getSelectionModel().select(tabPane.getSelectionModel().getSelectedIndex()+1);
-		tabPane.getSelectionModel().select(tabPane.getSelectionModel().getSelectedIndex()-1);
+	public synchronized void onRefresh(){
+		int selected = tabPane.getSelectionModel().getSelectedIndex();
+		if (selected != 0) tabPane.getSelectionModel().select(0);
+		else tabPane.getSelectionModel().select(1);
+		tabPane.getSelectionModel().select(selected);
 	}
 	
 	@FXML
@@ -142,6 +154,14 @@ public class MainStage implements Initializable {
 	@FXML
 	public void modificaIncidenza(){
 		controller.processRequest("MostraModificaIncidenzaFascia", IncidenzaFascia.getInstance());
+	}
+	
+	@FXML
+	public void onChiusuraContratto() {
+		if (tableController.getPrimaryKey() != null)
+			controller.processRequest("MostraChiusura", controller.processRequest("ReadContratto", tableController.getPrimaryKey()));
+		else 
+			CarloanMessage.showMessage(AlertType.WARNING, "Nessun contratto selezionato nella tabella");
 	}
 	
 	private class TabChangeListener implements ChangeListener<Number> {
@@ -198,6 +218,15 @@ public class MainStage implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		controller = CarloanFrontController.getInstance();
+		if (!CarloanFrontController.getInstance().isAdmin()) {
+			paneAgenzie.setDisable(true);
+			paneFasce.setDisable(true);
+			paneOperatori.setDisable(true);
+			paneOptionals.setDisable(true);
+			paneModelli.setDisable(true);
+			modIncidenza.setDisable(true);
+			modTariffario.setDisable(true);
+		} 
 		tabPane.getSelectionModel().selectedIndexProperty().addListener(new TabChangeListener());
 	}
 	

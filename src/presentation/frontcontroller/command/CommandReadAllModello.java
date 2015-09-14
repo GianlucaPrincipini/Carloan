@@ -4,18 +4,18 @@ import java.util.List;
 
 import business.applicationservice.ApplicationServiceModello;
 import business.entity.Modello;
+import business.exception.CarloanException;
 
 public class CommandReadAllModello implements Command<List<Modello>>{
 
 	@Override
-	public List<Modello> execute(List<Modello> entity) {
+	public List<Modello> execute(List<Modello> entity) throws CarloanException {
 		try {
 			return new ApplicationServiceModello().readAll();
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
+
 		}
-		return null;
 	}
 	
 }

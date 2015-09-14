@@ -16,17 +16,19 @@ public class CheckerCliente implements Checker<Cliente>{
 
 	@Override
 	public void check(Cliente entity) throws IntegrityException {
-		if (entity.getCodicePatente() == null) throw new IntegrityException();
-		if (entity.getNome() == null) throw new IntegrityException();
-		if (entity.getCognome() == null) throw new IntegrityException();
-		if (Years.yearsBetween(entity.getDataNascita(), LocalDate.now()).getYears() < 18) throw new IntegrityException();
+		if (entity.getCodicePatente() == null) throw new IntegrityException("Codice patente non inserito");
+		if (entity.getNome() == null) throw new IntegrityException("Nome non inserito");
+		if (entity.getCognome() == null) throw new IntegrityException("Cognome non inserito");
+		if (entity.getDataNascita() == null) throw new IntegrityException("Data di nascita non inserita");
+		if (entity.getEMail() == null || entity.getNumTelefono()  == null) throw new IntegrityException("Deve essere inserito almeno un recapitoo");
+		if (Years.yearsBetween(entity.getDataNascita(), LocalDate.now()).getYears() < 18) throw new IntegrityException("Il cliente è minorenne");
 	}
 
 	@Override
 	public void isModifiable(Cliente entity) throws UnmodifiableEntityException {
 		// Un cliente può essere modificato se non ha un noleggio attivo
 		if (!isAvailable(entity, LocalDate.now(), LocalDate.now()))
-			throw new UnmodifiableEntityException();
+			throw new UnmodifiableEntityException("Il clente è impegnato in un noleggio e le sue informazioni non possono essere modificate");
 	}
 	
 	/**
@@ -39,7 +41,7 @@ public class CheckerCliente implements Checker<Cliente>{
 	public boolean isAvailable(Cliente entity, LocalDate inizio, LocalDate fine) {
 		List<Contratto> contratti = new DAOContratto().readAll();
 		for (Contratto c:contratti) {
-			if (c.getCliente().equals(entity)) {
+			if (c.getCliente().getCodicePatente().equals(entity.getCodicePatente())) {
 				if (inizio.isBefore(c.getDataFineNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
 					return false;
 				}

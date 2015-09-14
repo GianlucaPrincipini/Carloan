@@ -2,15 +2,16 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceVettura;
 import business.entity.Vettura;
+import business.exception.CarloanException;
 
 public class CommandRimuoviVettura implements Command<Vettura>{
 
 	@Override
-	public Vettura execute(Vettura entity) {
+	public Vettura execute(Vettura entity) throws CarloanException {
 		try {
 			new ApplicationServiceVettura().delete(entity);
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
 		return null;
 	}

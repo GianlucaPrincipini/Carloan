@@ -2,15 +2,16 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceModello;
 import business.entity.Modello;
+import business.exception.CarloanException;
 
 public class CommandRimuoviModello implements Command<Modello>{
 
 	@Override
-	public Modello execute(Modello entity) {
+	public Modello execute(Modello entity) throws CarloanException {
 		try {
 			new ApplicationServiceModello().delete(entity);
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
 		return null;
 	}

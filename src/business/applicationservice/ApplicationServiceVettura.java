@@ -1,5 +1,6 @@
 package business.applicationservice;
 
+import java.util.Iterator;
 import java.util.List;
 
 import integration.dao.DAO;
@@ -18,43 +19,32 @@ public class ApplicationServiceVettura extends ApplicationServiceEntity<Vettura>
 	}
 
 	@Override
-	public void create(Vettura entity) {
-		try {
-			checker.check(entity);
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void create(Vettura entity) throws IntegrityException {
+		checker.check(entity);
 		dao.create(entity);
 	}
 
 	@Override
-	public void update(Vettura entity) {
-		try {
-			checker.isModifiable(read(entity.getTarga()));
-			checker.check(entity);
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void update(Vettura entity) throws IntegrityException {
+		checker.isModifiable(read(entity.getTarga()));
+		checker.check(entity);
 		dao.update(entity);
 	}
 
 	@Override
-	public void delete(Vettura entity) {
-		try {
-			checker.isModifiable(read(entity.getTarga()));
-			checker.check(entity);
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void delete(Vettura entity) throws IntegrityException {
+		checker.isModifiable(read(entity.getTarga()));
+		checker.check(entity);
 		dao.delete(entity.getTarga());
 	}
 
 	
 	public List<Vettura> filtra(Agenzia agenzia) {
 		List<Vettura> vetture = readAll();
-		for (Vettura v:vetture) {
+		for (Iterator<Vettura> iv = vetture.iterator(); iv.hasNext();) {
+			Vettura v = iv.next();
 			if (v.getAgenziaLocalizzazione().getId() != agenzia.getId()) {
-				vetture.remove(v);
+				iv.remove();
 			}
 		}
 		return vetture;

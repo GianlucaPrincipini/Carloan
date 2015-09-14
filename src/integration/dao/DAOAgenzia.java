@@ -31,6 +31,7 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 	@Override
 	public Agenzia read(String pk) {
 		Agenzia agenzia = null;
+		if (pk.isEmpty()) return null;
 		ResultSet rs = connection.executeReadQuery("SELECT * FROM agenzia WHERE id = " + pk + ";");
 		try {
 			agenzia = new Agenzia();

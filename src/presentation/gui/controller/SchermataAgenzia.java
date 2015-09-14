@@ -30,19 +30,15 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 	@FXML
 	@Override
 	public void onConferma() {
-		Agenzia agenzia = new Agenzia();
-		if (id != 0) {
-			agenzia.setId(id);
+		Agenzia agenzia = buildEntity();
+		if (agenzia!=null) {
+			if (edit) {
+				controller.processRequest("ModificaAgenzia", agenzia);
+			} else {
+				controller.processRequest("AggiungiAgenzia", agenzia);
+			}
+			close();
 		}
-		agenzia.setCittà(città.getText());
-		agenzia.setIndirizzo(indirizzo.getText());
-		agenzia.setNumTelefono(numTelefono.getText());
-		if (edit) {
-			controller.processRequest("ModificaAgenzia", agenzia);
-		} else {
-			controller.processRequest("AggiungiAgenzia", agenzia);
-		}
-		close();
 	}
 
 	@Override
@@ -56,8 +52,19 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 
 	@Override
 	protected Agenzia buildEntity() {
-		// TODO Auto-generated method stub
-		return null;
+		Agenzia agenzia;
+		try {
+			agenzia= new Agenzia();
+			if (id != 0) {
+				agenzia.setId(id);
+			}
+			agenzia.setCittà(città.getText());
+			agenzia.setIndirizzo(indirizzo.getText());
+			agenzia.setNumTelefono(numTelefono.getText());
+			return agenzia;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

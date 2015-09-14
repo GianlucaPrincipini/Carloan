@@ -85,6 +85,9 @@ public class TableVettura implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
+		if (tabVetture.getSelectionModel().getSelectedIndex() == -1) {
+			return null;
+		}
 		return targa.getCellObservableValue(tabVetture.getSelectionModel().getSelectedIndex()).getValue().toString();
 
 	}

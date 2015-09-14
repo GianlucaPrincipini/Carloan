@@ -8,15 +8,19 @@ import business.exception.IntegrityException;
 
 public class CheckerFascia implements Checker<Fascia>{
 	public void check(Fascia entity) throws IntegrityException {
+		if (entity.getMax() == 0 || entity.getMin() == 0) {
+			throw new IntegrityException("I valori minimo o massimo non possono essere pari a 0");
+		}
 		List<Fascia> fasce = new DAOFascia().readAll();
 		for (Fascia f:fasce) {
 			if (entity.getId() != f.getId()) {
+				System.out.println(f.getId() + " " + entity.getId());
 				if (entity.getMin() >= f.getMin() && entity.getMin() <= f.getMax())
-					throw new IntegrityException();
-				if (entity.getMax() <= f.getMax() && entity.getMin() <= f.getMin())
-					throw new IntegrityException();
+					throw new IntegrityException("Indici in conflitto con altre fasce");
+				if (entity.getMax() <= f.getMax() && entity.getMax() >= f.getMin() && entity.getMin() <= f.getMin())
+					throw new IntegrityException("Indici in conflitto con altre fasce");
 				if (entity.getMin() >= f.getMin() && entity.getMax() <= f.getMax())
-					throw new IntegrityException();
+					throw new IntegrityException("Indici in conflitto con altre fasce");
 			}
 		}
 	}

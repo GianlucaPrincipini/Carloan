@@ -22,12 +22,15 @@ public class SchermataOptional extends SchermataDati<Optional>{
 
 	@Override
 	public void onConferma() {
-		if (edit) {
-			controller.processRequest("ModificaOptional", buildEntity());
-		} else {
-			controller.processRequest("AggiungiOptional", buildEntity());
+		Optional optional = buildEntity();
+		if (optional != null) {
+			if (edit) {
+				controller.processRequest("ModificaOptional", buildEntity());
+			} else {
+				controller.processRequest("AggiungiOptional", buildEntity());
+			}
+			close();
 		}
-		close();
 	}
 
 	@Override
@@ -40,11 +43,16 @@ public class SchermataOptional extends SchermataDati<Optional>{
 
 	@Override
 	protected Optional buildEntity() {
-		Optional optional = new Optional();
-		optional.setId(id);
-		optional.setTipo(tipo.getText());
-		optional.setCosto(Double.parseDouble(costo.getText()));
-		return optional;
+		Optional optional;
+		try {
+			optional = new Optional();
+			optional.setId(id);
+			optional.setTipo(tipo.getText());
+			optional.setCosto(Double.parseDouble(costo.getText()));
+			return optional;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

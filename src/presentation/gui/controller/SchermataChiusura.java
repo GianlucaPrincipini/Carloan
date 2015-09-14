@@ -3,8 +3,10 @@ package presentation.gui.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import business.entity.Contratto;
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
+import utils.DateHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -12,9 +14,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class SchermataChiusura implements Initializable {
+public class SchermataChiusura extends SchermataDati<Contratto> {
 
 	private FrontController controller = CarloanFrontController.getInstance();
+	
 	
 	private Contratto contratto;
 	
@@ -33,12 +36,48 @@ public class SchermataChiusura implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		dataChiusura.setValue(java.time.LocalDate.now());
+		chilometriPercorsi.setDisable(true);
 	}
 	
 	@FXML
 	public void onCalcolaCosto() {
-		costo.setText((Double) controller.processRequest("CalcolaCostoChiusura", ));
+		Contratto contratto = buildEntity();
+		if (contratto != null)
+		costo.setText(Double.toString((Double) controller.processRequest("CalcolaCostoChiusura", contratto)));
+	}
+
+	@Override
+	public void onConferma() {
+		Contratto contratto = buildEntity();
+		if (contratto != null) {
+			controller.processRequest("ChiudiContratto", contratto);
+			close();
+		}
+	}
+
+	@Override
+	public void initModifica(Contratto entity) {
+		contratto = entity;
+		if (contratto.isChilometraggioLimitato()) {
+			chilometriPercorsi.setDisable(false);
+		}
+	}
+
+	@Override
+	protected Contratto buildEntity() {
+		Contratto c = contratto;
+		try {
+			c.setDataChiusura(DateHelper.dateParse(dataChiusura.getValue()));
+			c.setChilometriPercorsi(Integer.parseInt(chilometriPercorsi.getText()));
+			if (costo.getText()!=null) {
+				costo.setText(Double.toString((Double) controller.processRequest("CalcolaCostoChiusura", c)));
+				c.setCosto(Double.parseDouble(costo.getText()));
+			}
+			return c;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

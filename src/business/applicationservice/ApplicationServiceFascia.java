@@ -8,6 +8,7 @@ import business.checker.Checker;
 import business.checker.CheckerFactory;
 import business.entity.Fascia;
 import business.entity.Modello;
+import business.exception.CarloanException;
 import business.exception.FasciaIndexException;
 import business.exception.IntegrityException;
 
@@ -18,29 +19,21 @@ public class ApplicationServiceFascia extends ApplicationServiceEntity<Fascia> {
 	}
 
 	@Override
-	public void create(Fascia entity) {
-		try {
-			checker.check(entity);
-			dao.create(entity);
-		} catch (IntegrityException e) {
-			e.showError();
-		}
+	public void create(Fascia entity) throws IntegrityException {
+		checker.check(entity);
+		dao.create(entity);
 	}
 
 	@Override
-	public void update(Fascia entity) {
-		try {
-			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
-			checker.check(entity);
-			dao.update(entity);
-			updateFasceModelli();
-		}catch (IntegrityException e) {
-			e.showError();
-		}
+	public void update(Fascia entity) throws CarloanException {
+		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
+		checker.check(entity);
+		dao.update(entity);
+		updateFasceModelli();
 		
 	}
 
-	private void updateFasceModelli() {
+	private void updateFasceModelli() throws CarloanException {
 		ApplicationServiceModello asModello;
 		try {
 			asModello = new ApplicationServiceModello();
@@ -53,31 +46,27 @@ public class ApplicationServiceFascia extends ApplicationServiceEntity<Fascia> {
 				}
 				asModello.update(m);
 			}
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 	
 	@Override
-	public void delete(Fascia entity) {
-		try {
-			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
-			List<Fascia> fasce = readAll();
-			for (int i = 0; i < fasce.size(); i++) {
-				if (fasce.get(i).getId() == 1) continue;
-				if (fasce.get(i).compareTo(entity) == 0) {
-					for (Fascia f:fasce) {
-						if (f.getMax() == entity.getMin()) {
-							f.setMax(entity.getMax());
-							update(f);
-							updateFasceModelli();
-						}
+	public void delete(Fascia entity) throws CarloanException {
+		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
+		List<Fascia> fasce = readAll();
+		for (int i = 0; i < fasce.size(); i++) {
+			if (fasce.get(i).getId() == 1) continue;
+			if (fasce.get(i).compareTo(entity) == 0) {
+				for (Fascia f:fasce) {
+					if (f.getMax() == entity.getMin()) {
+						f.setMax(entity.getMax());
+						update(f);
+						updateFasceModelli();
 					}
-					dao.delete(Integer.toString(entity.getId()));
 				}
+				dao.delete(Integer.toString(entity.getId()));
 			}
-		} catch (IntegrityException e) {
-			e.showError();
 		}
 	}
 

@@ -41,10 +41,10 @@
             </Button>
          </center>
       </BorderPane>
-      <GridPane alignment="CENTER" layoutX="64.0" layoutY="300.0" prefHeight="348.0" prefWidth="897.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="140.0">
+      <GridPane fx:id="gridPane" alignment="CENTER" layoutX="64.0" layoutY="149.0" prefHeight="348.0" prefWidth="897.0" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="149.0">
          <children>
-            <Label text="Cliente" GridPane.columnIndex="3" />
-            <Label text="Agenzia Noleggio" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label text="Cliente" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label text="Agenzia Noleggio" GridPane.columnIndex="3" />
             <Label text="Agenzia Consegna" GridPane.rowIndex="2" />
             <Label text="Data Stipula" GridPane.rowIndex="3" />
             <Label text="Data Inizio Noleggio" GridPane.rowIndex="4" />
@@ -61,7 +61,7 @@
             <TextField fx:id="chilometriPrevisti" promptText="Numero chilometri previsti" GridPane.columnIndex="4" GridPane.rowIndex="3" />
             <Label text="Rifornimento" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <CheckBox fx:id="assicurazioneAvanzata" mnemonicParsing="false" text="Assicurazione Avanzata" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Label fx:id="costo" prefHeight="30.0" prefWidth="80.0" text="   " GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <Label fx:id="costo" prefHeight="30.0" prefWidth="80.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                <font>
                   <Font size="20.0" />
                </font>
@@ -76,7 +76,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="vettura" text="Seleziona" />
+                  <Label fx:id="vettura" />
                   <Button mnemonicParsing="false" onMouseClicked="#onSelezioneVettura" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
@@ -88,9 +88,9 @@
                   </Button>
                </children>
             </GridPane>
-            <GridPane GridPane.columnIndex="4">
+            <GridPane GridPane.columnIndex="4" GridPane.rowIndex="2">
                <children>
-                  <Label fx:id="cliente" text="Seleziona" />
+                  <Label fx:id="cliente" />
                   <Button mnemonicParsing="false" onMouseClicked="#onSelezioneCliente" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
@@ -110,7 +110,7 @@
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Label fx:id="agenziaConsegna" text="Seleziona" />
+                  <Label fx:id="agenziaConsegna" />
                   <Button mnemonicParsing="false" onMouseClicked="#onSelezioneAgenziaConsegna" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
@@ -128,27 +128,30 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <GridPane GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onMouseClicked="#onCalcolaCosto" text="Calcola costo" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+            <Label text="Optiional" GridPane.rowIndex="6" />
+            <GridPane GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="132.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="68.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Label fx:id="agenziaNoleggio" text="Seleziona" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneAgenziaNoleggio" GridPane.columnIndex="1">
+                  <ListView fx:id="optionals" prefHeight="59.0" prefWidth="123.0" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onSelezioneOptional" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0">
                            <image>
                               <Image url="@contents/add.ico" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                  </Button>
                </children>
-               <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
             </GridPane>
-            <Button mnemonicParsing="false" onMouseClicked="#onCalcolaCosto" text="Calcola costo" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+            <Label fx:id="agenziaNoleggio" GridPane.columnIndex="4" />
          </children>
          <columnConstraints>
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="210.0" />

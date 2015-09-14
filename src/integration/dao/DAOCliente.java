@@ -1,7 +1,5 @@
 package integration.dao;
 
-import integration.DateHelper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,6 +7,7 @@ import java.util.List;
 
 import org.joda.time.LocalDate;
 
+import utils.DateHelper;
 import business.entity.Cliente;
 
 public class DAOCliente extends DAOCarloan<Cliente>{
@@ -18,8 +17,8 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 		ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
 				+ "'carloan' AND   TABLE_NAME = 'persona'");
 		try {
-			rs.next();
-			entity.setId(rs.getInt(1));
+			while(rs.next())
+				entity.setId(rs.getInt(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

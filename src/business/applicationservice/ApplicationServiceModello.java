@@ -2,7 +2,9 @@ package business.applicationservice;
 
 import integration.dao.DAOFactory;
 import integration.dao.DAOFascia;
+
 import java.util.List;
+
 import business.checker.CheckerFactory;
 import business.entity.Fascia;
 import business.entity.IncidenzaFascia;
@@ -30,50 +32,41 @@ public class ApplicationServiceModello extends ApplicationServiceEntity<Modello>
 			}
 		}
 		if (modello.getFascia() == null) {
-			throw new FasciaIndexException();
+			throw new FasciaIndexException("L'indice:  "+ indiceFascia + " non Ë compreso negli intervalli delle fasce presenti. \n "
+					+ "Si prega di configurare le fasce in maniera adeguata");
 		}
 		return modello.getFascia();
 	}
 	
 	private double calcolaIndiceFascia(Modello modello) {
 		incidenza = IncidenzaFascia.getInstance();
-		return modello.getCapacit‡Bagagliaio() * incidenza.getCapacit‡Bagagliaio() +
+		double indice = modello.getCapacit‡Bagagliaio() * incidenza.getCapacit‡Bagagliaio() +
 				  incidenza.getEmissioniCO2() * modello.getEmissioniCO2() + 
 				  incidenza.getNumeroPorte() * modello.getNumeroPorte() +
 				  incidenza.getNumeroPosti() * modello.getNumeroPosti() + 
 				  incidenza.getPotenzaSuPeso() * ((double) modello.getPotenza() / (double) modello.getPeso());
+		System.out.println(indice);
+		return indice;
 	}
 
 	@Override
-	public void create(Modello entity) {
-		try {
-			checker.check(entity);
-			dao.create(entity);
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void create(Modello entity) throws IntegrityException {
+		checker.check(entity);
+		dao.create(entity);
 	}
 
 	@Override
-	public void update(Modello entity) {
-		try {
-			checker.isModifiable(read(Integer.toString(entity.getId())));
-			checker.check(entity);
-			dao.update(entity);
-		} catch (IntegrityException e) {
-			e.showError();
-		}
+	public void update(Modello entity) throws IntegrityException {
+		checker.isModifiable(read(Integer.toString(entity.getId())));
+		checker.check(entity);
+		dao.update(entity);
 	}
 
 	@Override
-	public void delete(Modello entity) {
-		try {
-			checker.isModifiable(read(Integer.toString(entity.getId())));
-			checker.check(entity); 
-			dao.delete(Integer.toString(entity.getId()));	
-		} catch (IntegrityException e) {
-			e.showError();
-		}
+	public void delete(Modello entity) throws IntegrityException {
+		checker.isModifiable(read(Integer.toString(entity.getId())));
+		checker.check(entity); 
+		dao.delete(Integer.toString(entity.getId()));	
 	}
 
 	@Override

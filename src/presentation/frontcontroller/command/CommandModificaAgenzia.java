@@ -2,15 +2,16 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceAgenzia;
 import business.entity.Agenzia;
+import business.exception.CarloanException;
 
 public class CommandModificaAgenzia implements Command<Agenzia> {
 
 	@Override
-	public Agenzia execute(Agenzia entity) {
+	public Agenzia execute(Agenzia entity) throws CarloanException {
 		try {
 			new ApplicationServiceAgenzia().update(entity);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
 		return entity;
 	}

@@ -2,15 +2,16 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceOptional;
 import business.entity.Optional;
+import business.exception.CarloanException;
 
 public class CommandModificaOptional implements Command<Optional> {
 
 	@Override
-	public Optional execute(Optional entity) {
+	public Optional execute(Optional entity) throws CarloanException {
 		try {
 			new ApplicationServiceOptional().update(entity);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
 		return entity;
 	}

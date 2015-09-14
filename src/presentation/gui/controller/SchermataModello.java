@@ -57,12 +57,15 @@ public class SchermataModello extends SchermataDati<Modello>{
 
 	@Override
 	public void onConferma() {
-		if (edit) {
-			controller.processRequest("ModificaModello", buildEntity());
-		} else {
-			controller.processRequest("AggiungiModello", buildEntity());
+		Modello modello = buildEntity();
+		if (modello != null) {
+			if (edit) {
+				controller.processRequest("ModificaModello", buildEntity());
+			} else {
+				controller.processRequest("AggiungiModello", buildEntity());
+			}
+			close();
 		}
-		close();
 	}
 
 	@Override
@@ -84,27 +87,33 @@ public class SchermataModello extends SchermataDati<Modello>{
 	
 	@FXML
 	public void onCalcolaFascia() {
-		fascia.setText(Integer.toString((Integer) controller.processRequest("CalcolaFascia", buildEntity())));
+		Integer idFascia = (Integer) controller.processRequest("CalcolaFascia", buildEntity());
+		if (idFascia != null) fascia.setText(Integer.toString(idFascia));
 	}
 	
 	
 	@Override
 	protected Modello buildEntity() {
 		Modello modello = new Modello();
-		if (id!=0) {
-			modello.setId(id);
+		try {
+			if (id!=0) {
+				modello.setId(id);
+			}
+			modello.setCapacit‡Bagagliaio(Integer.parseInt(capacit‡Bagagliaio.getText()));
+			modello.setNumeroPorte(Integer.parseInt(capacit‡Bagagliaio.getText()));
+			modello.setMarca(marca.getText());
+			modello.setNome(nome.getText());
+			modello.setEmissioniCO2(Double.parseDouble(emissioniCO2.getText()));
+			modello.setNumeroPosti(Integer.parseInt(numeroPosti.getText()));
+			modello.setPotenza(Integer.parseInt(potenza.getText()));
+			modello.setPeso(Integer.parseInt(peso.getText()));
+			modello.setTrasmissioneAutomatica(trasmissioneAutomatica.selectedProperty().get());
+			if (!fascia.getText().isEmpty())
+				modello.setFascia((Fascia) controller.processRequest("ReadFascia", fascia.getText()));
+			return modello;
+		} catch (Exception e) {
+			return null;
 		}
-		modello.setCapacit‡Bagagliaio(Integer.parseInt(capacit‡Bagagliaio.getText()));
-		modello.setNumeroPorte(Integer.parseInt(capacit‡Bagagliaio.getText()));
-		modello.setMarca(marca.getText());
-		modello.setNome(nome.getText());
-		modello.setEmissioniCO2(Double.parseDouble(emissioniCO2.getText()));
-		modello.setNumeroPosti(Integer.parseInt(numeroPosti.getText()));
-		modello.setPotenza(Integer.parseInt(potenza.getText()));
-		modello.setPeso(Integer.parseInt(peso.getText()));
-		modello.setTrasmissioneAutomatica(trasmissioneAutomatica.selectedProperty().get());
-		modello.setFascia((Fascia) controller.processRequest("ReadFascia", fascia.getText()));
-		return modello;
 	}
 
 }

@@ -42,13 +42,15 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 	@FXML
 	@Override
 	public void onConferma() {
-
-		if (edit) {
-			controller.processRequest("ModificaVettura", buildEntity());
-		} else {
-			controller.processRequest("AggiungiVettura", buildEntity());
+		Vettura vettura = buildEntity();
+		if (vettura != null) {
+			if (edit) {
+				controller.processRequest("ModificaVettura", buildEntity());
+			} else {
+				controller.processRequest("AggiungiVettura", buildEntity());
+			}
+			close();
 		}
-		close();
 	}
 
 
@@ -75,12 +77,16 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 	@Override
 	protected Vettura buildEntity() {
 		Vettura vettura = new Vettura();
-		vettura.setChilometraggio(Integer.parseInt(chilometraggio.getText()));
-		vettura.setAgenziaLocalizzazione((Agenzia) controller.processRequest("ReadAgenzia", agenziaLocalizzazione.getText()));
-		vettura.setModello((Modello) controller.processRequest("ReadModello", modello.getText()));
-		vettura.setTarga(targa.getText());
-		vettura.setStato(stato.getSelectionModel().getSelectedItem());
-		return vettura;
+		try {
+			vettura.setChilometraggio(Integer.parseInt(chilometraggio.getText()));
+			vettura.setAgenziaLocalizzazione((Agenzia) controller.processRequest("ReadAgenzia", agenziaLocalizzazione.getText()));
+			vettura.setModello((Modello) controller.processRequest("ReadModello", modello.getText()));
+			vettura.setTarga(targa.getText());
+			vettura.setStato(stato.getSelectionModel().getSelectedItem());
+			return vettura;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

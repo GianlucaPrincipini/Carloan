@@ -2,15 +2,16 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceOperatore;
 import business.entity.Operatore;
+import business.exception.CarloanException;
 
 public class CommandModificaOperatore implements Command<Operatore> {
 
 	@Override
-	public Operatore execute(Operatore entity) {
+	public Operatore execute(Operatore entity) throws CarloanException {
 		try {
 			new ApplicationServiceOperatore().update(entity);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
 		return entity;
 	}

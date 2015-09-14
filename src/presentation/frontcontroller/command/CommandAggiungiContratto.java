@@ -2,15 +2,16 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceContratto;
 import business.entity.Contratto;
+import business.exception.CarloanException;
 
 public class CommandAggiungiContratto implements Command<Contratto>{
 
 	@Override
-	public Contratto execute(Contratto entity) {
+	public Contratto execute(Contratto entity) throws CarloanException {
 		try {
 			new ApplicationServiceContratto().create(entity);
 		}catch (Exception e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
 		return entity;
 	}

@@ -2,16 +2,17 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceCliente;
 import business.entity.Cliente;
+import business.exception.CarloanException;
 
 public class CommandModificaCliente implements Command<Cliente>{
 
 	@Override
-	public Cliente execute(Cliente entity) {
+	public Cliente execute(Cliente entity) throws CarloanException {
 		try {
 			new ApplicationServiceCliente().update(entity);
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
+
 		}
 		return entity;
 	}

@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
-import integration.DateHelper;
+import utils.DateHelper;
 import business.entity.Contratto;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -71,6 +71,9 @@ public class TableContratto implements TableController{
 	
 	@FXML
 	private TableColumn<Contratto,String> assicurazioneAvanzata;
+	
+	@FXML
+	private TableColumn<Contratto,String> optionals;
 	
 	@FXML
 	private TableColumn<Contratto,String> acconto;
@@ -140,9 +143,12 @@ public class TableContratto implements TableController{
             	return new ReadOnlyObjectWrapper(DateHelper.dateAsString(c.getValue().getDataFineNoleggio()));
      		}
         });
+        
         dataChiusura.setCellValueFactory(new Callback<CellDataFeatures<Contratto, String>, ObservableValue<String>>() {
         	public ObservableValue<String> call(CellDataFeatures<Contratto, String> c) {
-            	return new ReadOnlyObjectWrapper(DateHelper.dateAsString(c.getValue().getDataChiusura()));
+        		if (c.getValue().getDataChiusura()!= null)
+        			return new ReadOnlyObjectWrapper(DateHelper.dateAsString(c.getValue().getDataChiusura()));
+        		return null;
      		}
         });
         limitazioneChilometraggio.setCellValueFactory(new Callback<CellDataFeatures<Contratto, String>, ObservableValue<String>>() {
@@ -170,6 +176,11 @@ public class TableContratto implements TableController{
             	return new ReadOnlyObjectWrapper(c.getValue().isAssicurazioneAvanzata());
      		}
         });
+        optionals.setCellValueFactory(new Callback<CellDataFeatures<Contratto, String>, ObservableValue<String>>() {
+        	public ObservableValue<String> call(CellDataFeatures<Contratto, String> c) {
+            	return new ReadOnlyObjectWrapper(c.getValue().getOptionals());
+     		}
+        });
         acconto.setCellValueFactory(new Callback<CellDataFeatures<Contratto, String>, ObservableValue<String>>() {
         	public ObservableValue<String> call(CellDataFeatures<Contratto, String> c) {
             	return new ReadOnlyObjectWrapper(c.getValue().getAcconto());
@@ -191,6 +202,9 @@ public class TableContratto implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
+		if (tabContratti.getSelectionModel().getSelectedIndex() == -1) {
+			return null;
+		}
 		return id.getCellObservableValue(tabContratti.getSelectionModel().getSelectedIndex()).getValue().toString();
 	}
 }

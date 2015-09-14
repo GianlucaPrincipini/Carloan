@@ -2,15 +2,16 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceIncidenza;
 import business.entity.IncidenzaFascia;
+import business.exception.CarloanException;
 
 public class CommandModificaIncidenza implements Command<IncidenzaFascia> {
 
 	@Override
-	public IncidenzaFascia execute(IncidenzaFascia entity) {
+	public IncidenzaFascia execute(IncidenzaFascia entity) throws CarloanException {
 		try{
 			new ApplicationServiceIncidenza().update(entity);
 		} catch(Exception e){
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
 		return entity;
 	}

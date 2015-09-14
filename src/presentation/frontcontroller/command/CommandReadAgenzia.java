@@ -2,17 +2,19 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceAgenzia;
 import business.entity.Agenzia;
+import business.exception.CarloanException;
 
 public class CommandReadAgenzia implements Command{
 
 	@Override
-	public Agenzia execute(Object entity) {
+	public Agenzia execute(Object entity) throws CarloanException {
 		try {
-			return new ApplicationServiceAgenzia().read((String) entity);
+			Agenzia agenzia = new ApplicationServiceAgenzia().read((String) entity);
+			 if (agenzia!=null) return agenzia;
+			 throw new CarloanException("Impossibile leggere l'agenzia");
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
-		return null;
 	}
 
 }

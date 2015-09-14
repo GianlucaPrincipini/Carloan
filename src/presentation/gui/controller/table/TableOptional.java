@@ -67,6 +67,9 @@ public class TableOptional implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
+		if (tabOptionals.getSelectionModel().getSelectedIndex() == -1) {
+			return null;
+		}
 		return id.getCellObservableValue(tabOptionals.getSelectionModel().getSelectedIndex()).getValue().toString();
 
 	}

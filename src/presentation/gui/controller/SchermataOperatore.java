@@ -1,13 +1,12 @@
 package presentation.gui.controller;
 
-import integration.DateHelper;
-import integration.Encrypt;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
+import utils.DateHelper;
+import utils.Encrypt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -55,12 +54,15 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 
 	@Override
 	public void onConferma() {
-		if (edit) {
-			controller.processRequest("ModificaOperatore", buildEntity());
-		} else {
-			controller.processRequest("AggiungiOperatore", buildEntity());
+		Operatore operatore = buildEntity();
+		if (operatore != null) {
+			if (edit) {
+				controller.processRequest("ModificaOperatore", operatore);
+			} else {
+				controller.processRequest("AggiungiOperatore", operatore);
+			}
+			close();
 		}
-		close();
 	}
 
 	@Override
@@ -82,25 +84,35 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 	@Override
 	protected Operatore buildEntity() {
 		Operatore operatore;
-		if (amministratore.selectedProperty().get()) {
-			operatore = new Amministratore();
-		} else {
-			operatore = new Operatore();
-		}
-		operatore.setAgenzia((Agenzia)controller.processRequest("ReadAgenzia", agenzia.getText()));
-		operatore.setUsername(username.getText());
-		operatore.setId(id);
 		try {
-			operatore.setPassword(Encrypt.getEncryptedString(password.getText()));
-		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			e.printStackTrace();
+			if (amministratore.selectedProperty().get()) {
+				operatore = new Amministratore();
+			} else {
+				operatore = new Operatore();
+			}
+			operatore.setAgenzia((Agenzia)controller.processRequest("ReadAgenzia", agenzia.getText()));
+			operatore.setUsername(username.getText());
+			operatore.setId(id);
+			try {
+				operatore.setPassword(Encrypt.getEncryptedString(password.getText()));
+			} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			operatore.setNome(nome.getText());
+			operatore.setCognome(cognome.getText());
+			System.out.println(DateHelper.dateParse(dataDiNascita.getValue()));
+			operatore.setDataNascita(DateHelper.dateParse(dataDiNascita.getValue()));
+			operatore.setEMail(email.getText());
+			operatore.setNumTelefono(telefono.getText());
+			return operatore;
+		} catch (Exception e) {
+			return null;
 		}
-		operatore.setNome(nome.getText());
-		operatore.setCognome(cognome.getText());
-		operatore.setDataNascita(DateHelper.dateParse(dataDiNascita.getValue()));
-		operatore.setEMail(email.getText());
-		operatore.setNumTelefono(telefono.getText());
-		return operatore;
+	}
+	
+	@FXML
+	public void onSelezioneAgenzia() {
+		agenzia.setText((String)controller.processRequest("MostraSelezione", "Agenzia"));
 	}
 
 }

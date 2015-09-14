@@ -2,6 +2,7 @@ package business.applicationservice;
 
 import integration.dao.DAOFactory;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.joda.time.Days;
@@ -14,18 +15,22 @@ import business.entity.Contratto;
 import business.entity.Optional;
 import business.entity.Rifornimento;
 import business.entity.Tariffario;
+import business.exception.CarloanException;
 import business.exception.IntegrityException;
 
 public class ApplicationServiceContratto extends ApplicationServiceEntity<Contratto> {
 
-	public void chiudi(Contratto contratto) {
-		if (!contratto.isChiuso()) {
-			contratto.setDataChiusura(LocalDate.now());
-			contratto.setChiuso(true);
-			calcolaCosto(contratto);
-			update(contratto);
-			// da rivedere
-		} 
+	public void chiudi(Contratto contratto) throws CarloanException {
+		((CheckerContratto)checker).checkChiusura(contratto);
+		contratto.setChiuso(true);
+		dao.update(contratto);
+		contratto.getVettura().setChilometraggio(contratto.getVettura().getChilometraggio() + contratto.getChilometriPercorsi());
+		try {
+			new ApplicationServiceVettura().update(contratto.getVettura());
+		} catch (IntegrityException | InstantiationException
+				| IllegalAccessException e) {
+			throw new CarloanException("Impossibile chiudere il contratto");
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -34,13 +39,9 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 	}
 
 	@Override
-	public void create(Contratto entity) {
-		try {
+	public void create(Contratto entity) throws IntegrityException {
 			checker.check(entity);
 			dao.create(entity);
-		} catch (IntegrityException e) {
-			e.showError();
-		} 
 	}
 
 	@Override
@@ -49,14 +50,10 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 	}
 
 	@Override
-	public void update(Contratto entity) {
-		try {
+	public void update(Contratto entity) throws IntegrityException {
 			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
 			checker.check(entity);
 			dao.update(entity);
-		} catch (IntegrityException e){
-			e.showError();
-		}
 	}
 
 	@Override
@@ -66,16 +63,11 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 
 	@Override
 	public void delete(Contratto entity) {
-		try {
-			checker.isModifiable(read(Integer.toString(entity.getId())));
-			dao.delete(Integer.toString(entity.getId()));
-		} catch (IntegrityException e) {
-			e.showError();
-		}
+		dao.delete(Integer.toString(entity.getId()));
 	}
 	
 	
-	public double calcolaCostoChiusura(Contratto contratto) {
+	public double calcolaCostoChiusura(Contratto contratto) throws CarloanException {
 		double costo = calcolaCosto(contratto);
 		Tariffario tariffario = contratto.getTariffario();
 		int chilometriConsiderati;
@@ -99,52 +91,49 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 		return costo;
 	}
 	
-	public double calcolaCosto(Contratto contratto) {
-		double costo = 0;
-		Tariffario tariffario = contratto.getTariffario();
-		// il tariffario è vuoto all'inizio!
-		costo += contratto.getVettura().getModello().getFascia().getTariffaBase();
-		for (Optional o:contratto.getOptionals()) {
-			costo += o.getCosto();
+	public double calcolaCosto(Contratto contratto) throws CarloanException {
+		try {
+			double costo = 0;
+			Tariffario tariffario = contratto.getTariffario();
+			// il tariffario è vuoto all'inizio!
+			costo += contratto.getVettura().getModello().getFascia().getTariffaBase();
+			for (Optional o:contratto.getOptionals()) {
+				costo += o.getCosto();
+			}
+			int durataNoleggio = Days.daysBetween(contratto.getDataInizioNoleggio(), contratto.getDataFineNoleggio()).getDays();
+			if (durataNoleggio % 7 == 0) 
+				costo += durataNoleggio/7 * tariffario.getCostoSettimanale();
+			else 
+				costo += durataNoleggio * tariffario.getCostoGiornaliero();
+			
+			if (contratto.isAssicurazioneAvanzata())
+				costo += tariffario.getAssicurazioneAvanzata();
+			else 
+				costo += tariffario.getAssicurazioneBase();
+	
+			if (contratto.isChilometraggioLimitato()) {
+				costo += tariffario.getCostoChilometrico() * contratto.getChilometriPrevisti();
+			} else {
+				costo += tariffario.getCostoChilometraggioIllimitato();
+			}
+			
+			costo -= contratto.getAcconto();
+			contratto.setCosto(costo);
+			return costo;
+		} catch (Exception e) {
+			throw new CarloanException("Impossibile calcolare costo del contratto");
 		}
-		int durataNoleggio = Days.daysBetween(contratto.getDataInizioNoleggio(), contratto.getDataFineNoleggio()).getDays();
-		if (durataNoleggio % 7 == 0) 
-			costo += durataNoleggio/7 * tariffario.getCostoSettimanale();
-		else 
-			costo += durataNoleggio * tariffario.getCostoGiornaliero();
-		
-		if (contratto.isAssicurazioneAvanzata())
-			costo += tariffario.getAssicurazioneAvanzata();
-		else 
-			costo += tariffario.getAssicurazioneBase();
-
-		if (contratto.isChilometraggioLimitato()) {
-			costo += tariffario.getCostoChilometrico() * contratto.getChilometriPrevisti();
-		} else {
-			costo += tariffario.getCostoChilometraggioIllimitato();
-		}
-		
-		
-		costo -= contratto.getAcconto();
-		contratto.setCosto(costo);
-		return costo;
 	}
 	
-	public static void main(String [] args) {
-		try {
-			ApplicationServiceContratto ac = new ApplicationServiceContratto();
-			Contratto contratto = ac.read(Integer.toString(1));
-			ac.calcolaCosto(contratto);
-		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public List<Contratto> filtra(Agenzia agenzia) {
-		List<Contratto> contrattiFiltrati = readAll();
-		for (Contratto c:contrattiFiltrati) {
-			if (c.getAgenziaConsegna().getId() != agenzia.getId() && c.getAgenziaNoleggio().getId() != agenzia.getId()) {
-				contrattiFiltrati.remove(c);
+		List<Contratto> contrattiFiltrati = dao.readAll();
+		synchronized(contrattiFiltrati) {
+			for (Iterator<Contratto> ic = contrattiFiltrati.iterator(); ic.hasNext(); ) {
+				Contratto c = ic.next();
+				if (c.getAgenziaConsegna().getId() != agenzia.getId() && c.getAgenziaNoleggio().getId() != agenzia.getId()) {
+					ic.remove();
+				}
 			}
 		}
 		return contrattiFiltrati;

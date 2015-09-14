@@ -45,8 +45,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="agenzia" text="Seleziona" />
-                  <Button fx:id="selezioneAgenzia" mnemonicParsing="false" GridPane.columnIndex="1">
+                  <Label fx:id="agenzia" />
+                  <Button fx:id="selezioneAgenzia" mnemonicParsing="false" onMouseClicked="#onSelezioneAgenzia" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>

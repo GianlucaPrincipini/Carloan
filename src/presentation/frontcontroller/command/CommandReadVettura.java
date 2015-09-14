@@ -2,15 +2,17 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceVettura;
 import business.entity.Vettura;
+import business.exception.CarloanException;
 
 public class CommandReadVettura implements Command{
 	@Override
-	public Vettura execute(Object entity) {
+	public Vettura execute(Object entity) throws CarloanException {
 		try {
-			return new ApplicationServiceVettura().read((String) entity);
+			Vettura vettura = new ApplicationServiceVettura().read((String) entity);
+			if (vettura != null) return vettura;
+			throw new CarloanException("Impossibile leggere la vettura");
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
-		return null;
 	}
 }

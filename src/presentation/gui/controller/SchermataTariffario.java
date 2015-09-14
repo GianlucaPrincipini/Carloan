@@ -71,8 +71,11 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 
 	@Override
 	public void onConferma() {
-		controller.processRequest("ModificaTariffario", buildEntity());
-		close();
+		Tariffario tariffario = buildEntity();
+		if (tariffario != null) {
+			controller.processRequest("ModificaTariffario", tariffario);
+			close();
+		}
 	}
 
 	@Override
@@ -99,22 +102,25 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 	@Override
 	protected Tariffario buildEntity() {
 		Tariffario tariffario = Tariffario.getInstance();
-		
-		tariffario.setCostoGiornaliero(Double.parseDouble(costoGiornaliero.getText())); 
-		tariffario.setCostoSettimanale(Double.parseDouble(costoSettimanale.getText()));
-		tariffario.setCostoChilometrico(Double.parseDouble(costoChilometrico.getText()));
-		tariffario.setCostoChilometraggioIllimitato(Double.parseDouble(costoChilometraggioIllimitato.getText()));
-		tariffario.setAssicurazioneBase(Double.parseDouble(assicurazioneBase.getText()));
-		tariffario.setAssicurazioneAvanzata(Double.parseDouble(assicurazioneAvanzata.getText()));
-		tariffario.setCostoLitro(TipoCarburante.BENZINA, Double.parseDouble(costoBenzina.getText()));
-		tariffario.setCostoLitro(TipoCarburante.METANO, Double.parseDouble(costoMetano.getText()));
-		tariffario.setCostoLitro(TipoCarburante.ELETTRICA, Double.parseDouble(costoElettricità.getText()));
-		tariffario.setCostoLitro(TipoCarburante.GPL, Double.parseDouble(costoGpl.getText()));
-		tariffario.setCostoLitro(TipoCarburante.DIESEL, Double.parseDouble(costoDiesel.getText()));
-		tariffario.setRifornimento(Rifornimento.PIENO_ANTICIPO, Double.parseDouble(costoPienoAnticipo.getText()));
-		tariffario.setMoraCarburante(Double.parseDouble(moraCarburante.getText()));
-		tariffario.setMoraChilometraggio(Double.parseDouble(moraChilometraggio.getText()));
-		tariffario.setMoraDurata(Double.parseDouble(moraDurata.getText()));
-		return tariffario;
+		try {
+			tariffario.setCostoGiornaliero(Double.parseDouble(costoGiornaliero.getText())); 
+			tariffario.setCostoSettimanale(Double.parseDouble(costoSettimanale.getText()));
+			tariffario.setCostoChilometrico(Double.parseDouble(costoChilometrico.getText()));
+			tariffario.setCostoChilometraggioIllimitato(Double.parseDouble(costoChilometraggioIllimitato.getText()));
+			tariffario.setAssicurazioneBase(Double.parseDouble(assicurazioneBase.getText()));
+			tariffario.setAssicurazioneAvanzata(Double.parseDouble(assicurazioneAvanzata.getText()));
+			tariffario.setCostoLitro(TipoCarburante.BENZINA, Double.parseDouble(costoBenzina.getText()));
+			tariffario.setCostoLitro(TipoCarburante.METANO, Double.parseDouble(costoMetano.getText()));
+			tariffario.setCostoLitro(TipoCarburante.ELETTRICA, Double.parseDouble(costoElettricità.getText()));
+			tariffario.setCostoLitro(TipoCarburante.GPL, Double.parseDouble(costoGpl.getText()));
+			tariffario.setCostoLitro(TipoCarburante.DIESEL, Double.parseDouble(costoDiesel.getText()));
+			tariffario.setRifornimento(Rifornimento.PIENO_ANTICIPO, Double.parseDouble(costoPienoAnticipo.getText()));
+			tariffario.setMoraCarburante(Double.parseDouble(moraCarburante.getText()));
+			tariffario.setMoraChilometraggio(Double.parseDouble(moraChilometraggio.getText()));
+			tariffario.setMoraDurata(Double.parseDouble(moraDurata.getText()));
+			return tariffario;
+		} catch (Exception e) {
+			return null;
+		}
 	}		
 }

@@ -4,18 +4,18 @@ import java.util.List;
 
 import business.applicationservice.ApplicationServiceFascia;
 import business.entity.Fascia;
+import business.exception.CarloanException;
 
 public class CommandReadAllFascia implements Command<List<Fascia>>{
 
 	@Override
-	public List<Fascia> execute(List<Fascia> entity) {
+	public List<Fascia> execute(List<Fascia> entity) throws CarloanException {
 		try {
 			return new ApplicationServiceFascia().readAll();
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
+
 		}
-		return null;
 	}
 	
 }

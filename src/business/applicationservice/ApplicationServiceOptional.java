@@ -16,33 +16,21 @@ public class ApplicationServiceOptional extends ApplicationServiceEntity<Optiona
 	}
 	
 	@Override
-	public void create(Optional entity) {
-		try {
-			checker.check(entity);
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void create(Optional entity) throws IntegrityException {
+		checker.check(entity);
 		dao.create(entity);
 	}
 
 	@Override
-	public void update(Optional entity) {
-		try {
-			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
-			checker.check(entity);
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void update(Optional entity) throws IntegrityException {
+		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
+		checker.check(entity);
 		dao.update(entity);	
 	}
 
 	@Override
-	public void delete(Optional entity) {
-		try {
-			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
-		} catch (IntegrityException e) {
-			e.printStackTrace();
-		}
+	public void delete(Optional entity) throws IntegrityException {
+		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
 		dao.delete(Integer.toString(entity.getId()));
 		
 	}

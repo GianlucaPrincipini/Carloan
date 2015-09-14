@@ -30,9 +30,12 @@ public class SchermataFascia extends SchermataDati<Fascia>{
 
 	@Override
 	public void onConferma() {
-		if (edit) controller.processRequest("ModificaFascia", buildEntity());
-		else controller.processRequest("AggiungiFascia", buildEntity());
-		close();
+		Fascia fascia = buildEntity();
+		if (fascia != null) {
+			if (edit) controller.processRequest("ModificaFascia", fascia);
+			else controller.processRequest("AggiungiFascia", fascia);
+			close();
+		}
 	}
 
 	@Override
@@ -48,12 +51,16 @@ public class SchermataFascia extends SchermataDati<Fascia>{
 	@Override
 	protected Fascia buildEntity() {
 		Fascia fascia = new Fascia();
-		fascia.setId(id);
-		fascia.setNome(nome.getText());
-		fascia.setTariffaBase(Double.parseDouble(tariffaBase.getText()));
-		fascia.setMax(Double.parseDouble(indiceMassimo.getText()));
-		fascia.setMin(Double.parseDouble(indiceMinimo.getText()));
-		return fascia;
+		try {
+			fascia.setId(id);
+			fascia.setNome(nome.getText());
+			fascia.setTariffaBase(Double.parseDouble(tariffaBase.getText()));
+			fascia.setMax(Double.parseDouble(indiceMassimo.getText()));
+			fascia.setMin(Double.parseDouble(indiceMinimo.getText()));
+			return fascia;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

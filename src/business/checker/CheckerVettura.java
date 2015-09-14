@@ -15,9 +15,10 @@ public class CheckerVettura implements Checker<Vettura>{
 
 	@Override
 	public void check(Vettura entity) throws IntegrityException {
-		if (entity.getTarga() == null) throw new IntegrityException();
-		if (entity.getModello() == null) throw new IntegrityException();
-		if (entity.getAgenziaLocalizzazione() == null) throw new IntegrityException();
+		if (entity.getTarga() == null) throw new IntegrityException("Targa non inserita");
+		if (entity.getModello() == null) throw new IntegrityException("Modello non specificato");
+		if (entity.getAgenziaLocalizzazione() == null) throw new IntegrityException("Agenzia di localizzazione non indicata");
+		if (entity.getStato() == null) throw new IntegrityException("Stato della vettura non indicato");
 	}
 
 	@Override
@@ -33,14 +34,16 @@ public class CheckerVettura implements Checker<Vettura>{
 		} else {
 			List<Contratto> contratti = new DAOContratto().readAll();
 			for (Contratto c:contratti) {
-				if (inizio.isBefore(c.getDataFineNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
-					return false;
-				}
-				if (inizio.isBefore(c.getDataInizioNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
-					return false;
-				}
-				if (inizio.isAfter(c.getDataInizioNoleggio()) && inizio.isBefore(c.getDataFineNoleggio())) {
-					return false;
+				if (c.getVettura().getTarga().equals(entity.getTarga())) {
+					if (inizio.isBefore(c.getDataFineNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
+						return false;
+					}
+					if (inizio.isBefore(c.getDataInizioNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
+						return false;
+					}
+					if (inizio.isAfter(c.getDataInizioNoleggio()) && inizio.isBefore(c.getDataFineNoleggio())) {
+						return false;
+					}
 				}
 			}
 		}

@@ -1,4 +1,4 @@
-package integration;
+package utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -19,5 +19,7 @@ public class Encrypt {
 		return convertByteArrayToHexString(encryptedData);
 	}
 	
-	
+	public static void main(String [] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		System.out.println(getEncryptedString("vipera"));
+	}
 }

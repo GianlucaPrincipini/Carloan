@@ -2,17 +2,18 @@ package presentation.frontcontroller.command;
 
 import business.applicationservice.ApplicationServiceAgenzia;
 import business.entity.Agenzia;
+import business.exception.CarloanException;
 
 public class CommandRimuoviAgenzia implements Command<Agenzia>{
 
 	@Override
-	public Agenzia execute(Agenzia entity) {
+	public Agenzia execute(Agenzia entity) throws CarloanException {
 		try {
 			new ApplicationServiceAgenzia().delete(entity);
 		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
+			throw new CarloanException(e.getMessage());
 		}
-		return null;
+		return entity;
 	}
 
 }

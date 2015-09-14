@@ -1,13 +1,12 @@
 package presentation.gui.controller.table;
 
-import integration.DateHelper;
-
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
+import utils.DateHelper;
 import business.entity.Amministratore;
 import business.entity.Operatore;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -123,6 +122,9 @@ public class TableOperatore implements TableController{
 
 	@Override
 	public String getPrimaryKey() {
+		if (tabOperatori.getSelectionModel().getSelectedIndex() == -1) {
+			return null;
+		}
 		return username.getCellObservableValue(tabOperatori.getSelectionModel().getSelectedIndex()).getValue().toString();
 
 	}

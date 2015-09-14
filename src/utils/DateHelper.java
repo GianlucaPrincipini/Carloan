@@ -1,4 +1,4 @@
-package integration;
+package utils;
 
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
@@ -54,7 +54,11 @@ public class DateHelper {
 	    }
 
 		public static LocalDate dateParse(java.time.LocalDate value) {
-			return new LocalDate(value.getYear(), value.getMonthValue(), value.getDayOfMonth());
+			try {
+				return new LocalDate(value.getYear(), value.getMonthValue(), value.getDayOfMonth());
+			} catch (Exception e) {
+				return null;
+			}
 		}
 	    
 }
