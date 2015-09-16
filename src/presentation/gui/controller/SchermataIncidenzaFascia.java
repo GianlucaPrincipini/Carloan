@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import business.entity.IncidenzaFascia;
-import business.exception.IncidenceOutOfBoundException;
 
 public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 
@@ -67,7 +66,7 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 			incidenza.setNumeroPosti(Double.parseDouble(numeroPosti.getText()));
 			incidenza.setPotenzaSuPeso(Double.parseDouble(potenzaSuPeso.getText()));
 			return incidenza;
-		} catch (NumberFormatException | IncidenceOutOfBoundException e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}

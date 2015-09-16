@@ -52,6 +52,10 @@ public class CheckerCliente implements Checker<Cliente>{
 				if (inizio.isAfter(c.getDataInizioNoleggio()) && inizio.isBefore(c.getDataFineNoleggio())) {
 					return false;
 				}
+				if ((inizio.equals(c.getDataChiusura()) || inizio.isAfter(c.getDataFineNoleggio()))
+						&& c.getDataChiusura() == null)
+					return false;
+				
 			}
 		}
 		return true;

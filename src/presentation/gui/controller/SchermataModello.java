@@ -60,11 +60,16 @@ public class SchermataModello extends SchermataDati<Modello>{
 	@Override
 	public void onConferma() {
 		Modello modello = buildEntity();
+		if (modello.getFascia() == null) {
+			Integer idFascia = (Integer) controller.processRequest("CalcolaFascia", buildEntity());
+			if (idFascia != null) fascia.setText(Integer.toString(idFascia));
+			modello = buildEntity();
+		}
 		if (modello != null) {
 			if (edit) {
-				controller.processRequest("ModificaModello", buildEntity());
+				controller.processRequest("ModificaModello", modello);
 			} else {
-				controller.processRequest("AggiungiModello", buildEntity());
+				controller.processRequest("AggiungiModello", modello);
 			}
 			close();
 		} else {
@@ -103,7 +108,7 @@ public class SchermataModello extends SchermataDati<Modello>{
 			if (id!=0) {
 				modello.setId(id);
 			}
-			modello.setTipoCarburante(tipoCarburante.getValue());
+			modello.setTipoCarburante(tipoCarburante.getSelectionModel().getSelectedItem());
 			modello.setCapacit‡Bagagliaio(Integer.parseInt(capacit‡Bagagliaio.getText()));
 			modello.setNumeroPorte(Integer.parseInt(numeroPorte.getText()));
 			modello.setMarca(marca.getText());
@@ -115,6 +120,7 @@ public class SchermataModello extends SchermataDati<Modello>{
 			modello.setTrasmissioneAutomatica(trasmissioneAutomatica.selectedProperty().get());
 			if (!fascia.getText().isEmpty())
 				modello.setFascia((Fascia) controller.processRequest("ReadFascia", fascia.getText()));
+			else modello.setFascia(null);
 			return modello;
 		} catch (Exception e) {
 			return null;

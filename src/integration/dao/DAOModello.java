@@ -14,7 +14,7 @@ public class DAOModello extends DAOCarloan<Modello> {
 
 	@Override
 	public void create(Modello entity) {
-		connection.executeUpdateQuery("INSERT INTO modello(marca, nome, tipocaburante, capacitabagagliaio, numeroposti, "
+		connection.executeUpdateQuery("INSERT INTO modello(marca, nome, tipoCarburante, capacitabagagliaio, numeroposti, "
 									+ "numeroporte, potenza, trasmissioneautomatica, emissionico2, peso, fascia)"
 									+ " values(" 
 									+ "'" + entity.getMarca() + "', "

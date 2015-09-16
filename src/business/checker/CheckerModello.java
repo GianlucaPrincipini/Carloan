@@ -7,7 +7,6 @@ public class CheckerModello implements Checker<Modello>{
 
 	@Override
 	public void check(Modello entity) throws IntegrityException {
-		if (entity.getId() == 0) throw new IntegrityException("Id mancante");;
 		if (entity.getMarca() == null) throw new IntegrityException("Marca mancante");;
 		if (entity.getNome() == null) throw new IntegrityException("Nome mancante");
 		if (entity.getTipoCarburante() == null) throw new IntegrityException("Tipo carburante mancante");

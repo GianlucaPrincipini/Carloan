@@ -45,6 +45,9 @@ public class CheckerVettura implements Checker<Vettura>{
 					if (inizio.isAfter(c.getDataInizioNoleggio()) && inizio.isBefore(c.getDataFineNoleggio())) {
 						return false;
 					}
+					if ((inizio.equals(c.getDataChiusura()) || inizio.isAfter(c.getDataFineNoleggio()))
+							&& c.getDataChiusura() == null)
+						return false;
 				}
 			}
 		}
