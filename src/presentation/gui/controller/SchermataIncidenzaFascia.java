@@ -2,13 +2,9 @@ package presentation.gui.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import presentation.frontcontroller.CarloanFrontController;
-import presentation.frontcontroller.FrontController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import business.entity.IncidenzaFascia;
-import business.exception.IncidenceOutOfBoundException;
 
 public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 
@@ -63,7 +59,7 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 			incidenza.setNumeroPosti(Double.parseDouble(numeroPosti.getText()));
 			incidenza.setPotenzaSuPeso(Double.parseDouble(potenzaSuPeso.getText()));
 			return incidenza;
-		} catch (NumberFormatException | IncidenceOutOfBoundException e) {
+		} catch (NumberFormatException e) {
 			return null;
 		}
 	}

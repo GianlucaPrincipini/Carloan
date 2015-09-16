@@ -45,7 +45,7 @@ public class DateHelper {
 	    }
 	    
 	    public static String dateAsString(LocalDate date){
-	    	return date.getYear() + "/" + date.getMonthOfYear() + "/" + date.getDayOfMonth();
+	    	return  date.getDayOfMonth() + "/" + date.getMonthOfYear() + "/" + date.getYear() ;
 	    }
 
 	    

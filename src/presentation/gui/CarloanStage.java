@@ -2,7 +2,7 @@ package presentation.gui;
 
 import java.io.IOException;
 
-import presentation.Target;
+import presentation.frontcontroller.Target;
 import presentation.gui.controller.SchermataDati;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

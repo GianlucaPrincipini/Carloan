@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import business.exception.IncidenceOutOfBoundException;
 
 
 @SuppressWarnings("serial")
@@ -51,7 +50,7 @@ public class IncidenzaFascia implements Serializable {
 		}
 	}
 	
-	public void setCapacit‡Bagagliaio(double x) throws IncidenceOutOfBoundException {
+	public void setCapacit‡Bagagliaio(double x) {
 		capacit‡Bagagliaio = x;
 	}
 	
@@ -59,7 +58,7 @@ public class IncidenzaFascia implements Serializable {
 		return capacit‡Bagagliaio;
 	}
 	
-	public void setNumeroPosti(double x) throws IncidenceOutOfBoundException {
+	public void setNumeroPosti(double x) {
 		numeroPosti = x;
 	}
 	
@@ -67,7 +66,7 @@ public class IncidenzaFascia implements Serializable {
 		return numeroPosti;
 	}
 	
-	public void setNumeroPorte(double x) throws IncidenceOutOfBoundException {
+	public void setNumeroPorte(double x) {
 	numeroPorte = x;
 	}
 	
@@ -75,7 +74,7 @@ public class IncidenzaFascia implements Serializable {
 		return numeroPorte;
 	}
 	
-	public void setPotenzaSuPeso(double x) throws IncidenceOutOfBoundException {
+	public void setPotenzaSuPeso(double x) {
 		potenzaSuPeso = x;
 	}
 	
@@ -83,7 +82,7 @@ public class IncidenzaFascia implements Serializable {
 		return potenzaSuPeso;
 	}
 	
-	public void setEmissioniCO2(double x) throws IncidenceOutOfBoundException {
+	public void setEmissioniCO2(double x) {
 		emissioniCO2 = x;
 	}
 	

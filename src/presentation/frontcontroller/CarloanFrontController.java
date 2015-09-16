@@ -1,6 +1,5 @@
 package presentation.frontcontroller;
 
-import presentation.Target;
 import presentation.frontcontroller.command.Command;
 import presentation.gui.CarloanSelezione;
 import presentation.gui.CarloanStage;
@@ -12,7 +11,6 @@ public class CarloanFrontController implements FrontController{
 
 	private static Operatore userAuthenticated;
 	private static CarloanFrontController frontController;
-	
 
 	private CarloanFrontController(){};
 	
