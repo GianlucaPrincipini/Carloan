@@ -23,17 +23,18 @@ public class CheckerVettura implements Checker<Vettura>{
 
 	@Override
 	public void isModifiable(Vettura entity) throws IntegrityException {
-		if (!isAvailable(entity, LocalDate.now(), LocalDate.now()))
+		if (!isAvailable(null, entity, LocalDate.now(), LocalDate.now()))
 			throw new IntegrityException();
 	}
 	
-	public boolean isAvailable(Vettura entity, LocalDate inizio, LocalDate fine) {
+	public boolean isAvailable(Contratto contratto, Vettura entity, LocalDate inizio, LocalDate fine) {
 		if (inizio == LocalDate.now() && fine == LocalDate.now()) {
 			if (entity.getStato() == StatoVettura.DISPONIBILE) return true;
 			else return false;
 		} else {
 			List<Contratto> contratti = new DAOContratto().readAll();
 			for (Contratto c:contratti) {
+				if (contratto != null && c.getId() == contratto.getId()) continue;
 				if (c.getVettura().getTarga().equals(entity.getTarga())) {
 					if (inizio.isBefore(c.getDataFineNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
 						return false;

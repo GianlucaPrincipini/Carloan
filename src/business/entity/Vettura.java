@@ -47,9 +47,6 @@ public class Vettura implements Entity {
 		this.stato = stato;
 	}
 	
-	public String toString() {
-		return "'" + targa + "', " + modello.getId() + ", " + agenziaLocalizzazione.getId() + ", " + chilometraggio + ", " + stato.getIndex();
-	}
 
 	@Override
 	public int compareTo(Entity o) {

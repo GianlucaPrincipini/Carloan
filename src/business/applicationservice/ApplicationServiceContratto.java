@@ -121,6 +121,7 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 			contratto.setCosto(costo);
 			return costo;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new CarloanException("Impossibile calcolare costo del contratto");
 		}
 	}

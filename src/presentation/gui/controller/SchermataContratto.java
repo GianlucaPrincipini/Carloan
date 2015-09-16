@@ -113,9 +113,12 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	public void onConferma() {
 		Contratto contratto = buildEntity();
 		if (contratto != null) {
-			Double costo = (Double) controller.processRequest("CalcolaCosto", contratto);
-			if (costo != null)
-				contratto.setCosto(costo);
+			Double costoC = null;
+			if (contratto.getCosto() == 0)
+				 costoC = (Double) controller.processRequest("CalcolaCosto", contratto);
+			if (costoC != null)
+				costo.setText(Double.toString(costoC));
+			System.out.println(contratto.getCosto());
 			if (edit) controller.processRequest("ModificaContratto", buildEntity());
 			else controller.processRequest("AggiungiContratto", buildEntity());
 			close();
@@ -134,6 +137,7 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	@Override
 	public void initModifica(Contratto entity) {
 		edit = true;
+		setId(entity.getId());
 		costo.setText(Double.toString(entity.getCosto()));
 		acconto.setText(Double.toString(entity.getAcconto()));
 		dataInizioNoleggio.setValue(java.time.LocalDate.of(entity.getDataInizioNoleggio().getYear(), entity.getDataInizioNoleggio().getMonthOfYear(), entity.getDataInizioNoleggio().getDayOfMonth()));
@@ -146,7 +150,7 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 		chilometraggioLimitato.selectedProperty().set(entity.isChilometraggioLimitato());
 		assicurazioneAvanzata.selectedProperty().set(entity.isAssicurazioneAvanzata());		
 		operatore.setText(entity.getOperatore().getUsername());
-		vettura.setText(Integer.toString(entity.getId()));
+		vettura.setText(entity.getVettura().getTarga());
 		cliente.setText(entity.getCliente().getCodicePatente());
 		List<String> opts = new ArrayList<String>();
 		for (Optional o:entity.getOptionals()) {
@@ -159,6 +163,7 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	@Override
 	protected Contratto buildEntity() {
 		Contratto contratto = new Contratto();
+		contratto.setId(id);
 		try {
 			contratto.setOperatore((Operatore) controller.processRequest("ReadOperatore", operatore.getText()));
 			contratto.setAgenziaConsegna((Agenzia) controller.processRequest("ReadAgenzia", agenziaConsegna.getText()));
@@ -175,11 +180,12 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 			contratto.setChilometriPrevisti(Integer.parseInt(chilometriPrevisti.getText()));
 			List<Optional> opts = new ArrayList<Optional>();
 			for (String o:optionals.getItems()) {
-				System.out.println((Optional)controller.processRequest("ReadOptional", o));
 				if (!o.isEmpty()) opts.add((Optional)controller.processRequest("ReadOptional", o)); 
 			}
 			contratto.setOptionals(opts);
-			if (!costo.getText().isEmpty()) {
+			if (costo.getText().isEmpty()) {
+				contratto.setCosto(0);
+			} else {
 				contratto.setCosto(Double.parseDouble(costo.getText()));
 			}
 			return contratto;
