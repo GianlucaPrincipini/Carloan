@@ -5,8 +5,10 @@ import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
+import presentation.gui.CarloanMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import business.entity.IncidenzaFascia;
 import business.exception.IncidenceOutOfBoundException;
 
@@ -39,6 +41,8 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 		if (incidenza != null) {
 			controller.processRequest("ModificaIncidenza", incidenza);
 			close();
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 

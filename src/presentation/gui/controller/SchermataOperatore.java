@@ -5,6 +5,7 @@ import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
+import presentation.gui.CarloanMessage;
 import utils.DateHelper;
 import utils.Encrypt;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import business.entity.Agenzia;
 import business.entity.Amministratore;
 import business.entity.Operatore;
@@ -62,6 +64,8 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 				controller.processRequest("AggiungiOperatore", operatore);
 			}
 			close();
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 

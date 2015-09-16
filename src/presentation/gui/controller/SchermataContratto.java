@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
+import presentation.gui.CarloanMessage;
 import utils.DateHelper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import business.entity.Agenzia;
 import business.entity.Cliente;
@@ -122,7 +124,9 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 			if (edit) controller.processRequest("ModificaContratto", buildEntity());
 			else controller.processRequest("AggiungiContratto", buildEntity());
 			close();
-		} 
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
+		}
 	}
 
 	@FXML

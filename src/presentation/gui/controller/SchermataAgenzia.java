@@ -5,8 +5,10 @@ import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
+import presentation.gui.CarloanMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import business.entity.Agenzia;
 
 public class SchermataAgenzia extends SchermataDati<Agenzia>{
@@ -38,6 +40,8 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 				controller.processRequest("AggiungiAgenzia", agenzia);
 			}
 			close();
+		}else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 
@@ -58,6 +62,7 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 			if (id != 0) {
 				agenzia.setId(id);
 			}
+			if (città.getText().isEmpty()|| indirizzo.getText().isEmpty() || numTelefono.getText().isEmpty()) return null;
 			agenzia.setCittà(città.getText());
 			agenzia.setIndirizzo(indirizzo.getText());
 			agenzia.setNumTelefono(numTelefono.getText());

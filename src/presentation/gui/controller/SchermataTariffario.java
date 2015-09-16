@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
+import presentation.gui.CarloanMessage;
 import business.entity.Rifornimento;
 import business.entity.Tariffario;
 import business.entity.TipoCarburante;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class SchermataTariffario extends SchermataDati<Tariffario>{
 
@@ -75,6 +77,8 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		if (tariffario != null) {
 			controller.processRequest("ModificaTariffario", tariffario);
 			close();
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 

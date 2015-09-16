@@ -3,6 +3,7 @@ package presentation.gui.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import presentation.gui.CarloanMessage;
 import business.entity.Agenzia;
 import business.entity.Modello;
 import business.entity.StatoVettura;
@@ -13,6 +14,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class SchermataVettura extends SchermataDati<Vettura>{
 
@@ -50,6 +52,8 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 				controller.processRequest("AggiungiVettura", buildEntity());
 			}
 			close();
+		}else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 

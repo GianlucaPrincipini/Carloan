@@ -8,6 +8,8 @@ import business.exception.IntegrityException;
 
 public class CheckerFascia implements Checker<Fascia>{
 	public void check(Fascia entity) throws IntegrityException {
+		if (entity.getMax() <= entity.getMin()) 
+			throw new IntegrityException("Il valore massimo non può essere inferiore dell'indice minimo");
 		if (entity.getMax() == 0 || entity.getMin() == 0) {
 			throw new IntegrityException("I valori minimo o massimo non possono essere pari a 0");
 		}

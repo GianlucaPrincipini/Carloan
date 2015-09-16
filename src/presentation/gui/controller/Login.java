@@ -36,8 +36,6 @@ public class Login implements Initializable {
 		if (fController.processRequest("Login", operatore) != null) {
 			((Stage) root.getScene().getWindow()).close();
 			fController.processRequest("MostraMainStage");
-		} else {
-			((Stage) root.getScene().getWindow()).close();
 		}
 	}
 	
