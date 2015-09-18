@@ -51,7 +51,7 @@
                      </graphic>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="20.0" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onModifica">
+                  <Button fx:id="modifica" mnemonicParsing="false" onMouseClicked="#onModifica">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                            <image>
@@ -61,7 +61,7 @@
                      </graphic>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="20.0" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onRimuovi">
+                  <Button fx:id="rimuovi" mnemonicParsing="false" onMouseClicked="#onRimuovi">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                            <image>
@@ -71,7 +71,7 @@
                      </graphic>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="20.0" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onChiusuraContratto">
+                  <Button fx:id="chiudiContratto" mnemonicParsing="false" onMouseClicked="#onChiusuraContratto">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" preserveRatio="true">
                            <image>

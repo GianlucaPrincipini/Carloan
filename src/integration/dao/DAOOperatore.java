@@ -106,27 +106,6 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args) {
-		DAOOperatore dao = new DAOOperatore();
-		Operatore a = new Operatore(); 
-		a.setAgenzia(new DAOAgenzia().read(Integer.toString(1)));
-		a.setId(2);
-		a.setUsername("MarioRossi21");
-		a.setPassword("carloan");
-		a.setNome("Francesco");
-		a.setCognome("Bianchi");
-		//a.setDataNascita(LocalDate.of(1994, 20, 07));
-		a.setEMail("mariorossi@gmail.com");
-		
-		dao.create(a);
-		System.out.println(dao.read(a.getUsername()));
-		a.setEMail("mib777@gmail.com");
-		dao.update(a);
-		System.out.println(dao.read(a.getUsername()));
-		//dao.delete(a.getUsername());
-	}
-
 
 	@Override
 	public List<Operatore> readAll() {

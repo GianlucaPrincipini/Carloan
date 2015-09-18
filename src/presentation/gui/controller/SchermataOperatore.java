@@ -75,7 +75,6 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 		id = entity.getId();
 		username.setText(entity.getUsername());
 		password.setText(entity.getPassword());
-		System.out.println(entity.getAgenzia());
 		agenzia.setText(Integer.toString(entity.getAgenzia().getId()));
 		nome.setText(entity.getNome());
 		cognome.setText(entity.getCognome());
@@ -104,7 +103,6 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 			}
 			operatore.setNome(nome.getText());
 			operatore.setCognome(cognome.getText());
-			System.out.println(DateHelper.dateParse(dataDiNascita.getValue()));
 			operatore.setDataNascita(DateHelper.dateParse(dataDiNascita.getValue()));
 			operatore.setEMail(email.getText());
 			operatore.setNumTelefono(telefono.getText());

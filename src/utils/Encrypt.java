@@ -18,8 +18,4 @@ public class Encrypt {
 		byte[] encryptedData = md.digest(string.getBytes("UTF-8"));
 		return convertByteArrayToHexString(encryptedData);
 	}
-	
-	public static void main(String [] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		System.out.println(getEncryptedString("vipera"));
-	}
 }

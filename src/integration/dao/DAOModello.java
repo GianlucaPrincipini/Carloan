@@ -94,9 +94,4 @@ public class DAOModello extends DAOCarloan<Modello> {
 		return modelli;
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(new DAOVettura().readAll());
-	}
-	
-	
 }

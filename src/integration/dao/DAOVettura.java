@@ -55,22 +55,6 @@ public class DAOVettura extends DAOCarloan<Vettura> {
 		connection.executeUpdateQuery("delete from vettura where targa = '" + pk + "';");
 	}
 	
-	public static void main(String [] args) {
-		Vettura a = new Vettura();
-		a.setAgenziaLocalizzazione(new DAOAgenzia().read(Integer.toString(1)));
-		a.setModello(new DAOModello().read(Integer.toString(1)));
-		a.setTarga("AB178BR");
-		a.setChilometraggio(120);
-		a.setStato(StatoVettura.DISPONIBILE);
-		DAOVettura dao = new DAOVettura();
-		dao.create(a);		
-		System.out.println(dao.read(a.getTarga()));
-		a.setChilometraggio(152);
-		dao.update(a);
-		System.out.println(dao.read(a.getTarga()));
-		//dao.delete(a.getTarga());
-	}
-
 	@Override
 	public List<Vettura> readAll() {
 		List<Vettura> vetture = new ArrayList<Vettura>();

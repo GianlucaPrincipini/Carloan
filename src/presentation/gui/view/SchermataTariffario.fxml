@@ -32,14 +32,12 @@
             <TextField fx:id="assicurazioneBase" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Assicurazione avanzata" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
             <TextField fx:id="assicurazioneAvanzata" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label text="Mora carburante" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
             <TextField fx:id="costoChilometrico" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="costoBenzina" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="costoPienoAnticipo" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Label text="Mora chilometraggio" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
-            <Label text="Mora durata" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
-            <TextField fx:id="moraCarburante" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="moraDurata" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label text="Mora durata" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+            <TextField fx:id="moraDurata" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField fx:id="moraChilometraggio" maxWidth="80.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Label text="Costo benzina" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             <Label text="Costo pieno in anticipo" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
@@ -60,7 +58,6 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

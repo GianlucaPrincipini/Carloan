@@ -43,21 +43,6 @@ public class DAOOptional extends DAOCarloan<Optional>{
 									  "tipo = '" + entity.getTipo() + "', " +
 									  "costo = " + entity.getCosto() + "where id = '" + entity.getId() + "';");
 	}
-	
-	public static void main(String[] args) {
-		// Cambia i float in double, id in contratto e optional
-		Optional a = new Optional();
-		DAOOptional dao = new DAOOptional();
-		a.setId(1);
-		a.setTipo("Autoradio");
-		a.setCosto(20.5);
-		dao.create(a);
-		System.out.println(dao.read(Integer.toString(a.getId())));
-		a.setCosto(20.90);
-		dao.update(a);
-		System.out.println(dao.read(Integer.toString(a.getId())));
-		//dao.delete(Integer.toString(a.getId()));
-	}
 
 	@Override
 	public List<Optional> readAll() {

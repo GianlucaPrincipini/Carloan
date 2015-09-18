@@ -57,8 +57,6 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 	@FXML
 	private TextField costoPienoAnticipo;
 	
-	@FXML
-	private TextField moraCarburante;
 	
 	@FXML
 	private TextField moraChilometraggio;
@@ -98,7 +96,6 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		costoElettricità.setText(Double.toString(entity.getCostoLitro(TipoCarburante.ELETTRICA)));
 		costoGpl.setText(Double.toString(entity.getCostoLitro(TipoCarburante.GPL)));
 		costoPienoAnticipo.setText(Double.toString(entity.getRifornimento(Rifornimento.PIENO_ANTICIPO)));
-		moraCarburante.setText(Double.toString(entity.getMoraCarburante()));
 		moraDurata.setText(Double.toString(entity.getMoraDurata()));
 		moraChilometraggio.setText(Double.toString(entity.getMoraChilometraggio()));
 	}
@@ -119,7 +116,6 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 			tariffario.setCostoLitro(TipoCarburante.GPL, Double.parseDouble(costoGpl.getText()));
 			tariffario.setCostoLitro(TipoCarburante.DIESEL, Double.parseDouble(costoDiesel.getText()));
 			tariffario.setRifornimento(Rifornimento.PIENO_ANTICIPO, Double.parseDouble(costoPienoAnticipo.getText()));
-			tariffario.setMoraCarburante(Double.parseDouble(moraCarburante.getText()));
 			tariffario.setMoraChilometraggio(Double.parseDouble(moraChilometraggio.getText()));
 			tariffario.setMoraDurata(Double.parseDouble(moraDurata.getText()));
 			return tariffario;

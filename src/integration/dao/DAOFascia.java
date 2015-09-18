@@ -69,11 +69,5 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 		}
 		return fasce;
 	}
-
-	public static void main(String[] args) {
-		new DAOFascia().create(new Fascia());
-		System.out.println(new DAOFascia().readAll());
-		new DAOFascia().delete("2");
-	}
 	
 }

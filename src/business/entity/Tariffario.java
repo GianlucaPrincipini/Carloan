@@ -16,7 +16,6 @@ public class Tariffario implements Serializable {
 	private double costoSettimanale;
 	private double moraChilometraggio;
 	private double moraDurata;
-	private double moraCarburante;
 	private double costoChilometrico;
 	private double costoChilometraggioIllimitato;
 	private double assicurazioneBase;
@@ -42,7 +41,6 @@ public class Tariffario implements Serializable {
 		try {
 			ObjectInputStream input = new ObjectInputStream(new FileInputStream("./tariffario/tariffario.dat"));
 			tariffario = (Tariffario) input.readObject();
-			System.out.println(tariffario);
 			input.close();
 		} catch (IOException e) {
 			try {
@@ -121,13 +119,6 @@ public class Tariffario implements Serializable {
 		this.moraDurata = moraDurata;
 	}
 
-	public double getMoraCarburante() {
-		return moraCarburante;
-	}
-
-	public void setMoraCarburante(double moraCarburante) {
-		this.moraCarburante = moraCarburante;
-	}
 
 	public double getCostoChilometrico() {
 		return costoChilometrico;
@@ -156,6 +147,5 @@ public class Tariffario implements Serializable {
 	public static void main(String [] args) throws ClassNotFoundException {
 		Tariffario a = Tariffario.getInstance();
 
-		System.out.println("Tariffario " +a);
 	}
 }

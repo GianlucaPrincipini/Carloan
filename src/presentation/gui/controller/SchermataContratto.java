@@ -120,7 +120,6 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 				 costoC = (Double) controller.processRequest("CalcolaCosto", contratto);
 			if (costoC != null)
 				costo.setText(Double.toString(costoC));
-			System.out.println(contratto.getCosto());
 			if (edit) controller.processRequest("ModificaContratto", buildEntity());
 			else controller.processRequest("AggiungiContratto", buildEntity());
 			close();
@@ -131,7 +130,9 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 
 	@FXML
 	public void onCalcolaCosto() {
-		costo.setText(Double.toString((Double) controller.processRequest("CalcolaCosto", buildEntity())));
+		Double costoContratto = (Double) controller.processRequest("CalcolaCosto", buildEntity());
+		if (costoContratto != null) costo.setText(costoContratto.toString());
+		else costo.setText("0");
 	}
 	
 	public void onSelezioneOptional() {

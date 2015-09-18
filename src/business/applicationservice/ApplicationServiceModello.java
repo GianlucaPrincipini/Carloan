@@ -41,16 +41,13 @@ public class ApplicationServiceModello extends ApplicationServiceEntity<Modello>
 	private double calcolaIndiceFascia(Modello modello) {
 		incidenza = IncidenzaFascia.getInstance();
 		double indice = (double) modello.getCapacit‡Bagagliaio() * (double) incidenza.getCapacit‡Bagagliaio();
-		System.out.println(indice);
 		indice +=  (double) incidenza.getEmissioniCO2() * (double) modello.getEmissioniCO2();
-		System.out.println(indice);
 		indice += (double) incidenza.getNumeroPorte() * (double) modello.getNumeroPorte();
-		System.out.println(indice);
 		indice += (double) incidenza.getNumeroPosti() * (double) modello.getNumeroPosti();
-		System.out.println(indice);
+		if (modello.getPeso() == 0) {
+			modello.setPeso(1);
+		}
 		indice += (double) incidenza.getPotenzaSuPeso() * ((double) modello.getPotenza() / (double) modello.getPeso());
-
-		System.out.println(indice);
 		return indice;
 	}
 

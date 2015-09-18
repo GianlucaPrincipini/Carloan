@@ -126,10 +126,6 @@ create table contratto(
 	foreign key (agenziaconsegna) references agenzia(id) on delete cascade on update cascade
 );
 
-insert into contratto(operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, datainizionoleggio, datafinenoleggio,
-datachiusura, chilometraggiolimitato, chilometriprevisti, rifornimento, acconto, chiuso, costo, assicurazioneavanzata)
-values ("Admin", "1234567890", "ED000BA", 1, 1, "2015-08-09", "2015-08-15", "2015-08-25", "2015-08-25", 1, 25, 1, 0, 1, 50, 0);
-
 create table optional_contratto(
 	idContratto integer,
 	idOptional integer,
@@ -137,7 +133,5 @@ create table optional_contratto(
 	foreign key (idContratto) references contratto(id) on delete cascade on update cascade,
 	foreign key (idOptional) references optional(id) on delete cascade on update cascade
 );
-
-insert into optional_contratto values(1, 1);
 
 GRANT ALL PRIVILEGES ON carloan.* TO CarloanUser@localhost identified by "carloan15";

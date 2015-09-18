@@ -82,26 +82,6 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 
 		}
 	}
-	
-	public static void main(String[] args) {
-		// Bada roba sulla data
-		Cliente a = new Cliente();
-		DAOCliente dao = new DAOCliente();
-		a.setId(2);
-		a.setCodicePatente("1234533890");
-		a.setNome("Mario");
-		a.setCognome("Rossi");
-		a.setNumTelefono("123456789");
-		a.setDataNascita(new LocalDate(1994, 07, 21));
-		a.setEMail("mariorossi@gmail.com");
-		dao.create(a);
-		System.out.println(dao.read(a.getCodicePatente()));
-		a.setEMail("uidofaidsj@najcksod.com");
-		dao.update(a);
-		System.out.println(dao.read(a.getCodicePatente()));
-		//dao.delete(a.getCodicePatente());
-		
-	}
 
 	@Override
 	public List<Cliente> readAll() {

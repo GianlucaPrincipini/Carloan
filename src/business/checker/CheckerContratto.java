@@ -32,8 +32,6 @@ public class CheckerContratto implements Checker<Contratto>{
 	
 	@Override
 	public void isModifiable(Contratto entity) throws IntegrityException {
-		System.out.println(entity.getDataInizioNoleggio());
-		System.out.println(LocalDate.now());
 		if ((LocalDate.now().equals(entity.getDataFineNoleggio()) || 
 			LocalDate.now().isAfter(entity.getDataFineNoleggio())) && 
 			!entity.isChiuso()) return;
