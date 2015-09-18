@@ -10,6 +10,9 @@ import presentation.frontcontroller.CarloanFrontController;
 
 public class CommandLogin implements Command<Operatore>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Operatore execute(Operatore entity) throws CarloanException {
 		ApplicationServiceOperatore service;

@@ -111,12 +111,18 @@ public class Modello implements Entity {
 		this.peso = peso;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String toString() {
 		return id + ", '" + marca + "', '" + nome + "', " + tipoCarburante.getIndex() + ", " + capacit‡Bagagliaio + ", " 
 				+ numeroPosti + ", " + numeroPorte + ", " + potenza + 
 				", " + trasmissioneAutomatica + ", " + emissioniCO2 + ", " + peso;
 	}
 
+	/**
+	 * Confronta due contratti
+	 */
 	@Override
 	public int compareTo(Entity o) {
 		Modello m = (Modello) o;

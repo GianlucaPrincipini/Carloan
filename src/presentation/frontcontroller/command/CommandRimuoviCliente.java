@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandRimuoviCliente implements Command<Cliente>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Cliente execute(Cliente entity) throws CarloanException {
 		try {

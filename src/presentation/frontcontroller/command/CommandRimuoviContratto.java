@@ -5,6 +5,9 @@ import business.entity.Contratto;
 
 public class CommandRimuoviContratto implements Command<Contratto>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Contratto execute(Contratto entity) {
 		try {

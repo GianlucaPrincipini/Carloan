@@ -5,9 +5,13 @@ import business.entity.Modello;
 import business.exception.CarloanException;
 import business.exception.FasciaIndexException;
 
+@SuppressWarnings("rawtypes")
 public class CommandCalcolaFascia implements Command{
 
-
+	/**
+	 * Command che si occupa di calcolare la fascia di un modello
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Object execute(Object entity) throws CarloanException {
 		try {

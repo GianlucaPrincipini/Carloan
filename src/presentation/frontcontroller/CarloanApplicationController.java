@@ -5,7 +5,9 @@ import business.exception.CarloanException;
 
 public class CarloanApplicationController implements ApplicationController{
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Target handleRequest(String request, Object entity) {
 		try {

@@ -7,6 +7,11 @@ import business.entity.Fascia;
 import business.exception.IntegrityException;
 
 public class CheckerFascia implements Checker<Fascia>{
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void check(Fascia entity) throws IntegrityException {
 		if (entity.getMax() == 0 || entity.getMin() == 0) {
 			throw new IntegrityException("I valori minimo o massimo non possono essere pari a 0");
@@ -25,6 +30,9 @@ public class CheckerFascia implements Checker<Fascia>{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void isModifiable(Fascia entity) {
 		

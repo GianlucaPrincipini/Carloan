@@ -43,6 +43,9 @@ public class TableFascia implements TableController{
 	@FXML
 	private TableView<Fascia> tabFasce;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -83,6 +86,9 @@ public class TableFascia implements TableController{
         tabFasce.setItems(fasce);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getPrimaryKey() {
 		if (tabFasce.getSelectionModel().getSelectedIndex() == -1) {

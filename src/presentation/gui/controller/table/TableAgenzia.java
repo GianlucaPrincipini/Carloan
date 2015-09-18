@@ -40,6 +40,9 @@ public class TableAgenzia implements TableController{
 	@FXML
 	private TableColumn<Agenzia,String> telefono;
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -75,6 +78,9 @@ public class TableAgenzia implements TableController{
         tabAgenzie.getSelectionModel().select(0);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getPrimaryKey() {
 		if (tabAgenzie.getSelectionModel().getSelectedIndex() == -1) {

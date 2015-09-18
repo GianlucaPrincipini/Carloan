@@ -2,8 +2,6 @@ package business.checker;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
-
-import utils.DateHelper;
 import business.entity.Contratto;
 import business.entity.StatoVettura;
 import business.exception.IntegrityException;
@@ -11,6 +9,9 @@ import business.exception.UnmodifiableEntityException;
 
 public class CheckerContratto implements Checker<Contratto>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void check(Contratto entity) throws IntegrityException {
 		if (entity.getOperatore() == null) throw new IntegrityException("Alcuni dati sono mancanti, assicurarsi del corretto inserimento.");
@@ -25,11 +26,19 @@ public class CheckerContratto implements Checker<Contratto>{
 		if (entity.getCosto() == 0) throw new IntegrityException("Costo non calcolato");
 	}
 	
+	/**
+	 * Controlla i valori immessi prima di consentire la chiusura di un contratto
+	 * @param entity
+	 * @throws IntegrityException
+	 */
 	public void checkChiusura(Contratto entity) throws IntegrityException {
 		if (entity.getDataChiusura().isBefore(entity.getDataFineNoleggio())) throw new IntegrityException("Un contratto non si può chiudere prima della fine del suo noleggio"); 
 		if (entity.getCosto() == 0) throw new IntegrityException("Costo non calcolato");
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void isModifiable(Contratto entity) throws UnmodifiableEntityException {
 		if ((LocalDate.now().equals(entity.getDataFineNoleggio()) || 

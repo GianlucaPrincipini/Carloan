@@ -4,16 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
-import presentation.frontcontroller.FrontController;
 import business.entity.Rifornimento;
 import business.entity.Tariffario;
 import business.entity.TipoCarburante;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class SchermataTariffario extends SchermataDati<Tariffario>{
@@ -64,11 +58,17 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 	@FXML
 	private TextField moraDurata;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		controller = CarloanFrontController.getInstance();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onConferma() {
 		Tariffario tariffario = buildEntity();
@@ -78,6 +78,9 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Tariffario entity) {
 		edit = true;
@@ -99,6 +102,9 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		moraChilometraggio.setText(Double.toString(entity.getMoraChilometraggio()));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Tariffario buildEntity() {
 		Tariffario tariffario = Tariffario.getInstance();

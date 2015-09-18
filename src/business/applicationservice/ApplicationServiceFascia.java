@@ -2,9 +2,7 @@ package business.applicationservice;
 
 import java.util.List;
 
-import integration.dao.DAO;
 import integration.dao.DAOFactory;
-import business.checker.Checker;
 import business.checker.CheckerFactory;
 import business.entity.Fascia;
 import business.entity.Modello;
@@ -14,16 +12,28 @@ import business.exception.IntegrityException;
 
 public class ApplicationServiceFascia extends ApplicationServiceEntity<Fascia> {
 
+	/**
+	 * Costruisce DAO e checker della Fascia
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
+	@SuppressWarnings("unchecked")
 	public ApplicationServiceFascia() throws InstantiationException, IllegalAccessException {
 		super(DAOFactory.buildDao(Fascia.class), CheckerFactory.buildChecker(Fascia.class));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void create(Fascia entity) throws IntegrityException {
 		checker.check(entity);
 		dao.create(entity);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(Fascia entity) throws CarloanException {
 		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
@@ -33,6 +43,10 @@ public class ApplicationServiceFascia extends ApplicationServiceEntity<Fascia> {
 		
 	}
 
+	/**
+	 * Aggiorna gli indici di fascia relativi a tutti i modelli
+	 * @throws CarloanException
+	 */
 	private void updateFasceModelli() throws CarloanException {
 		ApplicationServiceModello asModello;
 		try {
@@ -51,6 +65,9 @@ public class ApplicationServiceFascia extends ApplicationServiceEntity<Fascia> {
 		}
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void delete(Fascia entity) throws CarloanException {
 		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
@@ -70,11 +87,17 @@ public class ApplicationServiceFascia extends ApplicationServiceEntity<Fascia> {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Fascia> readAll() {
 		return dao.readAll();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Fascia read(String pk) {
 		return dao.read(pk);

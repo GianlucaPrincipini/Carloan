@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandRimuoviOptional implements Command<Optional>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Optional execute(Optional entity) throws CarloanException {
 		try {

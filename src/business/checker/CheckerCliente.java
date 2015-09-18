@@ -14,6 +14,9 @@ import business.exception.UnmodifiableEntityException;
 
 public class CheckerCliente implements Checker<Cliente>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void check(Cliente entity) throws IntegrityException {
 		if (entity.getCodicePatente() == null) throw new IntegrityException("Codice patente non inserito");
@@ -24,6 +27,9 @@ public class CheckerCliente implements Checker<Cliente>{
 		if (Years.yearsBetween(entity.getDataNascita(), LocalDate.now()).getYears() < 18) throw new IntegrityException("Il cliente è minorenne");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void isModifiable(Cliente entity) throws UnmodifiableEntityException {
 		// Un cliente può essere modificato se non ha un noleggio attivo

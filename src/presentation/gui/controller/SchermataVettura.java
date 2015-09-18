@@ -10,7 +10,6 @@ import business.entity.Vettura;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -31,14 +30,18 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 	@FXML
 	private Label modello;
 	
-	
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		stato.setItems(FXCollections.observableArrayList(StatoVettura.values()));
 		stato.getSelectionModel().select(0);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@FXML
 	@Override
 	public void onConferma() {
@@ -53,7 +56,9 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 		}
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Vettura entity) {
 		edit = true;
@@ -64,16 +69,25 @@ public class SchermataVettura extends SchermataDati<Vettura>{
 		stato.getSelectionModel().select(entity.getStato());
 	}
 
+	/**
+	 * Ascoltatore del pulsante per la selezione del modello
+	 */
 	@FXML
 	public void onSelezioneModello() {
 		modello.setText((String)controller.processRequest("MostraSelezione", "Modello"));
 	}
 	
+	/**
+	 * Ascoltatore del pulsante per la selezione dell'agenzia
+	 */
 	@FXML
 	public void onSelezioneAgenzia() {
 		agenziaLocalizzazione.setText((String)controller.processRequest("MostraSelezione", "Agenzia"));
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Vettura buildEntity() {
 		Vettura vettura = new Vettura();

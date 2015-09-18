@@ -47,10 +47,16 @@ public class Fascia implements Entity {
 		this.max = max;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String toString() {
 		return id + ", '" + nome + "', " + tariffaBase + ", " + min + ", " + max;
 	}
 
+	/**
+	 * Confronta due fasce
+	 */
 	@Override
 	public int compareTo(Entity o) {
 		Fascia f = (Fascia) o;

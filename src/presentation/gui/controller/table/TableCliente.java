@@ -52,6 +52,9 @@ public class TableCliente implements TableController{
 	@FXML
 	private TableView<Cliente> tabClienti;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -104,6 +107,9 @@ public class TableCliente implements TableController{
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getPrimaryKey() {
 		return codicePatente.getCellObservableValue(tabClienti.getSelectionModel().getSelectedIndex()).getValue().toString();

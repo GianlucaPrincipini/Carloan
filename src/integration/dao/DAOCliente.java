@@ -4,15 +4,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.joda.time.LocalDate;
-
 import utils.DateHelper;
 import business.entity.Cliente;
 
 public class DAOCliente extends DAOCarloan<Cliente>{
 
-	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public  void create(Cliente entity){
 		ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
 				+ "'carloan' AND   TABLE_NAME = 'persona'");
@@ -37,6 +37,10 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 									+ "');");
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void update(Cliente entity){
 		connection.executeUpdateQuery("update persona set " +
 									  "nome = '" + entity.getNome() + "', " +
@@ -47,6 +51,10 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 		connection.executeUpdateQuery("update cliente set codicepatente = '" + entity.getCodicePatente() + "' where id = " + entity.getId());
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Cliente read(String pk){
 		Cliente cliente = null;
 		ResultSet rs = connection.executeReadQuery("select * from cliente where codicepatente = '" + pk + "';");
@@ -70,7 +78,10 @@ public class DAOCliente extends DAOCarloan<Cliente>{
  		return cliente;
 	}
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void delete(String pk){
 		ResultSet rs = connection.executeReadQuery("select id from cliente where codicepatente = '" + pk + "';");
 		try {
@@ -82,27 +93,10 @@ public class DAOCliente extends DAOCarloan<Cliente>{
 
 		}
 	}
-	
-	public static void main(String[] args) {
-		// Bada roba sulla data
-		Cliente a = new Cliente();
-		DAOCliente dao = new DAOCliente();
-		a.setId(2);
-		a.setCodicePatente("1234533890");
-		a.setNome("Mario");
-		a.setCognome("Rossi");
-		a.setNumTelefono("123456789");
-		a.setDataNascita(new LocalDate(1994, 07, 21));
-		a.setEMail("mariorossi@gmail.com");
-		dao.create(a);
-		System.out.println(dao.read(a.getCodicePatente()));
-		a.setEMail("uidofaidsj@najcksod.com");
-		dao.update(a);
-		System.out.println(dao.read(a.getCodicePatente()));
-		//dao.delete(a.getCodicePatente());
-		
-	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Cliente> readAll() {
 		List<Cliente> clienti = new ArrayList<Cliente>();

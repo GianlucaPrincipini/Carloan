@@ -1,7 +1,14 @@
 package business.checker;
 import business.exception.*;
 
+/**
+ * Interfaccia del Checker, generalizzata per ciascuna entità
+ * @author Stefano
+ *
+ * @param <Data>
+ */
 public interface Checker<Data> {
+	
 	/**
 	 * Controlla la validità dei campi relativi all'entità.
 	 * @param entity entità da controllare.

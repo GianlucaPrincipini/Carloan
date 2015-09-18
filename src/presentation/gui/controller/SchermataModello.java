@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import business.entity.Fascia;
@@ -55,6 +54,9 @@ public class SchermataModello extends SchermataDati<Modello>{
 		tipoCarburante.getSelectionModel().select(0);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onConferma() {
 		Modello modello = buildEntity();
@@ -68,6 +70,9 @@ public class SchermataModello extends SchermataDati<Modello>{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Modello entity) {
 		edit = true;
@@ -84,14 +89,18 @@ public class SchermataModello extends SchermataDati<Modello>{
 		trasmissioneAutomatica.selectedProperty().set(entity.isTrasmissioneAutomatica());
 	}
 
-	
+	/**
+	 * Ascoltatore del pulsante di calcolo della fascia relativo al modello
+	 */
 	@FXML
 	public void onCalcolaFascia() {
 		Integer idFascia = (Integer) controller.processRequest("CalcolaFascia", buildEntity());
 		if (idFascia != null) fascia.setText(Integer.toString(idFascia));
 	}
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Modello buildEntity() {
 		Modello modello = new Modello();

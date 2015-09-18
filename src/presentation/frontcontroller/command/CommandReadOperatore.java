@@ -4,7 +4,12 @@ import business.applicationservice.ApplicationServiceOperatore;
 import business.entity.Operatore;
 import business.exception.CarloanException;
 
+@SuppressWarnings("rawtypes")
 public class CommandReadOperatore implements Command{
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Operatore execute(Object entity) throws CarloanException {
 		try {

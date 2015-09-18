@@ -21,13 +21,18 @@ public class SchermataFascia extends SchermataDati<Fascia>{
 	@FXML
 	private TextField indiceMassimo;
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onConferma() {
 		Fascia fascia = buildEntity();
@@ -38,6 +43,9 @@ public class SchermataFascia extends SchermataDati<Fascia>{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Fascia entity) {
 		edit = true;
@@ -48,6 +56,9 @@ public class SchermataFascia extends SchermataDati<Fascia>{
 		indiceMassimo.setText(Double.toString(entity.getMax()));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Fascia buildEntity() {
 		Fascia fascia = new Fascia();

@@ -57,6 +57,9 @@ public class TableOperatore implements TableController{
 	@FXML
 	private TableView<Operatore> tabOperatori;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -120,6 +123,9 @@ public class TableOperatore implements TableController{
         tabOperatori.setItems(operatori);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getPrimaryKey() {
 		if (tabOperatori.getSelectionModel().getSelectedIndex() == -1) {

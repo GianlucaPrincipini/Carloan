@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandModificaTariffario implements Command<Tariffario> {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Tariffario execute(Tariffario entity) throws CarloanException {
 		try {

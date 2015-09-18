@@ -8,6 +8,10 @@ public enum TipoCarburante {
 	ELETTRICA(4);
 	private int index;
 	
+	/**
+	 * Costruttore parametrico usato per selezionare un tipo di carburante
+	 * @param index
+	 */
 	private TipoCarburante(int index) {
 		this.index = index;
 	}

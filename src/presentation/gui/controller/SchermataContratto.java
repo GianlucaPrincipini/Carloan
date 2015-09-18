@@ -13,7 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
 import business.entity.Agenzia;
 import business.entity.Cliente;
 import business.entity.Contratto;
@@ -72,24 +71,33 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	@FXML
 	private ObservableList<String> listaOptionals;
 
-
+	/**
+	 * Chiama la schermata per la selezione della vettura
+	 */
 	@FXML
 	public void onSelezioneVettura() {
 		vettura.setText((String) controller.processRequest("MostraSelezione", "Vettura"));
 	}
 	
-	
+	/**
+	 * Chiama la schermata per la selezione del cliente
+	 */
 	@FXML
 	public void onSelezioneCliente() {
 		cliente.setText((String) controller.processRequest("MostraSelezione", "Cliente"));
 	}
 	
-	
+	/**
+	 * Chiama la schermata per la selezione dell'agenzia di consegna
+	 */
 	@FXML
 	public void onSelezioneAgenziaConsegna() {
 		agenziaConsegna.setText((String) controller.processRequest("MostraSelezione", "Agenzia"));
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acconto.setText("0");
@@ -108,7 +116,9 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 		});
 	}
 
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onConferma() {
 		Contratto contratto = buildEntity();
@@ -122,15 +132,25 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 		} 
 	}
 
+	/**
+	 * Ascoltatore del pulsante di calcola costo che provvede a calcolare il costo preventivo del contratto
+	 */
 	@FXML
 	public void onCalcolaCosto() {
 		costo.setText(Double.toString((Double) controller.processRequest("CalcolaCosto", buildEntity())));
 	}
 	
+	/**
+	 * Chiama la schermata per la selezione dell'Optional
+	 */
+	@FXML
 	public void onSelezioneOptional() {
 		optionals.getItems().add((String) controller.processRequest("MostraSelezione", "Optional"));
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Contratto entity) {
 		edit = true;
@@ -155,7 +175,9 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 		optionals.setItems(FXCollections.observableArrayList(opts));
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Contratto buildEntity() {
 		Contratto contratto = new Contratto();

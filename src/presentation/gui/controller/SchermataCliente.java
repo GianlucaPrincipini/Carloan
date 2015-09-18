@@ -40,7 +40,9 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 	private DatePicker dataDiNascita;
 	
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	@FXML
 	public void onConferma() {
 		Cliente cliente = buildEntity(); 
@@ -55,7 +57,10 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 		}
 	}
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void initModifica(Cliente cliente) {
 		edit = true;
 		id = cliente.getId();
@@ -72,7 +77,9 @@ public class SchermataCliente extends SchermataDati<Cliente>{
 		
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Cliente buildEntity() {
 		Cliente cliente; 

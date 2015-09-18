@@ -4,8 +4,12 @@ import business.applicationservice.ApplicationServiceFascia;
 import business.entity.Fascia;
 import business.exception.CarloanException;
 
+@SuppressWarnings("rawtypes")
 public class CommandReadFascia implements Command {
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Fascia execute(Object entity) throws CarloanException {
 		try {

@@ -9,6 +9,9 @@ import business.entity.Fascia;
 
 public class DAOFascia extends DAOCarloan<Fascia> {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void create(Fascia entity) {
 		connection.executeUpdateQuery("insert into fascia(nome, tariffabase, indicemin, indicemax)"
@@ -20,6 +23,9 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 									+");");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(Fascia entity) {
 		connection.executeUpdateQuery("update fascia set nome = '" + entity.getNome() + "', " +
@@ -30,6 +36,9 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Fascia read(String pk) {
 		Fascia fascia = new Fascia();
@@ -48,6 +57,9 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 		return fascia;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void delete(String pk) {
 		if (!pk.equals(1)) {
@@ -55,6 +67,9 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Fascia> readAll() {
 		ArrayList<Fascia> fasce = new ArrayList<Fascia>();
@@ -68,12 +83,6 @@ public class DAOFascia extends DAOCarloan<Fascia> {
 			e.printStackTrace();
 		}
 		return fasce;
-	}
-
-	public static void main(String[] args) {
-		new DAOFascia().create(new Fascia());
-		System.out.println(new DAOFascia().readAll());
-		new DAOFascia().delete("2");
 	}
 	
 }

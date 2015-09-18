@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandChiudiContratto implements Command<Contratto> {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Contratto execute(Contratto entity) throws CarloanException {
 		try {

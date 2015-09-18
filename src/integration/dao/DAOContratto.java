@@ -12,6 +12,9 @@ import business.entity.Rifornimento;
 
 public class DAOContratto extends DAOCarloan<Contratto>{
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void create(Contratto entity){
 		ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
@@ -46,6 +49,9 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		}
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(Contratto entity){
 		connection.executeUpdateQuery("UPDATE contratto SET " +
@@ -75,6 +81,9 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		}
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Contratto read(String pk){
 		Contratto contratto = null;
@@ -122,6 +131,9 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		return contratto;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void delete(String pk){
 		connection.executeUpdateQuery("DELETE FROM contratto WHERE id = " + pk + ";");
@@ -132,6 +144,9 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		// Da continuare
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Contratto> readAll() {
 		List<Contratto> contratti = new ArrayList<Contratto>();

@@ -4,6 +4,10 @@ public enum StatoVettura {
 	DISPONIBILE(0), MANUTENZIONE(1), OCCUPATA(2);
 	private int index;
 	
+	/**
+	 * Costruttore parametrico usato per scegliere lo stato della vettura
+	 * @param index
+	 */
 	private StatoVettura(int index) {
 		this.index = index;
 	}

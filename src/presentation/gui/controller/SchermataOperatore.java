@@ -4,11 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
-
 import utils.DateHelper;
 import utils.Encrypt;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -46,12 +44,18 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 	@FXML
 	private CheckBox amministratore;
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@FXML
 	@Override
 	public void onConferma() {
 		Operatore operatore = buildEntity();
@@ -65,6 +69,9 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Operatore entity) {
 		edit = true;
@@ -81,6 +88,9 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 		amministratore.selectedProperty().set(entity instanceof Amministratore);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Operatore buildEntity() {
 		Operatore operatore;
@@ -110,6 +120,9 @@ public class SchermataOperatore extends SchermataDati<Operatore>{
 		}
 	}
 	
+	/**
+	 * Ascoltatore del pulsante di selezione dell'agenzia
+	 */
 	@FXML
 	public void onSelezioneAgenzia() {
 		agenzia.setText((String)controller.processRequest("MostraSelezione", "Agenzia"));

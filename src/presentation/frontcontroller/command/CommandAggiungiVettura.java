@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandAggiungiVettura implements Command<Vettura>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Vettura execute(Vettura entity) throws CarloanException {
 		ApplicationServiceVettura service;

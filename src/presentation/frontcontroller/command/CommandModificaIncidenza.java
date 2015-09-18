@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandModificaIncidenza implements Command<IncidenzaFascia> {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public IncidenzaFascia execute(IncidenzaFascia entity) throws CarloanException {
 		try{

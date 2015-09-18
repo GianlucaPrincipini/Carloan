@@ -5,6 +5,9 @@ import business.exception.IntegrityException;
 
 public class CheckerModello implements Checker<Modello>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void check(Modello entity) throws IntegrityException {
 		if (entity.getId() == 0) throw new IntegrityException();;
@@ -16,6 +19,9 @@ public class CheckerModello implements Checker<Modello>{
 		if (entity.getPotenza() == 0) throw new IntegrityException();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void isModifiable(Modello entity) {
 		

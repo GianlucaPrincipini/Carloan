@@ -4,7 +4,12 @@ import business.applicationservice.ApplicationServiceVettura;
 import business.entity.Vettura;
 import business.exception.CarloanException;
 
+@SuppressWarnings("rawtypes")
 public class CommandReadVettura implements Command{
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Vettura execute(Object entity) throws CarloanException {
 		try {

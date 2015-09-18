@@ -27,6 +27,9 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 		controller = CarloanFrontController.getInstance();		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@FXML
 	@Override
 	public void onConferma() {
@@ -41,6 +44,9 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Agenzia entity) {
 		edit = true;
@@ -50,6 +56,9 @@ public class SchermataAgenzia extends SchermataDati<Agenzia>{
 		numTelefono.setText(entity.getNumTelefono());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Agenzia buildEntity() {
 		Agenzia agenzia;

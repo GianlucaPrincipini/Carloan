@@ -8,7 +8,10 @@ import business.entity.Optional;
 
 public class DAOOptional extends DAOCarloan<Optional>{
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Optional read(String pk){
 		Optional optional = null;
 		ResultSet rs = connection.executeReadQuery("SELECT * FROM optional WHERE id = " + pk + ";");
@@ -29,6 +32,9 @@ public class DAOOptional extends DAOCarloan<Optional>{
 		connection.executeUpdateQuery("delete from optional where id = " + pk + ";");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void create(Optional entity) {
 		connection.executeUpdateQuery("INSERT INTO optional(tipo, costo) values(" 
@@ -37,28 +43,19 @@ public class DAOOptional extends DAOCarloan<Optional>{
 									+ ");");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(Optional entity) {
 		connection.executeUpdateQuery("update optional set " +
 									  "tipo = '" + entity.getTipo() + "', " +
 									  "costo = " + entity.getCosto() + "where id = '" + entity.getId() + "';");
 	}
-	
-	public static void main(String[] args) {
-		// Cambia i float in double, id in contratto e optional
-		Optional a = new Optional();
-		DAOOptional dao = new DAOOptional();
-		a.setId(1);
-		a.setTipo("Autoradio");
-		a.setCosto(20.5);
-		dao.create(a);
-		System.out.println(dao.read(Integer.toString(a.getId())));
-		a.setCosto(20.90);
-		dao.update(a);
-		System.out.println(dao.read(Integer.toString(a.getId())));
-		//dao.delete(Integer.toString(a.getId()));
-	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Optional> readAll() {
 		List<Optional> optional = new ArrayList<Optional>();

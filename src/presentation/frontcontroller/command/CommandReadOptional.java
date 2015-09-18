@@ -4,7 +4,12 @@ import business.applicationservice.ApplicationServiceOptional;
 import business.entity.Optional;
 import business.exception.CarloanException;
 
+@SuppressWarnings("rawtypes")
 public class CommandReadOptional implements Command {
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Optional execute(Object entity) throws CarloanException {
 		try {

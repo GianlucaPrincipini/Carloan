@@ -58,10 +58,17 @@ public abstract class Persona implements Entity {
 		this.eMail = eMail;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String toString() {
 		return id + ", '" + nome + "', '" + cognome + "', '" + dataNascita + "', '" + numTelefono + "', '" + eMail + "'";
 	}
 
+	/**
+	 * Confronta due Persone
+	 */
+	@Override
 	public int compareTo(Entity arg0) {
 		Persona p = (Persona) arg0;
 		if (id == p.id && dataNascita.equals(p.dataNascita) && nome.equals(p.nome) && cognome.equals(p.cognome) &&

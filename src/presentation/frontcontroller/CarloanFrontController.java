@@ -9,28 +9,57 @@ import business.exception.CarloanException;
 
 public class CarloanFrontController implements FrontController{
 
+	/**
+	 * Operatore autenticato
+	 */
 	private static Operatore userAuthenticated;
+	
+	/**
+	 * Istanza statica della classe stessa
+	 */
 	private static CarloanFrontController frontController;
 
+	/**
+	 * Costruttore della classe singleton
+	 */
 	private CarloanFrontController(){};
 	
+	/**
+	 * Verifica se l'operatore è un amministratore
+	 * @return vero se è un amministratore
+	 */
 	public boolean isAdmin() {
 		return userAuthenticated instanceof Amministratore;
 	}
 	
+	/**
+	 * ritorna un'istanza dell'operatore
+	 * @return
+	 */
 	public Operatore getUserAuthenticated() {
 		return userAuthenticated;
 	}
 	
+	/**
+	 * imposta l'operatore
+	 * @param userAuthenticated
+	 */
 	public void setUserAuthenticated(Operatore userAuthenticated) {
 		CarloanFrontController.userAuthenticated = userAuthenticated;
 	}
 	
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Object processRequest(String request) {
 		return processRequest(request, null);
 	}
 	
-	
+	/**
+	 * Ritorna un'istanza del frontcontroller
+	 * @return CarloanFrontController
+	 */
 	public static CarloanFrontController getInstance() {
 		if (frontController == null) {
 			frontController = new CarloanFrontController();
@@ -38,6 +67,10 @@ public class CarloanFrontController implements FrontController{
 		return frontController;
 	}
 	
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Object processRequest(String request, Object entity) {

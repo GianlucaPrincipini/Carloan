@@ -8,8 +8,17 @@ import java.sql.Statement;
 
 public class MySQLConnector implements Connector {
 
+	/**
+	 * Connessione con il database
+	 */
     private Connection connection;
     
+    /**
+     * Imposta il Driver del connettore
+     * @param url
+     * @param user
+     * @param password
+     */
     public MySQLConnector(String url, String user, String password) {
     	try {
 			Class.forName("org.gjt.mm.mysql.Driver");
@@ -25,6 +34,11 @@ public class MySQLConnector implements Connector {
     	connection.close();
     }
     
+    /**
+	 * Esegue una query di lettura
+	 * @param query
+	 * @return Risultato della query
+	 */
 	@Override
 	public ResultSet executeReadQuery(String query) {
 		ResultSet queryResult = null;
@@ -37,6 +51,11 @@ public class MySQLConnector implements Connector {
         return queryResult;
 	}
 
+	/**
+	 * Esegue una query di modifica
+	 * @param query
+	 * @return Risultato della query
+	 */
 	@Override
 	public ResultSet executeUpdateQuery(String query) {
         ResultSet queryUpdateResult = null;

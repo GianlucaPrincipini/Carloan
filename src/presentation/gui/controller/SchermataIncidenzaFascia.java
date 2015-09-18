@@ -24,11 +24,17 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 	@FXML
 	private TextField emissioniCO2;
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onConferma() {
 		IncidenzaFascia incidenza = buildEntity();
@@ -38,6 +44,9 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(IncidenzaFascia entity) {
 		edit = true;
@@ -49,6 +58,9 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 		controller.processRequest("ModificaIncidenza", entity);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected IncidenzaFascia buildEntity() {
 		IncidenzaFascia incidenza = IncidenzaFascia.getInstance();

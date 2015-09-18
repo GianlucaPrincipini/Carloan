@@ -6,6 +6,9 @@ public class CarloanChiusuraContratto extends CarloanStage {
 		super("",null);
 	}
 	
+	/**
+	 * Richiama la schermata della chiusura del contratto passando un'entità
+	 */
 	public CarloanChiusuraContratto(Object contratto) {
 		super("SchermataChiusura.fxml", contratto);
 	}

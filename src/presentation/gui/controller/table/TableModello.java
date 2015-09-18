@@ -64,6 +64,9 @@ public class TableModello implements TableController{
 	@FXML
 	private TableView<Modello> tabModelli;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -146,6 +149,9 @@ public class TableModello implements TableController{
         tabModelli.setItems(modelli);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getPrimaryKey() {
 		if (tabModelli.getSelectionModel().getSelectedIndex() == -1) {

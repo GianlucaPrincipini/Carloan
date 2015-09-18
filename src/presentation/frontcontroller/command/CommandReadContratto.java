@@ -4,7 +4,12 @@ import business.applicationservice.ApplicationServiceContratto;
 import business.entity.Contratto;
 import business.exception.CarloanException;
 
+@SuppressWarnings("rawtypes")
 public class CommandReadContratto implements Command{
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Contratto execute(Object entity) throws CarloanException {
 		try {

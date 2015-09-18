@@ -8,6 +8,9 @@ import business.exception.CarloanException;
 
 public class CommandReadAllOptional implements Command<List<Optional>>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Optional> execute(List<Optional> entity) throws CarloanException {
 		try {

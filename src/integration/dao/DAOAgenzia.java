@@ -9,6 +9,9 @@ import business.entity.Agenzia;
 
 public class DAOAgenzia extends DAOCarloan<Agenzia>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void create(Agenzia entity) {
 		connection.executeUpdateQuery("INSERT INTO agenzia(indirizzo, citta, numTelefono)"
@@ -19,6 +22,9 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 									+ ");");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(Agenzia entity) {
 		connection.executeUpdateQuery("UPDATE agenzia SET " +
@@ -28,6 +34,9 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 									  + "WHERE id = '" + entity.getId() + "'; ");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Agenzia read(String pk) {
 		Agenzia agenzia = null;
@@ -47,24 +56,19 @@ public class DAOAgenzia extends DAOCarloan<Agenzia>{
 		return agenzia;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void delete(String pk) {
 		if (!pk.equals("1"))
 			connection.executeUpdateQuery("DELETE FROM agenzia WHERE id"
 				+ " = " + pk + ";");
 	}
-	
-	public static void main(String[] args) {
-		DAOAgenzia daoag = new DAOAgenzia();
-		Agenzia ag = new Agenzia();
-		ag.setId(1);
-		ag.setIndirizzo("via razzi");
-		ag.setCittà("bari");
-		ag.setNumTelefono("0881686333");
-		
-		daoag.create(ag);
-	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Agenzia> readAll() {
 		List<Agenzia> agenzie = new ArrayList<Agenzia>();

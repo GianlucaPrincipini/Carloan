@@ -12,6 +12,9 @@ import business.entity.TipoCarburante;
 
 public class DAOModello extends DAOCarloan<Modello> {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void create(Modello entity) {
 		connection.executeUpdateQuery("INSERT INTO modello(marca, nome, tipocaburante, capacitabagagliaio, numeroposti, "
@@ -31,6 +34,9 @@ public class DAOModello extends DAOCarloan<Modello> {
 									+ ");");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(Modello entity) {
 		connection.executeUpdateQuery("UPDATE MODELLO SET id = " + entity.getId() + ", " +
@@ -50,6 +56,9 @@ public class DAOModello extends DAOCarloan<Modello> {
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Modello read(String pk) {
 		Modello modello = null;
@@ -76,12 +85,17 @@ public class DAOModello extends DAOCarloan<Modello> {
 		return modello;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void delete(String pk) {
 		connection.executeUpdateQuery("DELETE FROM modello WHERE id = " + pk + ";");
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Modello> readAll() {
 		List<Modello> modelli = new ArrayList<Modello>();
@@ -93,10 +107,5 @@ public class DAOModello extends DAOCarloan<Modello> {
 		}
 		return modelli;
 	}
-	
-	public static void main(String[] args) {
-		System.out.println(new DAOVettura().readAll());
-	}
-	
 	
 }

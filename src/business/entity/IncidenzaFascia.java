@@ -18,8 +18,14 @@ public class IncidenzaFascia implements Serializable {
 	private double emissioniCO2;
 	private static IncidenzaFascia incidenzaFascia;
 	
+	/**
+	 * Costruttore privato della classe singleton
+	 */
 	private IncidenzaFascia(){}
 	
+	/** 
+	 * @return istanza della classe {@link IncidenzaFascia}
+	 */
 	public static IncidenzaFascia getInstance() {
 		if(incidenzaFascia == null)
 			incidenzaFascia = new IncidenzaFascia();
@@ -27,6 +33,9 @@ public class IncidenzaFascia implements Serializable {
 		return incidenzaFascia;
 	}
 	
+	/**
+	 * Carica i dati presenti nel file o li imposta automaticamente se esso non esiste.
+	 */
 	private static void load() {
 		File file = new File("./incidenza/");
 		if(!file.canRead()) {

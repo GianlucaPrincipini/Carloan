@@ -1,19 +1,19 @@
 package integration.dao;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import utils.DateHelper;
-import utils.Encrypt;
 import business.entity.Amministratore;
 import business.entity.Operatore;
 
 public class DAOOperatore extends DAOCarloan<Operatore> {
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public  void create(Operatore entity){
 		ResultSet rs = connection.executeReadQuery("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "
 				+ "'carloan' AND   TABLE_NAME = 'persona'");
@@ -43,7 +43,10 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 			connection.executeUpdateQuery("INSERT INTO Operatore values('" + entity.getUsername() + "', " + entity.getAgenzia().getId() + ", false);");
 	}
 	
-
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void update(Operatore entity){
 		try {
 			connection.executeUpdateQuery("update persona set " +
@@ -66,6 +69,10 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 		}
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Operatore read(String pk){
 		Operatore operatore= null;
 		ResultSet rs = connection.executeReadQuery("select * from operatore inner join profilo on operatore.username = profilo.username where operatore.username = '" + pk + "';");
@@ -94,6 +101,11 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 		}
  		return operatore;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void delete(String pk){
 		
 		//connection.executeUpdateQuery("DELETE FROM operatore WHERE username = '" + pk + "';");
@@ -106,28 +118,10 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args) {
-		DAOOperatore dao = new DAOOperatore();
-		Operatore a = new Operatore(); 
-		a.setAgenzia(new DAOAgenzia().read(Integer.toString(1)));
-		a.setId(2);
-		a.setUsername("MarioRossi21");
-		a.setPassword("carloan");
-		a.setNome("Francesco");
-		a.setCognome("Bianchi");
-		//a.setDataNascita(LocalDate.of(1994, 20, 07));
-		a.setEMail("mariorossi@gmail.com");
-		
-		dao.create(a);
-		System.out.println(dao.read(a.getUsername()));
-		a.setEMail("mib777@gmail.com");
-		dao.update(a);
-		System.out.println(dao.read(a.getUsername()));
-		//dao.delete(a.getUsername());
-	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Operatore> readAll() {
 		List<Operatore> operatori = new ArrayList<Operatore>();

@@ -8,7 +8,6 @@ import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
 import utils.DateHelper;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -40,6 +39,9 @@ public class SchermataChiusura extends SchermataDati<Contratto> {
 		chilometriPercorsi.setDisable(true);
 	}
 	
+	/**
+	 * Ascoltatore del pulsante per calcolare il costo finale del contratto
+	 */
 	@FXML
 	public void onCalcolaCosto() {
 		Contratto contratto = buildEntity();
@@ -47,6 +49,9 @@ public class SchermataChiusura extends SchermataDati<Contratto> {
 		costo.setText(Double.toString((Double) controller.processRequest("CalcolaCostoChiusura", contratto)));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onConferma() {
 		Contratto contratto = buildEntity();
@@ -56,6 +61,9 @@ public class SchermataChiusura extends SchermataDati<Contratto> {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Contratto entity) {
 		contratto = entity;
@@ -64,6 +72,9 @@ public class SchermataChiusura extends SchermataDati<Contratto> {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Contratto buildEntity() {
 		Contratto c = contratto;

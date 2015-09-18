@@ -25,6 +25,9 @@ public class Tariffario implements Serializable {
 	private Map<Rifornimento, Double> rifornimento = new HashMap<Rifornimento, Double>();
 	private static Tariffario tariffario;
 
+	/**
+	 * Costruttore privato della classe singleton
+	 */
 	private Tariffario() {
 		for (TipoCarburante t:TipoCarburante.values()) {
 			costoLitro.put(t, 0.0);
@@ -34,6 +37,9 @@ public class Tariffario implements Serializable {
 		}
 	}
 	
+	/**
+	 * Carica le informazioni del tariffario da file se ci sono, altrimenti crea un nuovo file con valori settati in default
+	 */
 	private static void load() {
 		File file = new File("./tariffario/");
 		if (!file.canRead()) {
@@ -81,6 +87,9 @@ public class Tariffario implements Serializable {
 		return costoChilometraggioIllimitato;
 	}
 	
+	/**
+	 * @return l'istanza di {@link Tariffario}
+	 */
 	public static Tariffario getInstance() {
 		if (tariffario==null) 
 			tariffario = new Tariffario();
@@ -153,9 +162,4 @@ public class Tariffario implements Serializable {
 		this.assicurazioneAvanzata = assicurazioneAvanzata;
 	}
 	
-	public static void main(String [] args) throws ClassNotFoundException {
-		Tariffario a = Tariffario.getInstance();
-
-		System.out.println("Tariffario " +a);
-	}
 }

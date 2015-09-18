@@ -8,6 +8,9 @@ import business.exception.CarloanException;
 
 public class CommandReadAllModello implements Command<List<Modello>>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Modello> execute(List<Modello> entity) throws CarloanException {
 		try {

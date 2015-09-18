@@ -13,6 +13,9 @@ import business.exception.IntegrityException;
 
 public class CheckerVettura implements Checker<Vettura>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void check(Vettura entity) throws IntegrityException {
 		if (entity.getTarga() == null) throw new IntegrityException("Targa non inserita");
@@ -21,12 +24,22 @@ public class CheckerVettura implements Checker<Vettura>{
 		if (entity.getStato() == null) throw new IntegrityException("Stato della vettura non indicato");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void isModifiable(Vettura entity) throws IntegrityException {
 		if (!isAvailable(entity, LocalDate.now(), LocalDate.now()))
 			throw new IntegrityException();
 	}
 	
+	/**
+	 * Stabilisce se la vettura è disponibile oppure no nel periodo di tempo passato in input
+	 * @param entity Vettura per cui effettuare il controllo
+	 * @param inizio del periodo
+	 * @param fine del periodo
+	 * @return vero se è disponibile, falso se non lo è
+	 */
 	public boolean isAvailable(Vettura entity, LocalDate inizio, LocalDate fine) {
 		if (inizio == LocalDate.now() && fine == LocalDate.now()) {
 			if (entity.getStato() == StatoVettura.DISPONIBILE) return true;

@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandRimuoviOperatore implements Command<Operatore>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Operatore execute(Operatore entity) throws CarloanException {
 		try {

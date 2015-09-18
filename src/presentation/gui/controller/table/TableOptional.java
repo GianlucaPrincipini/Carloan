@@ -37,6 +37,9 @@ public class TableOptional implements TableController{
 	@FXML
 	private TableView<Optional> tabOptionals;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -65,6 +68,9 @@ public class TableOptional implements TableController{
         tabOptionals.setItems(optionals);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getPrimaryKey() {
 		if (tabOptionals.getSelectionModel().getSelectedIndex() == -1) {

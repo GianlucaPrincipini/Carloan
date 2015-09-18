@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandAggiungiOptional implements Command<Optional>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Optional execute(Optional entity) throws CarloanException {
 		ApplicationServiceOptional service;

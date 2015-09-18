@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandRimuoviFascia implements Command<Fascia>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Fascia execute(Fascia entity) throws CarloanException {
 		try {

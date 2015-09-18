@@ -47,10 +47,17 @@ public class Vettura implements Entity {
 		this.stato = stato;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String toString() {
 		return "'" + targa + "', " + modello.getId() + ", " + agenziaLocalizzazione.getId() + ", " + chilometraggio + ", " + stato.getIndex();
 	}
 
+	/**
+	 * Confronta due vetture
+	 */
 	@Override
 	public int compareTo(Entity o) {
 		if (targa.equals(((Vettura)o).targa))

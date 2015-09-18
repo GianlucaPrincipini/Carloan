@@ -29,10 +29,16 @@ public class Optional implements Entity {
 		this.costo = costo;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String toString() {
 		return tipo;
 	}
 
+	/**
+	 * Confronta due Optionals
+	 */
 	@Override
 	public int compareTo(Entity o) {
 		Optional op = (Optional) o;

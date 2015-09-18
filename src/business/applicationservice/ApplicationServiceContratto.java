@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.joda.time.Days;
-import org.joda.time.LocalDate;
-
 import business.checker.CheckerFactory;
 import business.checker.CheckerContratto;
 import business.entity.Agenzia;
@@ -20,6 +18,11 @@ import business.exception.IntegrityException;
 
 public class ApplicationServiceContratto extends ApplicationServiceEntity<Contratto> {
 
+	/**
+	 * Si occupa della chiusura di un contratto
+	 * @param contratto
+	 * @throws CarloanException
+	 */
 	public void chiudi(Contratto contratto) throws CarloanException {
 		((CheckerContratto)checker).checkChiusura(contratto);
 		contratto.setChiuso(true);
@@ -33,22 +36,36 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 		}
 	}
 	
+	/**
+	 * Costruisce il DAO e il checker relativi al contratto.
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
 	@SuppressWarnings("unchecked")
 	public ApplicationServiceContratto() throws InstantiationException, IllegalAccessException {
 		super(DAOFactory.buildDao(Contratto.class), CheckerFactory.buildChecker(Contratto.class));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void create(Contratto entity) throws IntegrityException {
 			checker.check(entity);
 			dao.create(entity);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Contratto read(String pk) {
 		return dao.read(pk);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(Contratto entity) throws IntegrityException {
 			checker.isModifiable(dao.read(Integer.toString(entity.getId())));
@@ -56,17 +73,28 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 			dao.update(entity);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Contratto> readAll() {
 		return dao.readAll();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void delete(Contratto entity) {
 		dao.delete(Integer.toString(entity.getId()));
 	}
 	
-	
+	/**
+	 * Calcola il costo in seguito alla chiusura del contratto
+	 * @param contratto
+	 * @return double indicante il costo finale del contratto
+	 * @throws CarloanException
+	 */
 	public double calcolaCostoChiusura(Contratto contratto) throws CarloanException {
 		double costo = calcolaCosto(contratto);
 		Tariffario tariffario = contratto.getTariffario();
@@ -91,6 +119,12 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 		return costo;
 	}
 	
+	/**
+	 * Calcola il costo preventivo del contratto
+	 * @param contratto
+	 * @return double del costo preventivo
+	 * @throws CarloanException
+	 */
 	public double calcolaCosto(Contratto contratto) throws CarloanException {
 		try {
 			double costo = 0;
@@ -126,6 +160,11 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 	}
 	
 
+	/**
+	 * Filtra i contratti restituendo solo quelli di interesse per l'agenzia attuale.
+	 * @param agenzia
+	 * @return Lista dei contratti filtrati
+	 */
 	public List<Contratto> filtra(Agenzia agenzia) {
 		List<Contratto> contrattiFiltrati = dao.readAll();
 		synchronized(contrattiFiltrati) {

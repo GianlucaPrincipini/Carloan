@@ -6,8 +6,10 @@ public enum Rifornimento {
 	
 	private int index;
 	
-	
-	
+	/**
+	 * Costruttore parametrico che imposta il tipo di rifornimento selezionato
+	 * @param index
+	 */
 	private Rifornimento(int index) {
 		this.index = index;
 	}

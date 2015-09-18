@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandAggiungiAgenzia implements Command<Agenzia>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Agenzia execute(Agenzia entity) throws CarloanException {
 		ApplicationServiceAgenzia service;

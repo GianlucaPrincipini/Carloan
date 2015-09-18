@@ -43,6 +43,9 @@ public class TableVettura implements TableController{
 	@FXML
 	private TableView<Vettura> tabVetture;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -83,6 +86,9 @@ public class TableVettura implements TableController{
         tabVetture.setItems(vetture);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getPrimaryKey() {
 		if (tabVetture.getSelectionModel().getSelectedIndex() == -1) {

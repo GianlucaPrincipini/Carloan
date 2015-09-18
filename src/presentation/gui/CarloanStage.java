@@ -20,6 +20,11 @@ public abstract class CarloanStage extends Stage implements Target{
 	
 	private final static String VIEW_LOCATION = "/presentation/gui/view/";
 	
+	/**
+	 * Costruttore che carica la schermata richiesta, eventualmente con i dati di un'entità
+	 * @param file 
+	 * @param entity
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public CarloanStage(String file, Object entity) {
 		Class<?> mainClass = getClass();
@@ -46,10 +51,17 @@ public abstract class CarloanStage extends Stage implements Target{
   
 	}
 	
+	/**
+	 * Imposta il valore di value
+	 */
 	public void setResult(Object result) {
 		value = result;
 	}
 	
+	/**
+	 * Mostra la schermata
+	 * @return
+	 */
 	public Object showStage() {
 		show();
 		return value;

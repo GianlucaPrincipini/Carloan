@@ -15,11 +15,17 @@ public class SchermataOptional extends SchermataDati<Optional>{
 	@FXML
 	private TextField costo;
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onConferma() {
 		Optional optional = buildEntity();
@@ -33,6 +39,9 @@ public class SchermataOptional extends SchermataDati<Optional>{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void initModifica(Optional entity) {
 		edit = true;
@@ -41,6 +50,9 @@ public class SchermataOptional extends SchermataDati<Optional>{
 		costo.setText(Double.toString(entity.getCosto()));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Optional buildEntity() {
 		Optional optional;

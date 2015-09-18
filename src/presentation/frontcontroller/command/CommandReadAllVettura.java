@@ -9,6 +9,9 @@ import business.exception.CarloanException;
 
 public class CommandReadAllVettura implements Command<List<Vettura>>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Vettura> execute(List<Vettura> entity) throws CarloanException {
 		try {

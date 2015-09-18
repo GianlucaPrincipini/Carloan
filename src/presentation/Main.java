@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
+	/**
+	 * Avvia la schermata principale
+	 */
 	@Override
 	public void start(Stage stage) {
 		try {
@@ -18,6 +21,12 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Punto di avvio del programma
+	 * @param args
+	 * @throws NoSuchAlgorithmException
+	 * @throws UnsupportedEncodingException
+	 */
 	public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		launch(args);
 	}

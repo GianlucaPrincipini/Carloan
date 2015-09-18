@@ -7,6 +7,9 @@ import business.exception.CarloanException;
 
 public class CommandAggiungiOperatore implements Command<Operatore>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Operatore execute(Operatore entity) throws CarloanException {
 		ApplicationServiceOperatore service;

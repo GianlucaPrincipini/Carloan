@@ -6,6 +6,9 @@ import business.exception.CarloanException;
 
 public class CommandAggiungiModello implements Command<Modello>{
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Modello execute(Modello entity) throws CarloanException {
 		ApplicationServiceModello service;

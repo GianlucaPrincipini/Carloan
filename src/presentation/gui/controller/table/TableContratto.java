@@ -88,7 +88,9 @@ public class TableContratto implements TableController{
 	private TableView<Contratto> tabContratti;
 	
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -200,6 +202,9 @@ public class TableContratto implements TableController{
 		tabContratti.setItems(contratti);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getPrimaryKey() {
 		if (tabContratti.getSelectionModel().getSelectedIndex() == -1) {

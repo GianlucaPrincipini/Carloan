@@ -1,17 +1,31 @@
 package presentation.frontcontroller;
 
-import java.lang.reflect.InvocationTargetException;
-
 import business.exception.CarloanException;
 import presentation.frontcontroller.command.Command;
 import presentation.gui.CarloanStage;
 
 public class TargetFactory {
 	
+	/**
+	 * Processa un richiesta senza trasfermento di entità 
+	 * @param request
+	 * @return Target creato
+	 * @throws CarloanException
+	 */
 	public static Target buildTarget(String request) throws CarloanException {
 		return buildTarget(request,null);
 	}
 	
+	/**
+	 * Riconosce il tipo di richiesta attraverso le espressioni regolari e costruisce l'oggetto da ritornare
+	 * Esso può essere di due tipi: 
+	 * 1)Un CarloanStage, ovvero un'interfaccia 
+	 * 2)Un Command
+	 * @param request richiesta
+	 * @param entity entità
+	 * @return target costruito
+	 * @throws CarloanException
+	 */
 	@SuppressWarnings("rawtypes")
 	public static Target buildTarget(String request, Object entity) throws CarloanException {
 		try {

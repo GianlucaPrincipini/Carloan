@@ -1,9 +1,13 @@
 package business.entity;
 
 public class Agenzia implements Entity {
+	
 	private int id;
+	
 	private String indirizzo;
+	
 	private String città;
+	
 	private String numTelefono;
 
 
@@ -43,6 +47,9 @@ public class Agenzia implements Entity {
 		return id + ", '" + indirizzo + "', '" + città + "', '" + numTelefono + "'";
 	}
 
+	/**
+	 * Confronta tra loro due agenzie.
+	 */
 	@Override
 	public int compareTo(Entity arg0) {
 		Agenzia oAgenzia = (Agenzia) arg0;

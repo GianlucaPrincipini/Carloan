@@ -1,23 +1,27 @@
 package business.applicationservice;
 
 import java.util.List;
-
-import integration.dao.DAO;
 import integration.dao.DAOFactory;
-import business.checker.Checker;
 import business.checker.CheckerFactory;
 import business.entity.Agenzia;
-import business.exception.CarloanException;
 import business.exception.IntegrityException;
-import business.exception.UnmodifiableEntityException;
+
 
 public class ApplicationServiceAgenzia extends ApplicationServiceEntity<Agenzia> {
 
+	/**
+	 * Costuttore che istanzia DAO e Checker relativi all'agenzia
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
 	@SuppressWarnings("unchecked")
 	public ApplicationServiceAgenzia() throws InstantiationException, IllegalAccessException {
 		super(DAOFactory.buildDao(Agenzia.class), CheckerFactory.buildChecker(Agenzia.class));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void create(Agenzia entity) throws IntegrityException{
 		try {
@@ -28,6 +32,9 @@ public class ApplicationServiceAgenzia extends ApplicationServiceEntity<Agenzia>
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(Agenzia entity) throws IntegrityException{
 		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
@@ -36,6 +43,9 @@ public class ApplicationServiceAgenzia extends ApplicationServiceEntity<Agenzia>
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void delete(Agenzia entity) throws IntegrityException{
 		checker.isModifiable(dao.read(Integer.toString(entity.getId())));
@@ -47,11 +57,17 @@ public class ApplicationServiceAgenzia extends ApplicationServiceEntity<Agenzia>
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Agenzia> readAll() {
 		return dao.readAll();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Agenzia read(String pk){
 		return dao.read(pk);
