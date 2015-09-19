@@ -3,12 +3,14 @@ package presentation.gui.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import presentation.gui.CarloanMessage;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import business.entity.Fascia;
 import business.entity.Modello;
 import business.entity.TipoCarburante;
@@ -60,13 +62,20 @@ public class SchermataModello extends SchermataDati<Modello>{
 	@Override
 	public void onConferma() {
 		Modello modello = buildEntity();
+		if (modello.getFascia() == null) {
+			Integer idFascia = (Integer) controller.processRequest("CalcolaFascia", buildEntity());
+			if (idFascia != null) fascia.setText(Integer.toString(idFascia));
+			modello = buildEntity();
+		}
 		if (modello != null) {
 			if (edit) {
-				controller.processRequest("ModificaModello", buildEntity());
+				controller.processRequest("ModificaModello", modello);
 			} else {
-				controller.processRequest("AggiungiModello", buildEntity());
+				controller.processRequest("AggiungiModello", modello);
 			}
 			close();
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 
@@ -108,8 +117,9 @@ public class SchermataModello extends SchermataDati<Modello>{
 			if (id!=0) {
 				modello.setId(id);
 			}
+			modello.setTipoCarburante(tipoCarburante.getSelectionModel().getSelectedItem());
 			modello.setCapacit‡Bagagliaio(Integer.parseInt(capacit‡Bagagliaio.getText()));
-			modello.setNumeroPorte(Integer.parseInt(capacit‡Bagagliaio.getText()));
+			modello.setNumeroPorte(Integer.parseInt(numeroPorte.getText()));
 			modello.setMarca(marca.getText());
 			modello.setNome(nome.getText());
 			modello.setEmissioniCO2(Double.parseDouble(emissioniCO2.getText()));
@@ -119,6 +129,7 @@ public class SchermataModello extends SchermataDati<Modello>{
 			modello.setTrasmissioneAutomatica(trasmissioneAutomatica.selectedProperty().get());
 			if (!fascia.getText().isEmpty())
 				modello.setFascia((Fascia) controller.processRequest("ReadFascia", fascia.getText()));
+			else modello.setFascia(null);
 			return modello;
 		} catch (Exception e) {
 			return null;

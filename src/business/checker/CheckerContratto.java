@@ -21,8 +21,8 @@ public class CheckerContratto implements Checker<Contratto>{
 		if (entity.getDataFineNoleggio() == null) throw new IntegrityException("Alcuni dati sono mancanti, assicurarsi del corretto inserimento.");
 		if (entity.getDataFineNoleggio().isBefore(entity.getDataInizioNoleggio())) throw new IntegrityException("Alcuni dati sono mancanti, assicurarsi del corretto inserimento.");
 		if (entity.getVettura().getStato().equals(StatoVettura.MANUTENZIONE))  throw new IntegrityException("Alcuni dati sono mancanti, assicurarsi del corretto inserimento.");
-		if (!new CheckerCliente().isAvailable(entity.getCliente(), entity.getDataInizioNoleggio(), entity.getDataFineNoleggio())) throw new IntegrityException("Il cliente non è disponibile nel periodo di tempo indicato per il noleggi1o");
-		if (!new CheckerVettura().isAvailable(entity.getVettura(), entity.getDataInizioNoleggio(), entity.getDataFineNoleggio())) throw new IntegrityException("La vettura non è disponibile nel periodo di tempo indicato per il noleggio");
+		if (!new CheckerCliente().isAvailable(entity, entity.getCliente(), entity.getDataInizioNoleggio(), entity.getDataFineNoleggio())) throw new IntegrityException("Il cliente non è disponibile nel periodo di tempo indicato per il noleggi1o");
+		if (!new CheckerVettura().isAvailable(entity, entity.getVettura(), entity.getDataInizioNoleggio(), entity.getDataFineNoleggio())) throw new IntegrityException("La vettura non è disponibile nel periodo di tempo indicato per il noleggio");
 		if (entity.getCosto() == 0) throw new IntegrityException("Costo non calcolato");
 	}
 	
@@ -40,12 +40,10 @@ public class CheckerContratto implements Checker<Contratto>{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void isModifiable(Contratto entity) throws UnmodifiableEntityException {
+	public void isModifiable(Contratto entity) throws IntegrityException {
 		if ((LocalDate.now().equals(entity.getDataFineNoleggio()) || 
 			LocalDate.now().isAfter(entity.getDataFineNoleggio())) && 
 			!entity.isChiuso()) return;
 		if (Days.daysBetween(LocalDate.now(), entity.getDataInizioNoleggio()).getDays() <= 2) throw new UnmodifiableEntityException("Il noleggio inizia tra due giorni o meno, il contratto non è modificabile");
-		if (entity.isChiuso()) throw new UnmodifiableEntityException("Non si può modificare un contratto chiuso");
 	}
-
 }

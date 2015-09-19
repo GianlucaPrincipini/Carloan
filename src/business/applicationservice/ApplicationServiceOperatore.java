@@ -28,8 +28,9 @@ public class ApplicationServiceOperatore extends ApplicationServiceEntity<Operat
 	 */
 	@Override
 	public void create(Operatore entity) throws IntegrityException {
-			checker.check(entity);
-			dao.create(entity);
+		if (dao.read(entity.getUsername()) != null) throw new IntegrityException("Username già in uso");
+		checker.check(entity);
+		dao.create(entity);
 		
 	}
 

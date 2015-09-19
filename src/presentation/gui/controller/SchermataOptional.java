@@ -3,8 +3,10 @@ package presentation.gui.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import presentation.gui.CarloanMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import business.entity.Optional;
 
 public class SchermataOptional extends SchermataDati<Optional>{
@@ -36,6 +38,8 @@ public class SchermataOptional extends SchermataDati<Optional>{
 				controller.processRequest("AggiungiOptional", buildEntity());
 			}
 			close();
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 

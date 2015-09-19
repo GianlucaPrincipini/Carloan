@@ -36,6 +36,9 @@ public class MainStage implements Initializable {
 	private Node root;
 	
 	@FXML
+	private Button chiudiContratto;
+	
+	@FXML
 	private MenuItem modTariffario;
 	
 	@FXML
@@ -95,7 +98,6 @@ public class MainStage implements Initializable {
 	@FXML
 	public void onAggiungi() {
 		controller.processRequest("Mostra"+tabPane.getSelectionModel().getSelectedItem().getText());
-
 	}
 	
 	@FXML
@@ -106,6 +108,7 @@ public class MainStage implements Initializable {
 		else {
 			CarloanMessage.showMessage(AlertType.WARNING, "Nessun elemento selezionato nella tabella.");
 		}
+
 	}
 	
 	@FXML
@@ -123,6 +126,7 @@ public class MainStage implements Initializable {
 		} else {
 			CarloanMessage.showMessage(AlertType.WARNING, "Nessun elemento selezionato nella tabella.");
 		}
+		
 	}	
 	
 
@@ -175,6 +179,8 @@ public class MainStage implements Initializable {
 		public void changed(ObservableValue observable, Number oldValue, Number newValue) {
 			FXMLLoader loadedTable = null;
 			try {
+				if ((Integer) newValue == 0) chiudiContratto.setDisable(false);
+				else chiudiContratto.setDisable(true);
 				if ((Integer) newValue == 0){
 					paneContratti.getChildren().clear();
 					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableContratto.fxml"));
@@ -207,6 +213,16 @@ public class MainStage implements Initializable {
 					paneOperatori.getChildren().clear();
 					loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/TableOperatore.fxml"));
 					paneOperatori.getChildren().setAll(loadedTable.load());
+				}
+				int value = (Integer) newValue;
+				if (!((CarloanFrontController) controller).isAdmin() && value > 2) {
+					aggiungi.setDisable(true);
+					modifica.setDisable(true);
+					rimuovi.setDisable(true);
+				} else {
+					aggiungi.setDisable(false);
+					modifica.setDisable(false);
+					rimuovi.setDisable(false);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

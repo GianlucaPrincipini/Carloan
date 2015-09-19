@@ -27,6 +27,12 @@ public class MySQLConnector implements Connector {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				finalize();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
     }
     

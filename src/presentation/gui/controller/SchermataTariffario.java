@@ -4,11 +4,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
+<<<<<<< HEAD
+=======
+import presentation.frontcontroller.FrontController;
+import presentation.gui.CarloanMessage;
+>>>>>>> origin/master
 import business.entity.Rifornimento;
 import business.entity.Tariffario;
 import business.entity.TipoCarburante;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class SchermataTariffario extends SchermataDati<Tariffario>{
 
@@ -49,8 +55,6 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 	@FXML
 	private TextField costoPienoAnticipo;
 	
-	@FXML
-	private TextField moraCarburante;
 	
 	@FXML
 	private TextField moraChilometraggio;
@@ -75,6 +79,8 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		if (tariffario != null) {
 			controller.processRequest("ModificaTariffario", tariffario);
 			close();
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 
@@ -97,7 +103,6 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 		costoElettricità.setText(Double.toString(entity.getCostoLitro(TipoCarburante.ELETTRICA)));
 		costoGpl.setText(Double.toString(entity.getCostoLitro(TipoCarburante.GPL)));
 		costoPienoAnticipo.setText(Double.toString(entity.getRifornimento(Rifornimento.PIENO_ANTICIPO)));
-		moraCarburante.setText(Double.toString(entity.getMoraCarburante()));
 		moraDurata.setText(Double.toString(entity.getMoraDurata()));
 		moraChilometraggio.setText(Double.toString(entity.getMoraChilometraggio()));
 	}
@@ -121,7 +126,6 @@ public class SchermataTariffario extends SchermataDati<Tariffario>{
 			tariffario.setCostoLitro(TipoCarburante.GPL, Double.parseDouble(costoGpl.getText()));
 			tariffario.setCostoLitro(TipoCarburante.DIESEL, Double.parseDouble(costoDiesel.getText()));
 			tariffario.setRifornimento(Rifornimento.PIENO_ANTICIPO, Double.parseDouble(costoPienoAnticipo.getText()));
-			tariffario.setMoraCarburante(Double.parseDouble(moraCarburante.getText()));
 			tariffario.setMoraChilometraggio(Double.parseDouble(moraChilometraggio.getText()));
 			tariffario.setMoraDurata(Double.parseDouble(moraDurata.getText()));
 			return tariffario;

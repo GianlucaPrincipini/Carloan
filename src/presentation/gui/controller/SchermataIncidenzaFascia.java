@@ -2,8 +2,13 @@ package presentation.gui.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import presentation.frontcontroller.CarloanFrontController;
+import presentation.frontcontroller.FrontController;
+import presentation.gui.CarloanMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import business.entity.IncidenzaFascia;
 
 public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
@@ -41,6 +46,8 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 		if (incidenza != null) {
 			controller.processRequest("ModificaIncidenza", incidenza);
 			close();
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
 		}
 	}
 
@@ -71,7 +78,7 @@ public class SchermataIncidenzaFascia extends SchermataDati<IncidenzaFascia> {
 			incidenza.setNumeroPosti(Double.parseDouble(numeroPosti.getText()));
 			incidenza.setPotenzaSuPeso(Double.parseDouble(potenzaSuPeso.getText()));
 			return incidenza;
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}

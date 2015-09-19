@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
+import presentation.gui.CarloanMessage;
 import utils.DateHelper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,6 +14,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+<<<<<<< HEAD
+=======
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.GridPane;
+>>>>>>> origin/master
 import business.entity.Agenzia;
 import business.entity.Cliente;
 import business.entity.Contratto;
@@ -123,13 +129,17 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	public void onConferma() {
 		Contratto contratto = buildEntity();
 		if (contratto != null) {
-			Double costo = (Double) controller.processRequest("CalcolaCosto", contratto);
-			if (costo != null)
-				contratto.setCosto(costo);
+			Double costoC = null;
+			if (contratto.getCosto() == 0)
+				 costoC = (Double) controller.processRequest("CalcolaCosto", contratto);
+			if (costoC != null)
+				costo.setText(Double.toString(costoC));
 			if (edit) controller.processRequest("ModificaContratto", buildEntity());
 			else controller.processRequest("AggiungiContratto", buildEntity());
 			close();
-		} 
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
+		}
 	}
 
 	/**
@@ -137,7 +147,9 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	 */
 	@FXML
 	public void onCalcolaCosto() {
-		costo.setText(Double.toString((Double) controller.processRequest("CalcolaCosto", buildEntity())));
+		Double costoContratto = (Double) controller.processRequest("CalcolaCosto", buildEntity());
+		if (costoContratto != null) costo.setText(costoContratto.toString());
+		else costo.setText("0");
 	}
 	
 	/**
@@ -154,6 +166,7 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	@Override
 	public void initModifica(Contratto entity) {
 		edit = true;
+		setId(entity.getId());
 		costo.setText(Double.toString(entity.getCosto()));
 		acconto.setText(Double.toString(entity.getAcconto()));
 		dataInizioNoleggio.setValue(java.time.LocalDate.of(entity.getDataInizioNoleggio().getYear(), entity.getDataInizioNoleggio().getMonthOfYear(), entity.getDataInizioNoleggio().getDayOfMonth()));
@@ -166,7 +179,7 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 		chilometraggioLimitato.selectedProperty().set(entity.isChilometraggioLimitato());
 		assicurazioneAvanzata.selectedProperty().set(entity.isAssicurazioneAvanzata());		
 		operatore.setText(entity.getOperatore().getUsername());
-		vettura.setText(Integer.toString(entity.getId()));
+		vettura.setText(entity.getVettura().getTarga());
 		cliente.setText(entity.getCliente().getCodicePatente());
 		List<String> opts = new ArrayList<String>();
 		for (Optional o:entity.getOptionals()) {
@@ -181,6 +194,7 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 	@Override
 	protected Contratto buildEntity() {
 		Contratto contratto = new Contratto();
+		contratto.setId(id);
 		try {
 			contratto.setOperatore((Operatore) controller.processRequest("ReadOperatore", operatore.getText()));
 			contratto.setAgenziaConsegna((Agenzia) controller.processRequest("ReadAgenzia", agenziaConsegna.getText()));
@@ -197,11 +211,12 @@ public class SchermataContratto extends SchermataDati<Contratto>{
 			contratto.setChilometriPrevisti(Integer.parseInt(chilometriPrevisti.getText()));
 			List<Optional> opts = new ArrayList<Optional>();
 			for (String o:optionals.getItems()) {
-				System.out.println((Optional)controller.processRequest("ReadOptional", o));
 				if (!o.isEmpty()) opts.add((Optional)controller.processRequest("ReadOptional", o)); 
 			}
 			contratto.setOptionals(opts);
-			if (!costo.getText().isEmpty()) {
+			if (costo.getText().isEmpty()) {
+				contratto.setCosto(0);
+			} else {
 				contratto.setCosto(Double.parseDouble(costo.getText()));
 			}
 			return contratto;

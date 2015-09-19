@@ -25,7 +25,6 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(entity.getId());
 		connection.executeUpdateQuery("INSERT INTO contratto(operatore, cliente, vettura, agenzianoleggio, agenziaconsegna, datastipula, "
 									+ "datainizionoleggio, datafinenoleggio, chilometraggiolimitato, chilometriprevisti, rifornimento, acconto, "
 									+ "costo, assicurazioneavanzata) values(" 
@@ -72,7 +71,6 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 				  "WHERE id = " + entity.getId() + "; ");
 		connection.executeUpdateQuery("delete from optional_contratto where idcontratto = " + entity.getId() + ";");
 		for (Optional o : entity.getOptionals()) {
-			System.out.println(entity.getId() + " " + o.getId());
 			connection.executeUpdateQuery("insert into optional_contratto values (" + entity.getId() + ", " + o.getId() + ");");
 		}
 		if (entity.getDataChiusura() != null) {
@@ -137,11 +135,6 @@ public class DAOContratto extends DAOCarloan<Contratto>{
 	@Override
 	public void delete(String pk){
 		connection.executeUpdateQuery("DELETE FROM contratto WHERE id = " + pk + ";");
-	}
-	
-	public static void main(String[] args) {
-		System.out.println(new DAOContratto().readAll());
-		// Da continuare
 	}
 
 	/**

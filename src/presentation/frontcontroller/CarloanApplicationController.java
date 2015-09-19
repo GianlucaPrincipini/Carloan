@@ -1,6 +1,5 @@
 package presentation.frontcontroller;
 
-
 import business.exception.CarloanException;
 
 public class CarloanApplicationController implements ApplicationController{

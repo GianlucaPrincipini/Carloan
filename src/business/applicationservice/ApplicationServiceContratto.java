@@ -30,6 +30,11 @@ public class ApplicationServiceContratto extends ApplicationServiceEntity<Contra
 		contratto.getVettura().setChilometraggio(contratto.getVettura().getChilometraggio() + contratto.getChilometriPercorsi());
 		try {
 			new ApplicationServiceVettura().update(contratto.getVettura());
+		} catch (InstantiationException | IllegalAccessException e1) {
+			throw new CarloanException("Impossibile aggiornare il chilometraggio della vettura");
+		}
+		try {
+			new ApplicationServiceVettura().update(contratto.getVettura());
 		} catch (IntegrityException | InstantiationException
 				| IllegalAccessException e) {
 			throw new CarloanException("Impossibile chiudere il contratto");

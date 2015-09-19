@@ -47,6 +47,7 @@ public class Vettura implements Entity {
 		this.stato = stato;
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * {@inheritDoc}
 	 */
@@ -54,6 +55,8 @@ public class Vettura implements Entity {
 	public String toString() {
 		return "'" + targa + "', " + modello.getId() + ", " + agenziaLocalizzazione.getId() + ", " + chilometraggio + ", " + stato.getIndex();
 	}
+=======
+>>>>>>> origin/master
 
 	/**
 	 * Confronta due vetture

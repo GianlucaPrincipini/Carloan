@@ -1,6 +1,7 @@
 package integration.connector;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Interfaccia per il connettore del database
@@ -23,4 +24,5 @@ public interface Connector {
      */
     public abstract ResultSet executeUpdateQuery(String query);
 
+    public void finalize() throws SQLException;
 }

@@ -3,7 +3,9 @@ package presentation.gui.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import presentation.gui.CarloanMessage;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import business.entity.Fascia;
 
@@ -40,7 +42,9 @@ public class SchermataFascia extends SchermataDati<Fascia>{
 			if (edit) controller.processRequest("ModificaFascia", fascia);
 			else controller.processRequest("AggiungiFascia", fascia);
 			close();
-		}
+		} else {
+			CarloanMessage.showMessage(AlertType.WARNING, "I dati immessi non sono corretti");
+		} 
 	}
 
 	/**
@@ -61,7 +65,9 @@ public class SchermataFascia extends SchermataDati<Fascia>{
 	 */
 	@Override
 	protected Fascia buildEntity() {
+
 		Fascia fascia = new Fascia();
+
 		try {
 			fascia.setId(id);
 			fascia.setNome(nome.getText());

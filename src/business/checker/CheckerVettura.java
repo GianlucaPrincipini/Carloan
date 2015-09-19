@@ -29,10 +29,11 @@ public class CheckerVettura implements Checker<Vettura>{
 	 */
 	@Override
 	public void isModifiable(Vettura entity) throws IntegrityException {
-		if (!isAvailable(entity, LocalDate.now(), LocalDate.now()))
+		if (!isAvailable(null, entity, LocalDate.now(), LocalDate.now()))
 			throw new IntegrityException();
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Stabilisce se la vettura è disponibile oppure no nel periodo di tempo passato in input
 	 * @param entity Vettura per cui effettuare il controllo
@@ -41,12 +42,16 @@ public class CheckerVettura implements Checker<Vettura>{
 	 * @return vero se è disponibile, falso se non lo è
 	 */
 	public boolean isAvailable(Vettura entity, LocalDate inizio, LocalDate fine) {
+=======
+	public boolean isAvailable(Contratto contratto, Vettura entity, LocalDate inizio, LocalDate fine) {
+>>>>>>> origin/master
 		if (inizio == LocalDate.now() && fine == LocalDate.now()) {
 			if (entity.getStato() == StatoVettura.DISPONIBILE) return true;
 			else return false;
 		} else {
 			List<Contratto> contratti = new DAOContratto().readAll();
 			for (Contratto c:contratti) {
+				if (contratto != null && c.getId() == contratto.getId()) continue;
 				if (c.getVettura().getTarga().equals(entity.getTarga())) {
 					if (inizio.isBefore(c.getDataFineNoleggio()) && fine.isAfter(c.getDataInizioNoleggio())) {
 						return false;
@@ -57,6 +62,9 @@ public class CheckerVettura implements Checker<Vettura>{
 					if (inizio.isAfter(c.getDataInizioNoleggio()) && inizio.isBefore(c.getDataFineNoleggio())) {
 						return false;
 					}
+					if ((inizio.equals(c.getDataChiusura()) || inizio.isAfter(c.getDataFineNoleggio()))
+							&& c.getDataChiusura() == null)
+						return false;
 				}
 			}
 		}
