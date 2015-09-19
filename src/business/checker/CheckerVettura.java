@@ -33,7 +33,6 @@ public class CheckerVettura implements Checker<Vettura>{
 			throw new IntegrityException();
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Stabilisce se la vettura è disponibile oppure no nel periodo di tempo passato in input
 	 * @param entity Vettura per cui effettuare il controllo
@@ -41,10 +40,8 @@ public class CheckerVettura implements Checker<Vettura>{
 	 * @param fine del periodo
 	 * @return vero se è disponibile, falso se non lo è
 	 */
-	public boolean isAvailable(Vettura entity, LocalDate inizio, LocalDate fine) {
-=======
+
 	public boolean isAvailable(Contratto contratto, Vettura entity, LocalDate inizio, LocalDate fine) {
->>>>>>> origin/master
 		if (inizio == LocalDate.now() && fine == LocalDate.now()) {
 			if (entity.getStato() == StatoVettura.DISPONIBILE) return true;
 			else return false;

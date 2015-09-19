@@ -153,11 +153,4 @@ public class Tariffario implements Serializable {
 		this.assicurazioneAvanzata = assicurazioneAvanzata;
 	}
 	
-<<<<<<< HEAD
-=======
-	public static void main(String [] args) throws ClassNotFoundException {
-		Tariffario a = Tariffario.getInstance();
-
-	}
->>>>>>> origin/master
 }

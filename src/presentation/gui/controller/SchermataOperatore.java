@@ -4,11 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
-<<<<<<< HEAD
-=======
-
 import presentation.gui.CarloanMessage;
->>>>>>> origin/master
 import utils.DateHelper;
 import utils.Encrypt;
 import javafx.fxml.FXML;

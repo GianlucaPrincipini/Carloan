@@ -14,11 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-<<<<<<< HEAD
-=======
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.GridPane;
->>>>>>> origin/master
 import business.entity.Agenzia;
 import business.entity.Cliente;
 import business.entity.Contratto;

@@ -2,9 +2,6 @@ package presentation.gui.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import presentation.frontcontroller.CarloanFrontController;
-import presentation.frontcontroller.FrontController;
 import presentation.gui.CarloanMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;

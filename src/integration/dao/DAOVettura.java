@@ -63,14 +63,10 @@ public class DAOVettura extends DAOCarloan<Vettura> {
 	public void delete(String pk) {
 		connection.executeUpdateQuery("delete from vettura where targa = '" + pk + "';");
 	}
-<<<<<<< HEAD
 
 	/**
 	 * {@inheritDoc}
 	 */
-=======
-	
->>>>>>> origin/master
 	@Override
 	public List<Vettura> readAll() {
 		List<Vettura> vetture = new ArrayList<Vettura>();

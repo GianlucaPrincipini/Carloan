@@ -4,11 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import presentation.frontcontroller.CarloanFrontController;
-<<<<<<< HEAD
-=======
-import presentation.frontcontroller.FrontController;
 import presentation.gui.CarloanMessage;
->>>>>>> origin/master
 import business.entity.Rifornimento;
 import business.entity.Tariffario;
 import business.entity.TipoCarburante;
