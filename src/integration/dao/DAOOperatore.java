@@ -76,6 +76,7 @@ public class DAOOperatore extends DAOCarloan<Operatore> {
 	public Operatore read(String pk){
 		Operatore operatore= null;
 		ResultSet rs = connection.executeReadQuery("select * from operatore inner join profilo on operatore.username = profilo.username where operatore.username = '" + pk + "';");
+		System.out.println(rs);
 		try {
 			while(rs.next()){
 				if (rs.getInt("amministratore") == 1)

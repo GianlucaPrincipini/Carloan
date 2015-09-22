@@ -1,9 +1,13 @@
 package presentation.gui.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
+
 import presentation.frontcontroller.CarloanFrontController;
 import presentation.frontcontroller.FrontController;
+import utils.Encrypt;
 import business.entity.Operatore;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,5 +46,9 @@ public class Login implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+	}
+	
+	public static void main(String [] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		System.out.println(Encrypt.getEncryptedString("password"));
 	}
 }

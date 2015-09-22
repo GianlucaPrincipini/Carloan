@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javafx.scene.control.Alert.AlertType;
+import presentation.gui.CarloanMessage;
+
 public class MySQLConnector implements Connector {
 
 	/**
@@ -14,7 +17,7 @@ public class MySQLConnector implements Connector {
     private Connection connection;
     
     /**
-     * Imposta il Driver del connettore
+     * Imposta il Driver del connettore e inizializza la connessione
      * @param url
      * @param user
      * @param password
@@ -26,13 +29,7 @@ public class MySQLConnector implements Connector {
 		} catch (ClassNotFoundException  e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				finalize();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			CarloanMessage.showMessage(AlertType.ERROR, "Impossibile connettersi al database, assicurarsi di averlo installato correttamente");
 		}
     }
     
