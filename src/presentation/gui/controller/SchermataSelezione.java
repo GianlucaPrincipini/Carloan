@@ -34,7 +34,7 @@ public class SchermataSelezione implements Initializable {
 		paneTabella.getChildren().clear();
 		try {
 			FXMLLoader loadedTable = new FXMLLoader(Class.class.getResource("/presentation/gui/view/tables/Table" + selezione + ".fxml"));
-			paneTabella.getChildren().addAll(loadedTable.load());
+			paneTabella.getChildren().addAll((Node)loadedTable.load());
 			tableController = loadedTable.<TableController>getController();
 		} catch (IOException e) {
 			e.printStackTrace();
